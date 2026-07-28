@@ -10,9 +10,14 @@ export const translations = {
       headline: 'Schweizer Präzision für Ihr Automobil.',
       subheadline: 'Der exklusive mobile Autopflege-Service der Schweiz. Meisterhafte Aufbereitung direkt bei Ihnen vor Ort.',
       cta: 'Jetzt Offerte anfragen',
+      eyebrow: 'Mobile Autopflege in der ganzen Schweiz',
+      whatsapp: 'WhatsApp',
+      whatsappMessage: 'Hallo RCC Mobile Autopflege, ich möchte eine unverbindliche Offerte anfragen.',
     },
     howItWorks: {
       title: 'Der Weg zur Perfektion',
+      eyebrow: 'Ihr mobiler Pflegestudio-Ablauf',
+      intro: 'Sie wählen den Ort und das passende Programm. Wir bringen professionelle Autopflege direkt zu Ihrem Fahrzeug.',
       steps: [
         { title: 'Standort wählen', desc: 'Wir kommen in alle 26 Kantone der Schweiz direkt zu Ihnen.' },
         { title: 'Paket buchen', desc: 'Wählen Sie aus unseren massgeschneiderten Pflegeprogrammen.' },
@@ -23,6 +28,7 @@ export const translations = {
       title: 'Wo sollen wir erscheinen?',
       subtitle: 'Wählen Sie Ihren Kanton, um die Anfrage zu starten.',
       selected: 'Ausgewählt:',
+      selectAction: 'auswählen',
     },
     services: {
       title: 'Unsere Expertise',
@@ -109,9 +115,14 @@ export const translations = {
       headline: 'La précision suisse pour votre automobile.',
       subheadline: 'Le service exclusif d\'entretien automobile mobile en Suisse. Un detailing de maître directement chez vous.',
       cta: 'Demander un devis maintenant',
+      eyebrow: 'Entretien automobile mobile dans toute la Suisse',
+      whatsapp: 'WhatsApp',
+      whatsappMessage: 'Bonjour RCC Mobile Autopflege, je souhaite demander un devis sans engagement.',
     },
     howItWorks: {
       title: 'Le chemin vers la perfection',
+      eyebrow: 'Votre studio mobile en trois étapes',
+      intro: 'Choisissez le lieu et le programme adapté. Nous apportons un entretien professionnel directement à votre véhicule.',
       steps: [
         { title: 'Choisissez l\'emplacement', desc: 'Nous nous déplaçons dans les 26 cantons suisses.' },
         { title: 'Réservez un forfait', desc: 'Choisissez parmi nos programmes d\'entretien sur mesure.' },
@@ -122,6 +133,7 @@ export const translations = {
       title: 'Où devons-nous intervenir ?',
       subtitle: 'Sélectionnez votre canton pour commencer la demande.',
       selected: 'Sélectionné :',
+      selectAction: 'sélectionner',
     },
     services: {
       title: 'Notre Expertise',
@@ -208,9 +220,14 @@ export const translations = {
       headline: 'Swiss precision for your automobile.',
       subheadline: 'Switzerland\'s exclusive mobile car care service. Masterful detailing directly at your location.',
       cta: 'Request a quote now',
+      eyebrow: 'Mobile car care across Switzerland',
+      whatsapp: 'WhatsApp',
+      whatsappMessage: 'Hello RCC Mobile Autopflege, I would like to request a no-obligation quote.',
     },
     howItWorks: {
       title: 'The path to perfection',
+      eyebrow: 'Your mobile studio in three steps',
+      intro: 'Choose your location and the right program. We bring professional car care directly to your vehicle.',
       steps: [
         { title: 'Select location', desc: 'We come directly to you in all 26 cantons of Switzerland.' },
         { title: 'Book package', desc: 'Choose from our tailor-made care programs.' },
@@ -221,6 +238,7 @@ export const translations = {
       title: 'Where should we appear?',
       subtitle: 'Select your canton to start the request.',
       selected: 'Selected:',
+      selectAction: 'select',
     },
     services: {
       title: 'Our Expertise',

@@ -60,6 +60,7 @@ A multi-section marketing + lead generation site for RCC Mobile Autopflege:
 - No emojis in the UI
 - Dark design, always — light mode not needed
 - Swiss German is the primary/default language
+- Use Goks for display typography when a licensed webfont file is supplied. Until then use the geometric Syne and Space Grotesk fallback stack
 
 ## Gotchas
 

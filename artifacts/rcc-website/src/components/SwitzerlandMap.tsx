@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { motion } from 'framer-motion';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { feature } from 'topojson-client';
 import type { Topology, GeometryCollection } from 'topojson-specification';
 import topoData from '@/data/swiss-cantons.json';
@@ -41,6 +41,19 @@ const CANTON_MAP: Record<number, { code: string; name: string }> = {
   26: { code: 'JU', name: 'Jura' },
 };
 
+const CITY_LABELS: Array<{ name: string; code: string; coordinates: [number, number] }> = [
+  { name: 'Zürich', code: 'ZH', coordinates: [8.5417, 47.3769] },
+  { name: 'Bern', code: 'BE', coordinates: [7.4474, 46.948] },
+  { name: 'Basel', code: 'BS', coordinates: [7.5886, 47.5596] },
+  { name: 'Luzern', code: 'LU', coordinates: [8.3093, 47.0502] },
+  { name: 'St. Gallen', code: 'SG', coordinates: [9.3767, 47.4245] },
+  { name: 'Chur', code: 'GR', coordinates: [9.532, 46.8508] },
+  { name: 'Lausanne', code: 'VD', coordinates: [6.6323, 46.5197] },
+  { name: 'Genève', code: 'GE', coordinates: [6.1432, 46.2044] },
+  { name: 'Sion', code: 'VS', coordinates: [7.36, 46.233] },
+  { name: 'Lugano', code: 'TI', coordinates: [8.9511, 46.0037] },
+];
+
 export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string) => void }) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState<string | null>(null);
@@ -58,12 +71,17 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
     }, 600);
   };
 
+  const selectByCode = (code: string) => {
+    const entry = Object.entries(CANTON_MAP).find(([, canton]) => canton.code === code);
+    if (entry) handleSelect(Number(entry[0]));
+  };
+
   return (
     <section id="locations" className="py-20 bg-background relative overflow-hidden section-border">
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
       
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -87,7 +105,7 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="relative bg-card border border-border p-8 lg:p-12 shadow-2xl">
+          <div className="relative bg-card border border-border p-2 sm:p-6 lg:p-10 shadow-2xl overflow-hidden">
             {/* Real Switzerland Map using react-simple-maps */}
             <div className="relative" style={{ filter: 'drop-shadow(0 0 30px rgba(201, 165, 83, 0.15))' }}>
               <ComposableMap
@@ -115,8 +133,18 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
                           key={geo.rsmKey}
                           geography={geo}
                           onClick={() => handleSelect(cantonId)}
+                          onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                              event.preventDefault();
+                              handleSelect(cantonId);
+                            }
+                          }}
                           onMouseEnter={() => setHoveredCanton(cantonId)}
                           onMouseLeave={() => setHoveredCanton(null)}
+                          tabIndex={0}
+                          role="button"
+                          aria-label={`${canton.name} ${t.map.selectAction}`}
+                          aria-pressed={isSelected}
                           data-testid={`button-canton-${canton.code}`}
                           style={{
                             default: {
@@ -146,6 +174,32 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
                     });
                   }}
                 </Geographies>
+                {CITY_LABELS.map((city) => (
+                  <Marker
+                    key={city.name}
+                    coordinates={city.coordinates}
+                    onClick={() => selectByCode(city.code)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        selectByCode(city.code);
+                      }
+                    }}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={`${city.name} ${t.map.selectAction}`}
+                    className="cursor-pointer focus:outline-none"
+                  >
+                    <circle r={2.1} fill="hsl(43, 74%, 55%)" stroke="hsl(0, 0%, 4%)" strokeWidth={0.8} />
+                    <text
+                      textAnchor="middle"
+                      y={-6}
+                      className="map-city-label"
+                    >
+                      {city.name}
+                    </text>
+                  </Marker>
+                ))}
               </ComposableMap>
             </div>
             
@@ -178,33 +232,6 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
           )}
         </motion.div>
 
-        {/* Canton list as elegant fallback/reference */}
-        <motion.div 
-          className="mt-12 max-w-4xl mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-13 gap-2 text-center">
-            {Object.values(CANTON_MAP).map((canton) => (
-              <button
-                key={canton.code}
-                onClick={() => {
-                  const cantonId = Object.entries(CANTON_MAP).find(([_, c]) => c.code === canton.code)?.[0];
-                  if (cantonId) handleSelect(Number(cantonId));
-                }}
-                className={`py-2 px-1 text-xs font-light tracking-wider transition-all duration-300 border ${
-                  selected === canton.code 
-                    ? 'bg-primary/10 border-primary text-primary' 
-                    : 'border-border/30 text-foreground/40 hover:text-primary hover:border-primary/30'
-                }`}
-              >
-                {canton.code}
-              </button>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -50,8 +50,8 @@
 }
 
 :root {
-  --app-font-serif: 'Cormorant Garamond', serif;
-  --app-font-sans: 'Montserrat', sans-serif;
+  --app-font-serif: 'Goks', 'Syne', 'Space Grotesk', sans-serif;
+  --app-font-sans: 'Goks', 'Space Grotesk', 'Syne', sans-serif;
   --radius: 1px;
   
   /* Premium dark theme with metallic gold */
@@ -95,6 +95,12 @@
 @layer base {
   * {
     @apply border-border;
+    min-width: 0;
+  }
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
@@ -102,8 +108,68 @@
     letter-spacing: 0.005em;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
-    letter-spacing: -0.015em;
+    font-family: var(--app-font-serif);
+    letter-spacing: -0.025em;
+  }
+}
+
+.hero-video-stage {
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 0;
+  transform: translate(-50%, -50%);
+}
+
+.hero-video-desktop {
+  display: none;
+  width: max(100vw, 177.78svh);
+  height: max(100svh, 56.25vw);
+}
+
+.hero-video-mobile {
+  display: block;
+  width: max(100vw, 56.25svh);
+  height: max(100svh, 177.78vw);
+}
+
+@media (min-width: 768px) {
+  .hero-video-desktop {
+    display: block;
+  }
+  .hero-video-mobile {
+    display: none;
+  }
+}
+
+.process-grid {
+  background-image:
+    linear-gradient(rgba(201, 165, 83, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 165, 83, 0.5) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.map-city-label {
+  fill: rgba(255, 255, 255, 0.78);
+  font-family: var(--app-font-sans);
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  paint-order: stroke;
+  stroke: rgba(5, 5, 5, 0.92);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+@media (max-width: 540px) {
+  .map-city-label {
+    font-size: 8.5px;
   }
 }
 
@@ -195,6 +261,7 @@
   border: 1px solid hsl(var(--border));
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  overflow: hidden;
 }
 
 .car-type-card:hover {
@@ -208,20 +275,6 @@
   border-color: hsl(var(--primary));
   background: hsl(var(--primary) / 0.08);
   box-shadow: 0 0 0 2px hsl(var(--primary)), 0 12px 32px rgba(201, 165, 83, 0.4);
-}
-
-.car-type-card.selected .car-icon {
-  fill: hsl(var(--primary));
-  filter: drop-shadow(0 0 8px rgba(201, 165, 83, 0.6));
-}
-
-.car-icon {
-  fill: hsl(var(--foreground) / 0.3);
-  transition: all 0.3s ease;
-}
-
-.car-type-card:hover .car-icon {
-  fill: hsl(var(--foreground) / 0.6);
 }
 
 /* Luxury divider */
