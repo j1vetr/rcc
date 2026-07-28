@@ -46,7 +46,7 @@ export function Services() {
   const activeService = services[activeIndex] ?? services[0];
 
   return (
-    <section id="services" className="relative overflow-hidden bg-[#050505] py-20 md:py-28">
+    <section id="services" className="relative overflow-hidden bg-[#050505] py-16 md:py-20">
       <div
         className="absolute inset-0 opacity-[0.055]"
         style={{
@@ -64,7 +64,7 @@ export function Services() {
             <span className="mb-3 block text-[10px] uppercase tracking-[0.32em] text-primary">
               {t.services.subtitle}
             </span>
-            <h2 className="max-w-2xl text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.04em] text-foreground md:text-6xl">
+            <h2 className="max-w-2xl text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.04em] text-foreground md:text-5xl">
               {t.services.title}
             </h2>
           </div>
@@ -105,7 +105,7 @@ export function Services() {
           })}
         </div>
 
-        <div className="relative min-h-[590px] overflow-hidden border border-primary/25 bg-[#090909] md:min-h-[560px]">
+        <div className="relative min-h-[560px] overflow-hidden border border-primary/25 bg-[#090909] md:min-h-[500px]">
           <div className="pointer-events-none absolute -right-3 top-0 select-none font-mono text-[clamp(9rem,28vw,24rem)] font-bold leading-none text-white/[0.025]">
             0{activeIndex + 1}
           </div>
@@ -119,9 +119,9 @@ export function Services() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-              className="relative grid min-h-[590px] md:min-h-[560px] md:grid-cols-[1.08fr_.92fr]"
+              className="relative grid min-h-[560px] md:min-h-[500px] md:grid-cols-[1.08fr_.92fr]"
             >
-              <div className="flex flex-col justify-between border-b border-white/10 p-6 sm:p-9 md:border-b-0 md:border-r md:p-12 lg:p-16">
+              <div className="flex flex-col justify-between border-b border-white/10 p-6 sm:p-9 md:border-b-0 md:border-r md:p-10 lg:p-12">
                 <div>
                   <div className="mb-8 flex items-center gap-3">
                     <span className="h-px w-10 bg-primary" />
@@ -129,7 +129,7 @@ export function Services() {
                       Program 0{activeIndex + 1}
                     </span>
                   </div>
-                  <h3 className="max-w-xl text-[clamp(2.7rem,7vw,5.8rem)] font-semibold uppercase leading-[0.84] tracking-[-0.055em] text-foreground">
+                  <h3 className="max-w-xl text-[clamp(2.5rem,6vw,5rem)] font-semibold uppercase leading-[0.84] tracking-[-0.055em] text-foreground">
                     {getLocalizedField(activeService, 'name')}
                   </h3>
                   <p className="mt-7 max-w-md text-sm font-light leading-relaxed text-foreground/55 md:text-base">
@@ -156,7 +156,7 @@ export function Services() {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between p-6 sm:p-9 md:p-12 lg:p-16">
+              <div className="flex flex-col justify-between p-6 sm:p-9 md:p-10 lg:p-12">
                 <div>
                   <span className="mb-7 block text-[9px] uppercase tracking-[0.25em] text-foreground/35">
                     Included treatment

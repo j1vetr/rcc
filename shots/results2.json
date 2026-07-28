@@ -1,0 +1,371 @@
+{
+  "process_active_transitions": [
+    {
+      "t": 11,
+      "step": 3
+    },
+    {
+      "t": 1673,
+      "step": 1
+    },
+    {
+      "t": 3503,
+      "step": 2
+    },
+    {
+      "t": 5335,
+      "step": 3
+    }
+  ],
+  "process_step_order": [
+    3,
+    1,
+    2,
+    3
+  ],
+  "shot_mobile_process": "shots/m-process.png",
+  "map_bounds_mobile": {
+    "viewport": {
+      "w": 390,
+      "h": 844
+    },
+    "svg": {
+      "x": 90,
+      "y": 486,
+      "w": 14,
+      "h": 14,
+      "left": 90,
+      "right": 104
+    },
+    "card": {
+      "x": 73,
+      "y": 477,
+      "w": 243,
+      "h": 33,
+      "left": 73,
+      "right": 317
+    },
+    "geoUnion": {
+      "left": 53,
+      "right": 361,
+      "top": 488,
+      "bottom": 753,
+      "w": 308,
+      "h": 265
+    },
+    "docScrollWidth": 390,
+    "docClientWidth": 390
+  },
+  "map_left_clip_mobile": {
+    "geoLeft": 53,
+    "cardLeft": 73,
+    "viewportLeft": 0,
+    "geoLeftClippedByCard": true,
+    "geoLeftOffscreen": false,
+    "horizOverflow": false
+  },
+  "map_labels": {
+    "total": 26,
+    "visibleCount": 26,
+    "codes": [
+      "ZH",
+      "BE",
+      "LU",
+      "UR",
+      "SZ",
+      "OW",
+      "NW",
+      "GL",
+      "ZG",
+      "FR",
+      "SO",
+      "BS",
+      "BL",
+      "SH",
+      "AR",
+      "AI",
+      "SG",
+      "GR",
+      "AG",
+      "TG",
+      "TI",
+      "VD",
+      "VS",
+      "NE",
+      "GE",
+      "JU"
+    ],
+    "visibleCodes": [
+      "ZH",
+      "BE",
+      "LU",
+      "UR",
+      "SZ",
+      "OW",
+      "NW",
+      "GL",
+      "ZG",
+      "FR",
+      "SO",
+      "BS",
+      "BL",
+      "SH",
+      "AR",
+      "AI",
+      "SG",
+      "GR",
+      "AG",
+      "TG",
+      "TI",
+      "VD",
+      "VS",
+      "NE",
+      "GE",
+      "JU"
+    ]
+  },
+  "map_legacy_check": {
+    "circleCount": 0,
+    "textsLongerThan2": []
+  },
+  "shot_mobile_map": "shots/m-map.png",
+  "glow_distinct_paths": 8,
+  "glow_samples": [
+    {
+      "t": 22,
+      "keys": [
+        "M456.211454894",
+        "M142.037485229"
+      ],
+      "fill": "rgba(16, 16, 15, 0.992)",
+      "stroke": "rgba(217, 165, 32, 0.31)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.008) 0p"
+    },
+    {
+      "t": 357,
+      "keys": [
+        "M342.114887366",
+        "M142.037485229"
+      ],
+      "fill": "rgba(121, 93, 24, 0.455)",
+      "stroke": "rgba(217, 165, 32, 0.847)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.55) 0px"
+    },
+    {
+      "t": 688,
+      "keys": [
+        "M342.114887366"
+      ],
+      "fill": "rgba(217, 165, 32, 0.3)",
+      "stroke": "rgb(217, 165, 32)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.7) 0px "
+    },
+    {
+      "t": 1023,
+      "keys": [
+        "M508.029237886",
+        "M342.114887366"
+      ],
+      "fill": "rgba(155, 118, 27, 0.384)",
+      "stroke": "rgba(217, 165, 32, 0.918)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.62) 0px"
+    },
+    {
+      "t": 1355,
+      "keys": [
+        "M508.029237886"
+      ],
+      "fill": "rgba(217, 165, 32, 0.3)",
+      "stroke": "rgb(217, 165, 32)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.7) 0px "
+    },
+    {
+      "t": 1692,
+      "keys": [
+        "M508.029237886",
+        "M200.676414433"
+      ],
+      "fill": "rgba(19, 18, 16, 0.96)",
+      "stroke": "rgba(217, 165, 32, 0.34)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.04) 0px"
+    },
+    {
+      "t": 2025,
+      "keys": [
+        "M632.185563062",
+        "M200.676414433"
+      ],
+      "fill": "rgba(17, 16, 15, 0.984)",
+      "stroke": "rgba(217, 165, 32, 0.318)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.016) 0p"
+    },
+    {
+      "t": 2355,
+      "keys": [
+        "M632.185563062",
+        "M200.676414433"
+      ],
+      "fill": "rgba(198, 151, 31, 0.32)",
+      "stroke": "rgba(217, 165, 32, 0.98)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.682) 0p"
+    },
+    {
+      "t": 2689,
+      "keys": [
+        "M282.702130651",
+        "M632.185563062"
+      ],
+      "fill": "rgba(35, 30, 17, 0.816)",
+      "stroke": "rgba(217, 165, 32, 0.486)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.184) 0p"
+    },
+    {
+      "t": 3023,
+      "keys": [
+        "M282.702130651",
+        "M632.185563062"
+      ],
+      "fill": "rgba(215, 164, 32, 0.306)",
+      "stroke": "rgba(217, 165, 32, 0.996)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.698) 0p"
+    },
+    {
+      "t": 3355,
+      "keys": [
+        "M461.284324136",
+        "M282.702130651"
+      ],
+      "fill": "rgba(53, 43, 18, 0.7)",
+      "stroke": "rgba(217, 165, 32, 0.6)",
+      "filter": "drop-shadow(rgba(201, 165, 83, 0.3) 0px "
+    }
+  ],
+  "zh_selected_samples": [
+    {
+      "t": 2,
+      "zhFill": "rgba(217, 165, 32, 0.996)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 2
+    },
+    {
+      "t": 360,
+      "zhFill": "rgb(217, 165, 32)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 2
+    },
+    {
+      "t": 725,
+      "zhFill": "rgb(217, 165, 32)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 2
+    },
+    {
+      "t": 1092,
+      "zhFill": "rgb(217, 165, 32)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 2
+    },
+    {
+      "t": 1463,
+      "zhFill": "rgb(217, 165, 32)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 1
+    },
+    {
+      "t": 1825,
+      "zhFill": "rgb(217, 165, 32)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 2
+    },
+    {
+      "t": 2193,
+      "zhFill": "rgb(217, 165, 32)",
+      "zhStroke": "rgb(217, 165, 32)",
+      "zhStrokeWidth": "1.2px",
+      "zhAriaPressed": "true",
+      "glowingCount": 2
+    }
+  ],
+  "zh_selected_stable": {
+    "allAriaPressed": true,
+    "allSolidGoldFill": false,
+    "glowContinued": true,
+    "distinctZhFills": [
+      "rgba(217, 165, 32, 0.996)",
+      "rgb(217, 165, 32)"
+    ],
+    "glowingCounts": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2
+    ]
+  },
+  "why_autoplay_seq": [
+    {
+      "t": 2,
+      "idx": 1,
+      "src": "why-tools-pro.webp"
+    },
+    {
+      "t": 2534,
+      "idx": 2,
+      "src": "why-private-pro.webp"
+    },
+    {
+      "t": 6035,
+      "idx": 3,
+      "src": "why-eco-pro.webp"
+    },
+    {
+      "t": 9519,
+      "idx": 0,
+      "src": "why-mobile-studio-pro.webp"
+    }
+  ],
+  "why_manual_click_button2": {
+    "activeImg": "why-rcc-image-1",
+    "src": "why-tools-pro.webp"
+  },
+  "mobile_console_errors": [],
+  "map_bounds_desktop": {
+    "svg": {
+      "left": 598,
+      "right": 612,
+      "w": 14
+    },
+    "card": {
+      "left": 581,
+      "right": 859,
+      "w": 278
+    },
+    "geoLeft": 383,
+    "geoRight": 1113,
+    "scrollW": 1440,
+    "clientW": 1440
+  },
+  "desktop_horiz_overflow": false,
+  "shot_desktop_whyrcc": "shots/d-whyrcc.png",
+  "desktop_flag": {
+    "isImg": true,
+    "srcHead": "data:image/svg+xml,%3c?xml%20version='1.",
+    "isSvg": true,
+    "emoji": false
+  },
+  "desktop_footer": "Der exklusive mobile Autopflege-Service der Schweiz. Meisterhafte Aufbereitung direkt bei Ihnen vor Ort.Contact+41 78 880 38 84Info@royalcarcleaning.chWechselächerstrasse 25, 8103 ZürichSocial© 2026 RCC Mobile Autopflege. Alle Rechte vorbehalten."
+}

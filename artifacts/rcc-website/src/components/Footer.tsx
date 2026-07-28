@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import logo from '@assets/rcc_white_1785267163228.png';
+import logo from '@assets/optimized/rcc-logo.webp';
 import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
 
 const CONTACT = {
@@ -21,7 +21,7 @@ export function Footer() {
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           <div className="md:col-span-5">
-            <img src={logo} alt="RCC Logo" className="h-16 w-auto mb-6 opacity-90" />
+            <img src={logo} alt="RCC Mobile Autopflege Logo" width="900" height="360" loading="lazy" decoding="async" className="h-16 w-auto mb-6 opacity-90" />
             <p className="text-foreground/40 max-w-md font-light leading-relaxed text-sm">
               {t.hero.subheadline}
             </p>
@@ -75,12 +75,9 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-foreground/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-foreground/5 pt-8 flex items-center justify-center">
           <p className="text-foreground/30 text-xs tracking-[0.1em] font-light uppercase">
             {t.footer.copyright}
-          </p>
-          <p className="text-primary/50 text-xs tracking-[0.1em] font-light uppercase">
-            {t.footer.coverage}
           </p>
         </div>
       </div>

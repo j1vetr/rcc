@@ -1,0 +1,120 @@
+{
+  "mobile_title": "Mobile Autopflege Zürich | RCC Royal Car Cleaning",
+  "mobile_description": "Premium mobile Autopflege und Fahrzeugaufbereitung in Zürich. RCC reinigt, pflegt und schützt Ihr Fahrzeug professionell direkt bei Ihnen vor Ort.",
+  "mobile_jsonld": {
+    "exists": true,
+    "type": "AutoWash",
+    "name": "RCC Royal Car Cleaning"
+  },
+  "favicon_status": 200,
+  "mobile_overflow_closed": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "innerWidth": 390,
+    "bodyScrollWidth": 390
+  },
+  "mobile_overlay": {
+    "found": true,
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "bg": "rgb(7, 7, 7)",
+    "opacity": "1"
+  },
+  "mobile_body_overflow": "hidden",
+  "mobile_menu_items": {
+    "[data-testid=\"link-how-it-works-mobile\"]": {
+      "sel": "[data-testid=\"link-how-it-works-mobile\"]",
+      "exists": true,
+      "visible": true,
+      "text": "Ablauf01"
+    },
+    "[data-testid=\"link-locations-mobile\"]": {
+      "sel": "[data-testid=\"link-locations-mobile\"]",
+      "exists": true,
+      "visible": true,
+      "text": "Standorte02"
+    },
+    "[data-testid=\"link-services-mobile\"]": {
+      "sel": "[data-testid=\"link-services-mobile\"]",
+      "exists": true,
+      "visible": true,
+      "text": "Dienstleistungen03"
+    },
+    "[data-testid=\"button-whatsapp-mobile-menu\"]": {
+      "sel": "[data-testid=\"button-whatsapp-mobile-menu\"]",
+      "exists": true,
+      "visible": true,
+      "text": "WhatsApp"
+    },
+    "[data-testid=\"button-quote-mobile-menu\"]": {
+      "sel": "[data-testid=\"button-quote-mobile-menu\"]",
+      "exists": true,
+      "visible": true,
+      "text": "Offerte"
+    }
+  },
+  "mobile_contacts": {
+    "phone": {
+      "found": true,
+      "visible": true,
+      "href": "tel:+41788803884"
+    },
+    "email": {
+      "found": true,
+      "visible": true,
+      "href": "mailto:Info@royalcarcleaning.ch"
+    },
+    "address": {
+      "found": true,
+      "visible": true,
+      "href": "https://www.google.com/maps/search/?api=1&query=Wechsel%C3%A4cherstrasse%2025%2C%208103%20Z%C3%BCrich"
+    }
+  },
+  "whatsapp_href": "https://wa.me/41788803884",
+  "screenshot": "shots/mobile-menu-open.png",
+  "mobile_flag": {
+    "found": true,
+    "isImg": true,
+    "src": "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1000'%20height='600'%20viewBox='0%200%205%203'%3e%3cdesc%3eFlag%20of%20Germany%3c/desc%3e%3crect%20id='black_stripe'%20width='5'%20height='3'%20y='0'%20x='0'%20fill='%23000'/%3e%3crect%20id='red_stripe'%20width='5'%20height='2'%20y='1'%20x='0'%20fill='%23D00'/%3e%3crect%20id='gold_stripe'%20width='5'%20height='1'%20y='2'%20x='0'%20fill='%23FFCE00'/%3e%3c/svg%3e",
+    "currentSrc": "data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27UTF-8%27%20standalone=%27no%27?%3e%3c!DOCTYPE%20svg%20PUBLIC%20%27-//W3C//DTD%20SVG%201.1//EN%27%20%27http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%27%3e%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%271000%27%20height=%27600%27%20viewBox=%270%200%205%203%27%3e%3cdesc%3eFlag%20of%20Germany%3c/desc%3e%3crect%20id=%27black_stripe%27%20width=%275%27%20height=%273%27%20y=%270%27%20x=%270%27%20fill=%27%23000%27/%3e%3crect%20id=%27red_stripe%27%20width=%275%27%20height=%272%27%20y=%271%27%20x=%270%27%20fill=%27%23D00%27/%3e%3crect%20id=%27gold_stripe%27%20width=%275%27%20height=%271%27%20y=%272%27%20x=%270%27%20fill=%27%23FFCE00%27/%3e%3c/svg%3e",
+    "emojiText": false,
+    "btnText": "Deutsch"
+  },
+  "mobile_after_quote": {
+    "overlayPresent": false,
+    "overlayVisible": false,
+    "bodyOverflow": "clip visible",
+    "quoteExists": true,
+    "quoteTop": 0,
+    "innerHeight": 844
+  },
+  "mobile_footer": {
+    "copyrightCandidates": [
+      "Der exklusive mobile Autopflege-Service der Schweiz. Meisterhafte Aufbereitung direkt bei Ihnen vor Ort.",
+      "© 2026 RCC Mobile Autopflege. Alle Rechte vorbehalten."
+    ],
+    "fullText": "Der exklusive mobile Autopflege-Service der Schweiz. Meisterhafte Aufbereitung direkt bei Ihnen vor Ort.Contact+41 78 880 38 84Info@royalcarcleaning.chWechselächerstrasse 25, 8103 ZürichSocial© 2026 RCC Mobile Autopflege. Alle Rechte vorbehalten."
+  },
+  "desktop_overflow": {
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "innerWidth": 1440,
+    "bodyScrollWidth": 1440
+  },
+  "desktop_footer": {
+    "fullText": "Der exklusive mobile Autopflege-Service der Schweiz. Meisterhafte Aufbereitung direkt bei Ihnen vor Ort.Contact+41 78 880 38 84Info@royalcarcleaning.chWechselächerstrasse 25, 8103 ZürichSocial© 2026 RCC Mobile Autopflege. Alle Rechte vorbehalten."
+  },
+  "desktop_flag": {
+    "found": true,
+    "isImg": true,
+    "src": "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'%20standalone='no'?%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1000'%20height='600'%20viewBox='0%200%205%203'%3e%3cdesc%3eFlag%20of%20Germany%3c/desc%3e%3crect%20id='black_stripe'%20width='5'%20height='3'%20y='0'%20x='0'%20fill='%23000'/%3e%3crect%20id='red_stripe'%20width='5'%20height='2'%20y='1'%20x='0'%20fill='%23D00'/%3e%3crect%20id='gold_stripe'%20width='5'%20height='1'%20y='2'%20x='0'%20fill='%23FFCE00'/%3e%3c/svg%3e",
+    "currentSrc": "data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27UTF-8%27%20standalone=%27no%27?%3e%3c!DOCTYPE%20svg%20PUBLIC%20%27-//W3C//DTD%20SVG%201.1//EN%27%20%27http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%27%3e%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%271000%27%20height=%27600%27%20viewBox=%270%200%205%203%27%3e%3cdesc%3eFlag%20of%20Germany%3c/desc%3e%3crect%20id=%27black_stripe%27%20width=%275%27%20height=%273%27%20y=%270%27%20x=%270%27%20fill=%27%23000%27/%3e%3crect%20id=%27red_stripe%27%20width=%275%27%20height=%272%27%20y=%271%27%20x=%270%27%20fill=%27%23D00%27/%3e%3crect%20id=%27gold_stripe%27%20width=%275%27%20height=%271%27%20y=%272%27%20x=%270%27%20fill=%27%23FFCE00%27/%3e%3c/svg%3e",
+    "emojiText": false,
+    "btnText": "Deutsch"
+  },
+  "console_errors": []
+}

@@ -1,0 +1,311 @@
+{
+  "desktop_quote_layout": {
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "section": {
+      "x": 0,
+      "y": 1,
+      "w": 1440,
+      "h": 1193,
+      "top": 1,
+      "left": 0,
+      "right": 1440,
+      "bottom": 1194
+    },
+    "panel": {
+      "x": 184,
+      "y": 81,
+      "w": 1072,
+      "h": 1033,
+      "top": 81,
+      "left": 184,
+      "right": 1256,
+      "bottom": 1114
+    },
+    "form": {
+      "x": 221,
+      "y": 374,
+      "w": 998,
+      "h": 703,
+      "top": 374,
+      "left": 221,
+      "right": 1219,
+      "bottom": 1077
+    },
+    "inputs": [
+      {
+        "id": "input-name",
+        "r": {
+          "x": 221,
+          "y": 438,
+          "w": 229,
+          "h": 37,
+          "top": 438,
+          "left": 221,
+          "right": 450,
+          "bottom": 475
+        }
+      },
+      {
+        "id": "input-email",
+        "r": {
+          "x": 478,
+          "y": 438,
+          "w": 229,
+          "h": 37,
+          "top": 438,
+          "left": 478,
+          "right": 706,
+          "bottom": 475
+        }
+      },
+      {
+        "id": "input-phone",
+        "r": {
+          "x": 734,
+          "y": 438,
+          "w": 229,
+          "h": 37,
+          "top": 438,
+          "left": 734,
+          "right": 963,
+          "bottom": 475
+        }
+      },
+      {
+        "id": "input-canton",
+        "r": {
+          "x": 991,
+          "y": 438,
+          "w": 229,
+          "h": 37,
+          "top": 438,
+          "left": 991,
+          "right": 1219,
+          "bottom": 475
+        }
+      }
+    ],
+    "service": {
+      "x": 221,
+      "y": 583,
+      "w": 245,
+      "h": 41,
+      "top": 583,
+      "left": 221,
+      "right": 466,
+      "bottom": 624
+    },
+    "message": {
+      "x": 221,
+      "y": 985,
+      "w": 744,
+      "h": 92,
+      "top": 985,
+      "left": 221,
+      "right": 965,
+      "bottom": 1077
+    },
+    "submit": {
+      "x": 989,
+      "y": 1021,
+      "w": 230,
+      "h": 56,
+      "top": 1021,
+      "left": 989,
+      "right": 1219,
+      "bottom": 1077
+    },
+    "scrollW": 1440,
+    "clientW": 1440
+  },
+  "desktop_horiz_overflow": false,
+  "desktop_4inputs_one_row": {
+    "sameRow": true,
+    "tops": [
+      438,
+      438,
+      438,
+      438
+    ]
+  },
+  "desktop_panel_whitespace": {
+    "panelWidth": 1072,
+    "panelHeight": 1033,
+    "occupiedRatio": 0.385,
+    "whitespaceRatio": 0.615
+  },
+  "first_service_id": "basic",
+  "desktop_event_population": {
+    "cantonValue": "Zürich",
+    "serviceTriggerText": "Basic Wash",
+    "submitExists": true,
+    "carPickerButtonCount": 8
+  },
+  "desktop_car_options": {
+    "count": 7,
+    "infos": [
+      {
+        "testid": "select-service-type",
+        "text": "Basic Wash",
+        "type": "button"
+      },
+      {
+        "testid": "button-car-small",
+        "text": "Kleinwagen",
+        "type": "button"
+      },
+      {
+        "testid": "button-car-medium",
+        "text": "Mittelklasse",
+        "type": "button"
+      },
+      {
+        "testid": "button-car-suv",
+        "text": "SUV / Kombi",
+        "type": "button"
+      },
+      {
+        "testid": "button-car-limousine",
+        "text": "Limousine",
+        "type": "button"
+      },
+      {
+        "testid": "button-car-sport",
+        "text": "Sportwagen",
+        "type": "button"
+      },
+      {
+        "testid": "button-car-van",
+        "text": "Van / Transporter",
+        "type": "button"
+      }
+    ]
+  },
+  "shot_desktop_quote": "shots/quote-desktop.png",
+  "desktop_nonhero_headings": [
+    {
+      "id": "how-it-works",
+      "tag": "H2",
+      "fontSizePx": 42,
+      "lineHeightPx": 42,
+      "rect": {
+        "w": 469,
+        "h": 83
+      },
+      "text": "Der Weg zur Perfektion"
+    },
+    {
+      "id": "locations",
+      "tag": "H2",
+      "fontSizePx": 42,
+      "lineHeightPx": 47,
+      "rect": {
+        "w": 1184,
+        "h": 47
+      },
+      "text": "Wo sollen wir erscheinen?"
+    },
+    {
+      "id": "services",
+      "tag": "H2",
+      "fontSizePx": 48,
+      "lineHeightPx": 46,
+      "rect": {
+        "w": 480,
+        "h": 46
+      },
+      "text": "Unsere Expertise"
+    },
+    {
+      "id": "quote",
+      "tag": "H2",
+      "fontSizePx": 44,
+      "lineHeightPx": 45,
+      "rect": {
+        "w": 442,
+        "h": 90
+      },
+      "text": "Kostenlose Offerte anfragen"
+    },
+    {
+      "id": "services-h3",
+      "fontSizePx": 80,
+      "rect": {
+        "w": 541,
+        "h": 134
+      },
+      "text": "Premium Detail"
+    }
+  ],
+  "shot_desktop_services": "shots/services-desktop.png",
+  "desktop_console_errors": [],
+  "mobile_quote_layout": {
+    "viewport": {
+      "w": 390,
+      "h": 844
+    },
+    "section": {
+      "top": 1,
+      "left": 0,
+      "right": 390,
+      "bottom": 1719,
+      "w": 390,
+      "h": 1718
+    },
+    "sectionTopDoc": 4497,
+    "sectionHeight": 1718,
+    "title": {
+      "text": "Kostenlose Offerte anfragen",
+      "rect": {
+        "top": 111,
+        "left": 41,
+        "right": 349,
+        "bottom": 172,
+        "w": 308,
+        "h": 61
+      },
+      "fontSizePx": 30
+    },
+    "copy": {
+      "text": "Geben Sie Ihre Details ein. Wir melden uns umgehend bei Ihne",
+      "rect": {
+        "top": 188,
+        "left": 41,
+        "right": 349,
+        "bottom": 234,
+        "w": 308,
+        "h": 46
+      }
+    },
+    "arrowCue": {
+      "top": 254,
+      "left": 41,
+      "right": 55,
+      "bottom": 268,
+      "w": 14,
+      "h": 14
+    },
+    "firstInput": {
+      "top": 497,
+      "left": 41,
+      "right": 349,
+      "bottom": 538,
+      "w": 308,
+      "h": 41
+    },
+    "sectionTopToFirstInputPx": 496,
+    "scrollW": 390,
+    "clientW": 390
+  },
+  "mobile_horiz_overflow": false,
+  "mobile_event_population": {
+    "cantonValue": "Bern",
+    "serviceTriggerText": "Basic Wash",
+    "submitExists": true
+  },
+  "shot_mobile_quote": "shots/quote-mobile.png",
+  "mobile_console_errors": []
+}

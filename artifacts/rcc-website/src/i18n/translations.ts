@@ -102,8 +102,8 @@ export const translations = {
       ]
     },
     footer: {
-      coverage: 'Schweizweit verfügbar in allen 26 Kantonen.',
-      copyright: '© 2025 RCC Mobile Autopflege. Alle Rechte vorbehalten.',
+      coverage: '',
+      copyright: '© 2026 RCC Mobile Autopflege. Alle Rechte vorbehalten.',
     }
   },
   fr: {
@@ -209,8 +209,8 @@ export const translations = {
       ]
     },
     footer: {
-      coverage: 'Disponible dans toute la Suisse dans les 26 cantons.',
-      copyright: '© 2025 RCC Mobile Autopflege. Tous droits réservés.',
+      coverage: '',
+      copyright: '© 2026 RCC Mobile Autopflege. Tous droits réservés.',
     }
   },
   en: {
@@ -316,8 +316,8 @@ export const translations = {
       ]
     },
     footer: {
-      coverage: 'Available nationwide in all 26 cantons.',
-      copyright: '© 2025 RCC Mobile Autopflege. All rights reserved.',
+      coverage: '',
+      copyright: '© 2026 RCC Mobile Autopflege. All rights reserved.',
     }
   }
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import carSmall from '@assets/generated_images/car-small.png';
-import carMedium from '@assets/generated_images/car-medium.png';
-import carSuv from '@assets/generated_images/car-suv.png';
-import carLimousine from '@assets/generated_images/car-limousine.png';
-import carSport from '@assets/generated_images/car-sport.png';
-import carVan from '@assets/generated_images/car-van.png';
+import carSmall from '@assets/optimized/car-small.webp';
+import carMedium from '@assets/optimized/car-medium.webp';
+import carSuv from '@assets/optimized/car-suv.webp';
+import carLimousine from '@assets/optimized/car-limousine.webp';
+import carSport from '@assets/optimized/car-sport.webp';
+import carVan from '@assets/optimized/car-van.webp';
 
 interface CarTypePickerProps {
   value: string;
@@ -24,7 +24,7 @@ const carImages: Record<string, string> = {
 
 export function CarTypePicker({ value, onChange, options }: CarTypePickerProps) {
   return (
-    <div className="grid grid-cols-1 min-[390px]:grid-cols-2 md:grid-cols-3 gap-3">
+    <div className="grid grid-cols-1 min-[390px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
       {Object.entries(options).map(([key, label]) => {
         const isSelected = value === key;
         const image = carImages[key] || carMedium;
@@ -34,7 +34,7 @@ export function CarTypePicker({ value, onChange, options }: CarTypePickerProps) 
             key={key}
             type="button"
             onClick={() => onChange(key)}
-            className={`car-type-card min-w-0 p-3.5 sm:p-4 flex flex-col items-center gap-2 ${isSelected ? 'selected' : ''}`}
+            className={`car-type-card min-w-0 p-3 flex flex-col items-center gap-1.5 ${isSelected ? 'selected' : ''}`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             data-testid={`button-car-${key}`}
@@ -42,7 +42,11 @@ export function CarTypePicker({ value, onChange, options }: CarTypePickerProps) 
             <div className="w-full aspect-[2.25/1] flex items-center justify-center overflow-hidden">
               <img
                 src={image}
-                alt=""
+                alt={label}
+                width="560"
+                height="560"
+                loading="lazy"
+                decoding="async"
                 className={`w-full h-full object-contain transition-all duration-500 ${
                   isSelected ? 'opacity-100 scale-105' : 'opacity-55 grayscale group-hover:opacity-90'
                 }`}

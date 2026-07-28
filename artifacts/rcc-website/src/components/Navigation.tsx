@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Mail, MapPin, Menu, Phone, X } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import logo from '@assets/rcc_white_1785267163228.png';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import logo from '@assets/optimized/rcc-logo.webp';
+
+const WHATSAPP_URL = 'https://wa.me/41788803884';
 
 export function Navigation() {
   const { t } = useTranslation();
@@ -11,83 +14,89 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setMobileOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileOpen(false);
   };
 
-  const NavLinks = ({ mobile = false }: { mobile?: boolean }) => (
-    <div className={mobile ? "flex flex-col gap-6" : "flex items-center gap-10"}>
-      <button 
-        data-testid="link-how-it-works" 
-        onClick={() => scrollTo('how-it-works')} 
-        className="text-sm font-light tracking-wide text-foreground/70 hover:text-primary transition-colors duration-300 uppercase"
-      >
-        {t.nav.howItWorks}
-      </button>
-      <button 
-        data-testid="link-locations" 
-        onClick={() => scrollTo('locations')} 
-        className="text-sm font-light tracking-wide text-foreground/70 hover:text-primary transition-colors duration-300 uppercase"
-      >
-        {t.nav.locations}
-      </button>
-      <button 
-        data-testid="link-services" 
-        onClick={() => scrollTo('services')} 
-        className="text-sm font-light tracking-wide text-foreground/70 hover:text-primary transition-colors duration-300 uppercase"
-      >
-        {t.nav.services}
-      </button>
-      <button 
-        data-testid="button-quote-nav"
-        onClick={() => scrollTo('quote')} 
-        className="btn-gold-luxury text-sm font-medium px-8 py-3 text-background uppercase tracking-widest"
-      >
-        {t.nav.quote}
-      </button>
-    </div>
-  );
+  const navItems = [
+    { id: 'how-it-works', label: t.nav.howItWorks, testId: 'link-how-it-works' },
+    { id: 'locations', label: t.nav.locations, testId: 'link-locations' },
+    { id: 'services', label: t.nav.services, testId: 'link-services' },
+  ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
-      <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
-        <motion.div 
-          className="cursor-pointer" 
+    <nav
+      aria-label="Hauptnavigation"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        scrolled || mobileOpen ? 'glass-nav py-4' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="container mx-auto flex items-center justify-between px-6 lg:px-12">
+        <motion.button
+          type="button"
+          aria-label="Zur Startseite"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 400 }}
+          whileHover={{ scale: 1.04 }}
+          className="relative z-10"
         >
-          <img 
-            src={logo} 
-            alt="RCC Mobile Autopflege" 
-            className={`w-auto transition-all duration-500 ${scrolled ? 'h-14' : 'h-16 md:h-20'}`} 
+          <img
+            src={logo}
+            alt="RCC Mobile Autopflege"
+            width="900"
+            height="360"
+            decoding="async"
+            className={`w-auto transition-all duration-500 ${scrolled ? 'h-14' : 'h-16 md:h-20'}`}
           />
-        </motion.div>
-        
-        <div className="hidden lg:flex items-center gap-8">
-          <NavLinks />
-          <div className="w-px h-8 bg-foreground/10" />
+        </motion.button>
+
+        <div className="hidden items-center gap-8 lg:flex">
+          <div className="flex items-center gap-10">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                data-testid={item.testId}
+                onClick={() => scrollTo(item.id)}
+                className="text-sm font-light uppercase tracking-wide text-foreground/70 transition-colors hover:text-primary"
+              >
+                {item.label}
+              </button>
+            ))}
+            <button
+              data-testid="button-quote-nav"
+              onClick={() => scrollTo('quote')}
+              className="btn-gold-luxury px-8 py-3 text-sm font-medium uppercase tracking-widest text-background"
+            >
+              {t.nav.quote}
+            </button>
+          </div>
+          <div className="h-8 w-px bg-foreground/10" />
           <LanguageSwitcher />
         </div>
 
-        <div className="lg:hidden flex items-center gap-4">
+        <div className="relative z-10 flex items-center gap-3 lg:hidden">
           <LanguageSwitcher />
-          <button 
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-foreground p-2 hover:text-primary transition-colors"
+          <button
+            type="button"
+            aria-label={mobileOpen ? 'Menü schliessen' : 'Menü öffnen'}
+            aria-expanded={mobileOpen}
+            data-testid="button-mobile-menu"
+            onClick={() => setMobileOpen((open) => !open)}
+            className="grid h-10 w-10 place-items-center border border-white/10 text-foreground transition-colors hover:border-primary/50 hover:text-primary"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
@@ -95,14 +104,70 @@ export function Navigation() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden glass-nav border-t border-foreground/10 mt-4"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[-1] min-h-[100svh] overflow-y-auto bg-[#070707] pt-28 lg:hidden"
           >
-            <div className="container mx-auto px-6 py-8">
-              <NavLinks mobile />
+            <div className="process-grid absolute inset-0 opacity-[0.035]" />
+            <div className="container relative mx-auto flex min-h-[calc(100svh-7rem)] flex-col px-6 pb-8">
+              <div className="border-y border-white/10 py-7">
+                {navItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    data-testid={`${item.testId}-mobile`}
+                    onClick={() => scrollTo(item.id)}
+                    className="group flex w-full items-center justify-between border-b border-white/[0.06] py-5 text-left last:border-0"
+                  >
+                    <span className="text-xl font-medium uppercase tracking-[-0.02em] text-white transition-colors group-hover:text-primary">
+                      {item.label}
+                    </span>
+                    <span className="font-mono text-[10px] text-primary/60">0{index + 1}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-6 grid gap-3">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-whatsapp-mobile-menu"
+                  className="flex min-h-14 items-center justify-center gap-3 bg-[#25D366] px-5 text-xs font-semibold uppercase tracking-[0.14em] text-black"
+                >
+                  <FaWhatsapp className="h-5 w-5" />
+                  WhatsApp
+                </a>
+                <button
+                  type="button"
+                  data-testid="button-quote-mobile-menu"
+                  onClick={() => scrollTo('quote')}
+                  className="btn-gold-luxury min-h-14 px-5 text-xs font-semibold uppercase tracking-[0.14em] text-background"
+                >
+                  {t.nav.quote}
+                </button>
+              </div>
+
+              <div className="mt-auto grid gap-4 border-t border-white/10 pt-7 text-sm text-white/50">
+                <a href="tel:+41788803884" className="flex items-center gap-3 transition-colors hover:text-primary">
+                  <Phone className="h-4 w-4 text-primary" />
+                  +41 78 880 38 84
+                </a>
+                <a href="mailto:Info@royalcarcleaning.ch" className="flex items-center gap-3 transition-colors hover:text-primary">
+                  <Mail className="h-4 w-4 text-primary" />
+                  Info@royalcarcleaning.ch
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Wechsel%C3%A4cherstrasse%2025%2C%208103%20Z%C3%BCrich"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 transition-colors hover:text-primary"
+                >
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  Wechselächerstrasse 25, 8103 Zürich
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,0 +1,14 @@
+import { chromium } from 'playwright-core';
+const EXEC='/nix/store/hvv3n9pvjfq0x8wjw8f3igsyvlaz1ngr-playwright-browsers-chromium/chromium-1091/chrome-linux/chrome';
+const b=await chromium.launch({executablePath:EXEC,args:['--no-sandbox','--disable-dev-shm-usage']});
+const c=await b.newContext({viewport:{width:390,height:844}});
+const p=await c.newPage();
+const errs=[];
+p.on('console',m=>{if(m.type()==='error')errs.push(m.text());});
+p.on('pageerror',e=>errs.push('PAGEERROR: '+e.message));
+await p.goto('http://localhost:21416/',{waitUntil:'load'});
+await p.waitForTimeout(2500);
+const root=await p.evaluate(()=>({html:document.getElementById('root')?.innerHTML.slice(0,300), bodyLen:document.body.innerHTML.length}));
+console.log('ROOT:',JSON.stringify(root));
+console.log('ERRORS:',JSON.stringify(errs.slice(0,15),null,2));
+await b.close();

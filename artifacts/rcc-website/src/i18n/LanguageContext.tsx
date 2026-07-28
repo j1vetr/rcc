@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { translations } from './translations';
 
 export type Language = 'de' | 'fr' | 'en';
@@ -13,6 +13,34 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>('de');
+
+  useEffect(() => {
+    const seo = {
+      de: {
+        locale: 'de-CH',
+        title: 'Mobile Autopflege Zürich | RCC Royal Car Cleaning',
+        description: 'Premium mobile Autopflege und Fahrzeugaufbereitung in Zürich. RCC reinigt, pflegt und schützt Ihr Fahrzeug professionell direkt bei Ihnen vor Ort.',
+      },
+      fr: {
+        locale: 'fr-CH',
+        title: 'Lavage Auto Mobile Zurich | RCC Royal Car Cleaning',
+        description: 'Nettoyage et detailing automobile premium à Zurich. RCC entretient et protège votre véhicule professionnellement, directement chez vous.',
+      },
+      en: {
+        locale: 'en-CH',
+        title: 'Mobile Car Detailing Zurich | RCC Royal Car Cleaning',
+        description: 'Premium mobile car cleaning and detailing in Zurich. RCC professionally cleans, details and protects your vehicle at your location.',
+      },
+    }[lang];
+
+    document.documentElement.lang = seo.locale;
+    document.title = seo.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', seo.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo.description);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.description);
+  }, [lang]);
 
   const value = {
     lang,

@@ -1,0 +1,204 @@
+{
+  "first_service_id": "basic",
+  "desktop_quote": {
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "section": {
+      "top": 1,
+      "left": 0,
+      "right": 1440,
+      "bottom": 1009,
+      "w": 1440,
+      "h": 1008
+    },
+    "sectionHeight": 1008,
+    "panel": {
+      "top": 81,
+      "left": 184,
+      "right": 1256,
+      "bottom": 929,
+      "w": 1072,
+      "h": 848
+    },
+    "panelHeight": 848,
+    "inputs": [
+      {
+        "id": "input-name",
+        "top": 438,
+        "value": "Hans Müller"
+      },
+      {
+        "id": "input-email",
+        "top": 438,
+        "value": "hans@beispiel.ch"
+      },
+      {
+        "id": "input-phone",
+        "top": 438,
+        "value": "+41 79 000 00 00"
+      },
+      {
+        "id": "input-canton",
+        "top": 438,
+        "value": "Zürich"
+      }
+    ],
+    "cars": [
+      {
+        "k": "small",
+        "r": {
+          "top": 586,
+          "left": 452,
+          "right": 572,
+          "bottom": 692,
+          "w": 119,
+          "h": 106
+        },
+        "pressed": null
+      },
+      {
+        "k": "medium",
+        "r": {
+          "top": 586,
+          "left": 582,
+          "right": 701,
+          "bottom": 692,
+          "w": 119,
+          "h": 106
+        },
+        "pressed": null
+      },
+      {
+        "k": "suv",
+        "r": {
+          "top": 585,
+          "left": 711,
+          "right": 831,
+          "bottom": 692,
+          "w": 121,
+          "h": 107
+        },
+        "pressed": null
+      },
+      {
+        "k": "limousine",
+        "r": {
+          "top": 586,
+          "left": 841,
+          "right": 960,
+          "bottom": 692,
+          "w": 119,
+          "h": 106
+        },
+        "pressed": null
+      },
+      {
+        "k": "sport",
+        "r": {
+          "top": 586,
+          "left": 970,
+          "right": 1090,
+          "bottom": 692,
+          "w": 119,
+          "h": 106
+        },
+        "pressed": null
+      },
+      {
+        "k": "van",
+        "r": {
+          "top": 586,
+          "left": 1100,
+          "right": 1219,
+          "bottom": 692,
+          "w": 119,
+          "h": 106
+        },
+        "pressed": null
+      }
+    ],
+    "serviceTriggerText": "Basic Wash",
+    "message": {
+      "top": 800,
+      "left": 221,
+      "right": 965,
+      "bottom": 892,
+      "w": 744,
+      "h": 92
+    },
+    "submit": {
+      "top": 836,
+      "left": 989,
+      "right": 1219,
+      "bottom": 892,
+      "w": 230,
+      "h": 56
+    },
+    "submitExists": true,
+    "scrollW": 1440,
+    "clientW": 1440
+  },
+  "desktop_horiz_overflow": false,
+  "desktop_cars_one_row": {
+    "count": 6,
+    "sameRow": true,
+    "tops": [
+      586,
+      586,
+      585,
+      586,
+      586,
+      586
+    ]
+  },
+  "desktop_inputs_one_row": {
+    "sameRow": true,
+    "tops": [
+      438,
+      438,
+      438,
+      438
+    ]
+  },
+  "desktop_event_population": {
+    "canton": "Zürich",
+    "service": "Basic Wash",
+    "name": "Hans Müller",
+    "submitExists": true,
+    "suvPressed": null
+  },
+  "desktop_select_open_before_shot": false,
+  "shot_desktop_quote": "shots/quote-desktop.png",
+  "desktop_console_errors": [
+    "Permissions policy violation: compute-pressure is not allowed in this document."
+  ],
+  "mobile_quote": {
+    "viewport": {
+      "w": 390,
+      "h": 844
+    },
+    "sectionHeight": 1602,
+    "title": {
+      "text": "Kostenlose Offerte anfragen",
+      "top": -539
+    },
+    "copyPresent": true,
+    "arrowCuePresent": true,
+    "arrowTop": -396,
+    "contactLinksVisibleCount": 0,
+    "contactLinksTotal": 3,
+    "sectionTopToFirstInputPx": 373,
+    "firstInputValue": "Hans Müller",
+    "cantonValue": "Bern",
+    "serviceTriggerText": "Basic Wash",
+    "suvPressed": null,
+    "submitExists": true,
+    "scrollW": 390,
+    "clientW": 390
+  },
+  "mobile_horiz_overflow": false,
+  "shot_mobile_quote": "shots/quote-mobile.png",
+  "mobile_console_errors": []
+}

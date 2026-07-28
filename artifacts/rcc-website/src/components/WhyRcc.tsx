@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import imgMobile from '@assets/generated_images/why-mobile-studio-pro.jpg';
-import imgTools from '@assets/generated_images/why-tools-pro.jpg';
-import imgPrivate from '@assets/generated_images/why-private-pro.jpg';
-import imgEco from '@assets/generated_images/why-eco-pro.jpg';
+import imgMobile from '@assets/optimized/why-mobile-studio-pro.webp';
+import imgTools from '@assets/optimized/why-tools-pro.webp';
+import imgPrivate from '@assets/optimized/why-private-pro.webp';
+import imgEco from '@assets/optimized/why-eco-pro.webp';
 
 const images = [imgMobile, imgTools, imgPrivate, imgEco];
 
@@ -13,9 +13,20 @@ export function WhyRcc() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const activePoint = t.why.points[activeIndex];
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    const interval = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % images.length);
+    }, 3600);
+
+    return () => window.clearInterval(interval);
+  }, [reduceMotion]);
 
   return (
-    <section className="relative overflow-hidden bg-[#070707] py-20 md:py-28">
+    <section className="relative overflow-hidden bg-[#070707] py-16 md:py-20">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       <div className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-12">
         <header className="mb-10 grid gap-5 md:mb-14 md:grid-cols-[1fr_auto] md:items-end">
@@ -23,7 +34,7 @@ export function WhyRcc() {
             <span className="mb-3 block text-[10px] uppercase tracking-[0.3em] text-primary">
               RCC Standard
             </span>
-            <h2 className="max-w-3xl text-4xl font-semibold uppercase leading-[0.94] tracking-[-0.045em] text-foreground md:text-6xl">
+            <h2 className="max-w-3xl text-4xl font-semibold uppercase leading-[0.94] tracking-[-0.045em] text-foreground md:text-5xl">
               {t.why.title}
             </h2>
           </div>
@@ -34,14 +45,18 @@ export function WhyRcc() {
 
         <div className="grid overflow-hidden border border-white/10 bg-black lg:grid-cols-[1.45fr_.55fr]">
           <div
-            className="relative h-[min(128vw,560px)] min-h-[440px] overflow-hidden sm:h-[560px] lg:h-auto lg:min-h-[680px]"
+            className="relative h-[min(128vw,540px)] min-h-[420px] overflow-hidden sm:h-[520px] lg:h-auto lg:min-h-[590px]"
             data-testid="why-rcc-cinematic-image"
           >
             <AnimatePresence mode="wait">
               <motion.img
                 key={images[activeIndex]}
                 src={images[activeIndex]}
-                alt=""
+                alt={`${activePoint.title} bei RCC Mobile Autopflege`}
+                width="1400"
+                height="1400"
+                loading="lazy"
+                decoding="async"
                 initial={{ opacity: 0, scale: 1.045 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
