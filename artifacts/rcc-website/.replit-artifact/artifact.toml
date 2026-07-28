@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "RCC Mobile Autopflege"
+version = "1.0.0"
+id = "artifacts/rcc-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21416
+
+[services.development]
+run = "pnpm --filter @workspace/rcc-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rcc-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/rcc-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21416"
+BASE_PATH = "/"

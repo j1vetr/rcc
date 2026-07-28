@@ -1,10 +1,11 @@
-# [Project name]
+# RCC Mobile Autopflege
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Mobile car detailing website for Switzerland — premium luxury brand, dark gold theme. Three languages: Swiss German (DE, primary), French (FR), English (EN).
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/rcc-website run dev` — frontend (port auto-assigned)
+- `pnpm --filter @workspace/api-server run dev` — API server (port 8080)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
@@ -14,32 +15,54 @@ _Replace the heading above with the project's name, and this line with one sente
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
+- Frontend: React + Vite, Framer Motion, Tailwind CSS v4, wouter
 - API: Express 5
 - DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
+- Validation: Zod (zod/v4), drizzle-zod
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/rcc-website/` — frontend (React + Vite)
+- `artifacts/api-server/` — backend API (Express 5)
+- `lib/api-spec/openapi.yaml` — OpenAPI contract (source of truth)
+- `lib/db/src/schema/quotes.ts` — quotes DB table
+- `artifacts/api-server/src/routes/quotes.ts` — POST /api/quotes
+- `artifacts/api-server/src/routes/services.ts` — GET /api/services (static data)
+- `attached_assets/` — brand logos (dark and white variants)
+- `artifacts/rcc-website/src/i18n/` — translation strings (DE/FR/EN)
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Services are served as hardcoded static data (no DB table needed for initial build)
+- Quote submissions are persisted to PostgreSQL via Drizzle
+- Language switching is handled client-side via React context (LanguageContext)
+- The Switzerland canton selector is an interactive SVG map that pre-fills the quote form
+- Dark/gold theme is enforced globally; light mode is not supported
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+A multi-section marketing + lead generation site for RCC Mobile Autopflege:
+1. Hero with large RCC logo and CTA
+2. How it works (3-step process)
+3. Interactive Switzerland canton map for location selection
+4. Services section (3 packages: Basic, Premium, Elite)
+5. Quote request form (submits to backend, pre-filled from map/services)
+6. Testimonials
+7. Value proposition grid
+8. Footer with language switcher
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- No em dashes (—) anywhere in copy
+- No semicolons (;) anywhere in copy
+- No emojis in the UI
+- Dark design, always — light mode not needed
+- Swiss German is the primary/default language
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- `type: integer` in OpenAPI spec generates `zod.int()` which breaks in Zod v3. Use `type: number` instead.
+- Logo files are in `attached_assets/` and accessible via `@assets/` alias in Vite config.
+- Services data is static in `routes/services.ts` — not from DB.

@@ -3,13 +3,17 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: RCC Mobile Autopflege API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: quotes
+    description: Quote requests from customers
+  - name: services
+    description: Service packages offered
 paths:
   /healthz:
     get:
@@ -24,6 +28,47 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /quotes:
+    post:
+      operationId: submitQuote
+      tags: [quotes]
+      summary: Submit a quote request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteInput"
+      responses:
+        "201":
+          description: Quote submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /services:
+    get:
+      operationId: listServices
+      tags: [services]
+      summary: List available service packages
+      responses:
+        "200":
+          description: List of service packages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Service"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +79,87 @@ components:
       required:
         - status
 
+    Quote:
+      type: object
+      required: [id, name, email, phone, canton, serviceType, carType, createdAt]
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        canton:
+          type: string
+        serviceType:
+          type: string
+        carType:
+          type: string
+        message:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+
+    QuoteInput:
+      type: object
+      required: [name, email, phone, canton, serviceType, carType]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          minLength: 1
+        phone:
+          type: string
+          minLength: 1
+        canton:
+          type: string
+          minLength: 1
+        serviceType:
+          type: string
+          minLength: 1
+        carType:
+          type: string
+          minLength: 1
+        message:
+          type: string
+
+    Service:
+      type: object
+      required: [id, nameDE, nameFR, nameEN, descriptionDE, descriptionFR, descriptionEN, priceFrom, duration, features]
+      properties:
+        id:
+          type: string
+        nameDE:
+          type: string
+        nameFR:
+          type: string
+        nameEN:
+          type: string
+        descriptionDE:
+          type: string
+        descriptionFR:
+          type: string
+        descriptionEN:
+          type: string
+        priceFrom:
+          type: number
+        duration:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        popular:
+          type: boolean
+
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
