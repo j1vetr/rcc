@@ -1,46 +1,59 @@
 import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import { Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Testimonials() {
   const { t } = useTranslation();
 
   return (
-    <section className="py-24 bg-[#0A0A0A] border-b border-white/5">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">{t.testimonials.title}</h2>
-          <div className="w-16 h-1 bg-primary mx-auto" />
-        </div>
+    <section className="py-20 bg-background relative section-border">
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+      
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-foreground mb-4">
+            {t.testimonials.title}
+          </h2>
+          <div className="w-20 h-px gold-divider mx-auto" />
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {t.testimonials.quotes.map((quote, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-[#141414] p-10 border border-white/5 relative"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-card p-8 border border-border relative hover:border-primary/30 transition-all duration-500 group"
             >
-              <Quote className="w-10 h-10 text-primary/20 absolute top-6 right-6" />
+              {/* Quote mark */}
+              <div className="absolute text-[80px] leading-none text-primary/8 font-serif top-4 left-4">"</div>
               
-              <div className="mb-6 flex gap-1">
+              {/* Star rating */}
+              <div className="mb-5 flex gap-1 relative z-10">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} className="w-4 h-4 text-primary fill-current" viewBox="0 0 24 24">
+                  <svg key={star} className="w-3.5 h-3.5 text-primary fill-current" viewBox="0 0 24 24">
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                 ))}
               </div>
               
-              <p className="text-white/80 font-serif italic text-lg leading-relaxed mb-8">
-                "{quote.text}"
+              <p className="text-foreground/70 font-serif italic text-base leading-relaxed mb-8 relative z-10 font-light">
+                {quote.text}
               </p>
               
-              <div>
-                <div className="font-bold text-white tracking-wide">{quote.name}</div>
-                <div className="text-primary text-sm">{quote.canton}</div>
+              <div className="w-10 h-px bg-primary/30 mb-5 group-hover:w-full transition-all duration-700" />
+              
+              <div className="relative z-10">
+                <div className="font-serif text-foreground text-base mb-1">{quote.name}</div>
+                <div className="text-primary text-xs font-light tracking-widest uppercase">{quote.canton}</div>
               </div>
             </motion.div>
           ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { useListServices } from '@workspace/api-client-react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Clock } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export function Services() {
@@ -24,76 +24,100 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="py-24 bg-[#0A0A0A] border-b border-white/5">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">{t.services.title}</h2>
-          <p className="text-white/60 mb-6">{t.services.subtitle}</p>
-          <div className="w-16 h-1 bg-primary mx-auto" />
-        </div>
+    <section id="services" className="py-20 bg-card/30 relative section-border">
+      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+      
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-foreground mb-4">
+            {t.services.title}
+          </h2>
+          <div className="w-20 h-px gold-divider mx-auto mb-5" />
+          <p className="text-foreground/60 text-base md:text-lg max-w-xl mx-auto font-light">
+            {t.services.subtitle}
+          </p>
+        </motion.div>
 
         {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map(i => (
-              <Skeleton key={i} className="h-[500px] bg-white/5 rounded-none" />
+              <Skeleton key={i} className="h-[500px] bg-card/50" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {services?.map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col p-8 bg-[#141414] border transition-all hover:border-primary/50 relative ${
-                  service.popular ? 'border-primary shadow-[0_0_30px_rgba(201,168,76,0.1)]' : 'border-white/5'
-                }`}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative"
               >
-                {service.popular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-black text-xs font-bold px-4 py-1 uppercase tracking-widest">
-                    {t.services.popular}
+                <div className={`service-card-glow h-full flex flex-col bg-card border p-8 transition-all duration-500 hover:border-primary/50 ${
+                  service.popular ? 'border-primary/50 shadow-[0_0_30px_rgba(201,165,83,0.12)]' : 'border-border'
+                }`}>
+                  {service.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-background text-xs font-medium px-5 py-1.5 uppercase tracking-[0.2em]">
+                      {t.services.popular}
+                    </div>
+                  )}
+                  
+                  <h3 className="text-2xl font-serif font-light text-foreground mb-2 tracking-tight">
+                    {getLocalizedField(service, 'name')}
+                  </h3>
+                  
+                  <p className="text-foreground/50 text-sm mb-6 min-h-[50px] leading-relaxed font-light">
+                    {getLocalizedField(service, 'description')}
+                  </p>
+                  
+                  <div className="mb-5">
+                    <span className="text-foreground/50 text-xs uppercase tracking-widest block mb-1">
+                      {t.services.priceFrom}
+                    </span>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl font-serif font-light text-primary tracking-tight">
+                        {service.priceFrom}
+                      </span>
+                      <span className="text-foreground/50 text-base font-light">CHF</span>
+                    </div>
                   </div>
-                )}
-                
-                <h3 className="text-2xl font-serif text-white mb-2">{getLocalizedField(service, 'name')}</h3>
-                <p className="text-white/60 text-sm mb-6 min-h-[40px]">{getLocalizedField(service, 'description')}</p>
-                
-                <div className="mb-6 flex items-baseline gap-2">
-                  <span className="text-white/60 text-sm">{t.services.priceFrom}</span>
-                  <span className="text-4xl font-light text-primary">CHF {service.priceFrom}</span>
+                  
+                  <div className="flex items-center gap-2 text-foreground/40 text-sm mb-6 font-light">
+                    <Clock className="w-4 h-4" strokeWidth={1.5} />
+                    <span className="tracking-wide">{service.duration}</span>
+                  </div>
+                  
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-6" />
+                  
+                  <ul className="flex-grow space-y-3 mb-8">
+                    {service.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2 text-foreground/70 text-sm font-light leading-relaxed">
+                        <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={1.5} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <button
+                    data-testid={`button-book-${service.id}`}
+                    onClick={() => scrollToQuote(service.id)}
+                    className={`w-full py-3 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 border ${
+                      service.popular 
+                        ? 'btn-gold-luxury text-background' 
+                        : 'bg-transparent text-foreground border-border hover:border-primary hover:text-primary hover:shadow-[0_0_15px_rgba(201,165,83,0.15)]'
+                    }`}
+                  >
+                    {t.services.bookNow}
+                  </button>
                 </div>
-                
-                <div className="text-white/50 text-sm mb-6 flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {service.duration}
-                </div>
-                
-                <div className="w-full h-px bg-white/10 mb-6" />
-                
-                <ul className="flex-grow space-y-4 mb-8">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-white/80 text-sm">
-                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button
-                  data-testid={`button-book-${service.id}`}
-                  onClick={() => scrollToQuote(service.id)}
-                  className={`w-full py-3 text-sm font-semibold uppercase tracking-widest transition-colors border ${
-                    service.popular 
-                      ? 'bg-primary text-black border-primary hover:bg-primary/90' 
-                      : 'bg-transparent text-white border-white/20 hover:border-primary hover:text-primary'
-                  }`}
-                >
-                  {t.services.bookNow}
-                </button>
               </motion.div>
             ))}
           </div>

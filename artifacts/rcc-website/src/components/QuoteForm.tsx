@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { CarTypePicker } from './CarTypePicker';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -43,7 +44,6 @@ export function QuoteForm() {
     }
   });
 
-  // Listen for custom events from map and services sections
   useEffect(() => {
     const handleSelectService = (e: Event) => {
       const customEvent = e as CustomEvent;
@@ -74,16 +74,22 @@ export function QuoteForm() {
 
   if (submitQuote.isSuccess) {
     return (
-      <section id="quote" className="py-24 bg-[#111] relative border-b border-white/5">
-        <div className="container mx-auto px-4 max-w-2xl text-center">
+      <section id="quote" className="py-20 bg-background relative section-border">
+        <div className="container mx-auto px-6 max-w-2xl text-center">
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-[#1A1A1A] border border-primary/30 p-12 flex flex-col items-center"
+            className="bg-card border border-primary/30 p-12 flex flex-col items-center relative overflow-hidden"
           >
-            <CheckCircle2 className="w-20 h-20 text-primary mb-6" />
-            <h2 className="text-3xl font-serif text-white mb-4">{t.quote.form.successTitle}</h2>
-            <p className="text-white/70">{t.quote.form.successDesc}</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+            <CheckCircle2 className="w-16 h-16 text-primary mb-6 relative z-10" strokeWidth={1} />
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-foreground mb-4 relative z-10">
+              {t.quote.form.successTitle}
+            </h2>
+            <div className="w-16 h-px gold-divider mb-4" />
+            <p className="text-foreground/60 text-base font-light leading-relaxed relative z-10">
+              {t.quote.form.successDesc}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -91,28 +97,55 @@ export function QuoteForm() {
   }
 
   return (
-    <section id="quote" className="py-24 bg-[#111] relative border-b border-white/5">
-      <div className="container mx-auto px-4 max-w-4xl relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif text-white mb-4">{t.quote.title}</h2>
-          <p className="text-white/60 mb-6">{t.quote.subtitle}</p>
-          <div className="w-16 h-1 bg-primary mx-auto" />
-        </div>
+    <section id="quote" className="py-20 bg-background relative section-border">
+      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2" />
+      
+      <div className="container mx-auto px-6 lg:px-12 max-w-4xl relative z-10">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-foreground mb-4">
+            {t.quote.title}
+          </h2>
+          <div className="w-20 h-px gold-divider mx-auto mb-5" />
+          <p className="text-foreground/60 text-base md:text-lg max-w-xl mx-auto font-light">
+            {t.quote.subtitle}
+          </p>
+        </motion.div>
 
-        <div className="bg-[#1A1A1A] p-8 md:p-12 border border-white/5 shadow-2xl">
+        <motion.div 
+          className="bg-card p-8 md:p-12 border border-border shadow-2xl relative overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-[80px]" />
+          
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.name}</FormLabel>
+                      <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light">
+                        {t.quote.form.name}
+                      </FormLabel>
                       <FormControl>
-                        <Input data-testid="input-name" placeholder="E.g. Hans Müller" {...field} className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus-visible:ring-primary h-12" />
+                        <Input 
+                          data-testid="input-name" 
+                          placeholder={t.quote.form.placeholders.name} 
+                          {...field} 
+                          className="bg-background border-border text-foreground h-12 font-light focus-visible:ring-primary focus-visible:border-primary transition-all" 
+                        />
                       </FormControl>
-                      <FormMessage className="text-destructive" />
+                      <FormMessage className="text-destructive text-xs" />
                     </FormItem>
                   )}
                 />
@@ -121,11 +154,19 @@ export function QuoteForm() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.email}</FormLabel>
+                      <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light">
+                        {t.quote.form.email}
+                      </FormLabel>
                       <FormControl>
-                        <Input data-testid="input-email" type="email" placeholder="email@example.com" {...field} className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus-visible:ring-primary h-12" />
+                        <Input 
+                          data-testid="input-email" 
+                          type="email" 
+                          placeholder={t.quote.form.placeholders.email} 
+                          {...field} 
+                          className="bg-background border-border text-foreground h-12 font-light focus-visible:ring-primary focus-visible:border-primary transition-all" 
+                        />
                       </FormControl>
-                      <FormMessage className="text-destructive" />
+                      <FormMessage className="text-destructive text-xs" />
                     </FormItem>
                   )}
                 />
@@ -137,11 +178,19 @@ export function QuoteForm() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.phone}</FormLabel>
+                      <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light">
+                        {t.quote.form.phone}
+                      </FormLabel>
                       <FormControl>
-                        <Input data-testid="input-phone" type="tel" placeholder="+41 79 000 00 00" {...field} className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus-visible:ring-primary h-12" />
+                        <Input 
+                          data-testid="input-phone" 
+                          type="tel" 
+                          placeholder={t.quote.form.placeholders.phone} 
+                          {...field} 
+                          className="bg-background border-border text-foreground h-12 font-light focus-visible:ring-primary focus-visible:border-primary transition-all" 
+                        />
                       </FormControl>
-                      <FormMessage className="text-destructive" />
+                      <FormMessage className="text-destructive text-xs" />
                     </FormItem>
                   )}
                 />
@@ -150,62 +199,18 @@ export function QuoteForm() {
                   name="canton"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.canton}</FormLabel>
+                      <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light">
+                        {t.quote.form.canton}
+                      </FormLabel>
                       <FormControl>
-                        <Input data-testid="input-canton" placeholder="ZH, GE, BE..." {...field} className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus-visible:ring-primary h-12" />
+                        <Input 
+                          data-testid="input-canton" 
+                          placeholder={t.quote.form.placeholders.canton} 
+                          {...field} 
+                          className="bg-background border-border text-foreground h-12 font-light focus-visible:ring-primary focus-visible:border-primary transition-all" 
+                        />
                       </FormControl>
-                      <FormMessage className="text-destructive" />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="serviceType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.serviceType}</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger data-testid="select-service-type" className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus:ring-primary h-12">
-                            <SelectValue placeholder="Select Service" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-[#1A1A1A] border-white/10 text-white">
-                          {services?.map(s => (
-                            <SelectItem data-testid={`option-service-${s.id}`} key={s.id} value={s.id} className="focus:bg-primary/20 focus:text-primary cursor-pointer">
-                              {getLocalizedServiceName(s)}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage className="text-destructive" />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="carType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.carType}</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger data-testid="select-car-type" className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus:ring-primary h-12">
-                            <SelectValue placeholder="Select Car Type" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className="bg-[#1A1A1A] border-white/10 text-white">
-                          {Object.entries(t.quote.carTypes).map(([key, value]) => (
-                            <SelectItem data-testid={`option-car-${key}`} key={key} value={key} className="focus:bg-primary/20 focus:text-primary cursor-pointer">
-                              {value}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage className="text-destructive" />
+                      <FormMessage className="text-destructive text-xs" />
                     </FormItem>
                   )}
                 />
@@ -213,19 +218,76 @@ export function QuoteForm() {
 
               <FormField
                 control={form.control}
+                name="serviceType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light">
+                      {t.quote.form.serviceType}
+                    </FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger 
+                          data-testid="select-service-type" 
+                          className="bg-background border-border text-foreground h-12 font-light focus:ring-primary"
+                        >
+                          <SelectValue placeholder={t.quote.form.placeholders.serviceType} />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-card border-border text-foreground">
+                        {services?.map(s => (
+                          <SelectItem 
+                            data-testid={`option-service-${s.id}`} 
+                            key={s.id} 
+                            value={s.id} 
+                            className="focus:bg-primary/10 focus:text-primary cursor-pointer"
+                          >
+                            {getLocalizedServiceName(s)}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage className="text-destructive text-xs" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="carType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light mb-4 block">
+                      {t.quote.form.carType}
+                    </FormLabel>
+                    <FormControl>
+                      <CarTypePicker 
+                        value={field.value} 
+                        onChange={field.onChange} 
+                        options={t.quote.carTypes} 
+                      />
+                    </FormControl>
+                    <FormMessage className="text-destructive text-xs" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/80 uppercase tracking-wide text-xs">{t.quote.form.message}</FormLabel>
+                    <FormLabel className="text-foreground/70 uppercase tracking-[0.15em] text-xs font-light">
+                      {t.quote.form.message}
+                    </FormLabel>
                     <FormControl>
                       <Textarea 
                         data-testid="input-message"
-                        placeholder="Details about your car or specific requests..." 
+                        placeholder={t.quote.form.placeholders.message} 
                         {...field} 
-                        className="bg-[#0A0A0A] border-white/10 text-white rounded-none focus-visible:ring-primary min-h-[120px] resize-none" 
+                        className="bg-background border-border text-foreground min-h-[120px] resize-none font-light leading-relaxed focus-visible:ring-primary focus-visible:border-primary transition-all" 
                       />
                     </FormControl>
-                    <FormMessage className="text-destructive" />
+                    <FormMessage className="text-destructive text-xs" />
                   </FormItem>
                 )}
               />
@@ -234,13 +296,13 @@ export function QuoteForm() {
                 type="submit"
                 data-testid="button-submit-quote"
                 disabled={submitQuote.isPending}
-                className="w-full btn-gold bg-primary text-black font-semibold h-14 uppercase tracking-widest text-sm hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+                className="w-full btn-gold-luxury h-14 uppercase tracking-[0.25em] text-sm font-medium text-background disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitQuote.isPending ? t.quote.form.submitting : t.quote.form.submit}
               </button>
             </form>
           </Form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,0 +1,1 @@
+- [Swiss map rendering](swiss-map-rendering.md) — react-simple-maps reads only the first TopoJSON object; convert cantons with topojson-client feature() first.
