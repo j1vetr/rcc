@@ -133,16 +133,44 @@
 
 .hero-video-mobile {
   display: block;
-  width: max(100vw, 56.25svh);
-  height: max(100svh, 177.78vw);
+  width: max(112vw, 63svh);
+  height: max(112svh, 199vw);
+}
+
+.youtube-chrome-mask {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.youtube-chrome-mask-top {
+  top: 0;
+  height: 92px;
+  background: linear-gradient(to bottom, rgba(4, 4, 4, 0.92), rgba(4, 4, 4, 0.55) 58%, transparent);
+}
+
+.youtube-chrome-mask-bottom {
+  bottom: 0;
+  height: 86px;
+  background: linear-gradient(to top, rgba(4, 4, 4, 0.9), rgba(4, 4, 4, 0.42) 60%, transparent);
 }
 
 @media (min-width: 768px) {
   .hero-video-desktop {
     display: block;
+    width: max(112vw, 199.12svh);
+    height: max(112svh, 63vw);
   }
   .hero-video-mobile {
     display: none;
+  }
+  .youtube-chrome-mask-top {
+    height: 104px;
+  }
+  .youtube-chrome-mask-bottom {
+    height: 92px;
   }
 }
 
