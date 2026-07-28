@@ -1,7 +1,15 @@
 import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import logo from '@assets/rcc_white_1785267163228.png';
-import { Instagram, Facebook, Mail, Phone } from 'lucide-react';
+import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+
+const CONTACT = {
+  email: 'Info@royalcarcleaning.ch',
+  phone: '+41 78 880 38 84',
+  phoneHref: 'tel:+41788803884',
+  address: 'Wechselächerstrasse 25, 8103 Zürich',
+  mapsHref: 'https://www.google.com/maps/search/?api=1&query=Wechsel%C3%A4cherstrasse%2025%2C%208103%20Z%C3%BCrich',
+};
 
 export function Footer() {
   const { t } = useTranslation();
@@ -22,13 +30,28 @@ export function Footer() {
           <div className="md:col-span-4">
             <h4 className="text-foreground font-serif text-lg mb-6 tracking-tight font-light">Contact</h4>
             <ul className="space-y-4 text-foreground/50 text-sm">
-              <li className="flex items-center gap-3 hover:text-primary transition-colors cursor-pointer group">
-                <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-                <span className="font-light">+41 44 000 00 00</span>
+              <li>
+                <a href={CONTACT.phoneHref} className="flex items-center gap-3 hover:text-primary transition-colors group">
+                  <Phone className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                  <span className="font-light">{CONTACT.phone}</span>
+                </a>
               </li>
-              <li className="flex items-center gap-3 hover:text-primary transition-colors cursor-pointer group">
-                <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-                <span className="font-light">info@rcc-autopflege.ch</span>
+              <li>
+                <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 hover:text-primary transition-colors group">
+                  <Mail className="w-4 h-4 shrink-0 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                  <span className="font-light break-all">{CONTACT.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={CONTACT.mapsHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-3 hover:text-primary transition-colors group"
+                >
+                  <MapPin className="w-4 h-4 mt-0.5 shrink-0 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                  <span className="font-light leading-relaxed">{CONTACT.address}</span>
+                </a>
               </li>
             </ul>
           </div>

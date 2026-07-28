@@ -1,142 +1,105 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import { motion } from 'framer-motion';
-import imgVan from '@assets/generated_images/why_van.jpg';
-import imgEquip from '@assets/generated_images/why_equipment.jpg';
-import imgDiscreet from '@assets/generated_images/why_discreet.jpg';
-import imgEco from '@assets/generated_images/why_eco.jpg';
+import imgMobile from '@assets/generated_images/why-mobile-studio-pro.jpg';
+import imgTools from '@assets/generated_images/why-tools-pro.jpg';
+import imgPrivate from '@assets/generated_images/why-private-pro.jpg';
+import imgEco from '@assets/generated_images/why-eco-pro.jpg';
+
+const images = [imgMobile, imgTools, imgPrivate, imgEco];
 
 export function WhyRcc() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
-  
-  const images = [imgVan, imgEquip, imgDiscreet, imgEco];
+  const activePoint = t.why.points[activeIndex];
 
   return (
-    <section className="py-24 bg-background relative border-b border-border/30">
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-
-        <div className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground mb-6">
+    <section className="relative overflow-hidden bg-[#070707] py-20 md:py-28">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-12">
+        <header className="mb-10 grid gap-5 md:mb-14 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <span className="mb-3 block text-[10px] uppercase tracking-[0.3em] text-primary">
+              RCC Standard
+            </span>
+            <h2 className="max-w-3xl text-4xl font-semibold uppercase leading-[0.94] tracking-[-0.045em] text-foreground md:text-6xl">
               {t.why.title}
             </h2>
-            <div className="w-12 h-px bg-primary" />
-          </motion.div>
-        </div>
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/35">
+            04 qualities / one standard
+          </span>
+        </header>
 
-        {/* Desktop View */}
-        <div className="hidden lg:grid grid-cols-12 gap-16 items-stretch min-h-[500px]">
-          <div className="col-span-5 flex flex-col justify-center py-4 gap-2">
+        <div className="grid overflow-hidden border border-white/10 bg-black lg:grid-cols-[1.45fr_.55fr]">
+          <div
+            className="relative h-[min(128vw,560px)] min-h-[440px] overflow-hidden sm:h-[560px] lg:h-auto lg:min-h-[680px]"
+            data-testid="why-rcc-cinematic-image"
+          >
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={images[activeIndex]}
+                src={images[activeIndex]}
+                alt=""
+                initial={{ opacity: 0, scale: 1.045 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 h-full w-full object-cover"
+                data-testid={`why-rcc-image-${activeIndex}`}
+              />
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/5 to-black/15 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/30" />
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9 lg:p-12">
+              <motion.div
+                key={activePoint.title}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.16, duration: 0.45 }}
+                className="max-w-xl border-l border-primary pl-5"
+              >
+                <span className="mb-2 block font-mono text-[9px] uppercase tracking-[0.25em] text-primary">
+                  Feature 0{activeIndex + 1}
+                </span>
+                <h3 className="text-2xl font-semibold uppercase tracking-[-0.025em] text-white sm:text-3xl">
+                  {activePoint.title}
+                </h3>
+                <p className="mt-3 max-w-md text-sm font-light leading-relaxed text-white/68">
+                  {activePoint.desc}
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 border-t border-white/10 lg:grid-cols-1 lg:border-l lg:border-t-0">
             {t.why.points.map((point, index) => {
               const isActive = activeIndex === index;
               return (
-                <div
-                  key={index}
-                  className="group cursor-pointer flex flex-col py-4 border-b border-border/30 last:border-0 relative"
-                  onMouseEnter={() => setActiveIndex(index)}
+                <button
+                  key={point.title}
+                  type="button"
+                  data-testid={`button-why-${index}`}
                   onClick={() => setActiveIndex(index)}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  className={`group relative min-h-32 border-b border-r border-white/10 p-4 text-left transition-colors last:border-b-0 even:border-r-0 sm:min-h-36 sm:p-6 lg:border-r-0 lg:even:border-r-0 ${
+                    isActive ? 'bg-primary text-background' : 'bg-[#0b0b0b] text-foreground hover:bg-white/[0.045]'
+                  }`}
                 >
-                  <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 bg-primary transition-all duration-300 ${isActive ? 'h-full' : 'h-0'}`} />
-
-                  <div className={`flex items-center gap-6 pl-6 transition-transform duration-500 ${isActive ? 'translate-x-2' : ''}`}>
-                    <span className={`text-[10px] font-mono tracking-[0.2em] transition-colors duration-300 ${isActive ? 'text-primary' : 'text-foreground/20'}`}>
-                      0{index + 1}
-                    </span>
-                    <h3 className={`text-2xl font-serif transition-colors duration-300 ${isActive ? 'text-foreground' : 'text-foreground/40 group-hover:text-foreground/70'}`}>
+                  <div className="flex h-full flex-col justify-between gap-5">
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="font-mono text-[9px] opacity-55">0{index + 1}</span>
+                      <ArrowUpRight className={`h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${isActive ? 'opacity-100' : 'opacity-30'}`} />
+                    </div>
+                    <span className="text-xs font-semibold uppercase leading-tight tracking-[0.08em] sm:text-sm">
                       {point.title}
-                    </h3>
+                    </span>
                   </div>
-
-                  <div
-                    className={`overflow-hidden transition-all duration-500 pl-16 ${isActive ? 'max-h-32 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}
-                  >
-                    <p className="text-foreground/50 text-xs font-light leading-relaxed uppercase tracking-widest max-w-sm">
-                      {point.desc}
-                    </p>
-                  </div>
-                </div>
+                </button>
               );
             })}
           </div>
-
-          <div className="col-span-7 relative h-full min-h-[500px] bg-card/20 border border-border/40 overflow-hidden">
-            <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-primary/60 z-20" />
-            <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-primary/60 z-20" />
-
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${activeIndex === index ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-              >
-                <div
-                  className={`absolute inset-0 bg-cover bg-center transition-transform duration-[10s] ease-out ${activeIndex === index ? 'scale-100' : 'scale-105'}`}
-                  style={{ backgroundImage: `url(${img})` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
-                   <div className="text-[9px] text-primary uppercase tracking-[0.3em] mb-2 opacity-80">
-                     Fig. 0{index + 1}
-                   </div>
-                   <div className="w-full h-px bg-gradient-to-r from-primary/50 to-transparent" />
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-
-        {/* Mobile View */}
-        <div className="lg:hidden flex flex-col gap-3">
-          {t.why.points.map((point, index) => {
-            const isActive = activeIndex === index;
-            return (
-              <div 
-                key={index}
-                className={`border transition-colors duration-300 overflow-hidden ${isActive ? 'bg-card/20 border-primary/30' : 'bg-transparent border-border/40'}`}
-              >
-                <button
-                  className="w-full flex items-center justify-between p-5 text-left"
-                  onClick={() => setActiveIndex(isActive ? -1 : index)}
-                >
-                  <div className="flex items-center gap-4">
-                    <span className={`text-[10px] font-mono tracking-[0.2em] ${isActive ? 'text-primary' : 'text-foreground/40'}`}>
-                      0{index + 1}
-                    </span>
-                    <h3 className={`text-lg font-serif ${isActive ? 'text-foreground' : 'text-foreground/70'}`}>
-                      {point.title}
-                    </h3>
-                  </div>
-                  <div className={`w-3 h-3 relative transition-transform duration-500 ${isActive ? 'rotate-180' : ''}`}>
-                    <div className="absolute top-1/2 left-0 w-full h-px bg-current -translate-y-1/2 text-primary" />
-                    <div className={`absolute top-0 left-1/2 w-px h-full bg-current -translate-x-1/2 text-primary transition-transform duration-300 ${isActive ? 'scale-y-0' : 'scale-y-100'}`} />
-                  </div>
-                </button>
-
-                <div
-                  className={`transition-all duration-500 ease-in-out overflow-hidden ${isActive ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="px-5 pb-5">
-                    <p className="text-foreground/60 text-xs font-light leading-relaxed uppercase tracking-widest mb-6">
-                      {point.desc}
-                    </p>
-                    <div className="relative h-48 w-full overflow-hidden border border-border/40">
-                       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${images[index]})` }} />
-                       <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                       <div className="absolute bottom-3 left-3">
-                          <span className="text-[8px] text-primary uppercase tracking-[0.2em]">Fig. 0{index + 1}</span>
-                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import { HowItWorks } from '@/components/HowItWorks';
 import { SwitzerlandMap } from '@/components/SwitzerlandMap';
 import { Services } from '@/components/Services';
 import { QuoteForm } from '@/components/QuoteForm';
-import { Testimonials } from '@/components/Testimonials';
 import { WhyRcc } from '@/components/WhyRcc';
 import { Footer } from '@/components/Footer';
 import { LanguageProvider } from '@/i18n/LanguageContext';
@@ -26,7 +25,6 @@ export default function HomePage() {
           <SwitzerlandMap onSelectCanton={handleSelectCanton} />
           <Services />
           <WhyRcc />
-          <Testimonials />
           <QuoteForm />
         </main>
         <Footer />

@@ -3,7 +3,7 @@ import { useTranslation } from '@/i18n/LanguageContext';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 
-const WHATSAPP_URL = 'https://wa.me/';
+const WHATSAPP_URL = 'https://wa.me/41788803884';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ export function Hero() {
   };
 
   return (
-      <section ref={ref} className="relative min-h-[100svh] flex items-end md:items-center overflow-hidden bg-black">
+      <section ref={ref} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 hero-video-stage" aria-hidden="true">
           <iframe
             className="hero-video hero-video-desktop pointer-events-none"
@@ -47,15 +47,15 @@ export function Hero() {
         </div>
 
         <motion.div
-          className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-12 pb-12 pt-28 md:py-28"
+          className="container relative z-10 mx-auto flex min-h-[100svh] items-center justify-center px-5 py-20 sm:px-6 md:justify-start md:py-28 lg:px-12"
           style={{ opacity }}
         >
-          <div className="max-w-3xl md:max-w-2xl text-left">
+          <div className="mx-auto max-w-3xl text-center md:mx-0 md:max-w-2xl md:text-left">
             <motion.div
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-3 mb-5"
+              className="mb-5 flex items-center justify-center gap-3 md:justify-start"
             >
               <span className="h-px w-10 bg-primary" />
               <span className="text-[10px] sm:text-xs uppercase tracking-[0.26em] text-primary">{t.hero.eyebrow}</span>
@@ -74,7 +74,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-sm sm:text-base md:text-lg text-foreground/75 max-w-xl mb-7 font-light leading-relaxed"
+              className="mx-auto mb-7 max-w-xl text-sm font-light leading-relaxed text-foreground/75 sm:text-base md:mx-0 md:text-lg"
             >
               {t.hero.subheadline}
             </motion.p>
@@ -83,7 +83,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
+              className="flex w-full flex-col justify-center gap-3 sm:flex-row md:w-auto md:justify-start"
             >
               <button
                 data-testid="button-quote-hero"
