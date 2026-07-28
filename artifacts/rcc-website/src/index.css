@@ -169,7 +169,11 @@
 
 @media (max-width: 540px) {
   .map-city-label {
-    font-size: 8.5px;
+    display: none;
+  }
+  .map-city-dot {
+    r: 3.5px;
+    stroke-width: 1.3px;
   }
 }
 

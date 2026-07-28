@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Check, MousePointer2 } from 'lucide-react';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { feature } from 'topojson-client';
 import type { Topology, GeometryCollection } from 'topojson-specification';
@@ -65,15 +66,15 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
     
     setSelected(canton.code);
     onSelectCanton(canton.code);
-    
-    setTimeout(() => {
-      document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
-    }, 600);
   };
 
   const selectByCode = (code: string) => {
     const entry = Object.entries(CANTON_MAP).find(([, canton]) => canton.code === code);
     if (entry) handleSelect(Number(entry[0]));
+  };
+
+  const confirmSelection = () => {
+    document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -83,7 +84,7 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
       
       <div className="container mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -96,6 +97,10 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
           <p className="text-foreground/60 text-base md:text-lg max-w-xl mx-auto font-light">
             {t.map.subtitle}
           </p>
+          <div className="mt-5 inline-flex items-center gap-2 border border-primary/25 bg-primary/[0.06] px-4 py-2 text-[10px] sm:text-xs uppercase tracking-[0.16em] text-primary">
+            <MousePointer2 className="w-3.5 h-3.5" aria-hidden="true" />
+            {t.map.instruction}
+          </div>
         </motion.div>
 
         <motion.div 
@@ -190,7 +195,7 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
                     aria-label={`${city.name} ${t.map.selectAction}`}
                     className="cursor-pointer focus:outline-none"
                   >
-                    <circle r={2.1} fill="hsl(43, 74%, 55%)" stroke="hsl(0, 0%, 4%)" strokeWidth={0.8} />
+                    <circle className="map-city-dot" r={2.1} fill="hsl(43, 74%, 55%)" stroke="hsl(0, 0%, 4%)" strokeWidth={0.8} />
                     <text
                       textAnchor="middle"
                       y={-6}
@@ -215,21 +220,40 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
             )}
           </div>
           
-          {selected && (
-            <motion.div 
-              className="mt-6 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="inline-block bg-primary/10 border border-primary/30 px-6 py-3">
-                <span className="text-foreground/60 text-xs uppercase tracking-widest mr-2">{t.map.selected}</span>
-                <span className="text-primary font-light text-base tracking-wide">
-                  {Object.values(CANTON_MAP).find(c => c.code === selected)?.name}
-                </span>
-              </div>
-            </motion.div>
-          )}
+          <AnimatePresence mode="wait">
+            {selected && (
+              <motion.div
+                key={selected}
+                className="mt-4 sm:mt-6"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="bg-primary/[0.07] border border-primary/35 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 shrink-0 bg-primary text-background flex items-center justify-center">
+                      <Check className="w-5 h-5" aria-hidden="true" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block text-[10px] uppercase tracking-[0.18em] text-foreground/45 mb-1">{t.map.selected}</span>
+                      <span className="block text-base sm:text-lg font-semibold text-primary truncate">
+                        {Object.values(CANTON_MAP).find(c => c.code === selected)?.name}
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    data-testid="button-confirm-canton"
+                    onClick={confirmSelection}
+                    className="btn-gold-luxury min-h-11 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-background shrink-0"
+                  >
+                    {t.map.confirm}
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
       </div>

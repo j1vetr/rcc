@@ -29,6 +29,8 @@ export const translations = {
       subtitle: 'Wählen Sie Ihren Kanton, um die Anfrage zu starten.',
       selected: 'Ausgewählt:',
       selectAction: 'auswählen',
+      instruction: 'Tippen Sie auf Ihren Kanton',
+      confirm: 'Auswahl bestätigen',
     },
     services: {
       title: 'Unsere Expertise',
@@ -134,6 +136,8 @@ export const translations = {
       subtitle: 'Sélectionnez votre canton pour commencer la demande.',
       selected: 'Sélectionné :',
       selectAction: 'sélectionner',
+      instruction: 'Touchez votre canton',
+      confirm: 'Confirmer la sélection',
     },
     services: {
       title: 'Notre Expertise',
@@ -239,6 +243,8 @@ export const translations = {
       subtitle: 'Select your canton to start the request.',
       selected: 'Selected:',
       selectAction: 'select',
+      instruction: 'Tap your canton on the map',
+      confirm: 'Confirm selection',
     },
     services: {
       title: 'Our Expertise',
