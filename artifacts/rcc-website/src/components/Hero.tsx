@@ -42,7 +42,8 @@ export function Hero() {
           />
           <div className="youtube-chrome-mask youtube-chrome-mask-top" />
           <div className="youtube-chrome-mask youtube-chrome-mask-bottom" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,4,.18)_0%,transparent_32%,rgba(4,4,4,.78)_100%)] md:bg-[linear-gradient(90deg,rgba(4,4,4,.7)_0%,rgba(4,4,4,.1)_58%,rgba(4,4,4,.25)_100%)]" />
+          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,4,.2)_0%,rgba(4,4,4,.08)_32%,rgba(4,4,4,.82)_100%)] md:bg-[linear-gradient(90deg,rgba(4,4,4,.74)_0%,rgba(4,4,4,.18)_58%,rgba(4,4,4,.38)_100%)]" />
         </div>
 
         <motion.div

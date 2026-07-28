@@ -1,127 +1,202 @@
-import React from 'react';
-import { useTranslation } from '@/i18n/LanguageContext';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Check, Clock } from 'lucide-react';
 import { useListServices } from '@workspace/api-client-react';
-import { motion } from 'framer-motion';
-import { Clock } from 'lucide-react';
+import { useTranslation } from '@/i18n/LanguageContext';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export function Services() {
   const { t, lang } = useTranslation();
-  
+  const [activeIndex, setActiveIndex] = useState(0);
   const { data: services, isLoading } = useListServices({
-    query: { queryKey: ['services'] }
+    query: { queryKey: ['services'] },
   });
 
-  const getLocalizedField = (service: any, field: 'name' | 'description') => {
+  useEffect(() => {
+    if (!services?.length) return;
+    const popularIndex = services.findIndex((service) => service.popular);
+    setActiveIndex(popularIndex >= 0 ? popularIndex : 0);
+  }, [services]);
+
+  const getLocalizedField = (
+    service: NonNullable<typeof services>[number],
+    field: 'name' | 'description',
+  ) => {
     const key = `${field}${lang.toUpperCase()}` as keyof typeof service;
-    return service[key];
+    return String(service[key]);
   };
 
   const scrollToQuote = (serviceId: string) => {
-    const event = new CustomEvent('select-service', { detail: serviceId });
-    window.dispatchEvent(event);
+    window.dispatchEvent(new CustomEvent('select-service', { detail: serviceId }));
     document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  if (isLoading) {
+    return (
+      <section id="services" className="bg-background py-20 md:py-28">
+        <div className="container mx-auto px-5 sm:px-6 lg:px-12">
+          <Skeleton className="h-[620px] w-full bg-card/50" />
+        </div>
+      </section>
+    );
+  }
+
+  if (!services?.length) return null;
+
+  const activeService = services[activeIndex] ?? services[0];
+
   return (
-    <section id="services" className="py-24 bg-card/30 relative border-y border-border/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-primary text-[10px] uppercase tracking-[0.3em] mb-4 block">
+    <section id="services" className="relative overflow-hidden bg-[#050505] py-20 md:py-28">
+      <div
+        className="absolute inset-0 opacity-[0.055]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(211,175,94,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(211,175,94,.8) 1px, transparent 1px)',
+          backgroundSize: '72px 72px',
+          maskImage: 'linear-gradient(to bottom, transparent, black 18%, black 82%, transparent)',
+        }}
+      />
+      <div className="absolute left-1/2 top-1/2 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.055] blur-[110px]" />
+
+      <div className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-12">
+        <header className="mb-10 flex flex-col gap-5 border-b border-white/10 pb-8 md:mb-14 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="mb-3 block text-[10px] uppercase tracking-[0.32em] text-primary">
               {t.services.subtitle}
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-light text-foreground">
+            <h2 className="max-w-2xl text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.04em] text-foreground md:text-6xl">
               {t.services.title}
             </h2>
-          </motion.div>
-        </div>
-
-        {isLoading ? (
-          <div className="flex flex-col gap-4">
-            {[1, 2, 3].map(i => (
-              <Skeleton key={i} className="h-48 w-full bg-card/50" />
-            ))}
           </div>
-        ) : (
-          <div className="flex flex-col gap-4 max-w-6xl">
-            {services?.map((service, index) => (
-              <motion.div
+          <p className="max-w-xs text-xs uppercase leading-relaxed tracking-[0.16em] text-foreground/35">
+            03 / RCC Treatment Programs
+          </p>
+        </header>
+
+        <div
+          className="mb-5 grid grid-cols-3 border border-white/10 bg-black/40"
+          role="tablist"
+          aria-label={t.services.title}
+        >
+          {services.map((service, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <button
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative bg-background border transition-all duration-500 p-6 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-center ${
-                  service.popular ? 'border-primary/40 shadow-[0_0_30px_rgba(201,165,83,0.05)]' : 'border-border/40 hover:border-border/80'
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveIndex(index)}
+                className={`relative min-w-0 border-r border-white/10 px-2 py-4 text-left transition-colors last:border-r-0 sm:px-5 sm:py-5 ${
+                  isActive ? 'bg-primary text-background' : 'text-foreground/45 hover:bg-white/[0.04] hover:text-foreground'
                 }`}
               >
-                <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-
+                <span className="mb-1 block font-mono text-[9px] opacity-70">0{index + 1}</span>
+                <span className="block truncate text-[10px] font-semibold uppercase tracking-[0.08em] sm:text-xs sm:tracking-[0.14em]">
+                  {getLocalizedField(service, 'name')}
+                </span>
                 {service.popular && (
-                  <div className="absolute top-0 left-8 -translate-y-1/2 bg-primary text-background text-[9px] font-bold px-4 py-1 uppercase tracking-[0.2em]">
+                  <span className={`mt-1 hidden text-[8px] uppercase tracking-[0.15em] sm:block ${isActive ? 'text-background/65' : 'text-primary'}`}>
                     {t.services.popular}
-                  </div>
+                  </span>
                 )}
+              </button>
+            );
+          })}
+        </div>
 
-                <div className="lg:w-[35%] flex flex-col">
-                  <h3 className="text-2xl md:text-3xl font-serif text-foreground mb-3 tracking-tight">
-                    {getLocalizedField(service, 'name')}
+        <div className="relative min-h-[590px] overflow-hidden border border-primary/25 bg-[#090909] md:min-h-[560px]">
+          <div className="pointer-events-none absolute -right-3 top-0 select-none font-mono text-[clamp(9rem,28vw,24rem)] font-bold leading-none text-white/[0.025]">
+            0{activeIndex + 1}
+          </div>
+          <div className="absolute left-0 top-0 h-px w-1/2 bg-gradient-to-r from-primary via-primary/45 to-transparent" />
+          <div className="absolute bottom-0 right-0 h-px w-1/2 bg-gradient-to-l from-primary via-primary/45 to-transparent" />
+
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={activeService.id}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              className="relative grid min-h-[590px] md:min-h-[560px] md:grid-cols-[1.08fr_.92fr]"
+            >
+              <div className="flex flex-col justify-between border-b border-white/10 p-6 sm:p-9 md:border-b-0 md:border-r md:p-12 lg:p-16">
+                <div>
+                  <div className="mb-8 flex items-center gap-3">
+                    <span className="h-px w-10 bg-primary" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
+                      Program 0{activeIndex + 1}
+                    </span>
+                  </div>
+                  <h3 className="max-w-xl text-[clamp(2.7rem,7vw,5.8rem)] font-semibold uppercase leading-[0.84] tracking-[-0.055em] text-foreground">
+                    {getLocalizedField(activeService, 'name')}
                   </h3>
-                  <p className="text-foreground/50 text-xs leading-relaxed font-light uppercase tracking-widest max-w-sm">
-                    {getLocalizedField(service, 'description')}
+                  <p className="mt-7 max-w-md text-sm font-light leading-relaxed text-foreground/55 md:text-base">
+                    {getLocalizedField(activeService, 'description')}
                   </p>
                 </div>
 
-                <div className="lg:w-[40%] flex flex-col justify-center">
-                  <div className="flex flex-wrap gap-x-2 gap-y-1.5 leading-snug">
-                    {service.features.map((feature, i) => (
-                      <React.Fragment key={i}>
-                        <span className="text-[11px] text-foreground/70 uppercase tracking-widest">{feature}</span>
-                        {i < service.features.length - 1 && <span className="text-primary/40 text-[11px]">/</span>}
-                      </React.Fragment>
+                <div className="mt-12 flex items-end justify-between gap-4">
+                  <div>
+                    <span className="mb-2 block text-[9px] uppercase tracking-[0.22em] text-foreground/35">
+                      {t.services.priceFrom}
+                    </span>
+                    <div className="flex items-end gap-2">
+                      <span className="text-5xl font-semibold leading-none tracking-[-0.05em] text-foreground sm:text-7xl">
+                        {activeService.priceFrom}
+                      </span>
+                      <span className="pb-1 text-xs font-semibold tracking-[0.16em] text-primary">CHF</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 pb-1 text-[10px] uppercase tracking-[0.16em] text-foreground/45">
+                    <Clock className="h-3.5 w-3.5 text-primary" />
+                    {activeService.duration}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between p-6 sm:p-9 md:p-12 lg:p-16">
+                <div>
+                  <span className="mb-7 block text-[9px] uppercase tracking-[0.25em] text-foreground/35">
+                    Included treatment
+                  </span>
+                  <div className="divide-y divide-white/10 border-y border-white/10">
+                    {activeService.features.map((feature, index) => (
+                      <motion.div
+                        key={feature}
+                        initial={{ opacity: 0, x: 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.08 + index * 0.055 }}
+                        className="flex items-center gap-4 py-3.5"
+                      >
+                        <span className="font-mono text-[9px] text-primary/55">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="flex-1 text-[11px] uppercase tracking-[0.13em] text-foreground/72">
+                          {feature}
+                        </span>
+                        <Check className="h-3.5 w-3.5 text-primary" />
+                      </motion.div>
                     ))}
                   </div>
                 </div>
 
-                <div className="lg:w-[25%] flex flex-col sm:flex-row lg:flex-col justify-between sm:items-center lg:items-end gap-6 border-t lg:border-t-0 lg:border-l border-border/30 pt-6 lg:pt-0 lg:pl-8">
-                  <div className="flex flex-col lg:items-end">
-                    <span className="text-foreground/40 text-[9px] uppercase tracking-[0.2em] mb-1">
-                      {t.services.priceFrom}
-                    </span>
-                    <div className="flex items-baseline gap-1.5 mb-1">
-                      <span className="text-3xl font-serif text-foreground tracking-tight">{service.priceFrom}</span>
-                      <span className="text-[10px] text-primary uppercase tracking-widest">CHF</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-foreground/40 text-[10px] uppercase tracking-[0.2em]">
-                      <Clock className="w-3 h-3" />
-                      {service.duration}
-                    </div>
-                  </div>
-                  
-                  <button
-                    data-testid={`button-book-${service.id}`}
-                    onClick={() => scrollToQuote(service.id)}
-                    className={`w-full sm:w-auto lg:w-full px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 border ${
-                      service.popular 
-                        ? 'bg-primary border-primary text-background hover:bg-primary/90'
-                        : 'bg-transparent border-border/50 text-foreground hover:border-primary hover:text-primary'
-                    }`}
-                  >
-                    {t.services.bookNow}
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
+                <button
+                  type="button"
+                  data-testid={`button-book-${activeService.id}`}
+                  onClick={() => scrollToQuote(activeService.id)}
+                  className="group mt-10 flex min-h-14 w-full items-center justify-between bg-primary px-5 text-left text-[11px] font-bold uppercase tracking-[0.2em] text-background transition-colors hover:bg-[#ebcc7b]"
+                >
+                  {t.services.bookNow}
+                  <span className="flex h-9 w-9 items-center justify-center border border-background/25 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </button>
+              </div>
+            </motion.article>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
