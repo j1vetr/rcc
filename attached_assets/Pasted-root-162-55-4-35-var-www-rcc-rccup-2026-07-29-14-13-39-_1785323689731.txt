@@ -1,0 +1,46 @@
+root@162-55-4-35:/var/www/rcc# rccup
+
+[2026-07-29 14:13:39] Yerel Git durumu kontrol ediliyor
+
+[2026-07-29 14:13:39] GitHub main branch bilgisi alınıyor
+From https://github.com/j1vetr/rcc
+ * branch            main       -> FETCH_HEAD
+
+[2026-07-29 14:13:39] GitHub değişiklikleri uygulanıyor
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+From https://github.com/j1vetr/rcc
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+[2026-07-29 14:13:40] Ortam değişkenleri yükleniyor
+
+[2026-07-29 14:13:40] Bağımlılıklar kuruluyor
+warn: This version of pnpm requires at least Node.js v22.13
+warn: The current version of Node.js is v20.20.2
+warn: Visit https://r.pnpm.io/comp to see the list of past pnpm versions with respective Node.js version support.
+node:internal/modules/cjs/loader:1031
+      throw new ERR_UNKNOWN_BUILTIN_MODULE(request);
+            ^
+
+Error [ERR_UNKNOWN_BUILTIN_MODULE]: No such built-in module: node:sqlite
+    at Module._load (node:internal/modules/cjs/loader:1031:13)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
+    at ../store/index/lib/index.js (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:99736:25)
+    at __init (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:17:58)
+    at ../resolving/npm-resolver/lib/index.js (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:104887:5)
+    at __init (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:17:58)
+    at ../workspace/projects-graph/lib/index.js (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:105026:5)
+    at __init (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:17:58)
+    at ../workspace/projects-filter/lib/index.js (file:///root/.cache/node/corepack/v1/pnpm/11.17.0/dist/pnpm.mjs:106427:5) {
+  code: 'ERR_UNKNOWN_BUILTIN_MODULE'
+}
+
+Node.js v20.20.2
+
+[2026-07-29 14:13:40] Güncelleme başarısız oldu.
+Satır: 92
+Çıkış kodu: 1
+PM2 logları: pm2 logs rcc-api --lines 100
+root@162-55-4-35:/var/www/rcc# 
