@@ -1,0 +1,74 @@
+root@162-55-4-35:/var/www/rcc# jq 'length' /root/.pm2/dump.pm2
+Command 'jq' not found, but can be installed with:
+snap install jq  # version 1.5+dfsg-1, or
+apt  install jq  # version 1.6-2.1ubuntu3.2
+See 'snap info jq' for additional versions.
+root@162-55-4-35:/var/www/rcc# python3 - <<'PY'
+import json
+
+path = "/root/.pm2/dump.pm2"
+with open(path, encoding="utf-8") as f:
+    data = json.load(f)
+
+print("Tip:", type(data).__name__)
+print("Uygulama sayısı:", len(data) if isinstance(data, list) else "Liste değil")
+
+if isinstance(data, list):
+    for app in data:
+        print("-", app.get("name", "<isimsiz>"))
+PY
+Tip: list
+Uygulama sayısı: 27
+- yosun-restaurant
+- maison-nomade-contact
+- nasiloldu
+- toov
+- emerald
+- adegloba
+- tutturduk
+- lacivert-teknoloji
+- ozelilgi
+- capari
+- hank
+- capital-lashing
+- neon-api
+- carsi-api
+- mkg-api
+- polenstone
+- oyuncuvds-api
+- masgrupcleaning
+- ecartejeans
+- toplufirma-api
+- gocards
+- sepetzen
+- aegis-website
+- qrmenu
+- yosunmenu
+- caglarmenu
+- rcc-api
+root@162-55-4-35:/var/www/rcc# python3 - <<'PY'
+import json
+from pathlib import Path
+
+for path in [
+    Path("/root/.pm2/dump.pm2"),
+    Path("/root/.pm2/dump.pm2.bak"),
+]:
+    print(f"\n{path}:")
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        print("Uygulama sayısı:", len(data) if isinstance(data, list) else "Liste değil")
+        if isinstance(data, list):
+            print("İsimler:", ", ".join(str(x.get("name", "<isimsiz>")) for x in data))
+    except Exception as exc:
+        print("Okuma hatası:", exc)
+PY
+
+/root/.pm2/dump.pm2:
+Uygulama sayısı: 27
+İsimler: yosun-restaurant, maison-nomade-contact, nasiloldu, toov, emerald, adegloba, tutturduk, lacivert-teknoloji, ozelilgi, capari, hank, capital-lashing, neon-api, carsi-api, mkg-api, polenstone, oyuncuvds-api, masgrupcleaning, ecartejeans, toplufirma-api, gocards, sepetzen, aegis-website, qrmenu, yosunmenu, caglarmenu, rcc-api
+
+/root/.pm2/dump.pm2.bak:
+Uygulama sayısı: 27
+İsimler: yosun-restaurant, maison-nomade-contact, nasiloldu, toov, emerald, adegloba, tutturduk, lacivert-teknoloji, ozelilgi, capari, hank, capital-lashing, neon-api, carsi-api, mkg-api, polenstone, oyuncuvds-api, masgrupcleaning, ecartejeans, toplufirma-api, gocards, sepetzen, aegis-website, qrmenu, yosunmenu, caglarmenu, rcc-api
+root@162-55-4-35:/var/www/rcc# 
