@@ -72,14 +72,26 @@ const CANTON_LABELS: Array<{ code: string; coordinates: [number, number]; offset
 ];
 
 const GLOW_SEQUENCE = [1, 18, 10, 25, 8, 20, 3, 14, 23, 6, 17, 2, 21, 12, 26, 9, 4, 19, 15, 7, 24, 11, 5, 22, 16, 13];
+const CANTON_CODES = Object.values(CANTON_MAP).map((canton) => canton.code);
 
 export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string) => void }) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string>(
+    () => CANTON_CODES[Math.floor(Math.random() * CANTON_CODES.length)],
+  );
   const [hoveredCanton, setHoveredCanton] = useState<number | null>(null);
   const [glowingCanton, setGlowingCanton] = useState<number>(GLOW_SEQUENCE[0]);
   const glowIndex = useRef(0);
+  const initialSelectionDispatched = useRef(false);
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (initialSelectionDispatched.current) return;
+    initialSelectionDispatched.current = true;
+
+    const timeout = window.setTimeout(() => onSelectCanton(selected), 0);
+    return () => window.clearTimeout(timeout);
+  }, [onSelectCanton, selected]);
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -106,7 +118,8 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
   };
 
   const confirmSelection = () => {
-    document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
+    onSelectCanton(selected);
+    document.getElementById('quote')?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
   return (

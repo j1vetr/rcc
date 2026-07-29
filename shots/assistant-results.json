@@ -1,0 +1,147 @@
+{
+  "D_map_pressed_count": 1,
+  "D_map_pressed_which": [
+    "button-canton-SZ"
+  ],
+  "D_confirm_card_visible": true,
+  "D_selected_name": "Schwyz",
+  "D_canton_before": "",
+  "D_canton_after": "SZ",
+  "D_canton_populated": true,
+  "D_scroll_changed": true,
+  "D_quote_in_view_after_confirm": true,
+  "D_assistant_launcher_rect": {
+    "l": 24,
+    "t": 812,
+    "r": 88,
+    "b": 876,
+    "w": 64,
+    "h": 64
+  },
+  "D_whatsapp_launcher_rect": {
+    "l": 1352,
+    "t": 812,
+    "r": 1416,
+    "b": 876,
+    "w": 64,
+    "h": 64
+  },
+  "D_assistant_is_bottom_left": true,
+  "D_assistant_left_of_center": true,
+  "D_whatsapp_right_of_center": true,
+  "D_launchers_overlap": false,
+  "D_no_horizontal_overflow": true,
+  "D_overflow_detail": {
+    "docW": 1440,
+    "clientW": 1440
+  },
+  "D_panel_opened": true,
+  "D_panel_rect": {
+    "l": 24,
+    "t": 154,
+    "r": 414,
+    "b": 804,
+    "w": 390,
+    "h": 650,
+    "vw": 1440,
+    "vh": 900
+  },
+  "D_panel_is_floating_card": true,
+  "D_faq_button_count": 20,
+  "D_focus_after_open": "button-close-assistant",
+  "D_faq1_question": "01Was beinhaltet eine Innenreinigung?",
+  "D_answer_shown_on_question": true,
+  "D_answer_preview": "Je nach gewähltem Paket reinigen wir Oberflächen, Cockpit, S",
+  "D_back_returns_to_list": true,
+  "D_quote_cta_closed_panel": true,
+  "D_quote_cta_scrolled_to_quote": true,
+  "D_close_button_works": true,
+  "D_focus_returns_to_launcher_after_close": "button-open-assistant",
+  "D_escape_closes": true,
+  "D_console_errors": [],
+  "M_map_pressed_count": 1,
+  "M_map_pressed_which": [
+    "button-canton-TI"
+  ],
+  "M_confirm_card_visible": true,
+  "M_selected_name": "Ticino",
+  "M_canton_before": "",
+  "M_canton_after": "TI",
+  "M_canton_populated": true,
+  "M_scroll_changed": true,
+  "M_quote_in_view_after_confirm": true,
+  "M_assistant_launcher_rect": {
+    "l": 16,
+    "t": 772,
+    "r": 72,
+    "b": 828,
+    "w": 56,
+    "h": 56
+  },
+  "M_whatsapp_launcher_rect": {
+    "l": 318,
+    "t": 772,
+    "r": 374,
+    "b": 828,
+    "w": 56,
+    "h": 56
+  },
+  "M_assistant_is_bottom_left": true,
+  "M_assistant_left_of_center": true,
+  "M_whatsapp_right_of_center": true,
+  "M_launchers_overlap": false,
+  "M_no_horizontal_overflow": true,
+  "M_overflow_detail": {
+    "docW": 390,
+    "clientW": 390
+  },
+  "M_panel_opened": true,
+  "M_panel_rect": {
+    "l": 0,
+    "t": 152,
+    "r": 390,
+    "b": 844,
+    "w": 390,
+    "h": 692,
+    "vw": 390,
+    "vh": 844
+  },
+  "M_panel_is_bottom_drawer": true,
+  "M_faq_button_count": 20,
+  "M_focus_after_open": "button-close-assistant",
+  "M_screenshot": "/home/runner/workspace/shots/m-assistant-open.png",
+  "M_faq1_question": "01Was beinhaltet eine Innenreinigung?",
+  "M_answer_shown_on_question": true,
+  "M_answer_preview": "Je nach gewähltem Paket reinigen wir Oberflächen, Cockpit, S",
+  "M_back_returns_to_list": true,
+  "M_quote_cta_closed_panel": true,
+  "M_quote_cta_scrolled_to_quote": true,
+  "M_close_button_works": true,
+  "M_focus_returns_to_launcher_after_close": "button-open-assistant",
+  "M_escape_closes": true,
+  "M_console_errors": [],
+  "lang_de": {
+    "title": "RCC Concierge",
+    "greeting": "Grüezi. Wie dürfen wir Ihnen helfen?",
+    "q1": "01Was beinhaltet eine Innenreinigung?"
+  },
+  "lang_fr": {
+    "title": "Concierge RCC",
+    "greeting": "Bonjour. Comment pouvons-nous vous aider ?",
+    "q1": "01Que comprend le nettoyage intérieur ?"
+  },
+  "lang_en": {
+    "title": "RCC Concierge",
+    "greeting": "Hello. How can we help you?",
+    "q1": "01What does an interior cleaning include?"
+  },
+  "lang_de_fr_differ": true,
+  "lang_fr_en_differ": true,
+  "lang_content_changes": true,
+  "lang_console_errors": [],
+  "desktop_map_screenshot": "/home/runner/workspace/shots/d-map.png",
+  "ALL_CONSOLE_ERRORS": {
+    "desktop": [],
+    "mobile": []
+  }
+}

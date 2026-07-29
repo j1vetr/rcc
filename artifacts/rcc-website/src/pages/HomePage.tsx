@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { LanguageProvider } from '@/i18n/LanguageContext';
+import { FloatingAssistant } from '@/components/FloatingAssistant';
 
 const HowItWorks = lazy(() => import('@/components/HowItWorks').then((module) => ({ default: module.HowItWorks })));
 const SwitzerlandMap = lazy(() => import('@/components/SwitzerlandMap').then((module) => ({ default: module.SwitzerlandMap })));
@@ -37,6 +38,7 @@ export default function HomePage() {
         <Suspense fallback={null}>
           <Footer />
         </Suspense>
+        <FloatingAssistant />
       </div>
     </LanguageProvider>
   );
