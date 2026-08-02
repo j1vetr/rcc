@@ -159,7 +159,7 @@ export function Services() {
               <div className="flex flex-col justify-between p-6 sm:p-9 md:p-10 lg:p-12">
                 <div>
                   <span className="mb-7 block text-[9px] uppercase tracking-[0.25em] text-foreground/35">
-                    Included treatment
+                    {t.services.included}
                   </span>
                   <div className="divide-y divide-white/10 border-y border-white/10">
                     {activeService.features.map((feature, index) => (

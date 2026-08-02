@@ -76,7 +76,7 @@ export function Footer() {
         </div>
         
         <div className="border-t border-foreground/5 pt-8 flex items-center justify-center">
-          <p className="text-foreground/30 text-xs tracking-[0.1em] font-light uppercase">
+          <p className="text-foreground/30 text-[10px] sm:text-xs tracking-[0.02em] sm:tracking-[0.1em] font-light normal-case sm:uppercase text-center">
             {t.footer.copyright}
           </p>
         </div>

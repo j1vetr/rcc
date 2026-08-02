@@ -1,0 +1,89 @@
+{
+  "desktop": {
+    "mapSectionPresent": true,
+    "scanLineVisibleMidSweep": true,
+    "reticleRingPresent": true,
+    "dispatchCardPresent": true,
+    "dispatchCardText": "Wo sollen wir erscheinen? | Wählen Sie Ihren Kanton, um die Anfrage zu starten. | TIPPEN SIE AUF IHREN KANTON | ZH | BE | LU | UR | SZ | OW | NW | GL | ZG | FR | SO | BS | BL | SH | AR | AI | SG | GR | AG | TG | TI | VD | VS | NE | GE | JU | RCC DISPATCH | Ziel: Obwalden (OW) | Status: Einsatzbereit | 46.86° N · 8.22° E | AUSGEWÄHLT: | Obwalden | AUSWAHL BESTÄTIGEN",
+    "infoCardBounds": {
+      "cardRight": 1360,
+      "cardLeft": 80,
+      "cardBottom": 890,
+      "frameRight": 1136,
+      "frameLeft": 304,
+      "frameBottom": 777,
+      "viewportWidth": 1440,
+      "overflowsRight": true,
+      "overflowsViewport": false
+    },
+    "routePathPresent": true,
+    "travelingDotPresent": true,
+    "initialSelected": {
+      "name": "Obwalden",
+      "code": "OW"
+    },
+    "confirmButtonPresent": true,
+    "glowLoopSample1": [
+      "button-canton-SG"
+    ],
+    "glowLoopSample2": [
+      "button-canton-TI"
+    ],
+    "glowLoopChanges": true,
+    "hoverTooltip": "Genève",
+    "clickedCanton": "GE",
+    "afterClickSelected": {
+      "name": "Genève",
+      "code": "GE"
+    },
+    "cardUpdated": true,
+    "confirmButtonLabel": "AUSWAHL BESTÄTIGEN",
+    "quoteSectionPresent": true,
+    "confirmScrollsToQuote": true,
+    "consoleErrors": []
+  },
+  "mobile": {
+    "mapSectionPresent": true,
+    "scanLineVisibleMidSweep": true,
+    "reticleRingPresent": true,
+    "dispatchCardPresent": true,
+    "dispatchCardText": "Wo sollen wir erscheinen? | Wählen Sie Ihren Kanton, um die Anfrage zu starten. | TIPPEN SIE AUF IHREN KANTON | ZH | BE | LU | UR | SZ | OW | NW | GL | ZG | FR | SO | BS | BL | SH | AR | AI | SG | GR | AG | TG | TI | VD | VS | NE | GE | JU | RCC DISPATCH | Ziel: Luzern (LU) | Status: Einsatzbereit | 47.08° N · 8.12° E | AUSGEWÄHLT: | Luzern | AUSWAHL BESTÄTIGEN",
+    "infoCardBounds": {
+      "cardRight": 390,
+      "cardLeft": 0,
+      "cardBottom": 713,
+      "frameRight": 370,
+      "frameLeft": 20,
+      "frameBottom": 560,
+      "viewportWidth": 390,
+      "overflowsRight": true,
+      "overflowsViewport": false
+    },
+    "routePathPresent": true,
+    "travelingDotPresent": true,
+    "initialSelected": {
+      "name": "Luzern",
+      "code": "LU"
+    },
+    "confirmButtonPresent": true,
+    "glowLoopSample1": [
+      "button-canton-OW"
+    ],
+    "glowLoopSample2": [
+      "button-canton-BE"
+    ],
+    "glowLoopChanges": true,
+    "clickedCanton": "GE",
+    "afterClickSelected": {
+      "name": "Genève",
+      "code": "GE"
+    },
+    "cardUpdated": true,
+    "confirmButtonLabel": "AUSWAHL BESTÄTIGEN",
+    "quoteSectionPresent": true,
+    "confirmScrollsToQuote": true,
+    "mobileTapResult": "BE",
+    "mobileTapWorks": true,
+    "consoleErrors": []
+  }
+}

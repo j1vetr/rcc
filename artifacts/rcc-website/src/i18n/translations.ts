@@ -31,6 +31,12 @@ export const translations = {
       selectAction: 'auswählen',
       instruction: 'Tippen Sie auf Ihren Kanton',
       confirm: 'Auswahl bestätigen',
+      dispatch: {
+        title: 'RCC Dispatch',
+        target: 'Ziel',
+        status: 'Status',
+        statusValue: 'Einsatzbereit',
+      },
     },
     beforeAfter: {
       eyebrow: 'Vorher / Nachher',
@@ -46,6 +52,7 @@ export const translations = {
       subtitle: 'Massgeschneiderte Pflegepakete für höchste Ansprüche.',
       popular: 'Am Beliebtesten',
       priceFrom: 'Ab',
+      included: 'Enthaltene Behandlung',
       bookNow: 'Auswählen',
     },
     quote: {
@@ -79,6 +86,25 @@ export const translations = {
         limousine: 'Limousine',
         sport: 'Sportwagen',
         van: 'Van / Transporter',
+      },
+      wizard: {
+        steps: ['Fahrzeug', 'Paket', 'Details', 'Übersicht'],
+        next: 'Weiter',
+        back: 'Zurück',
+        stepOf: 'Schritt',
+        summaryTitle: 'Ihre Konfiguration',
+        canton: 'Kanton',
+        car: 'Fahrzeug',
+        package: 'Paket',
+        contact: 'Kontakt',
+        notSelected: 'Noch offen',
+        estimate: 'Geschätzt ab',
+        estimateNote: 'Endpreis je nach Fahrzeugzustand',
+        reviewHint: 'Prüfen Sie Ihre Angaben und senden Sie die Anfrage ab.',
+      },
+      validation: {
+        required: 'Bitte ausfüllen',
+        email: 'Ungültige E-Mail Adresse',
       }
     },
     testimonials: {
@@ -147,6 +173,12 @@ export const translations = {
       selectAction: 'sélectionner',
       instruction: 'Touchez votre canton',
       confirm: 'Confirmer la sélection',
+      dispatch: {
+        title: 'RCC Dispatch',
+        target: 'Cible',
+        status: 'Statut',
+        statusValue: 'Prêt',
+      },
     },
     beforeAfter: {
       eyebrow: 'Avant / Après',
@@ -162,6 +194,7 @@ export const translations = {
       subtitle: 'Des forfaits sur mesure pour les exigences les plus élevées.',
       popular: 'Le plus populaire',
       priceFrom: 'Dès',
+      included: 'Prestation incluse',
       bookNow: 'Sélectionner',
     },
     quote: {
@@ -195,6 +228,25 @@ export const translations = {
         limousine: 'Limousine',
         sport: 'Voiture de sport',
         van: 'Van / Utilitaire',
+      },
+      wizard: {
+        steps: ['Véhicule', 'Forfait', 'Détails', 'Aperçu'],
+        next: 'Continuer',
+        back: 'Retour',
+        stepOf: 'Étape',
+        summaryTitle: 'Votre configuration',
+        canton: 'Canton',
+        car: 'Véhicule',
+        package: 'Forfait',
+        contact: 'Contact',
+        notSelected: 'Pas encore choisi',
+        estimate: 'Estimé dès',
+        estimateNote: 'Prix final selon l’état du véhicule',
+        reviewHint: 'Vérifiez vos informations et envoyez la demande.',
+      },
+      validation: {
+        required: 'Champ requis',
+        email: 'Adresse e-mail invalide',
       }
     },
     testimonials: {
@@ -263,6 +315,12 @@ export const translations = {
       selectAction: 'select',
       instruction: 'Tap your canton on the map',
       confirm: 'Confirm selection',
+      dispatch: {
+        title: 'RCC Dispatch',
+        target: 'Target',
+        status: 'Status',
+        statusValue: 'Ready',
+      },
     },
     beforeAfter: {
       eyebrow: 'Before / After',
@@ -278,6 +336,7 @@ export const translations = {
       subtitle: 'Tailor-made care packages for the highest demands.',
       popular: 'Most Popular',
       priceFrom: 'From',
+      included: 'Included treatment',
       bookNow: 'Select',
     },
     quote: {
@@ -311,6 +370,25 @@ export const translations = {
         limousine: 'Limousine',
         sport: 'Sports Car',
         van: 'Van / Transporter',
+      },
+      wizard: {
+        steps: ['Vehicle', 'Package', 'Details', 'Review'],
+        next: 'Continue',
+        back: 'Back',
+        stepOf: 'Step',
+        summaryTitle: 'Your configuration',
+        canton: 'Canton',
+        car: 'Vehicle',
+        package: 'Package',
+        contact: 'Contact',
+        notSelected: 'Not selected yet',
+        estimate: 'Estimated from',
+        estimateNote: 'Final price depends on vehicle condition',
+        reviewHint: 'Review your details and send the request.',
+      },
+      validation: {
+        required: 'Required field',
+        email: 'Invalid email address',
       }
     },
     testimonials: {

@@ -1,35 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { useSubmitQuote, useListServices } from '@workspace/api-client-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { 
-  Form, FormControl, FormField, FormItem, FormLabel, FormMessage 
+import {
+  Form, FormControl, FormField, FormItem, FormLabel, useFormField
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowDown, CheckCircle2, Mail, MapPin, Phone } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Check, CheckCircle2, Mail, MapPin, Phone } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { CarTypePicker } from './CarTypePicker';
 
+// Error messages are stable codes, mapped to localized text at render time
 const formSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(5, 'Phone number is required'),
-  canton: z.string().min(2, 'Canton is required'),
-  serviceType: z.string().min(1, 'Service is required'),
-  carType: z.string().min(1, 'Car type is required'),
+  name: z.string().min(2, 'required'),
+  email: z.string().email('email'),
+  phone: z.string().min(5, 'required'),
+  canton: z.string().min(2, 'required'),
+  serviceType: z.string().min(1, 'required'),
+  carType: z.string().min(1, 'required'),
   message: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
+function LocalizedFormMessage() {
+  const { error } = useFormField();
+  const { t } = useTranslation();
+  if (!error) return null;
+  const code = String(error.message ?? '');
+  const messages = t.quote.validation as Record<string, string>;
+  return <p className="text-destructive text-xs">{messages[code] ?? code}</p>;
+}
+
+const STEP_FIELDS: Array<Array<keyof FormValues>> = [
+  ['carType', 'canton'],
+  ['serviceType'],
+  ['name', 'email', 'phone'],
+  [],
+];
+
+const inputClass =
+  'bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-2 h-auto text-base font-light text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none';
+const labelClass =
+  'text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary';
+
 export function QuoteForm() {
   const { t, lang } = useTranslation();
   const submitQuote = useSubmitQuote();
   const { data: services } = useListServices({ query: { queryKey: ['services'] } });
+  const [step, setStep] = useState(0);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -67,10 +89,41 @@ export function QuoteForm() {
     submitQuote.mutate({ data });
   };
 
+  const onInvalid = () => {
+    const errors = form.formState.errors;
+    const firstInvalidStep = STEP_FIELDS.findIndex((fields) =>
+      fields.some((field) => errors[field]),
+    );
+    if (firstInvalidStep >= 0) setStep(firstInvalidStep);
+  };
+
+  const goNext = async () => {
+    const fields = STEP_FIELDS[step];
+    const valid = fields.length === 0 ? true : await form.trigger(fields);
+    if (valid) setStep((value) => Math.min(value + 1, 3));
+  };
+
+  const goBack = () => setStep((value) => Math.max(value - 1, 0));
+
   const getLocalizedServiceName = (service: any) => {
     const key = `name${lang.toUpperCase()}` as keyof typeof service;
     return service[key];
   };
+
+  const watchedCanton = form.watch('canton');
+  const watchedCarType = form.watch('carType');
+  const watchedServiceType = form.watch('serviceType');
+  const watchedName = form.watch('name');
+
+  const selectedService = useMemo(
+    () => services?.find((service) => service.id === watchedServiceType),
+    [services, watchedServiceType],
+  );
+
+  const wizard = t.quote.wizard;
+  const carTypeLabel = watchedCarType
+    ? t.quote.carTypes[watchedCarType as keyof typeof t.quote.carTypes]
+    : undefined;
 
   if (submitQuote.isSuccess) {
     return (
@@ -109,9 +162,10 @@ export function QuoteForm() {
   return (
     <section id="quote" className="py-16 md:py-20 bg-background relative overflow-hidden">
       <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none" />
-      
+
       <div className="container mx-auto max-w-6xl px-5 sm:px-6 lg:px-10 relative z-10">
         <div className="border border-white/10 bg-[#090909]/85">
+          {/* Header */}
           <div className="grid gap-7 border-b border-white/10 p-5 sm:p-7 lg:grid-cols-[1fr_1.15fr] lg:items-end lg:gap-12 lg:p-9">
             <div>
               <motion.div
@@ -121,9 +175,9 @@ export function QuoteForm() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="mb-3 flex items-center gap-3 text-[9px] uppercase tracking-[0.25em] text-primary">
-                  <span>01</span>
+                  <span>{wizard.stepOf} {String(step + 1).padStart(2, '0')}</span>
                   <span className="h-px w-8 bg-primary/50" />
-                  <span>03</span>
+                  <span>04</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-serif font-light text-foreground mb-4 leading-[1.02] tracking-tight">
                   {t.quote.title}
@@ -132,10 +186,6 @@ export function QuoteForm() {
                   {t.quote.subtitle}
                 </p>
               </motion.div>
-              <div className="mt-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-primary lg:hidden">
-                <ArrowDown className="h-3.5 w-3.5" />
-                <span>{t.nav.quote}</span>
-              </div>
             </div>
 
             <div className="hidden gap-3 border-l border-white/10 pl-10 text-xs text-foreground/50 lg:grid lg:grid-cols-2">
@@ -159,219 +209,333 @@ export function QuoteForm() {
             </div>
           </div>
 
-          <div className="p-5 sm:p-7 lg:p-9">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10 lg:space-y-11">
-
-                  {/* Contact Info Group */}
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                      <span className="text-primary text-xs font-serif italic tracking-widest">01</span>
-                      <div className="h-px bg-white/5 flex-grow" />
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit, onInvalid)}>
+              <div className="grid lg:grid-cols-[1fr_330px]">
+                {/* Wizard column */}
+                <div className="p-5 sm:p-7 lg:p-9 lg:border-r lg:border-white/10">
+                  {/* Progress */}
+                  <div className="mb-8">
+                    <div className="mb-3 flex items-center justify-between gap-2">
+                      {wizard.steps.map((label, index) => (
+                        <button
+                          key={label}
+                          type="button"
+                          onClick={() => index < step && setStep(index)}
+                          disabled={index >= step}
+                          className={`flex items-center gap-2 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] transition-colors ${
+                            index === step
+                              ? 'text-primary'
+                              : index < step
+                                ? 'text-foreground/60 hover:text-primary'
+                                : 'text-foreground/30'
+                          }`}
+                        >
+                          <span
+                            className={`flex h-5 w-5 items-center justify-center border text-[9px] ${
+                              index < step
+                                ? 'border-primary bg-primary text-background'
+                                : index === step
+                                  ? 'border-primary text-primary'
+                                  : 'border-white/15 text-foreground/30'
+                            }`}
+                          >
+                            {index < step ? <Check className="h-3 w-3" aria-hidden="true" /> : index + 1}
+                          </span>
+                          <span className="hidden sm:inline">{label}</span>
+                        </button>
+                      ))}
                     </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-7 gap-y-7">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3 relative group">
-                            <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary">
-                              {t.quote.form.name}
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                data-testid="input-name"
-                                placeholder={t.quote.form.placeholders.name}
-                                {...field}
-                                className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-2 h-auto text-base font-light text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none"
-                              />
-                            </FormControl>
-                            <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3 relative group">
-                            <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary">
-                              {t.quote.form.email}
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                data-testid="input-email"
-                                type="email"
-                                placeholder={t.quote.form.placeholders.email}
-                                {...field}
-                                className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-2 h-auto text-base font-light text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none"
-                              />
-                            </FormControl>
-                            <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3 relative group">
-                            <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary">
-                              {t.quote.form.phone}
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                data-testid="input-phone"
-                                type="tel"
-                                placeholder={t.quote.form.placeholders.phone}
-                                {...field}
-                                className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-2 h-auto text-base font-light text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none"
-                              />
-                            </FormControl>
-                            <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="canton"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3 relative group">
-                            <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary">
-                              {t.quote.form.canton}
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                data-testid="input-canton"
-                                placeholder={t.quote.form.placeholders.canton}
-                                {...field}
-                                className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-2 h-auto text-base font-light text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none"
-                              />
-                            </FormControl>
-                            <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
+                    <div className="h-px w-full bg-white/10">
+                      <motion.div
+                        className="h-px bg-primary shadow-[0_0_8px_rgba(201,165,83,0.7)]"
+                        initial={false}
+                        animate={{ width: `${((step + 1) / wizard.steps.length) * 100}%` }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       />
                     </div>
                   </div>
 
-                  {/* Service & Vehicle Group */}
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                      <span className="text-primary text-xs font-serif italic tracking-widest">02</span>
-                      <div className="h-px bg-white/5 flex-grow" />
-                    </div>
+                  {/* Steps */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={step}
+                      initial={{ opacity: 0, x: 24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -24 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {step === 0 && (
+                        <div className="space-y-8">
+                          <FormField
+                            control={form.control}
+                            name="carType"
+                            render={({ field }) => (
+                              <FormItem className="space-y-3">
+                                <FormLabel className={`${labelClass} block`}>
+                                  {t.quote.form.carType}
+                                </FormLabel>
+                                <FormControl>
+                                  <div>
+                                    <CarTypePicker
+                                      value={field.value}
+                                      onChange={field.onChange}
+                                      options={t.quote.carTypes}
+                                    />
+                                  </div>
+                                </FormControl>
+                                <LocalizedFormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="canton"
+                            render={({ field }) => (
+                              <FormItem className="space-y-3 relative group max-w-xs">
+                                <FormLabel className={labelClass}>
+                                  {t.quote.form.canton}
+                                </FormLabel>
+                                <FormControl>
+                                  <Input
+                                    data-testid="input-canton"
+                                    placeholder={t.quote.form.placeholders.canton}
+                                    {...field}
+                                    className={inputClass}
+                                  />
+                                </FormControl>
+                                <LocalizedFormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      )}
 
-                    <div className="grid gap-8 lg:grid-cols-[0.26fr_1fr] lg:items-start">
-                      <FormField
-                        control={form.control}
-                        name="serviceType"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3 group">
-                            <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary">
-                              {t.quote.form.serviceType}
-                            </FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
-                              <FormControl>
-                                <SelectTrigger
-                                  data-testid="select-service-type"
-                                  className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-2 h-auto text-base font-light text-foreground focus:ring-0 focus:ring-offset-0 focus:border-primary transition-colors data-[placeholder]:text-foreground/20 shadow-none"
-                                >
-                                  <SelectValue placeholder={t.quote.form.placeholders.serviceType} />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent className="bg-card/95 border-white/10 text-foreground backdrop-blur-xl">
-                                {services?.map(s => (
-                                  <SelectItem
-                                    data-testid={`option-service-${s.id}`}
-                                    key={s.id}
-                                    value={s.id}
-                                    className="focus:bg-primary/10 focus:text-primary cursor-pointer py-3 text-base"
-                                  >
-                                    {getLocalizedServiceName(s)}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                            <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="carType"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium block">
-                              {t.quote.form.carType}
-                            </FormLabel>
-                            <FormControl>
-                              <div>
-                                <CarTypePicker
-                                  value={field.value}
-                                  onChange={field.onChange}
-                                  options={t.quote.carTypes}
-                                />
+                      {step === 1 && (
+                        <FormField
+                          control={form.control}
+                          name="serviceType"
+                          render={({ field }) => (
+                            <FormItem className="space-y-4">
+                              <FormLabel className={`${labelClass} block`}>
+                                {t.quote.form.serviceType}
+                              </FormLabel>
+                              <div className="grid gap-3 sm:grid-cols-3">
+                                {services?.map((service) => {
+                                  const isActive = field.value === service.id;
+                                  return (
+                                    <button
+                                      key={service.id}
+                                      type="button"
+                                      data-testid={`option-service-${service.id}`}
+                                      onClick={() => field.onChange(service.id)}
+                                      aria-pressed={isActive}
+                                      className={`group border p-4 sm:p-5 text-left transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary ${
+                                        isActive
+                                          ? 'border-primary/70 bg-primary/[0.08] shadow-[0_0_24px_rgba(201,165,83,0.12)]'
+                                          : 'border-white/10 bg-card/40 hover:border-primary/40'
+                                      }`}
+                                    >
+                                      <span className={`mb-3 block h-px w-8 transition-colors ${isActive ? 'bg-primary' : 'bg-white/15 group-hover:bg-primary/50'}`} />
+                                      <span className={`block text-sm sm:text-base font-light leading-snug ${isActive ? 'text-primary' : 'text-foreground'}`}>
+                                        {getLocalizedServiceName(service)}
+                                      </span>
+                                      <span className={`mt-3 block text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-primary/80' : 'text-foreground/40'}`}>
+                                        {t.services.priceFrom} CHF {service.priceFrom}
+                                      </span>
+                                    </button>
+                                  );
+                                })}
                               </div>
-                            </FormControl>
-                            <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  </div>
+                              <LocalizedFormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      )}
 
-                  {/* Message Group */}
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                      <span className="text-primary text-xs font-serif italic tracking-widest">03</span>
-                      <div className="h-px bg-white/5 flex-grow" />
-                    </div>
+                      {step === 2 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-7 gap-y-7">
+                          <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                              <FormItem className="space-y-3 relative group">
+                                <FormLabel className={labelClass}>{t.quote.form.name}</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    data-testid="input-name"
+                                    placeholder={t.quote.form.placeholders.name}
+                                    {...field}
+                                    className={inputClass}
+                                  />
+                                </FormControl>
+                                <LocalizedFormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem className="space-y-3 relative group">
+                                <FormLabel className={labelClass}>{t.quote.form.email}</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    data-testid="input-email"
+                                    type="email"
+                                    placeholder={t.quote.form.placeholders.email}
+                                    {...field}
+                                    className={inputClass}
+                                  />
+                                </FormControl>
+                                <LocalizedFormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem className="space-y-3 relative group">
+                                <FormLabel className={labelClass}>{t.quote.form.phone}</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    data-testid="input-phone"
+                                    type="tel"
+                                    placeholder={t.quote.form.placeholders.phone}
+                                    {...field}
+                                    className={inputClass}
+                                  />
+                                </FormControl>
+                                <LocalizedFormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="message"
+                            render={({ field }) => (
+                              <FormItem className="space-y-3 relative group sm:col-span-2">
+                                <FormLabel className={labelClass}>{t.quote.form.message}</FormLabel>
+                                <FormControl>
+                                  <Textarea
+                                    data-testid="input-message"
+                                    placeholder={t.quote.form.placeholders.message}
+                                    {...field}
+                                    className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-3 min-h-[72px] resize-none text-base font-light leading-relaxed text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none"
+                                  />
+                                </FormControl>
+                                <LocalizedFormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      )}
 
-                    <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-                      <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3 group">
-                          <FormLabel className="text-foreground/50 uppercase tracking-[0.2em] text-[10px] font-medium transition-colors group-focus-within:text-primary">
-                            {t.quote.form.message}
-                          </FormLabel>
-                          <FormControl>
-                            <Textarea
-                              data-testid="input-message"
-                              placeholder={t.quote.form.placeholders.message}
-                              {...field}
-                              className="bg-transparent border-0 border-b border-white/10 rounded-none px-0 py-3 min-h-[92px] resize-none text-base font-light leading-relaxed text-foreground placeholder:text-foreground/20 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary transition-colors shadow-none"
-                            />
-                          </FormControl>
-                          <FormMessage className="text-destructive text-xs" />
-                          </FormItem>
-                        )}
-                      />
+                      {step === 3 && (
+                        <div className="space-y-6">
+                          <p className="text-foreground/55 text-sm font-light leading-relaxed max-w-lg">
+                            {wizard.reviewHint}
+                          </p>
+                          <dl className="divide-y divide-white/10 border-y border-white/10">
+                            {[
+                              { label: wizard.canton, value: watchedCanton },
+                              { label: wizard.car, value: carTypeLabel },
+                              { label: wizard.package, value: selectedService ? getLocalizedServiceName(selectedService) : undefined },
+                              { label: wizard.contact, value: watchedName },
+                            ].map((row) => (
+                              <div key={row.label} className="flex items-center justify-between gap-4 py-3.5">
+                                <dt className="text-[10px] uppercase tracking-[0.2em] text-foreground/45">{row.label}</dt>
+                                <dd className={`text-sm font-light text-right ${row.value ? 'text-foreground' : 'text-foreground/35'}`}>
+                                  {row.value || wizard.notSelected}
+                                </dd>
+                              </div>
+                            ))}
+                          </dl>
+                          <button
+                            type="submit"
+                            data-testid="button-submit-quote"
+                            disabled={submitQuote.isPending}
+                            className="w-full btn-gold-luxury h-14 uppercase tracking-[0.17em] text-xs font-semibold text-background disabled:opacity-50 disabled:cursor-not-allowed px-8"
+                          >
+                            {submitQuote.isPending ? t.quote.form.submitting : t.quote.form.submit}
+                          </button>
+                        </div>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Nav */}
+                  <div className="mt-9 flex items-center justify-between gap-4">
+                    <button
+                      type="button"
+                      onClick={goBack}
+                      disabled={step === 0}
+                      className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-foreground/50 transition-colors hover:text-primary disabled:opacity-0 disabled:pointer-events-none"
+                    >
+                      <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+                      {wizard.back}
+                    </button>
+                    {step < 3 && (
                       <button
-                        type="submit"
-                        data-testid="button-submit-quote"
-                        disabled={submitQuote.isPending}
-                        className="w-full lg:w-auto lg:min-w-[230px] btn-gold-luxury h-14 uppercase tracking-[0.17em] text-xs font-semibold text-background disabled:opacity-50 disabled:cursor-not-allowed px-8"
+                        type="button"
+                        data-testid="button-wizard-next"
+                        onClick={goNext}
+                        className="btn-gold-luxury flex items-center gap-2.5 min-h-11 px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-background"
                       >
-                        {submitQuote.isPending ? t.quote.form.submitting : t.quote.form.submit}
+                        {wizard.next}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </button>
-                    </div>
+                    )}
                   </div>
+                </div>
 
-                </form>
-              </Form>
-            </motion.div>
-          </div>
+                {/* Live summary panel */}
+                <aside className="border-t border-white/10 bg-primary/[0.03] p-5 sm:p-7 lg:border-t-0 lg:p-8">
+                  <p className="mb-5 flex items-center gap-2 text-[9px] uppercase tracking-[0.24em] text-primary">
+                    {wizard.summaryTitle}
+                  </p>
+                  <dl className="space-y-4">
+                    <div>
+                      <dt className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.canton}</dt>
+                      <dd className={`text-sm font-light ${watchedCanton ? 'text-foreground' : 'text-foreground/30'}`}>
+                        {watchedCanton || wizard.notSelected}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.car}</dt>
+                      <dd className={`text-sm font-light ${carTypeLabel ? 'text-foreground' : 'text-foreground/30'}`}>
+                        {carTypeLabel || wizard.notSelected}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.package}</dt>
+                      <dd className={`text-sm font-light ${selectedService ? 'text-foreground' : 'text-foreground/30'}`}>
+                        {selectedService ? getLocalizedServiceName(selectedService) : wizard.notSelected}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <div className="mt-6 border-t border-primary/20 pt-5">
+                    <p className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1.5">{wizard.estimate}</p>
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={selectedService ? String(selectedService.priceFrom) : 'empty'}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.25 }}
+                        className={`font-serif text-3xl ${selectedService ? 'text-primary' : 'text-foreground/25'}`}
+                      >
+                        {selectedService ? `CHF ${selectedService.priceFrom}` : 'CHF -'}
+                      </motion.p>
+                    </AnimatePresence>
+                    <p className="mt-2 text-[10px] leading-relaxed text-foreground/35">{wizard.estimateNote}</p>
+                  </div>
+                </aside>
+              </div>
+            </form>
+          </Form>
         </div>
       </div>
     </section>
