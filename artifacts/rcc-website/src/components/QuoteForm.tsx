@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { useSubmitQuote, useListServices } from '@workspace/api-client-react';
 import { useForm } from 'react-hook-form';
@@ -105,6 +105,21 @@ export function QuoteForm() {
 
   const goBack = () => setStep((value) => Math.max(value - 1, 0));
 
+  // Guided flow: picking a value advances to the next step after a short beat
+  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scheduleAdvance = useCallback((fromStep: number) => {
+    if (advanceTimer.current) clearTimeout(advanceTimer.current);
+    advanceTimer.current = setTimeout(() => {
+      setStep((current) => (current === fromStep ? fromStep + 1 : current));
+    }, 350);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (advanceTimer.current) clearTimeout(advanceTimer.current);
+    };
+  }, []);
+
   const getLocalizedServiceName = (service: any) => {
     const key = `name${lang.toUpperCase()}` as keyof typeof service;
     return service[key];
@@ -114,6 +129,29 @@ export function QuoteForm() {
   const watchedCarType = form.watch('carType');
   const watchedServiceType = form.watch('serviceType');
   const watchedName = form.watch('name');
+
+  // Auto-advance only when the value actually changes while on the matching step,
+  // so back-navigation to a completed step never re-fires a forward jump
+  const prevCarType = useRef('');
+  const prevServiceType = useRef('');
+
+  useEffect(() => {
+    const changed = watchedCarType !== prevCarType.current;
+    prevCarType.current = watchedCarType;
+    if (!changed || step !== 0 || !watchedCarType) return;
+    const cantonValid = formSchema.shape.canton.safeParse(form.getValues('canton')).success;
+    if (cantonValid) {
+      scheduleAdvance(0);
+    } else {
+      document.querySelector<HTMLInputElement>('[data-testid="input-canton"]')?.focus();
+    }
+  }, [watchedCarType, step, form, scheduleAdvance]);
+
+  useEffect(() => {
+    const changed = watchedServiceType !== prevServiceType.current;
+    prevServiceType.current = watchedServiceType;
+    if (changed && step === 1 && watchedServiceType) scheduleAdvance(1);
+  }, [watchedServiceType, step, scheduleAdvance]);
 
   const selectedService = useMemo(
     () => services?.find((service) => service.id === watchedServiceType),
