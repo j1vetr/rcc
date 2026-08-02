@@ -1,1 +1,2 @@
 - [Swiss map rendering](swiss-map-rendering.md) — react-simple-maps reads only the first TopoJSON object; convert cantons with topojson-client feature() first.
+- [RCC VPS deployment](rcc-vps-deployment.md) — prod runs on user's own VPS via GitHub + rccup + root PM2 (26+ other apps); Node 20 so pnpm stays v10, API port 3883.
