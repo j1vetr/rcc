@@ -1,0 +1,54 @@
+{
+  "webglSupported": {
+    "ok": false
+  },
+  "desktopWebGL": {
+    "glErrorCount": 24,
+    "px20": {
+      "nonT": 0,
+      "bright": 0
+    },
+    "px60": {
+      "nonT": 0,
+      "bright": 0
+    },
+    "px100": {
+      "nonT": 0,
+      "bright": 0
+    },
+    "carAngleChanged": false,
+    "interiorCrossfade": {
+      "found": true,
+      "imgOpacity": "1",
+      "wrapperOpacity": "1",
+      "visible": false
+    }
+  },
+  "mobileCanvas": {
+    "canvasCount": 1,
+    "canvasDetails": [
+      {
+        "w": 0,
+        "h": 0,
+        "visible": false,
+        "displayNoneAncestor": true
+      }
+    ],
+    "anyCanvasVisible": false,
+    "fallbackVisible": true
+  },
+  "beforeAfterDesktop": {
+    "initial": "58",
+    "clipInitial": "inset(0px 42% 0px 0px)",
+    "midDrag": "58",
+    "clipMidDrag": "inset(0px 42% 0px 0px)",
+    "afterLeft": "58",
+    "afterRight": "80",
+    "keyboard": {
+      "focus": "80",
+      "afterLeft": "72",
+      "afterRight": "76"
+    },
+    "wipeMovedOnDrag": false
+  }
+}

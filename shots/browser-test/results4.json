@@ -1,0 +1,27 @@
+{
+  "desktopDrag": {
+    "initial": "58",
+    "clipInitial": "inset(0px 42% 0px 0px)",
+    "afterLeft": "58",
+    "clipAfterLeft": "inset(0px 42% 0px 0px)",
+    "midLeft": "58",
+    "afterRight": "78",
+    "clipAfterRight": "inset(0px 22.3113% 0px 0px)",
+    "keyboard": {
+      "focus": "78",
+      "afterLeft": "70",
+      "afterRight": "74",
+      "worked": true
+    },
+    "leftMoved": false,
+    "rightMoved": true,
+    "wipeChanged": false
+  },
+  "mobileDrag": {
+    "initial": "58",
+    "after": "23",
+    "moved": true,
+    "clipInitial": "inset(0px 42% 0px 0px)",
+    "clipAfter": "inset(0px 76.7514% 0px 0px)"
+  }
+}

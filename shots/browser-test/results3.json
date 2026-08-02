@@ -1,0 +1,72 @@
+{
+  "desktopCanvas": {
+    "present": true,
+    "cssW": 300,
+    "cssH": 150,
+    "bufW": 300,
+    "bufH": 150,
+    "inVisibleTree": true
+  },
+  "desktopErrors": {
+    "total": 10,
+    "nonBenign": []
+  },
+  "beforeAfter": {
+    "dragLeft": {
+      "from": "58",
+      "mid": "58",
+      "after": "58",
+      "clipFrom": "inset(0px 42% 0px 0px)",
+      "clipAfter": "inset(0px 42% 0px 0px)",
+      "moved": false
+    },
+    "dragRight": {
+      "from": "25",
+      "after": "25",
+      "moved": false
+    },
+    "keyboard": {
+      "focus": "80",
+      "afterLeft": "72",
+      "afterRight": "76",
+      "worked": true
+    }
+  },
+  "mobileBeforeAfter": {
+    "before": "58",
+    "after": "58",
+    "moved": false
+  },
+  "mobileFloating": {
+    "whatsappRect": {
+      "x": 318,
+      "y": 772,
+      "w": 56,
+      "h": 56
+    },
+    "fixedButtons": [
+      {
+        "label": "RCC Hilfe öffnen",
+        "x": 16,
+        "y": 772,
+        "w": 56,
+        "h": 56
+      },
+      {
+        "label": "WhatsApp",
+        "x": 318,
+        "y": 772,
+        "w": 56,
+        "h": 56
+      }
+    ],
+    "sliderRect": {
+      "x": 20,
+      "y": 414,
+      "w": 350,
+      "h": 219
+    },
+    "vw": 390,
+    "vh": 844
+  }
+}

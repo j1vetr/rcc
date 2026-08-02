@@ -1,0 +1,13 @@
+import { chromium } from 'playwright-core';
+import fs from 'node:fs';
+const EXEC='/nix/store/hvv3n9pvjfq0x8wjw8f3igsyvlaz1ngr-playwright-browsers-chromium/chromium-1091/chrome-linux/chrome';
+fs.writeFileSync('/tmp/pc.txt','start\n');
+const b=await chromium.launch({executablePath:EXEC,args:['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage']});
+fs.appendFileSync('/tmp/pc.txt','launched\n');
+const p=await b.newPage();
+await p.goto('data:text/html,<h1>hi</h1>');
+await p.screenshot({path:'/home/runner/workspace/shots/bataftest/_probe.png'});
+fs.appendFileSync('/tmp/pc.txt','shot\n');
+await b.close();
+fs.appendFileSync('/tmp/pc.txt','closed\n');
+process.exit(0);

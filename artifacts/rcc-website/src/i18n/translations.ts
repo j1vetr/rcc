@@ -32,6 +32,15 @@ export const translations = {
       instruction: 'Tippen Sie auf Ihren Kanton',
       confirm: 'Auswahl bestätigen',
     },
+    beforeAfter: {
+      eyebrow: 'Vorher / Nachher',
+      title: 'Der Unterschied ist sichtbar',
+      subtitle: 'Ziehen Sie den Regler und erleben Sie die RCC Verwandlung.',
+      instruction: 'Ziehen zum Vergleichen',
+      before: 'Vorher',
+      after: 'Nachher',
+      tabs: { exterior: 'Exterieur', interior: 'Interieur' },
+    },
     services: {
       title: 'Unsere Expertise',
       subtitle: 'Massgeschneiderte Pflegepakete für höchste Ansprüche.',
@@ -139,6 +148,15 @@ export const translations = {
       instruction: 'Touchez votre canton',
       confirm: 'Confirmer la sélection',
     },
+    beforeAfter: {
+      eyebrow: 'Avant / Après',
+      title: 'La différence est visible',
+      subtitle: 'Faites glisser le curseur et découvrez la transformation RCC.',
+      instruction: 'Glisser pour comparer',
+      before: 'Avant',
+      after: 'Après',
+      tabs: { exterior: 'Extérieur', interior: 'Intérieur' },
+    },
     services: {
       title: 'Notre Expertise',
       subtitle: 'Des forfaits sur mesure pour les exigences les plus élevées.',
@@ -245,6 +263,15 @@ export const translations = {
       selectAction: 'select',
       instruction: 'Tap your canton on the map',
       confirm: 'Confirm selection',
+    },
+    beforeAfter: {
+      eyebrow: 'Before / After',
+      title: 'The difference is visible',
+      subtitle: 'Drag the handle and experience the RCC transformation.',
+      instruction: 'Drag to compare',
+      before: 'Before',
+      after: 'After',
+      tabs: { exterior: 'Exterior', interior: 'Interior' },
     },
     services: {
       title: 'Our Expertise',

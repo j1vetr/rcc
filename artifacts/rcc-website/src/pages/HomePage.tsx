@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/i18n/LanguageContext';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 
 const HowItWorks = lazy(() => import('@/components/HowItWorks').then((module) => ({ default: module.HowItWorks })));
+const BeforeAfter = lazy(() => import('@/components/BeforeAfter').then((module) => ({ default: module.BeforeAfter })));
 const SwitzerlandMap = lazy(() => import('@/components/SwitzerlandMap').then((module) => ({ default: module.SwitzerlandMap })));
 const Services = lazy(() => import('@/components/Services').then((module) => ({ default: module.Services })));
 const WhyRcc = lazy(() => import('@/components/WhyRcc').then((module) => ({ default: module.WhyRcc })));
@@ -27,6 +28,9 @@ export default function HomePage() {
         <Navigation />
         <main>
           <Hero />
+          <Suspense fallback={<SectionFallback />}>
+            <BeforeAfter />
+          </Suspense>
           <Suspense fallback={<SectionFallback />}>
             <HowItWorks />
             <SwitzerlandMap onSelectCanton={handleSelectCanton} />
