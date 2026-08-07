@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { useLocation } from 'wouter';
 import { translations } from './translations';
 
 export type Language = 'de' | 'fr' | 'en';
@@ -13,23 +14,38 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>('de');
+  const [location] = useLocation();
 
   useEffect(() => {
+    const isServices = location.includes('/dienstleistungen');
+
     const seo = {
       de: {
         locale: 'de-CH',
-        title: 'Mobile Autopflege Zürich | RCC Royal Car Cleaning',
-        description: 'Premium mobile Autopflege und Fahrzeugaufbereitung in Zürich. RCC reinigt, pflegt und schützt Ihr Fahrzeug professionell direkt bei Ihnen vor Ort.',
+        title: isServices
+          ? 'Pflegeprogramme & Preise | RCC Royal Car Cleaning'
+          : 'Mobile Autopflege Zürich | RCC Royal Car Cleaning',
+        description: isServices
+          ? 'Übersicht unserer exklusiven Autopflege-Pakete. Wählen Sie Ihre Fahrzeuggrösse und finden Sie das passende Programm.'
+          : 'Premium mobile Autopflege und Fahrzeugaufbereitung in Zürich. RCC reinigt, pflegt und schützt Ihr Fahrzeug professionell direkt bei Ihnen vor Ort.',
       },
       fr: {
         locale: 'fr-CH',
-        title: 'Lavage Auto Mobile Zurich | RCC Royal Car Cleaning',
-        description: 'Nettoyage et detailing automobile premium à Zurich. RCC entretient et protège votre véhicule professionnellement, directement chez vous.',
+        title: isServices
+          ? 'Programmes de soin & Prix | RCC Royal Car Cleaning'
+          : 'Lavage Auto Mobile Zurich | RCC Royal Car Cleaning',
+        description: isServices
+          ? 'Aperçu de nos forfaits exclusifs d\'entretien automobile. Sélectionnez la taille de votre véhicule pour trouver le programme idéal.'
+          : 'Nettoyage et detailing automobile premium à Zurich. RCC entretient et protège votre véhicule professionnellement, directement chez vous.',
       },
       en: {
         locale: 'en-CH',
-        title: 'Mobile Car Detailing Zurich | RCC Royal Car Cleaning',
-        description: 'Premium mobile car cleaning and detailing in Zurich. RCC professionally cleans, details and protects your vehicle at your location.',
+        title: isServices
+          ? 'Care Programs & Pricing | RCC Royal Car Cleaning'
+          : 'Mobile Car Detailing Zurich | RCC Royal Car Cleaning',
+        description: isServices
+          ? 'Overview of our exclusive car care packages. Select your vehicle size and find the perfect detailing program.'
+          : 'Premium mobile car cleaning and detailing in Zurich. RCC professionally cleans, details and protects your vehicle at your location.',
       },
     }[lang];
 
@@ -40,7 +56,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo.description);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.description);
-  }, [lang]);
+  }, [lang, location]);
 
   const value = {
     lang,

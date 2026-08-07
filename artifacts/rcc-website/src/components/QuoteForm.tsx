@@ -68,8 +68,12 @@ export function QuoteForm() {
 
   useEffect(() => {
     const handleSelectService = (e: Event) => {
-      const customEvent = e as CustomEvent;
-      form.setValue('serviceType', customEvent.detail);
+      const customEvent = e as CustomEvent<{ serviceId?: string; carType?: string } | string>;
+      const selection = customEvent.detail;
+      form.setValue('serviceType', typeof selection === 'string' ? selection : selection.serviceId ?? '');
+      if (typeof selection !== 'string' && selection.carType) {
+        form.setValue('carType', selection.carType);
+      }
     };
 
     const handleSelectCanton = (e: Event) => {
@@ -83,6 +87,21 @@ export function QuoteForm() {
       window.removeEventListener('select-service', handleSelectService);
       window.removeEventListener('select-canton', handleSelectCanton);
     };
+  }, [form]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const serviceId = params.get('service');
+    const carType = params.get('car');
+    const validCarTypes = ['small', 'medium', 'large', 'xl'];
+
+    if (!serviceId && !validCarTypes.includes(carType ?? '')) return;
+
+    form.reset({
+      ...form.getValues(),
+      serviceType: serviceId ?? '',
+      carType: validCarTypes.includes(carType ?? '') ? carType! : '',
+    });
   }, [form]);
 
   const onSubmit = (data: FormValues) => {
@@ -157,6 +176,9 @@ export function QuoteForm() {
     () => services?.find((service) => service.id === watchedServiceType),
     [services, watchedServiceType],
   );
+  const selectedPrice = selectedService && watchedCarType
+    ? selectedService.prices[watchedCarType as keyof typeof selectedService.prices]
+    : undefined;
 
   const wizard = t.quote.wizard;
   const carTypeLabel = watchedCarType
@@ -358,7 +380,7 @@ export function QuoteForm() {
                               <FormLabel className={`${labelClass} block`}>
                                 {t.quote.form.serviceType}
                               </FormLabel>
-                              <div className="grid gap-3 sm:grid-cols-3">
+                              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                                 {services?.map((service) => {
                                   const isActive = field.value === service.id;
                                   return (
@@ -379,7 +401,9 @@ export function QuoteForm() {
                                         {getLocalizedServiceName(service)}
                                       </span>
                                       <span className={`mt-3 block text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-primary/80' : 'text-foreground/40'}`}>
-                                        {t.services.priceFrom} CHF {service.priceFrom}
+                                        {watchedCarType
+                                          ? `CHF ${service.prices[watchedCarType as keyof typeof service.prices]}`
+                                          : `${t.services.priceFrom} CHF ${service.prices.small}`}
                                       </span>
                                     </button>
                                   );
@@ -480,6 +504,7 @@ export function QuoteForm() {
                               { label: wizard.canton, value: watchedCanton },
                               { label: wizard.car, value: carTypeLabel },
                               { label: wizard.package, value: selectedService ? getLocalizedServiceName(selectedService) : undefined },
+                              { label: wizard.estimate, value: selectedPrice ? `CHF ${selectedPrice}` : undefined },
                               { label: wizard.contact, value: watchedName },
                             ].map((row) => (
                               <div key={row.label} className="flex items-center justify-between gap-4 py-3.5">
@@ -558,14 +583,14 @@ export function QuoteForm() {
                     <p className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1.5">{wizard.estimate}</p>
                     <AnimatePresence mode="wait">
                       <motion.p
-                        key={selectedService ? String(selectedService.priceFrom) : 'empty'}
+                        key={selectedPrice ? String(selectedPrice) : 'empty'}
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -6 }}
                         transition={{ duration: 0.25 }}
-                        className={`font-serif text-3xl ${selectedService ? 'text-primary' : 'text-foreground/25'}`}
+                        className={`font-serif text-3xl ${selectedPrice ? 'text-primary' : 'text-foreground/25'}`}
                       >
-                        {selectedService ? `CHF ${selectedService.priceFrom}` : 'CHF -'}
+                        {selectedPrice ? `CHF ${selectedPrice}` : 'CHF -'}
                       </motion.p>
                     </AnimatePresence>
                     <p className="mt-2 text-[10px] leading-relaxed text-foreground/35">{wizard.estimateNote}</p>

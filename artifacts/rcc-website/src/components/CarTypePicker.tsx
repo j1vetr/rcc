@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import carSmall from '@assets/optimized/car-small.webp';
 import carMedium from '@assets/optimized/car-medium.webp';
 import carSuv from '@assets/optimized/car-suv.webp';
-import carLimousine from '@assets/optimized/car-limousine.webp';
-import carSport from '@assets/optimized/car-sport.webp';
 import carVan from '@assets/optimized/car-van.webp';
 
 interface CarTypePickerProps {
@@ -16,15 +14,13 @@ interface CarTypePickerProps {
 const carImages: Record<string, string> = {
   small: carSmall,
   medium: carMedium,
-  suv: carSuv,
-  limousine: carLimousine,
-  sport: carSport,
-  van: carVan,
+  large: carSuv,
+  xl: carVan,
 };
 
 export function CarTypePicker({ value, onChange, options }: CarTypePickerProps) {
   return (
-    <div className="flex gap-2.5 overflow-x-auto snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_right,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,black_90%,transparent)] md:grid md:grid-cols-3 lg:grid-cols-6 md:overflow-visible md:pb-0 md:[mask-image:none] md:[-webkit-mask-image:none]">
+    <div className="flex gap-2.5 overflow-x-auto snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_right,black_90%,transparent)] [-webkit-mask-image:linear-gradient(to_right,black_90%,transparent)] md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:[mask-image:none] md:[-webkit-mask-image:none]">
       {Object.entries(options).map(([key, label]) => {
         const isSelected = value === key;
         const image = carImages[key] || carMedium;

@@ -38,18 +38,49 @@ export interface QuoteInput {
   message?: string;
 }
 
+export type ServiceCategory = typeof ServiceCategory[keyof typeof ServiceCategory];
+
+
+export const ServiceCategory = {
+  'inside-outside': 'inside-outside',
+  interior: 'interior',
+  exterior: 'exterior',
+} as const;
+
+export type ServiceLevel = typeof ServiceLevel[keyof typeof ServiceLevel];
+
+
+export const ServiceLevel = {
+  basic: 'basic',
+  premium: 'premium',
+} as const;
+
+export interface ServicePrices {
+  small: number;
+  medium: number;
+  large: number;
+  xl: number;
+}
+
+export type FeatureList = string[];
+
 export interface Service {
   id: string;
+  category: ServiceCategory;
+  level: ServiceLevel;
   nameDE: string;
   nameFR: string;
   nameEN: string;
   descriptionDE: string;
   descriptionFR: string;
   descriptionEN: string;
-  priceFrom: number;
-  duration: string;
-  features: string[];
-  popular?: boolean;
+  prices: ServicePrices;
+  exteriorFeaturesDE: FeatureList;
+  exteriorFeaturesFR: FeatureList;
+  exteriorFeaturesEN: FeatureList;
+  interiorFeaturesDE: FeatureList;
+  interiorFeaturesFR: FeatureList;
+  interiorFeaturesEN: FeatureList;
 }
 
 export interface ErrorResponse {

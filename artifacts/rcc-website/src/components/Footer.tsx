@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import logo from '@assets/optimized/rcc-logo.webp';
 import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { Link } from 'wouter';
 
 const CONTACT = {
   email: 'Info@royalcarcleaning.ch',
@@ -21,10 +22,15 @@ export function Footer() {
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           <div className="md:col-span-5">
-            <img src={logo} alt="RCC Mobile Autopflege Logo" width="900" height="360" loading="lazy" decoding="async" className="h-16 w-auto mb-6 opacity-90" />
-            <p className="text-foreground/40 max-w-md font-light leading-relaxed text-sm">
+            <Link href="/" className="inline-block hover:opacity-80 transition-opacity">
+              <img src={logo} alt="RCC Mobile Autopflege Logo" width="900" height="360" loading="lazy" decoding="async" className="h-16 w-auto mb-6 opacity-90" />
+            </Link>
+            <p className="text-foreground/40 max-w-md font-light leading-relaxed text-sm mb-6">
               {t.hero.subheadline}
             </p>
+            <Link href="/dienstleistungen" className="text-primary hover:text-[#ebcc7b] text-sm uppercase tracking-widest font-medium transition-colors">
+              {t.nav.services}
+            </Link>
           </div>
           
           <div className="md:col-span-4">

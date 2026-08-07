@@ -56,16 +56,26 @@ export const SubmitQuoteResponse = zod.object({
  */
 export const ListServicesResponseItem = zod.object({
   "id": zod.string(),
+  "category": zod.enum(['inside-outside', 'interior', 'exterior']),
+  "level": zod.enum(['basic', 'premium']),
   "nameDE": zod.string(),
   "nameFR": zod.string(),
   "nameEN": zod.string(),
   "descriptionDE": zod.string(),
   "descriptionFR": zod.string(),
   "descriptionEN": zod.string(),
-  "priceFrom": zod.number(),
-  "duration": zod.string(),
-  "features": zod.array(zod.string()),
-  "popular": zod.boolean().optional()
+  "prices": zod.object({
+  "small": zod.number(),
+  "medium": zod.number(),
+  "large": zod.number(),
+  "xl": zod.number()
+}),
+  "exteriorFeaturesDE": zod.array(zod.string()),
+  "exteriorFeaturesFR": zod.array(zod.string()),
+  "exteriorFeaturesEN": zod.array(zod.string()),
+  "interiorFeaturesDE": zod.array(zod.string()),
+  "interiorFeaturesFR": zod.array(zod.string()),
+  "interiorFeaturesEN": zod.array(zod.string())
 })
 export const ListServicesResponse = zod.array(ListServicesResponseItem)
 

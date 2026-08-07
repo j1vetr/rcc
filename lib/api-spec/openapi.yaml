@@ -130,10 +130,32 @@ components:
 
     Service:
       type: object
-      required: [id, nameDE, nameFR, nameEN, descriptionDE, descriptionFR, descriptionEN, priceFrom, duration, features]
+      required:
+        - id
+        - category
+        - level
+        - nameDE
+        - nameFR
+        - nameEN
+        - descriptionDE
+        - descriptionFR
+        - descriptionEN
+        - prices
+        - exteriorFeaturesDE
+        - exteriorFeaturesFR
+        - exteriorFeaturesEN
+        - interiorFeaturesDE
+        - interiorFeaturesFR
+        - interiorFeaturesEN
       properties:
         id:
           type: string
+        category:
+          type: string
+          enum: [inside-outside, interior, exterior]
+        level:
+          type: string
+          enum: [basic, premium]
         nameDE:
           type: string
         nameFR:
@@ -146,16 +168,38 @@ components:
           type: string
         descriptionEN:
           type: string
-        priceFrom:
+        prices:
+          $ref: "#/components/schemas/ServicePrices"
+        exteriorFeaturesDE:
+          $ref: "#/components/schemas/FeatureList"
+        exteriorFeaturesFR:
+          $ref: "#/components/schemas/FeatureList"
+        exteriorFeaturesEN:
+          $ref: "#/components/schemas/FeatureList"
+        interiorFeaturesDE:
+          $ref: "#/components/schemas/FeatureList"
+        interiorFeaturesFR:
+          $ref: "#/components/schemas/FeatureList"
+        interiorFeaturesEN:
+          $ref: "#/components/schemas/FeatureList"
+
+    ServicePrices:
+      type: object
+      required: [small, medium, large, xl]
+      properties:
+        small:
           type: number
-        duration:
-          type: string
-        features:
-          type: array
-          items:
-            type: string
-        popular:
-          type: boolean
+        medium:
+          type: number
+        large:
+          type: number
+        xl:
+          type: number
+
+    FeatureList:
+      type: array
+      items:
+        type: string
 
     ErrorResponse:
       type: object

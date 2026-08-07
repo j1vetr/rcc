@@ -7,7 +7,11 @@
  */
 
 export * from './errorResponse';
+export * from './featureList';
 export * from './healthStatus';
 export * from './quote';
 export * from './quoteInput';
 export * from './service';
+export * from './serviceCategory';
+export * from './serviceLevel';
+export * from './servicePrices';

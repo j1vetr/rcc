@@ -47,7 +47,7 @@ A multi-section marketing + lead generation site for RCC Mobile Autopflege:
 1. Hero with large RCC logo and CTA
 2. How it works (3-step process)
 3. Interactive Switzerland canton map for location selection
-4. Services section (3 packages: Basic, Premium, Elite)
+4. Compact services introduction that links to the detailed care-programs page
 5. Quote request form (submits to backend, pre-filled from map/services)
 6. Testimonials
 7. Value proposition grid

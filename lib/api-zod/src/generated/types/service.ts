@@ -5,17 +5,26 @@
  * RCC Mobile Autopflege API
  * OpenAPI spec version: 0.1.0
  */
+import type { FeatureList } from './featureList';
+import type { ServiceCategory } from './serviceCategory';
+import type { ServiceLevel } from './serviceLevel';
+import type { ServicePrices } from './servicePrices';
 
 export interface Service {
   id: string;
+  category: ServiceCategory;
+  level: ServiceLevel;
   nameDE: string;
   nameFR: string;
   nameEN: string;
   descriptionDE: string;
   descriptionFR: string;
   descriptionEN: string;
-  priceFrom: number;
-  duration: string;
-  features: string[];
-  popular?: boolean;
+  prices: ServicePrices;
+  exteriorFeaturesDE: FeatureList;
+  exteriorFeaturesFR: FeatureList;
+  exteriorFeaturesEN: FeatureList;
+  interiorFeaturesDE: FeatureList;
+  interiorFeaturesFR: FeatureList;
+  interiorFeaturesEN: FeatureList;
 }

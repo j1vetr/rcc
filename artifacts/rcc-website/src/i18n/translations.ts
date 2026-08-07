@@ -55,6 +55,44 @@ export const translations = {
       included: 'Enthaltene Behandlung',
       bookNow: 'Auswählen',
     },
+    servicesPage: {
+      eyebrow: 'RCC Pflegeprogramme',
+      title: 'Pflegeprogramme',
+      subtitle: 'Wählen Sie Ihre Fahrzeuggrösse für präzise Preise',
+      categories: {
+        'inside-outside': 'Komplett',
+        interior: 'Interieur',
+        exterior: 'Exterieur',
+      },
+      levels: {
+        basic: 'Basic',
+        premium: 'Premium',
+      },
+      sizes: {
+        small: 'S Klein',
+        medium: 'M Mittel',
+        large: 'L Gross',
+        xl: 'XL Extra',
+      },
+      sizeExamples: {
+        small: 'Smart, Mini, Fiat 500',
+        medium: 'VW Golf, Passat, Ford Focus',
+        large: 'Jeder SUV',
+        xl: '7-Sitzer, Van, Nutzfahrzeug',
+      },
+      from: 'Ab',
+      price: 'CHF',
+      features: {
+        interior: 'Interieur',
+        exterior: 'Exterieur',
+      },
+      request: 'Offerte anfragen',
+      teaser: {
+        title: 'Unsere Pakete',
+        text: 'Von der schonenden Handwäsche bis zur kompletten Aufbereitung.',
+        viewAll: 'Alle Programme ansehen',
+      }
+    },
     quote: {
       title: 'Kostenlose Offerte anfragen',
       subtitle: 'Geben Sie Ihre Details ein. Wir melden uns umgehend bei Ihnen.',
@@ -80,12 +118,10 @@ export const translations = {
         successDesc: 'Wir haben Ihre Anfrage erhalten und werden uns in Kürze mit Ihnen in Verbindung setzen.',
       },
       carTypes: {
-        small: 'Kleinwagen',
-        medium: 'Mittelklasse',
-        suv: 'SUV / Kombi',
-        limousine: 'Limousine',
-        sport: 'Sportwagen',
-        van: 'Van / Transporter',
+        small: 'S Klein',
+        medium: 'M Mittel',
+        large: 'L Gross',
+        xl: 'XL Extra gross',
       },
       wizard: {
         steps: ['Fahrzeug', 'Paket', 'Details', 'Übersicht'],
@@ -98,8 +134,8 @@ export const translations = {
         package: 'Paket',
         contact: 'Kontakt',
         notSelected: 'Noch offen',
-        estimate: 'Geschätzt ab',
-        estimateNote: 'Endpreis je nach Fahrzeugzustand',
+        estimate: 'Ihr Preis',
+        estimateNote: 'Fester Paketpreis für Ihre Fahrzeugklasse',
         reviewHint: 'Prüfen Sie Ihre Angaben und senden Sie die Anfrage ab.',
       },
       validation: {
@@ -197,6 +233,44 @@ export const translations = {
       included: 'Prestation incluse',
       bookNow: 'Sélectionner',
     },
+    servicesPage: {
+      eyebrow: 'Programmes de soin RCC',
+      title: 'Programmes de soin',
+      subtitle: 'Sélectionnez la taille de votre véhicule pour des prix précis',
+      categories: {
+        'inside-outside': 'Complet',
+        interior: 'Intérieur',
+        exterior: 'Extérieur',
+      },
+      levels: {
+        basic: 'Basic',
+        premium: 'Premium',
+      },
+      sizes: {
+        small: 'S Petite',
+        medium: 'M Moyenne',
+        large: 'L Grande',
+        xl: 'XL Extra',
+      },
+      sizeExamples: {
+        small: 'Smart, Mini, Fiat 500',
+        medium: 'VW Golf, Passat, Ford Focus',
+        large: 'Tous les SUV',
+        xl: '7 places, van, utilitaire',
+      },
+      from: 'Dès',
+      price: 'CHF',
+      features: {
+        interior: 'Intérieur',
+        exterior: 'Extérieur',
+      },
+      request: 'Demander un devis',
+      teaser: {
+        title: 'Nos Forfaits',
+        text: 'Du lavage à la main délicat à la préparation complète.',
+        viewAll: 'Voir tous les programmes',
+      }
+    },
     quote: {
       title: 'Demander un devis gratuit',
       subtitle: 'Entrez vos coordonnées. Nous vous contacterons rapidement.',
@@ -222,12 +296,10 @@ export const translations = {
         successDesc: 'Nous avons bien reçu votre demande et vous contacterons sous peu.',
       },
       carTypes: {
-        small: 'Citadine',
-        medium: 'Berline compacte',
-        suv: 'SUV / Break',
-        limousine: 'Limousine',
-        sport: 'Voiture de sport',
-        van: 'Van / Utilitaire',
+        small: 'S Petite',
+        medium: 'M Moyenne',
+        large: 'L Grande',
+        xl: 'XL Extra grande',
       },
       wizard: {
         steps: ['Véhicule', 'Forfait', 'Détails', 'Aperçu'],
@@ -240,8 +312,8 @@ export const translations = {
         package: 'Forfait',
         contact: 'Contact',
         notSelected: 'Pas encore choisi',
-        estimate: 'Estimé dès',
-        estimateNote: 'Prix final selon l’état du véhicule',
+        estimate: 'Votre prix',
+        estimateNote: 'Prix net du forfait pour votre catégorie de véhicule',
         reviewHint: 'Vérifiez vos informations et envoyez la demande.',
       },
       validation: {
@@ -339,6 +411,44 @@ export const translations = {
       included: 'Included treatment',
       bookNow: 'Select',
     },
+    servicesPage: {
+      eyebrow: 'RCC Care Programs',
+      title: 'Care Programs',
+      subtitle: 'Select your vehicle size for accurate pricing',
+      categories: {
+        'inside-outside': 'Complete',
+        interior: 'Interior',
+        exterior: 'Exterior',
+      },
+      levels: {
+        basic: 'Basic',
+        premium: 'Premium',
+      },
+      sizes: {
+        small: 'S Small',
+        medium: 'M Medium',
+        large: 'L Large',
+        xl: 'XL Extra',
+      },
+      sizeExamples: {
+        small: 'Smart, Mini, Fiat 500',
+        medium: 'VW Golf, Passat, Ford Focus',
+        large: 'Any SUV',
+        xl: '7-seater, van, commercial vehicle',
+      },
+      from: 'From',
+      price: 'CHF',
+      features: {
+        interior: 'Interior',
+        exterior: 'Exterior',
+      },
+      request: 'Request quote',
+      teaser: {
+        title: 'Our Packages',
+        text: 'From gentle hand wash to complete detailing.',
+        viewAll: 'View all programs',
+      }
+    },
     quote: {
       title: 'Request a free quote',
       subtitle: 'Enter your details. We will contact you promptly.',
@@ -364,12 +474,10 @@ export const translations = {
         successDesc: 'We have received your request and will contact you shortly.',
       },
       carTypes: {
-        small: 'Small Car',
-        medium: 'Mid-size',
-        suv: 'SUV / Estate',
-        limousine: 'Limousine',
-        sport: 'Sports Car',
-        van: 'Van / Transporter',
+        small: 'S Small',
+        medium: 'M Medium',
+        large: 'L Large',
+        xl: 'XL Extra large',
       },
       wizard: {
         steps: ['Vehicle', 'Package', 'Details', 'Review'],
@@ -382,8 +490,8 @@ export const translations = {
         package: 'Package',
         contact: 'Contact',
         notSelected: 'Not selected yet',
-        estimate: 'Estimated from',
-        estimateNote: 'Final price depends on vehicle condition',
+        estimate: 'Your price',
+        estimateNote: 'Net package price for your vehicle class',
         reviewHint: 'Review your details and send the request.',
       },
       validation: {

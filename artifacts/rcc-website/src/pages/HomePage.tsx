@@ -1,7 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
-import { LanguageProvider } from '@/i18n/LanguageContext';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 
 const HowItWorks = lazy(() => import('@/components/HowItWorks').then((module) => ({ default: module.HowItWorks })));
@@ -17,33 +16,64 @@ function SectionFallback() {
 }
 
 export default function HomePage() {
+  useEffect(() => {
+    if (window.location.hash !== '#quote') return;
+
+    // QuoteForm is lazy-loaded and upstream sections may still change height.
+    // Keep aligning the quote section briefly after it appears so the target
+    // remains visible once the lazy content finishes laying out.
+    let attempts = 0;
+    const MAX = 50;
+    let settledScrolls = 0;
+
+    const tryScroll = () => {
+      const el = document.getElementById('quote');
+      if (el) {
+        const navOffset = 96;
+        window.scrollTo({
+          top: Math.max(0, window.scrollY + el.getBoundingClientRect().top - navOffset),
+          behavior: settledScrolls === 0 ? 'smooth' : 'auto',
+        });
+        settledScrolls += 1;
+        if (settledScrolls < 8) {
+          timerId = window.setTimeout(tryScroll, 200);
+        }
+        return;
+      }
+      if (++attempts < MAX) {
+        timerId = window.setTimeout(tryScroll, 100);
+      }
+    };
+
+    let timerId = window.setTimeout(tryScroll, 100);
+    return () => window.clearTimeout(timerId);
+  }, []);
+
   const handleSelectCanton = (id: string) => {
     const event = new CustomEvent('select-canton', { detail: id });
     window.dispatchEvent(event);
   };
 
   return (
-    <LanguageProvider>
-      <div className="bg-background min-h-screen text-foreground selection:bg-primary/30 selection:text-foreground">
-        <Navigation />
-        <main>
-          <Hero />
-          <Suspense fallback={<SectionFallback />}>
-            <BeforeAfter />
-          </Suspense>
-          <Suspense fallback={<SectionFallback />}>
-            <HowItWorks />
-            <SwitzerlandMap onSelectCanton={handleSelectCanton} />
-            <Services />
-            <WhyRcc />
-            <QuoteForm />
-          </Suspense>
-        </main>
-        <Suspense fallback={null}>
-          <Footer />
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary/30 selection:text-foreground">
+      <Navigation />
+      <main>
+        <Hero />
+        <Suspense fallback={<SectionFallback />}>
+          <BeforeAfter />
         </Suspense>
-        <FloatingAssistant />
-      </div>
-    </LanguageProvider>
+        <Suspense fallback={<SectionFallback />}>
+          <HowItWorks />
+          <SwitzerlandMap onSelectCanton={handleSelectCanton} />
+          <Services />
+          <WhyRcc />
+          <QuoteForm />
+        </Suspense>
+      </main>
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
+      <FloatingAssistant />
+    </div>
   );
 }
