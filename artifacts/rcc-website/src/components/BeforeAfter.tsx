@@ -1,5 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Armchair, CarFront, MoveHorizontal } from 'lucide-react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import exteriorDirtyImg from '@assets/optimized/beforeafter-exterior-dirty.webp';
@@ -17,9 +17,20 @@ const MODE_IMAGES: Record<CompareMode, { dirty: string; clean: string }> = {
 export function BeforeAfter() {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const activePointerId = useRef<number | null>(null);
+  const hasNudged = useRef(false);
   const [position, setPosition] = useState(58);
   const [mode, setMode] = useState<CompareMode>('exterior');
+  const inView = useInView(sectionRef, { once: true, margin: '-12% 0px' });
+
+  useEffect(() => {
+    if (!inView || hasNudged.current) return;
+    hasNudged.current = true;
+    const t1 = window.setTimeout(() => setPosition(26), 500);
+    const t2 = window.setTimeout(() => setPosition(58), 1300);
+    return () => { window.clearTimeout(t1); window.clearTimeout(t2); };
+  }, [inView]);
 
   const updateFromClientX = useCallback((clientX: number) => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -76,7 +87,7 @@ export function BeforeAfter() {
   const images = MODE_IMAGES[mode];
 
   return (
-    <section className="bg-background py-16 md:py-20 section-border relative overflow-hidden">
+    <section ref={sectionRef} className="bg-background py-16 md:py-20 section-border relative overflow-hidden">
       <div className="container mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
         <motion.div
           className="text-center mb-8 md:mb-10"

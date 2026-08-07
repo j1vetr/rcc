@@ -12,18 +12,19 @@ const images = [imgMobile, imgTools, imgPrivate, imgEco];
 export function WhyRcc() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const activePoint = t.why.points[activeIndex];
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (reduceMotion) return;
+    if (reduceMotion || isHovered) return;
 
     const interval = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % images.length);
     }, 3600);
 
     return () => window.clearInterval(interval);
-  }, [reduceMotion]);
+  }, [reduceMotion, isHovered]);
 
   return (
     <section className="relative overflow-hidden bg-[#070707] py-16 md:py-20">
@@ -87,7 +88,11 @@ export function WhyRcc() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 border-t border-white/10 lg:grid-cols-1 lg:border-l lg:border-t-0">
+          <div
+            className="grid grid-cols-2 border-t border-white/10 lg:grid-cols-1 lg:border-l lg:border-t-0"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             {t.why.points.map((point, index) => {
               const isActive = activeIndex === index;
               return (
@@ -97,10 +102,20 @@ export function WhyRcc() {
                   data-testid={`button-why-${index}`}
                   onClick={() => setActiveIndex(index)}
                   onMouseEnter={() => setActiveIndex(index)}
-                  className={`group relative min-h-32 border-b border-r border-white/10 p-4 text-left transition-colors last:border-b-0 even:border-r-0 sm:min-h-36 sm:p-6 lg:border-r-0 lg:even:border-r-0 ${
+                  className={`group relative min-h-32 overflow-hidden border-b border-r border-white/10 p-4 text-left transition-colors last:border-b-0 even:border-r-0 sm:min-h-36 sm:p-6 lg:border-r-0 lg:even:border-r-0 ${
                     isActive ? 'bg-primary text-background' : 'bg-[#0b0b0b] text-foreground hover:bg-white/[0.045]'
                   }`}
                 >
+                  {/* Gold progress bar filling over the rotation interval */}
+                  {isActive && !reduceMotion && (
+                    <motion.span
+                      key={`progress-${activeIndex}`}
+                      className="absolute bottom-0 left-0 h-[2px] bg-background/40"
+                      initial={{ width: '0%' }}
+                      animate={{ width: '100%' }}
+                      transition={{ duration: 3.6, ease: 'linear' }}
+                    />
+                  )}
                   <div className="flex h-full flex-col justify-between gap-5">
                     <div className="flex items-start justify-between gap-2">
                       <span className="font-mono text-[9px] opacity-55">0{index + 1}</span>

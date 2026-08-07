@@ -86,16 +86,24 @@ export function Services() {
                 {t.servicesPage.teaser.loading}
               </div>
             ) : (
-              featuredPackages.map((service) => {
+              featuredPackages.map((service, index) => {
                 const category = service.category as (typeof CATEGORY_ORDER)[number];
                 const fromPrice = Math.min(...Object.values(service.prices));
 
                 return (
-                  <Link
+                  <motion.div
                     key={service.id}
-                    href={`/dienstleistungen#${category}`}
-                    className="group grid grid-cols-[1fr_auto] items-center gap-4 px-5 py-5 transition-colors hover:bg-white/[0.025] focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary sm:gap-6 sm:px-8 sm:py-7"
+                    initial={{ opacity: 0, x: -18 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.11 }}
                   >
+                  <Link
+                    href={`/dienstleistungen#${category}`}
+                    className="group relative grid grid-cols-[1fr_auto] items-center gap-4 overflow-hidden px-5 py-5 transition-colors hover:bg-white/[0.025] focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary sm:gap-6 sm:px-8 sm:py-7"
+                  >
+                    {/* Gold sweep border on hover */}
+                    <span className="absolute bottom-0 left-0 h-px w-0 bg-primary/55 transition-all duration-500 group-hover:w-full" />
                     <div>
                       <span className="mb-1 block text-[9px] uppercase tracking-[0.18em] text-foreground/40">
                         {t.servicesPage.categories[category]}
@@ -118,6 +126,7 @@ export function Services() {
                       <span className="ml-1 text-[10px] text-primary/70">{t.servicesPage.price}</span>
                     </div>
                   </Link>
+                  </motion.div>
                 );
               })
             )}

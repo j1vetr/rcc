@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { motion, useReducedMotion } from 'framer-motion';
 
@@ -6,15 +6,21 @@ export function HowItWorks() {
   const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
   const reduceMotion = useReducedMotion();
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Scroll-linked: each step activates when it crosses the reading line
   useEffect(() => {
     if (reduceMotion) return;
-
-    const interval = window.setInterval(() => {
-      setActiveStep((current) => (current + 1) % t.howItWorks.steps.length);
-    }, 1800);
-
-    return () => window.clearInterval(interval);
+    const observers = stepRefs.current.map((el, index) => {
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveStep(index); },
+        { threshold: 0.55 },
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach((obs) => obs?.disconnect());
   }, [reduceMotion, t.howItWorks.steps.length]);
 
   return (
@@ -47,6 +53,7 @@ export function HowItWorks() {
               return (
               <motion.div 
                 key={index}
+                ref={(el) => { stepRefs.current[index] = el; }}
                 initial={{ opacity: 0, x: 25 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-80px" }}

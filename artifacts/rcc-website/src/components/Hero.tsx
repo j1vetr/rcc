@@ -13,6 +13,7 @@ export function Hero() {
     offset: ['start start', 'end start'],
   });
   const opacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.07]);
 
   const scrollToQuote = () => {
     document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
@@ -25,7 +26,7 @@ export function Hero() {
 
   return (
       <section ref={ref} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 hero-video-stage" aria-hidden="true">
+        <motion.div className="absolute inset-0 hero-video-stage" style={{ scale: videoScale }} aria-hidden="true">
           <iframe
             className="hero-video hero-video-desktop pointer-events-none"
             src="https://www.youtube-nocookie.com/embed/RQ1YwgMtaGo?start=280&autoplay=1&mute=1&loop=1&playlist=RQ1YwgMtaGo&controls=0&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1"
@@ -44,7 +45,7 @@ export function Hero() {
           <div className="youtube-chrome-mask youtube-chrome-mask-bottom" />
           <div className="absolute inset-0 bg-black/35" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,4,.2)_0%,rgba(4,4,4,.08)_32%,rgba(4,4,4,.82)_100%)] md:bg-[linear-gradient(90deg,rgba(4,4,4,.74)_0%,rgba(4,4,4,.18)_58%,rgba(4,4,4,.38)_100%)]" />
-        </div>
+        </motion.div>
 
         <motion.div
           className="container relative z-10 mx-auto flex min-h-[100svh] items-center justify-center px-5 py-20 sm:px-6 md:justify-start md:py-28 lg:px-12"

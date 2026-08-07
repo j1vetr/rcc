@@ -170,6 +170,7 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
     () => CANTON_CODES[Math.floor(Math.random() * CANTON_CODES.length)],
   );
   const [hoveredCanton, setHoveredCanton] = useState<number | null>(null);
+  const [flashingCanton, setFlashingCanton] = useState<string | null>(null);
   const [glowingCanton, setGlowingCanton] = useState<number>(GLOW_SEQUENCE[0]);
   const glowIndex = useRef(0);
   const initialSelectionDispatched = useRef(false);
@@ -216,6 +217,8 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
 
     setSelected(canton.code);
     onSelectCanton(canton.code);
+    setFlashingCanton(canton.code);
+    window.setTimeout(() => setFlashingCanton(null), 700);
   };
 
   const selectByCode = (code: string) => {
@@ -299,6 +302,7 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
                       const isSelected = selected === canton.code;
                       const isHovered = hoveredCanton === cantonId;
                       const isGlowing = glowingCanton === cantonId && !isSelected;
+                      const isFlashing = flashingCanton === canton.code;
 
                       return (
                         <Geography
@@ -320,13 +324,17 @@ export function SwitzerlandMap({ onSelectCanton }: { onSelectCanton: (id: string
                           data-testid={`button-canton-${canton.code}`}
                           style={{
                             default: {
-                              fill: isSelected ? 'hsl(43, 74%, 49%)' : isGlowing ? 'hsla(43, 74%, 49%, 0.3)' : 'hsl(0, 0%, 6%)',
-                              stroke: isSelected || isGlowing ? 'hsl(43, 74%, 49%)' : 'hsl(43, 74%, 49%, 0.3)',
+                              fill: isFlashing ? 'hsl(43, 90%, 72%)' : isSelected ? 'hsl(43, 74%, 49%)' : isGlowing ? 'hsla(43, 74%, 49%, 0.3)' : 'hsl(0, 0%, 6%)',
+                              stroke: isSelected || isGlowing || isFlashing ? 'hsl(43, 74%, 49%)' : 'hsl(43, 74%, 49%, 0.3)',
                               strokeWidth: isSelected ? 1.2 : isGlowing ? 1 : 0.5,
                               outline: 'none',
-                              transition: 'fill 0.45s ease, stroke 0.45s ease, filter 0.45s ease',
+                              transition: 'fill 0.3s ease, stroke 0.3s ease, filter 0.3s ease',
                               cursor: 'pointer',
-                              filter: isGlowing ? 'drop-shadow(0 0 7px rgba(201, 165, 83, 0.7))' : 'none',
+                              filter: isFlashing
+                                ? 'drop-shadow(0 0 18px rgba(201, 165, 83, 1)) brightness(1.4)'
+                                : isGlowing
+                                ? 'drop-shadow(0 0 7px rgba(201, 165, 83, 0.7))'
+                                : 'none',
                             },
                             hover: {
                               fill: isSelected ? 'hsl(43, 74%, 49%)' : 'hsl(43, 74%, 49%, 0.15)',

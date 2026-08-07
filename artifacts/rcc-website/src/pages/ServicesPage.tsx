@@ -41,6 +41,8 @@ export default function ServicesPage() {
   const [selectedSize, setSelectedSize] = useState<SizeKey | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryKey | null>(null);
   const [expandedPackages, setExpandedPackages] = useState<Record<string, boolean>>({});
+  const [hasChosenCategory, setHasChosenCategory] = useState(false);
+  const [showcasedCategory, setShowcasedCategory] = useState<CategoryKey>('inside-outside');
   const sizePickerRef = useRef<HTMLElement | null>(null);
   const categoryRefs = useRef<Record<CategoryKey, HTMLElement | null>>({
     'inside-outside': null,
@@ -95,12 +97,26 @@ export default function ServicesPage() {
   };
 
   const selectCategory = (category: CategoryKey) => {
+    setHasChosenCategory(true);
     setActiveCategory(category);
     sizePickerRef.current?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
   };
+
+  useEffect(() => {
+    if (hasChosenCategory) return;
+
+    const intervalId = window.setInterval(() => {
+      setShowcasedCategory((currentCategory) => {
+        const currentIndex = CATEGORY_ORDER.indexOf(currentCategory);
+        return CATEGORY_ORDER[(currentIndex + 1) % CATEGORY_ORDER.length];
+      });
+    }, 2600);
+
+    return () => window.clearInterval(intervalId);
+  }, [hasChosenCategory]);
 
   const selectSize = (size: SizeKey) => {
     setSelectedSize(size);
@@ -122,10 +138,14 @@ export default function ServicesPage() {
   };
 
   useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
     const scrollToHashCategory = () => {
       const hash = window.location.hash.replace('#', '') as CategoryKey;
       if (CATEGORY_ORDER.includes(hash)) {
-        window.setTimeout(() => selectCategory(hash), 80);
+        setHasChosenCategory(true);
+        setActiveCategory(hash);
       }
     };
 
@@ -221,14 +241,16 @@ export default function ServicesPage() {
                 <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#090909] to-transparent sm:hidden" />
                 <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
                 {CATEGORY_ORDER.map((category) => {
-                  const isActive = activeCategory === category;
+                  const isSelected = activeCategory === category;
+                  const isShowcased = !hasChosenCategory && showcasedCategory === category;
+                  const isHighlighted = isSelected || isShowcased;
                   return (
                     <button
                       key={category}
                       type="button"
                       onClick={() => selectCategory(category)}
                       className={`group relative min-w-[82vw] snap-start overflow-hidden border p-5 text-left transition-all duration-300 sm:min-w-0 ${
-                        isActive
+                        isHighlighted
                           ? 'border-primary bg-primary/[0.08]'
                           : 'border-white/10 bg-black/30 hover:border-primary/50 hover:bg-white/[0.025]'
                       }`}
@@ -236,22 +258,22 @@ export default function ServicesPage() {
                       <img
                         src={CATEGORY_IMAGES[category]}
                         alt=""
-                        className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ${isActive ? 'scale-110 opacity-30' : 'scale-100 opacity-[0.12] grayscale group-hover:scale-105 group-hover:opacity-25'}`}
+                        className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${isHighlighted ? 'scale-110 opacity-30 grayscale-0' : 'scale-100 opacity-[0.12] grayscale group-hover:scale-105 group-hover:opacity-25 group-hover:grayscale-0'}`}
                         style={{ objectPosition: category === 'interior' ? 'center 65%' : category === 'exterior' ? 'center center' : 'center center' }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/55 to-[#070707]/10" />
                       <div className="relative flex min-h-[9.5rem] flex-col justify-end">
-                        <span className={`mb-6 block font-serif text-5xl leading-none transition-colors ${isActive ? 'text-primary' : 'text-foreground/30 group-hover:text-primary/70'}`}>
+                         <span className={`mb-6 block font-serif text-5xl leading-none transition-colors duration-500 ${isHighlighted ? 'text-primary' : 'text-foreground/30 group-hover:text-primary/70'}`}>
                           {t.servicesPage.categoryPicker.marks[category]}
                         </span>
-                        <span className={`block text-sm font-semibold uppercase tracking-[0.06em] transition-colors ${isActive ? 'text-primary' : 'text-foreground'}`}>
+                         <span className={`block text-sm font-semibold uppercase tracking-[0.06em] transition-colors duration-500 ${isHighlighted ? 'text-primary' : 'text-foreground'}`}>
                           {t.servicesPage.categories[category]}
                         </span>
                         <span className="mt-2 block text-[10px] leading-relaxed text-foreground/60">
                           {t.servicesPage.categoryPicker.descriptions[category]}
                         </span>
                       </div>
-                      <span className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                       <span className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isHighlighted ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                     </button>
                   );
                 })}
