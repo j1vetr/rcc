@@ -2,6 +2,7 @@ export const translations = {
   de: {
     nav: {
       services: 'Dienstleistungen',
+      packages: 'Pakete',
       howItWorks: 'Ablauf',
       locations: 'Standorte',
       quote: 'Offerte',
@@ -87,10 +88,53 @@ export const translations = {
         exterior: 'Exterieur',
       },
       request: 'Offerte anfragen',
+      categoryPicker: {
+        eyebrow: 'Pflege nach Bedarf',
+        title: 'Wählen Sie Ihren Fokus',
+        text: 'Starten Sie mit dem Bereich, der für Ihr Fahrzeug jetzt zählt.',
+        marks: {
+          'inside-outside': 'I + A',
+          interior: 'I',
+          exterior: 'A',
+        },
+        descriptions: {
+          'inside-outside': 'Innen und aussen perfekt gepflegt',
+          interior: 'Ein sauberes, gepflegtes Interieur',
+          exterior: 'Glanz und Schutz für den Aussenbereich',
+        },
+        swipeHint: 'Für weitere Bereiche wischen',
+      },
+      steps: {
+        category: 'Bereich wählen',
+        vehicle: 'Fahrzeug wählen',
+        package: 'Paket wählen',
+      },
+      vehiclePicker: {
+        eyebrow: 'Ihr Fahrzeug',
+        title: 'Wählen Sie Ihre Fahrzeuggrösse',
+        help: 'Die Fahrzeuggrösse bestimmt den genauen Paketpreis.',
+        selectedHelp: 'Wählen Sie die Grösse. Danach zeigen wir Ihre passenden Pakete mit dem exakten Preis.',
+      },
+      packagePicker: {
+        ready: 'Ihre Preise sind bereit',
+        selectVehicle: 'Fahrzeuggrösse wählen',
+      },
+      packageCard: {
+        recommended: 'Unsere Empfehlung',
+        steps: 'Schritte',
+        forVehicle: 'Für',
+        included: 'Inklusive',
+        priceLabel: 'Ihr Preis',
+        showDetails: 'Alle Leistungen ansehen',
+        hideDetails: 'Leistungen schliessen',
+      },
       teaser: {
         title: 'Unsere Pakete',
         text: 'Von der schonenden Handwäsche bis zur kompletten Aufbereitung.',
         viewAll: 'Alle Programme ansehen',
+        imageCaption: 'Präzision bis ins kleinste Detail, direkt bei Ihnen vor Ort.',
+        priceHint: 'Preise nach Fahrzeuggrösse',
+        loading: 'Pakete werden geladen',
       }
     },
     quote: {
@@ -180,6 +224,7 @@ export const translations = {
   fr: {
     nav: {
       services: 'Services',
+      packages: 'Forfaits',
       howItWorks: 'Fonctionnement',
       locations: 'Lieux',
       quote: 'Devis',
@@ -265,10 +310,53 @@ export const translations = {
         exterior: 'Extérieur',
       },
       request: 'Demander un devis',
+      categoryPicker: {
+        eyebrow: 'Un soin selon vos besoins',
+        title: 'Choisissez votre priorité',
+        text: 'Commencez par la zone qui compte le plus pour votre véhicule.',
+        marks: {
+          'inside-outside': 'I + E',
+          interior: 'I',
+          exterior: 'E',
+        },
+        descriptions: {
+          'inside-outside': 'Un entretien parfait à l’intérieur et à l’extérieur',
+          interior: 'Un intérieur propre et soigné',
+          exterior: 'Brillance et protection pour l’extérieur',
+        },
+        swipeHint: 'Faites glisser pour voir les zones',
+      },
+      steps: {
+        category: 'Choisir la zone',
+        vehicle: 'Choisir le véhicule',
+        package: 'Choisir le forfait',
+      },
+      vehiclePicker: {
+        eyebrow: 'Votre véhicule',
+        title: 'Choisissez la taille du véhicule',
+        help: 'La taille du véhicule détermine le prix exact du forfait.',
+        selectedHelp: 'Choisissez la taille. Nous afficherons ensuite vos forfaits avec le prix exact.',
+      },
+      packagePicker: {
+        ready: 'Vos prix sont prêts',
+        selectVehicle: 'Choisir la taille du véhicule',
+      },
+      packageCard: {
+        recommended: 'Notre recommandation',
+        steps: 'étapes',
+        forVehicle: 'Pour',
+        included: 'Inclus',
+        priceLabel: 'Votre prix',
+        showDetails: 'Voir toutes les prestations',
+        hideDetails: 'Masquer les prestations',
+      },
       teaser: {
         title: 'Nos Forfaits',
         text: 'Du lavage à la main délicat à la préparation complète.',
         viewAll: 'Voir tous les programmes',
+        imageCaption: 'Une précision jusque dans les moindres détails, directement chez vous.',
+        priceHint: 'Prix selon la taille du véhicule',
+        loading: 'Chargement des forfaits',
       }
     },
     quote: {
@@ -358,6 +446,7 @@ export const translations = {
   en: {
     nav: {
       services: 'Services',
+      packages: 'Packages',
       howItWorks: 'How it works',
       locations: 'Locations',
       quote: 'Quote',
@@ -443,10 +532,53 @@ export const translations = {
         exterior: 'Exterior',
       },
       request: 'Request quote',
+      categoryPicker: {
+        eyebrow: 'Care for your needs',
+        title: 'Choose your focus',
+        text: 'Start with the area that matters most for your vehicle right now.',
+        marks: {
+          'inside-outside': 'I + E',
+          interior: 'I',
+          exterior: 'E',
+        },
+        descriptions: {
+          'inside-outside': 'Complete care inside and out',
+          interior: 'A clean and cared-for interior',
+          exterior: 'Shine and protection for the exterior',
+        },
+        swipeHint: 'Swipe to explore areas',
+      },
+      steps: {
+        category: 'Choose area',
+        vehicle: 'Choose vehicle',
+        package: 'Choose package',
+      },
+      vehiclePicker: {
+        eyebrow: 'Your vehicle',
+        title: 'Choose your vehicle size',
+        help: 'Your vehicle size determines the exact package price.',
+        selectedHelp: 'Choose the size. Then we will show matching packages with the exact price.',
+      },
+      packagePicker: {
+        ready: 'Your prices are ready',
+        selectVehicle: 'Choose vehicle size',
+      },
+      packageCard: {
+        recommended: 'Our recommendation',
+        steps: 'steps',
+        forVehicle: 'For',
+        included: 'Included',
+        priceLabel: 'Your price',
+        showDetails: 'View all services',
+        hideDetails: 'Hide services',
+      },
       teaser: {
         title: 'Our Packages',
         text: 'From gentle hand wash to complete detailing.',
         viewAll: 'View all programs',
+        imageCaption: 'Precision in every detail, directly at your location.',
+        priceHint: 'Prices by vehicle size',
+        loading: 'Loading packages',
       }
     },
     quote: {

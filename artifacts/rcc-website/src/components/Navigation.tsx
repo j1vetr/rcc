@@ -48,7 +48,7 @@ export function Navigation() {
   const navItems = [
     { id: 'how-it-works', label: t.nav.howItWorks, testId: 'link-how-it-works', path: '/#how-it-works' },
     { id: 'locations', label: t.nav.locations, testId: 'link-locations', path: '/#locations' },
-    { id: 'services', label: t.nav.services, testId: 'link-services', path: '/dienstleistungen' },
+    { id: 'services', label: t.nav.packages, testId: 'link-packages', path: '/dienstleistungen' },
   ];
 
   return (
@@ -85,7 +85,7 @@ export function Navigation() {
                   key={item.id}
                   href={item.path}
                   data-testid={item.testId}
-                  className="text-sm font-light uppercase tracking-wide text-foreground/70 transition-colors hover:text-primary"
+                  className="border-b border-primary/50 pb-1 text-sm font-medium uppercase tracking-wide text-primary transition-colors hover:border-primary hover:text-primary"
                 >
                   {item.label}
                 </Link>

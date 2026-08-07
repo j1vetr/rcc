@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import logo from '@assets/optimized/rcc-logo.webp';
-import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { FaTiktok } from 'react-icons/fa';
 import { Link } from 'wouter';
 
 const CONTACT = {
@@ -66,16 +67,22 @@ export function Footer() {
             <h4 className="text-foreground font-serif text-lg mb-6 tracking-tight font-light">Social</h4>
             <div className="flex gap-3">
               <a 
-                href="#" 
+                href="https://www.instagram.com/royalcarcleaning.ch/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram: @royalcarcleaning.ch"
                 className="w-10 h-10 border border-border flex items-center justify-center text-foreground/40 hover:bg-primary hover:text-background hover:border-primary transition-all duration-300 group"
               >
                 <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
               </a>
               <a 
-                href="#" 
+                href="https://www.tiktok.com/@royalcarcleaning.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok: @royalcarcleaning.ch"
                 className="w-10 h-10 border border-border flex items-center justify-center text-foreground/40 hover:bg-primary hover:text-background hover:border-primary transition-all duration-300 group"
               >
-                <Facebook className="w-4 h-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                <FaTiktok className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
