@@ -1,62 +1,107 @@
-# Nginx Configuration — SEO & Redirects
+# Nginx Configuration — RCC Royal Car Cleaning
 
-**VPS Server:** royalcarcleaning.ch  
-**Deployment:** GitHub push → rccup → PM2  
-**Static files served from:** `/path/to/dist/public/`
-
-Apply these blocks to the nginx vhost for `royalcarcleaning.ch`.  
-**Do not implement www→non-www or root→/de/ redirects in application code** — these must be nginx 301s so crawlers and browsers receive the correct HTTP status codes.
+**VPS:** royalcarcleaning.ch  
+**Static files served from:** `/var/www/rcc/artifacts/rcc-website/dist/public`  
+**Deploy:** `git pull && rccup` — no nginx changes needed for new pages.
 
 ---
 
-## 1. www → non-www redirect (REQUIRED — currently missing)
+## How routing works
+
+The prerender build script generates a real `index.html` for every route:
+
+```
+dist/public/
+  de/index.html
+  de/pakete/index.html
+  de/leistungen/index.html
+  de/ratgeber/auto-innenreinigung/index.html
+  ...
+  en/index.html
+  fr/index.html
+```
+
+Nginx checks the filesystem with `try_files $uri $uri/index.html =404;`:
+
+| Request | Filesystem check | Result |
+|---|---|---|
+| `/de/` | `dist/public/de/index.html` exists | HTTP 200 |
+| `/de/mobile-autoreinigung/winterthur/` | `dist/public/de/mobile-autoreinigung/winterthur/index.html` exists after build | HTTP 200 |
+| `/de/unknown-page/` | no such file | HTTP 404 |
+| `/assets/main.abc123.js` | `dist/public/assets/main.abc123.js` exists | HTTP 200 |
+
+**Adding a new city, guide, or language page requires only `git pull && rccup`. No nginx changes.**
+
+---
+
+## Complete configuration
+
+Replace the current vhost file with this content:
 
 ```nginx
+# ── 1. HTTP → HTTPS (Certbot — keep as-is) ───────────────────────────────────
 server {
     listen 80;
+    listen [::]:80;
+    server_name royalcarcleaning.ch www.royalcarcleaning.ch;
+
+    if ($host = www.royalcarcleaning.ch) {
+        return 301 https://royalcarcleaning.ch$request_uri;
+    }
+
+    if ($host = royalcarcleaning.ch) {
+        return 301 https://royalcarcleaning.ch$request_uri;
+    }
+
+    return 404;
+}
+
+# ── 2. www → non-www HTTPS (NEW — was missing) ───────────────────────────────
+server {
     listen 443 ssl;
+    listen [::]:443 ssl;
     server_name www.royalcarcleaning.ch;
 
     ssl_certificate     /etc/letsencrypt/live/royalcarcleaning.ch/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/royalcarcleaning.ch/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
     return 301 https://royalcarcleaning.ch$request_uri;
 }
-```
 
----
-
-## 2. HTTP → HTTPS redirect (verify already present)
-
-```nginx
-server {
-    listen 80;
-    server_name royalcarcleaning.ch;
-    return 301 https://royalcarcleaning.ch$request_uri;
-}
-```
-
----
-
-## 3. Primary server block (replace existing static-serving config)
-
-This block enforces:
-- Root `/` → `/de/` permanent redirect
-- Legacy URLs → new canonical URLs
-- Only the 6 known prerendered routes return HTTP 200
-- **All other URLs return a true HTTP 404** — not the SPA shell
-
-```nginx
+# ── 3. Main HTTPS ─────────────────────────────────────────────────────────────
 server {
     listen 443 ssl http2;
+    listen [::]:443 ssl http2;
     server_name royalcarcleaning.ch;
 
     ssl_certificate     /etc/letsencrypt/live/royalcarcleaning.ch/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/royalcarcleaning.ch/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
-    root /path/to/dist/public;
+    root /var/www/rcc/artifacts/rcc-website/dist/public;
 
-    # ── 1. Permanent redirects ──────────────────────────────────────
+    access_log /var/log/nginx/royalcarcleaning.ch.access.log;
+    error_log  /var/log/nginx/royalcarcleaning.ch.error.log;
+
+    client_max_body_size 10M;
+
+    # ── API proxy ─────────────────────────────────────────────────────────────
+    location /api/ {
+        proxy_pass http://127.0.0.1:3883;
+        proxy_http_version 1.1;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_connect_timeout 30s;
+        proxy_send_timeout    30s;
+        proxy_read_timeout    30s;
+    }
+
+    # ── Permanent redirects ───────────────────────────────────────────────────
     location = / {
         return 301 https://royalcarcleaning.ch/de/;
     }
@@ -69,130 +114,90 @@ server {
         return 301 https://royalcarcleaning.ch/de/pakete/;
     }
 
-    # ── 2. Known prerendered routes — serve their static index.html ─
-    # Only these 6 paths return HTTP 200. Any other URL returns 404.
-
-    location = /de/ {
-        try_files /de/index.html =404;
-        add_header Cache-Control "public, max-age=900, must-revalidate";
-    }
-
-    location = /de/pakete/ {
-        try_files /de/pakete/index.html =404;
-        add_header Cache-Control "public, max-age=900, must-revalidate";
-    }
-
-    location = /en/ {
-        try_files /en/index.html =404;
-        add_header Cache-Control "public, max-age=900, must-revalidate";
-    }
-
-    location = /en/packages/ {
-        try_files /en/packages/index.html =404;
-        add_header Cache-Control "public, max-age=900, must-revalidate";
-    }
-
-    location = /fr/ {
-        try_files /fr/index.html =404;
-        add_header Cache-Control "public, max-age=900, must-revalidate";
-    }
-
-    location = /fr/forfaits/ {
-        try_files /fr/forfaits/index.html =404;
-        add_header Cache-Control "public, max-age=900, must-revalidate";
-    }
-
-    # ── 3. Hashed static assets (JS/CSS/images from Vite build) ────
+    # ── Vite-hashed assets (JS, CSS, fonts, images) ───────────────────────────
+    # Long cache — filenames change on every build, so immutable is safe.
     location /assets/ {
         expires 1y;
         add_header Cache-Control "public, immutable";
         try_files $uri =404;
     }
 
-    # ── 4. Root-level static files ──────────────────────────────────
-    location = /sitemap.xml  { try_files $uri =404; }
-    location = /robots.txt   { try_files $uri =404; }
-    location = /favicon.png  { try_files $uri =404; }
-    location = /og-image.webp { try_files $uri =404; }
-
-    # ── 5. True 404 for all other URLs ─────────────────────────────
-    # The 404 page is not a generic nginx page — serve the prerendered
-    # noindex 404 HTML (if available) or fall back to nginx default.
-    # The HTTP status code is always 404.
+    # ── Generic prerendered-page routing ─────────────────────────────────────
+    # This single block handles ALL current and future prerendered routes.
+    # Nginx checks whether dist/public/<path>/index.html exists on disk:
+    #   exists  → HTTP 200 (prerendered page)
+    #   missing → HTTP 404 (real 404, no SPA fallback)
+    # Adding a new city/guide/language page needs only build + deploy.
     location / {
-        return 404;
+        add_header Cache-Control "public, max-age=900, must-revalidate";
+        try_files $uri $uri/index.html =404;
     }
 }
 ```
 
 ---
 
-## 4. Cache headers summary
+## Apply
 
-| Resource | Cache-Control |
-|---|---|
-| Prerendered HTML (routes) | `public, max-age=900, must-revalidate` (15 min) |
-| Vite-hashed assets `/assets/*` | `public, immutable` (1 year) |
-| `/sitemap.xml`, `/robots.txt` | Default (short) |
+```bash
+# 1. Backup
+sudo cp /etc/nginx/sites-available/royalcarcleaning.ch \
+        /etc/nginx/sites-available/royalcarcleaning.ch.bak
+
+# 2. Paste the config above into the file
+sudo nano /etc/nginx/sites-available/royalcarcleaning.ch
+
+# 3. Test
+sudo nginx -t
+
+# 4. Reload (zero downtime)
+sudo systemctl reload nginx
+```
 
 ---
 
-## 5. Verification checklist
-
-Run these after applying changes:
+## Verify
 
 ```bash
 # www → non-www (301)
 curl -I https://www.royalcarcleaning.ch/
-# Expected: 301 Location: https://royalcarcleaning.ch/
 
 # Root → /de/ (301)
 curl -I https://royalcarcleaning.ch/
-# Expected: 301 Location: https://royalcarcleaning.ch/de/
 
-# German homepage — HTTP 200, full HTML with H1 and meta
-curl -s https://royalcarcleaning.ch/de/ | grep -E '<title>|<h1|lang='
-# Expected: route-specific title, German H1
+# German homepage (200 + real HTML, not empty SPA shell)
+curl -s https://royalcarcleaning.ch/de/ | grep '<title>'
 
-# English homepage — HTTP 200, English content
-curl -s https://royalcarcleaning.ch/en/ | grep -E '<title>|<h1'
-# Expected: English title, English H1 (NOT the German fallback)
+# English homepage (200)
+curl -I https://royalcarcleaning.ch/en/
 
-# French homepage — HTTP 200, French content
-curl -s https://royalcarcleaning.ch/fr/ | grep -E '<title>|<h1'
+# French homepage (200)
+curl -I https://royalcarcleaning.ch/fr/
 
-# German packages page
-curl -I https://royalcarcleaning.ch/de/pakete/
-# Expected: 200
-
-# English packages page
-curl -I https://royalcarcleaning.ch/en/packages/
-# Expected: 200
-
-# French packages page
-curl -I https://royalcarcleaning.ch/fr/forfaits/
-# Expected: 200
-
-# Legacy redirect
+# Legacy redirect (301)
 curl -I https://royalcarcleaning.ch/dienstleistungen
-# Expected: 301 → https://royalcarcleaning.ch/de/pakete/
 
 # Unknown URL — must be true 404, NOT 200
 curl -I https://royalcarcleaning.ch/does-not-exist
-# Expected: 404
 
-# Unknown language-prefixed URL — also must be true 404
-curl -I https://royalcarcleaning.ch/de/unknown-page/
-# Expected: 404
+# API proxy (should reach the API server)
+curl -I https://royalcarcleaning.ch/api/services
 
 # Sitemap and robots
-curl -s https://royalcarcleaning.ch/sitemap.xml | head -5
-# Expected: <?xml version="1.0"...> with <urlset>
-
+curl -s https://royalcarcleaning.ch/sitemap.xml | head -3
 curl https://royalcarcleaning.ch/robots.txt
-# Expected: User-agent: * ... Sitemap: https://royalcarcleaning.ch/sitemap.xml
 
-# Verify canonical and hreflang in prerendered pages
+# Canonical and hreflang present in prerendered HTML
 curl -s https://royalcarcleaning.ch/de/ | grep -E 'canonical|hreflang'
-# Expected: 5 lines (canonical + 4 hreflang including x-default)
 ```
+
+---
+
+## Adding new pages in the future
+
+1. Create the page component in `src/pages/`
+2. Add the route to `App.tsx`
+3. Add the URL to `scripts/prerender.mjs`
+4. `git push` → `rccup` on the VPS
+
+**No nginx changes. No `location` blocks to add. The filesystem is the route registry.**

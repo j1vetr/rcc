@@ -1,0 +1,49 @@
+Nginx tarafında neden bütün prerender route'larını tek tek `location = ...` olarak hardcode ettin?
+
+Önce mevcut production/deployment mimarisini açıkla:
+
+* Nginx neden route bilgisini bilmek zorunda?
+* Express neden bu routing/status işini yönetmiyor?
+* Build sırasında oluşan prerender dosyalarından Nginx otomatik olarak route çözemez mi?
+* Yeni bir şehir, servis, rehber veya dil sayfası eklendiğinde neden tekrar manuel Nginx config güncellemesi gerekiyor?
+
+Ben manuel route listesi istemiyorum.
+
+SEO mimarisi sürekli büyüyecek. Örneğin ileride:
+
+`/de/mobile-autoreinigung/winterthur/`
+`/de/mobile-autoreinigung/zug/`
+`/de/mobile-autoreinigung/basel/`
+`/de/mobile-autoreinigung/bern/`
+
+gibi yeni prerender sayfalar eklendiğinde yalnızca build + deploy yapılmalı. Nginx'e ayrıca yeni `location` eklemek gerekmemeli.
+
+Mevcut projeyi incele ve bunu self-maintaining hale getir.
+
+Tercihen Nginx gerçek filesystem/prerender çıktısını generic olarak çözsün. Örneğin mimariye uygunsa:
+
+`try_files $uri $uri/ $uri/index.html =404;`
+
+veya bundan daha doğru bir çözüm kullan.
+
+Gerekiyorsa build sırasında route manifestinden Nginx config otomatik üretilebilir, fakat manuel route listesi istemiyorum.
+
+Şartlar:
+
+1. Yeni prerender route build'e eklendiğinde otomatik 200 çalışmalı.
+2. Olmayan URL gerçek HTTP 404 dönmeli.
+3. SPA homepage fallback ile fake 200/soft-404 oluşmamalı.
+4. `/api/` proxy çalışmaya devam etmeli.
+5. `/assets/`, görseller, videolar, fontlar ve diğer gerçek static dosyalar otomatik servis edilmeli.
+6. `/` → `/de/` 301 korunmalı.
+7. HTTP → HTTPS 301 korunmalı.
+8. www → non-www 301 korunmalı.
+9. `/dienstleistungen` → `/de/pakete/` mevcut legacy 301 korunmalı.
+10. `/llms.txt`, `/robots.txt`, `/sitemap.xml` gerçek dosya olarak servis edilmeli.
+11. Existing de-CH / en-CH / fr-CH prerender SEO HTML değişmemeli.
+12. canonical, hreflang, title, schema ve sitemap'e dokunma.
+13. Yeni şehir/rehber/service route eklemek için gelecekte Nginx'e manuel müdahale gerekmemeli.
+
+Ayrıca mevcut uygulamada prerender edilmemiş fakat client-side çalışması gereken gerçek route varsa onları da tespit et. Generic 404 çözümü bunları kırmamalı.
+
+Önce bana neden mevcut hardcoded Nginx yaklaşımını seçtiğini ve önerdiğin otomatik çözümü anlat. Henüz rastgele config değiştirme.

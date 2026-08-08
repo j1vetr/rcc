@@ -1,0 +1,1208 @@
+# RCC ROYAL CAR CLEANING – SEO EXPANSION PHASE
+
+Website:
+
+https://royalcarcleaning.ch/
+
+This is an EXPANSION task on top of the existing SEO implementation.
+
+The current multilingual SEO architecture, prerendering, canonical URLs, hreflang, schema, sitemap, llms.txt, robots.txt, real 404 handling and Nginx filesystem routing are already working.
+
+DO NOT rebuild or refactor the existing SEO system unless necessary for the tasks below.
+
+The goal of this phase is:
+
+1. Expand local SEO beyond Zürich
+2. Make nationwide Switzerland service coverage explicit
+3. Add business / corporate customer positioning
+4. Explain the Zürich +30 km travel fee rule accurately
+5. Fix incorrect guide publication dates
+6. Update sitemap / hreflang / internal linking automatically
+7. Preserve all currently working SEO
+
+---
+
+# VERIFIED BUSINESS FACTS
+
+The following facts are confirmed by the business owner and may now be used throughout the website and structured data:
+
+## Service Coverage
+
+RCC Royal Car Cleaning provides mobile vehicle cleaning services throughout Switzerland.
+
+It is not limited to Zürich.
+
+Nationwide service is available subject to scheduling and travel conditions.
+
+---
+
+## Zürich Travel Rule
+
+The standard website package prices apply according to the existing pricing structure.
+
+For service locations more than 30 km from Zürich, an additional travel fee is charged on top of the website package price.
+
+Do NOT invent a CHF/km rate.
+
+Do NOT invent a fixed surcharge.
+
+The website should explain that customers located more than 30 km from Zürich should contact RCC / request an offer to receive the applicable travel fee.
+
+Recommended wording direction in Swiss German:
+
+"Bei Einsätzen ausserhalb eines Radius von 30 km ab Zürich kann zusätzlich zum gewählten Reinigungspaket eine Anfahrtspauschale bzw. ein Wegzuschlag anfallen. Die genaue Höhe richtet sich nach dem Einsatzort und wird vor der Terminbestätigung transparent kommuniziert."
+
+Adjust this to natural Swiss Standard German.
+
+Do NOT claim the surcharge is free, fixed or distance-independent.
+
+---
+
+## Corporate Customers
+
+RCC also provides vehicle cleaning services for companies and business customers.
+
+The company may serve:
+
+* company vehicles
+* fleet vehicles
+* employee vehicles
+* business vehicle fleets
+
+Do NOT invent:
+
+* fleet size
+* discounts
+* corporate contracts
+* recurring schedules
+* response times
+* corporate pricing
+
+unless those details already exist or are later confirmed.
+
+Business customers should be encouraged to request an individual quote.
+
+---
+
+# 1. DO NOT BREAK EXISTING SEO
+
+Preserve the current working production implementation:
+
+* `/` → `/de/` 301
+* HTTP → HTTPS
+* www → non-www
+* real HTTP 404
+* filesystem-based Nginx routing
+* SSR / prerender
+* de-CH
+* en-CH
+* fr-CH
+* x-default
+* canonical URLs
+* reciprocal hreflang
+* AutoWash schema
+* WebSite schema
+* Service schema
+* BreadcrumbList
+* FAQPage
+* Article schema
+* robots.txt
+* sitemap.xml
+* llms.txt
+* OAI-SearchBot access
+* package pages
+* current service pages
+* Zürich landing pages
+* current design
+* existing prices
+* booking / quote system
+
+Do not unnecessarily change their implementation.
+
+---
+
+# 2. SERVICE AREA POSITIONING
+
+The business owner confirms that RCC serves all of Switzerland.
+
+Update service-area copy so the website does not contradict itself.
+
+Remove or revise wording that suggests RCC operates only or primarily in Zürich if that wording conflicts with nationwide availability.
+
+Correct positioning:
+
+RCC is based in / operates from the Zürich area but provides mobile vehicle cleaning throughout Switzerland.
+
+Use natural language.
+
+Example concept:
+
+"RCC ist in Zürich zuhause und schweizweit für Sie im Einsatz."
+
+Do not imply RCC has physical branches throughout Switzerland.
+
+Do not imply RCC has shops or offices in every city.
+
+RCC is a mobile service.
+
+---
+
+# 3. UPDATE SERVICE AREA PAGE
+
+German:
+
+`/de/einsatzgebiet/`
+
+English:
+
+`/en/service-area/`
+
+French:
+
+`/fr/zones-desservies/`
+
+Upgrade these pages to clearly explain:
+
+* service throughout Switzerland
+* mobile service model
+* Zürich / base-area relationship
+* +30 km travel surcharge rule
+* quote requirement for longer-distance service
+* city links
+* package links
+* contact / quote CTA
+
+Use factual language.
+
+---
+
+# 4. SWITZERLAND NATIONAL ENTITY SIGNAL
+
+The relationship should be clear:
+
+RCC Royal Car Cleaning
+→ Mobile Autoreinigung
+→ Zürich base / origin
+→ Switzerland-wide service
+
+Update contextual content and structured data where appropriate.
+
+`areaServed` may legitimately represent Switzerland because nationwide service has now been confirmed.
+
+Do NOT create fake physical branches.
+
+---
+
+# 5. CITY SEO EXPANSION
+
+Create strong local landing pages for commercially important Swiss cities.
+
+The goal is to capture searches such as:
+
+`Mobile Autoreinigung Basel`
+
+`Autoreinigung Basel`
+
+`Autopflege Basel`
+
+`Fahrzeugreinigung Basel`
+
+and equivalent searches for other cities.
+
+Do NOT create one page per keyword synonym.
+
+One city page should target the entire city intent cluster.
+
+---
+
+# 6. INITIAL GERMAN CITY PAGES
+
+Create German pages for at least:
+
+`/de/mobile-autoreinigung/zuerich/`
+
+already exists – preserve and improve only where necessary.
+
+NEW:
+
+`/de/mobile-autoreinigung/winterthur/`
+
+`/de/mobile-autoreinigung/zug/`
+
+`/de/mobile-autoreinigung/luzern/`
+
+`/de/mobile-autoreinigung/basel/`
+
+`/de/mobile-autoreinigung/bern/`
+
+`/de/mobile-autoreinigung/st-gallen/`
+
+Also consider additional major Swiss German markets if there is enough unique and useful content.
+
+Potential later expansion:
+
+* Aarau
+* Baden
+* Schaffhausen
+* Thun
+* Solothurn
+
+Do not automatically create hundreds of city pages.
+
+---
+
+# 7. FRENCH-SPEAKING SWITZERLAND
+
+Because RCC serves all Switzerland, create proper French local landing pages for major French-speaking cities.
+
+Initial recommended pages:
+
+`/fr/nettoyage-voiture-mobile/geneve/`
+
+`/fr/nettoyage-voiture-mobile/lausanne/`
+
+Potential additional markets:
+
+* Fribourg
+* Neuchâtel
+
+Use natural Swiss French.
+
+---
+
+# 8. ENGLISH CITY EQUIVALENTS
+
+For each important city cluster, create English equivalents where appropriate.
+
+Examples:
+
+`/en/mobile-car-cleaning/basel/`
+
+`/en/mobile-car-cleaning/bern/`
+
+`/en/mobile-car-cleaning/lucerne/`
+
+`/en/mobile-car-cleaning/zug/`
+
+`/en/mobile-car-cleaning/winterthur/`
+
+`/en/mobile-car-cleaning/geneva/`
+
+`/en/mobile-car-cleaning/lausanne/`
+
+The English pages target international residents, expats and business customers in Switzerland.
+
+---
+
+# 9. CITY HREFLANG CLUSTERS
+
+Every translated city page must be connected to its true equivalent.
+
+Example Basel:
+
+German:
+
+`/de/mobile-autoreinigung/basel/`
+
+English:
+
+`/en/mobile-car-cleaning/basel/`
+
+French:
+
+If a French Basel page is actually created:
+
+`/fr/nettoyage-voiture-mobile/bale/`
+
+Only include hreflang when a true translated equivalent exists.
+
+Do not send missing translations to the homepage.
+
+Every cluster should use:
+
+* de-CH
+* en-CH
+* fr-CH where available
+* x-default → German equivalent
+
+---
+
+# 10. CITY PAGE QUALITY
+
+Each city page must be genuinely useful.
+
+Do NOT produce doorway pages where only the city name changes.
+
+Each page must contain unique localized copy.
+
+Recommended structure:
+
+## H1
+
+Example:
+
+`Mobile Autoreinigung in Basel`
+
+## Intro
+
+Explain that RCC provides mobile vehicle cleaning at the customer's location in Basel.
+
+## Available Services
+
+Link to:
+
+* Mobile Autoreinigung
+* Innenreinigung
+* Aussenreinigung
+* Fahrzeugaufbereitung
+
+## How It Works
+
+Explain:
+
+* request offer
+* choose package
+* agree location/time
+* RCC comes to vehicle
+
+## Travel / Distance
+
+For cities outside the Zürich 30 km radius, clearly state:
+
+additional travel costs may apply.
+
+Do not invent exact surcharge.
+
+## Packages
+
+Link to packages.
+
+## Business Customers
+
+Mention availability for companies and fleets.
+
+## Local FAQ
+
+Questions should actually relate to that city.
+
+## CTA
+
+Request quote.
+
+---
+
+# 11. NO FAKE LOCAL INFORMATION
+
+Do NOT invent:
+
+* local RCC employees
+* local branches
+* local addresses
+* local workshops
+* parking partnerships
+* city-specific testimonials
+* customer counts
+* local phone numbers
+* "RCC Basel office"
+* "RCC Geneva branch"
+
+unless these actually exist.
+
+The business is mobile.
+
+---
+
+# 12. LOCAL QUERY CLUSTERS
+
+German city pages should naturally cover variations such as:
+
+`Mobile Autoreinigung CITY`
+
+`Autoreinigung CITY`
+
+`Autopflege CITY`
+
+`Fahrzeugreinigung CITY`
+
+`Auto Innenreinigung CITY`
+
+`Autoaufbereitung CITY`
+
+`Auto waschen CITY`
+
+`Autoreinigung vor Ort CITY`
+
+Do NOT repeat them unnaturally.
+
+Use natural Swiss German.
+
+---
+
+# 13. ZÜRICH PAGE
+
+Keep Zürich as one of the strongest city pages.
+
+Current URL:
+
+`/de/mobile-autoreinigung/zuerich/`
+
+Keep its existing canonical URL.
+
+Do not create competing pages such as:
+
+`/de/autopflege-zuerich/`
+
+`/de/autoreinigung-zuerich/`
+
+`/de/fahrzeugreinigung-zuerich/`
+
+All these intents belong to the existing Zürich page.
+
+---
+
+# 14. ZÜRICH MICRO-LOCAL SEO
+
+Enhance the Zürich page with real area coverage language.
+
+Where appropriate, naturally mention major Zürich districts / nearby areas.
+
+Potential examples:
+
+* Oerlikon
+* Altstetten
+* Wiedikon
+* Enge
+* Seefeld
+* Schwamendingen
+
+Do NOT create individual district pages in this phase.
+
+Use them as natural local context inside the Zürich page.
+
+Do not claim service restrictions that do not exist.
+
+---
+
+# 15. TRAVEL COST SECTION
+
+Create a reusable multilingual component explaining travel costs.
+
+German example heading:
+
+`Anfahrt ausserhalb von Zürich`
+
+English:
+
+`Travel outside the Zürich area`
+
+French:
+
+`Déplacements en dehors de Zurich`
+
+German factual copy should communicate:
+
+* package price remains the base service price
+* locations more than 30 km from Zürich may incur travel costs
+* exact travel charge depends on destination
+* customer receives the applicable amount before confirmation
+* customer may request information / an individual offer
+
+Place this logically on:
+
+* service area page
+* packages page
+* important city pages
+* FAQ
+* corporate page
+
+Do not overwhelm every page with the same exact paragraph.
+
+---
+
+# 16. PACKAGES PAGE
+
+Existing packages/prices must not be changed.
+
+Add a clear factual note:
+
+For locations more than 30 km from Zürich, additional travel costs may apply.
+
+Do not modify package prices.
+
+Do not automatically add travel charges to displayed package prices unless the booking system actually calculates them.
+
+Use a CTA:
+
+"Anfahrt anfragen"
+
+or similar natural Swiss wording.
+
+---
+
+# 17. FAQ UPDATE
+
+Update FAQs with questions such as:
+
+German:
+
+`Ist RCC in der ganzen Schweiz verfügbar?`
+
+Answer:
+
+Yes, RCC provides mobile vehicle cleaning throughout Switzerland.
+
+---
+
+`Fallen ausserhalb von Zürich Anfahrtskosten an?`
+
+Answer concept:
+
+For locations more than 30 km from Zürich, an additional travel fee may apply depending on destination. Exact travel costs are communicated before booking confirmation.
+
+---
+
+`Kommt RCC auch zu Firmen?`
+
+Answer:
+
+Yes, RCC also provides mobile vehicle cleaning for companies and business vehicle fleets. Individual offers are available.
+
+Translate accurately into English and French.
+
+---
+
+# 18. CORPORATE / BUSINESS CUSTOMER PAGE
+
+Create:
+
+German:
+
+`/de/firmenkunden/`
+
+English:
+
+`/en/business-customers/`
+
+French:
+
+`/fr/clients-professionnels/`
+
+This should be a real commercial landing page.
+
+---
+
+# 19. CORPORATE PAGE TARGET
+
+German search intent may naturally include:
+
+* Fahrzeugreinigung Firmen
+* Firmenfahrzeuge reinigen
+* Flottenreinigung
+* Fuhrpark Reinigung
+* mobile Fahrzeugreinigung Firmen
+* Autoreinigung Unternehmen
+* Firmenwagen Reinigung
+
+Do not keyword-stuff.
+
+---
+
+# 20. CORPORATE PAGE CONTENT
+
+The page should explain:
+
+RCC provides mobile vehicle cleaning for:
+
+* companies
+* business vehicles
+* company cars
+* vehicle fleets
+
+Potential benefits:
+
+* mobile service at company location
+* reduced need to transport vehicles to a wash location
+* individual quotation
+* flexible service coordination
+
+Only use benefits logically inherent to mobile service.
+
+Do not invent:
+
+* guaranteed same-day service
+* corporate discounts
+* contract pricing
+* fixed fleet packages
+* fleet capacity
+* SLA
+* subscription
+* monthly contract
+
+unless already verified.
+
+---
+
+# 21. CORPORATE CTA
+
+Use an individual quotation CTA.
+
+Examples:
+
+German:
+
+`Individuelle Firmenofferte anfragen`
+
+English:
+
+`Request a business quote`
+
+French:
+
+`Demander une offre entreprise`
+
+---
+
+# 22. CORPORATE STRUCTURED DATA
+
+Corporate page may use a `Service` entity if appropriate.
+
+Provider:
+
+`https://royalcarcleaning.ch/#business`
+
+Service may represent:
+
+mobile vehicle cleaning for business customers.
+
+Do not create a second LocalBusiness entity.
+
+---
+
+# 23. INTERNAL LINKING FOR CORPORATE PAGE
+
+Link the corporate page from:
+
+* homepage
+* services hub
+* service area
+* footer
+* packages where appropriate
+
+City pages may also contain a short business customer CTA.
+
+---
+
+# 24. FOOTER
+
+Add a useful link:
+
+German:
+
+`Firmenkunden`
+
+English:
+
+`Business Customers`
+
+French:
+
+`Clients professionnels`
+
+Do not keyword-stuff the footer.
+
+---
+
+# 25. GUIDE PUBLICATION DATES – FIX
+
+Current guide Article schemas contain fabricated / incorrect 2025 publication dates.
+
+Example currently detected:
+
+`/de/ratgeber/auto-innenreinigung/`
+
+has:
+
+`datePublished: 2025-01-15`
+
+`dateModified: 2025-01-15`
+
+These pages were created/published during the current RCC SEO implementation.
+
+Do not use fake historical publication dates.
+
+Set their real publication date.
+
+If all these new guides were first published on:
+
+2026-08-08
+
+then use:
+
+`2026-08-08`
+
+for the appropriate initial `datePublished`.
+
+Use actual implementation history if different.
+
+Do NOT arbitrarily backdate articles.
+
+---
+
+# 26. DATE DATA SOURCE
+
+Create one real article metadata source containing:
+
+* title
+* description
+* datePublished
+* dateModified
+* language
+* URL
+
+Visible article date and Article JSON-LD must use the same value.
+
+Future article updates should modify `dateModified` without changing `datePublished`.
+
+---
+
+# 27. H1 / HOMEPAGE SEMANTICS
+
+Audit the German homepage H1.
+
+Current title:
+
+`Mobile Autoreinigung Schweiz | RCC Royal Car Cleaning`
+
+The semantic H1 should clearly communicate the primary search topic.
+
+If the current H1 is only a marketing slogan such as:
+
+`Schweizer Präzision für Ihr Automobil`
+
+preserve the visual slogan but make the primary semantic H1 strongly aligned with:
+
+`Mobile Autoreinigung in der Schweiz`
+
+Do this only if it can be done without damaging the design.
+
+Visual slogan can remain a large `<p>` / decorative heading.
+
+Do the equivalent naturally for EN/FR.
+
+One primary H1 per page.
+
+---
+
+# 28. SITEMAP UPDATE
+
+Automatically include all new canonical city and corporate pages.
+
+The existing sitemap generator should remain the source of truth.
+
+Do NOT manually hardcode Nginx routes.
+
+Every sitemap URL must:
+
+* return 200
+* have self-canonical
+* be indexable
+* not redirect
+* have correct language
+* contain hreflang where equivalents exist
+
+---
+
+# 29. NGINX – DO NOT MODIFY ROUTE LIST
+
+The current filesystem-based implementation is intentional:
+
+`try_files $uri $uri/index.html =404;`
+
+Keep it.
+
+Do NOT add new city pages manually to Nginx.
+
+Build/prerender must generate:
+
+`dist/public/.../index.html`
+
+and Nginx will serve them automatically.
+
+---
+
+# 30. PRERENDER ALL NEW ROUTES
+
+Every new city and corporate route must be part of the prerender route system.
+
+After production build verify generated files exist.
+
+Examples:
+
+`dist/public/de/mobile-autoreinigung/basel/index.html`
+
+`dist/public/de/mobile-autoreinigung/bern/index.html`
+
+`dist/public/de/mobile-autoreinigung/zug/index.html`
+
+`dist/public/de/firmenkunden/index.html`
+
+etc.
+
+Do not rely on client-side rendering.
+
+---
+
+# 31. LLMS.TXT UPDATE
+
+Update `/llms.txt` to include:
+
+* service area / Switzerland-wide service
+* selected strongest city pages
+* corporate/business customer page
+
+Do NOT dump every city page into llms.txt.
+
+Curate important commercial pages.
+
+Keep it:
+
+* plain text
+* HTTP 200
+* canonical URLs
+* non-www
+* HTTPS
+
+---
+
+# 32. BUSINESS ENTITY UPDATE
+
+Existing AutoWash schema may retain:
+
+`areaServed: Switzerland`
+
+because the business owner has now confirmed nationwide service.
+
+Do not invent branch locations.
+
+The existing business address must remain only if verified.
+
+Do NOT change the address role until the business owner confirms whether it is:
+
+* customer-facing address
+  or
+* mobile service base / administrative base
+
+Do not make additional address claims.
+
+---
+
+# 33. UNKNOWN BUSINESS FACTS
+
+These remain UNVERIFIED:
+
+* whether the address is publicly customer-facing
+* fixed opening hours
+* whether prices include VAT / MwSt.
+* whether environmental claims can be documented
+* Google Business Profile configuration
+* additional official social accounts
+
+Do not invent answers.
+
+If these facts are required, add them to the final manual verification list.
+
+---
+
+# 34. ENVIRONMENTAL CLAIMS
+
+Do not use claims such as:
+
+* umweltfreundlich
+* umweltschonend
+* eco-friendly
+* sustainable
+* water-saving
+
+unless existing business evidence clearly supports them.
+
+If unsupported, remove or soften the claim.
+
+---
+
+# 35. NO FAKE VAT STATEMENTS
+
+Do not say:
+
+`inkl. MwSt.`
+
+or:
+
+`exkl. MwSt.`
+
+until this is confirmed.
+
+Keep current pricing factual.
+
+---
+
+# 36. GOOGLE BUSINESS / EXTERNAL SEO
+
+Do not mark these tasks as completed:
+
+* Google Business optimization
+* Search Console submission
+* Bing Webmaster Tools
+* Swiss citations
+* backlinks
+* reviews
+
+These require external/manual work.
+
+At the end provide a separate checklist.
+
+---
+
+# 37. SEARCH CONSOLE PRIORITY LIST
+
+After deployment recommend manual indexing priority:
+
+1. `/de/`
+2. `/de/mobile-autoreinigung/zuerich/`
+3. `/de/mobile-autoreinigung/basel/`
+4. `/de/mobile-autoreinigung/bern/`
+5. `/de/mobile-autoreinigung/zug/`
+6. `/de/mobile-autoreinigung/luzern/`
+7. `/de/mobile-autoreinigung/winterthur/`
+8. `/de/mobile-autoreinigung/st-gallen/`
+9. `/de/firmenkunden/`
+10. `/de/pakete/`
+11. main service pages
+12. important French city pages
+13. important English city pages
+
+Do not request manual indexing for every URL at once.
+
+---
+
+# 38. BUILD VALIDATION
+
+Run:
+
+* TypeScript check
+* production build
+* prerender generation
+* sitemap generation
+* broken-link validation
+* hreflang validation
+
+No new build errors.
+
+---
+
+# 39. PRODUCTION HTTP TESTS
+
+After deployment test:
+
+German Basel:
+
+`curl -I https://royalcarcleaning.ch/de/mobile-autoreinigung/basel/`
+
+Expected:
+
+200
+
+German Bern:
+
+`curl -I https://royalcarcleaning.ch/de/mobile-autoreinigung/bern/`
+
+Expected:
+
+200
+
+German Zug:
+
+`curl -I https://royalcarcleaning.ch/de/mobile-autoreinigung/zug/`
+
+Expected:
+
+200
+
+Corporate:
+
+`curl -I https://royalcarcleaning.ch/de/firmenkunden/`
+
+Expected:
+
+200
+
+Unknown:
+
+`curl -I https://royalcarcleaning.ch/de/mobile-autoreinigung/fake-city-918273/`
+
+Expected:
+
+404
+
+---
+
+# 40. SSR TEST
+
+Example Basel:
+
+`curl -sL https://royalcarcleaning.ch/de/mobile-autoreinigung/basel/`
+
+Raw HTML must contain:
+
+* title
+* description
+* canonical
+* de-CH
+* hreflang
+* H1
+* city-specific body copy
+* AutoWash entity
+* Service
+* BreadcrumbList
+* FAQ if present
+* links to packages
+* quote CTA
+
+---
+
+# 41. CORPORATE SSR TEST
+
+`curl -sL https://royalcarcleaning.ch/de/firmenkunden/`
+
+must contain server-rendered:
+
+* title
+* meta description
+* canonical
+* H1
+* corporate service content
+* quote CTA
+* Service schema
+* internal links
+
+---
+
+# 42. TRAVEL RULE TEST
+
+Verify the +30 km Zürich rule appears accurately and consistently.
+
+Search project output for:
+
+`30 km`
+
+There should be no contradictory statements elsewhere.
+
+Do not accidentally say:
+
+* free travel throughout Switzerland
+* package price includes all nationwide travel
+* fixed national surcharge
+
+unless explicitly verified.
+
+---
+
+# 43. FINAL REPORT
+
+At completion report:
+
+## New City Pages
+
+List every created route grouped by:
+
+* German
+* English
+* French
+
+## Corporate Pages
+
+List all 3 localized routes.
+
+## Travel Fee Rule
+
+List where it was added.
+
+## Service Area
+
+Explain nationwide positioning change.
+
+## Guide Dates
+
+List old → corrected dates.
+
+## H1
+
+Report whether homepage H1 was changed and why.
+
+## Sitemap
+
+Report number of URLs before and after.
+
+## Hreflang
+
+Report reciprocal validation.
+
+## Prerender
+
+Report generated routes.
+
+## llms.txt
+
+Report new links added.
+
+## Schema
+
+List types preserved/added.
+
+## Tests
+
+Report actual HTTP status.
+
+## Manual Verification Still Required
+
+* address role
+* opening hours
+* VAT
+* environmental claims
+* Google Business Profile
+* social profiles
+
+---
+
+# FINAL RULE
+
+Do NOT perform unrelated redesign.
+
+Do NOT change existing package prices.
+
+Do NOT invent travel fees.
+
+Do NOT invent physical city branches.
+
+Do NOT create fake local reviews.
+
+Do NOT create hundreds of doorway pages.
+
+Do NOT change the working Nginx architecture.
+
+Do NOT break current Zürich SEO.
+
+Do NOT remove current schema.
+
+Do NOT remove current hreflang.
+
+Do NOT change existing canonical URL structure unnecessarily.
+
+This task is specifically:
+
+1. nationwide Switzerland positioning
+2. major-city local SEO expansion
+3. corporate/business customer SEO
+4. Zürich +30 km travel fee clarification
+5. guide date correction
+6. sitemap/hreflang/llms/internal-link integration
+7. regression testing
