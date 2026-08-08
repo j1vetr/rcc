@@ -13,6 +13,7 @@
 import { BUSINESS } from './businessData';
 import { FAQ_CONTENT } from '@/data/faq-content';
 import { getGuideArticleMetadata, type GuideArticleKey } from './articleMetadata';
+import { getCityPageContent, isCityRouteKey } from '@/data/city-pages';
 import {
   type Lang,
   type RouteKey,
@@ -201,6 +202,14 @@ const META: MetaMap = {
         'Nettoyage automobile mobile professionnel à Zurich. RCC nettoie votre véhicule chez vous — nettoyage intérieur, extérieur et complet dans la région de Zurich.',
     },
   },
+  'mobile-autoreinigung/winterthur': {},
+  'mobile-autoreinigung/zug': {},
+  'mobile-autoreinigung/luzern': {},
+  'mobile-autoreinigung/basel': {},
+  'mobile-autoreinigung/bern': {},
+  'mobile-autoreinigung/st-gallen': {},
+  'mobile-autoreinigung/geneve': {},
+  'mobile-autoreinigung/lausanne': {},
   firmenkunden: {
     de: {
       title: 'Fahrzeugreinigung für Firmen & Fuhrparks | RCC Schweiz',
@@ -974,6 +983,53 @@ function buildZuerichJsonLdLang(lang: Lang, canonical: string): object {
   };
 }
 
+function buildCityPageJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object {
+  if (!isCityRouteKey(routeKey)) return {};
+  const copy = getCityPageContent(routeKey, lang);
+  const mobilePath: Record<Lang, string> = {
+    de: `${BUSINESS.domain}/de/leistungen/mobile-autoreinigung/`,
+    en: `${BUSINESS.domain}/en/services/mobile-car-cleaning/`,
+    fr: `${BUSINESS.domain}/fr/prestations/nettoyage-voiture-mobile/`,
+  };
+  const mobileName: Record<Lang, string> = {
+    de: 'Mobile Autoreinigung',
+    en: 'Mobile Car Cleaning',
+    fr: 'Nettoyage voiture mobile',
+  };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBusinessNode(),
+      buildBreadcrumb([
+        { name: 'RCC Royal Car Cleaning', url: `${BUSINESS.domain}/${lang}/` },
+        { name: mobileName[lang], url: mobilePath[lang] },
+        { name: copy.cityName, url: canonical },
+      ]),
+      {
+        '@type': 'Service',
+        '@id': `${canonical}#service`,
+        name: copy.h1,
+        description: copy.intro,
+        provider: { '@id': `${BUSINESS.domain}/#business` },
+        areaServed: {
+          '@type': 'City',
+          name: copy.cityName,
+          containedInPlace: { '@type': 'Country', name: 'Switzerland' },
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${canonical}#faq`,
+        mainEntity: copy.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      },
+    ],
+  };
+}
+
 // Guide Article/BlogPosting schema builder
 function buildGuideArticleJsonLd(
   lang: Lang,
@@ -1065,7 +1121,15 @@ function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object 
       return buildEinsatzgebietJsonLdLang(lang, canonical);
 
     case 'mobile-autoreinigung/zuerich':
-      return buildZuerichJsonLdLang(lang, canonical);
+    case 'mobile-autoreinigung/winterthur':
+    case 'mobile-autoreinigung/zug':
+    case 'mobile-autoreinigung/luzern':
+    case 'mobile-autoreinigung/basel':
+    case 'mobile-autoreinigung/bern':
+    case 'mobile-autoreinigung/st-gallen':
+    case 'mobile-autoreinigung/geneve':
+    case 'mobile-autoreinigung/lausanne':
+      return buildCityPageJsonLd(routeKey, lang, canonical);
 
     case 'firmenkunden':
       return buildBusinessCustomersJsonLd(lang, canonical);
@@ -1123,7 +1187,12 @@ function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object 
 /** Get full page metadata for a given route key + language. */
 export function getRouteMetadata(routeKey: RouteKey, lang: Lang): PageMetadata {
   // Fall back to DE if this language has no copy for this route
-  const copy = META[routeKey][lang] ?? META[routeKey]['de']!;
+  const copy = isCityRouteKey(routeKey)
+    ? (() => {
+        const city = getCityPageContent(routeKey, lang);
+        return { title: city.metaTitle, description: city.metaDescription };
+      })()
+    : META[routeKey][lang] ?? META[routeKey]['de']!;
   const canonical = getCanonicalUrl(lang, routeKey);
   const locale = LANG_LOCALES[lang];
 

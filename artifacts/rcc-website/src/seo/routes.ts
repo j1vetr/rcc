@@ -23,6 +23,14 @@ export type RouteKey =
   | 'leistungen/fahrzeugaufbereitung'
   | 'einsatzgebiet'
   | 'mobile-autoreinigung/zuerich'
+  | 'mobile-autoreinigung/winterthur'
+  | 'mobile-autoreinigung/zug'
+  | 'mobile-autoreinigung/luzern'
+  | 'mobile-autoreinigung/basel'
+  | 'mobile-autoreinigung/bern'
+  | 'mobile-autoreinigung/st-gallen'
+  | 'mobile-autoreinigung/geneve'
+  | 'mobile-autoreinigung/lausanne'
   | 'firmenkunden'
   | 'kontakt'
   | 'ueber-uns'
@@ -61,6 +69,14 @@ export const ROUTE_SLUGS: Record<RouteKey, Partial<Record<Lang, string>>> = {
   'leistungen/fahrzeugaufbereitung':       { de: 'leistungen/fahrzeugaufbereitung', en: 'services/car-detailing', fr: 'prestations/preparation-vehicule' },
   einsatzgebiet:                           { de: 'einsatzgebiet', en: 'service-area', fr: 'zones-desservies' },
   'mobile-autoreinigung/zuerich':          { de: 'mobile-autoreinigung/zuerich', en: 'mobile-car-cleaning/zurich', fr: 'nettoyage-voiture-mobile/zurich' },
+  'mobile-autoreinigung/winterthur':      { de: 'mobile-autoreinigung/winterthur', en: 'mobile-car-cleaning/winterthur' },
+  'mobile-autoreinigung/zug':             { de: 'mobile-autoreinigung/zug', en: 'mobile-car-cleaning/zug' },
+  'mobile-autoreinigung/luzern':          { de: 'mobile-autoreinigung/luzern', en: 'mobile-car-cleaning/lucerne' },
+  'mobile-autoreinigung/basel':           { de: 'mobile-autoreinigung/basel', en: 'mobile-car-cleaning/basel' },
+  'mobile-autoreinigung/bern':            { de: 'mobile-autoreinigung/bern', en: 'mobile-car-cleaning/bern' },
+  'mobile-autoreinigung/st-gallen':       { de: 'mobile-autoreinigung/st-gallen' },
+  'mobile-autoreinigung/geneve':          { en: 'mobile-car-cleaning/geneva', fr: 'nettoyage-voiture-mobile/geneve' },
+  'mobile-autoreinigung/lausanne':        { en: 'mobile-car-cleaning/lausanne', fr: 'nettoyage-voiture-mobile/lausanne' },
   firmenkunden:                             { de: 'firmenkunden', en: 'business-customers', fr: 'clients-professionnels' },
   kontakt:                                 { de: 'kontakt', en: 'contact', fr: 'contact' },
   'ueber-uns':                             { de: 'ueber-uns', en: 'about', fr: 'a-propos' },
@@ -154,6 +170,24 @@ export function detectRouteKeyFromPath(path: string): RouteKey {
   // City: Zurich
   if (/^\/(de\/mobile-autoreinigung\/zuerich|en\/mobile-car-cleaning\/zurich|fr\/nettoyage-voiture-mobile\/zurich)$/.test(p))
     return 'mobile-autoreinigung/zuerich';
+
+  // City landing pages
+  const cityRoutes: RouteKey[] = [
+    'mobile-autoreinigung/winterthur',
+    'mobile-autoreinigung/zug',
+    'mobile-autoreinigung/luzern',
+    'mobile-autoreinigung/basel',
+    'mobile-autoreinigung/bern',
+    'mobile-autoreinigung/st-gallen',
+    'mobile-autoreinigung/geneve',
+    'mobile-autoreinigung/lausanne',
+  ];
+  for (const cityRoute of cityRoutes) {
+    const citySlugs = ROUTE_SLUGS[cityRoute];
+    if (Object.entries(citySlugs).some(([lang, slug]) => slug !== undefined && `/${lang}/${slug}` === p)) {
+      return cityRoute;
+    }
+  }
 
   // Business customers
   if (/^\/(de\/firmenkunden|en\/business-customers|fr\/clients-professionnels)$/.test(p))

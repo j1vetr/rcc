@@ -3,9 +3,19 @@ import { useTranslation } from '@/i18n/LanguageContext';
 
 type TravelCostNoticeVariant = 'serviceArea' | 'packages' | 'faq' | 'business';
 
-export function TravelCostNotice({ variant = 'serviceArea' }: { variant?: TravelCostNoticeVariant }) {
+interface TravelCostNoticeProps {
+  variant?: TravelCostNoticeVariant;
+  copy?: {
+    title: string;
+    description: string;
+    detail: string;
+    cta?: string;
+  };
+}
+
+export function TravelCostNotice({ variant = 'serviceArea', copy: customCopy }: TravelCostNoticeProps) {
   const { t, getLangRoute } = useTranslation();
-  const copy = t.travelCosts[variant];
+  const copy = customCopy ?? t.travelCosts[variant];
 
   return (
     <section className="border border-primary/25 bg-primary/[0.045] px-6 py-7 sm:px-8" aria-labelledby={`travel-cost-${variant}`}>
@@ -28,7 +38,7 @@ export function TravelCostNotice({ variant = 'serviceArea' }: { variant?: Travel
           href={`${getLangRoute('kontakt')}#quote`}
           className="inline-flex shrink-0 items-center gap-2 self-start border border-primary/50 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary hover:text-background"
         >
-          {copy.cta}
+          {copy.cta ?? t.travelCosts[variant].cta}
           <ArrowUpRight className="h-4 w-4" />
         </a>
       </div>

@@ -10,7 +10,7 @@ import InnenreinigungPage from '@/pages/InnenreinigungPage';
 import AussenreinigungPage from '@/pages/AussenreinigungPage';
 import FahrzeugaufbereitungPage from '@/pages/FahrzeugaufbereitungPage';
 import EinsatzgebietPage from '@/pages/EinsatzgebietPage';
-import ZuerichPage from '@/pages/ZuerichPage';
+import CityPage from '@/pages/CityPage';
 import FirmenkundenPage from '@/pages/FirmenkundenPage';
 import ContactPage from '@/pages/ContactPage';
 import AboutPage from '@/pages/AboutPage';
@@ -56,7 +56,13 @@ function Router() {
         <Route path="/de/leistungen/aussenreinigung/" component={AussenreinigungPage} />
         <Route path="/de/leistungen/fahrzeugaufbereitung/" component={FahrzeugaufbereitungPage} />
         <Route path="/de/einsatzgebiet/" component={EinsatzgebietPage} />
-        <Route path="/de/mobile-autoreinigung/zuerich/" component={ZuerichPage} />
+        <Route path="/de/mobile-autoreinigung/zuerich/">{() => <CityPage cityRouteKey="mobile-autoreinigung/zuerich" />}</Route>
+        <Route path="/de/mobile-autoreinigung/winterthur/">{() => <CityPage cityRouteKey="mobile-autoreinigung/winterthur" />}</Route>
+        <Route path="/de/mobile-autoreinigung/zug/">{() => <CityPage cityRouteKey="mobile-autoreinigung/zug" />}</Route>
+        <Route path="/de/mobile-autoreinigung/luzern/">{() => <CityPage cityRouteKey="mobile-autoreinigung/luzern" />}</Route>
+        <Route path="/de/mobile-autoreinigung/basel/">{() => <CityPage cityRouteKey="mobile-autoreinigung/basel" />}</Route>
+        <Route path="/de/mobile-autoreinigung/bern/">{() => <CityPage cityRouteKey="mobile-autoreinigung/bern" />}</Route>
+        <Route path="/de/mobile-autoreinigung/st-gallen/">{() => <CityPage cityRouteKey="mobile-autoreinigung/st-gallen" />}</Route>
         <Route path="/de/firmenkunden/" component={FirmenkundenPage} />
         <Route path="/de/kontakt/" component={ContactPage} />
         <Route path="/de/ueber-uns/" component={AboutPage} />
@@ -71,7 +77,14 @@ function Router() {
         <Route path="/en/services/exterior-cleaning/" component={AussenreinigungPage} />
         <Route path="/en/services/car-detailing/" component={FahrzeugaufbereitungPage} />
         <Route path="/en/service-area/" component={EinsatzgebietPage} />
-        <Route path="/en/mobile-car-cleaning/zurich/" component={ZuerichPage} />
+        <Route path="/en/mobile-car-cleaning/zurich/">{() => <CityPage cityRouteKey="mobile-autoreinigung/zuerich" />}</Route>
+        <Route path="/en/mobile-car-cleaning/winterthur/">{() => <CityPage cityRouteKey="mobile-autoreinigung/winterthur" />}</Route>
+        <Route path="/en/mobile-car-cleaning/zug/">{() => <CityPage cityRouteKey="mobile-autoreinigung/zug" />}</Route>
+        <Route path="/en/mobile-car-cleaning/lucerne/">{() => <CityPage cityRouteKey="mobile-autoreinigung/luzern" />}</Route>
+        <Route path="/en/mobile-car-cleaning/basel/">{() => <CityPage cityRouteKey="mobile-autoreinigung/basel" />}</Route>
+        <Route path="/en/mobile-car-cleaning/bern/">{() => <CityPage cityRouteKey="mobile-autoreinigung/bern" />}</Route>
+        <Route path="/en/mobile-car-cleaning/geneva/">{() => <CityPage cityRouteKey="mobile-autoreinigung/geneve" />}</Route>
+        <Route path="/en/mobile-car-cleaning/lausanne/">{() => <CityPage cityRouteKey="mobile-autoreinigung/lausanne" />}</Route>
         <Route path="/en/business-customers/" component={FirmenkundenPage} />
         <Route path="/en/contact/" component={ContactPage} />
         <Route path="/en/about/" component={AboutPage} />
@@ -86,7 +99,9 @@ function Router() {
         <Route path="/fr/prestations/nettoyage-exterieur/" component={AussenreinigungPage} />
         <Route path="/fr/prestations/preparation-vehicule/" component={FahrzeugaufbereitungPage} />
         <Route path="/fr/zones-desservies/" component={EinsatzgebietPage} />
-        <Route path="/fr/nettoyage-voiture-mobile/zurich/" component={ZuerichPage} />
+        <Route path="/fr/nettoyage-voiture-mobile/zurich/">{() => <CityPage cityRouteKey="mobile-autoreinigung/zuerich" />}</Route>
+        <Route path="/fr/nettoyage-voiture-mobile/geneve/">{() => <CityPage cityRouteKey="mobile-autoreinigung/geneve" />}</Route>
+        <Route path="/fr/nettoyage-voiture-mobile/lausanne/">{() => <CityPage cityRouteKey="mobile-autoreinigung/lausanne" />}</Route>
         <Route path="/fr/clients-professionnels/" component={FirmenkundenPage} />
         <Route path="/fr/contact/" component={ContactPage} />
         <Route path="/fr/a-propos/" component={AboutPage} />
