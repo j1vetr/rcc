@@ -16,15 +16,26 @@ const root = join(__dirname, '..');
 const domain = 'https://royalcarcleaning.ch';
 
 const ROUTES = [
+  // Trilingual routes
   { url: '/de/',          lang: 'de-CH', routeKey: 'home' },
   { url: '/de/pakete/',   lang: 'de-CH', routeKey: 'packages' },
   { url: '/en/',          lang: 'en-CH', routeKey: 'home' },
   { url: '/en/packages/', lang: 'en-CH', routeKey: 'packages' },
   { url: '/fr/',          lang: 'fr-CH', routeKey: 'home' },
   { url: '/fr/forfaits/', lang: 'fr-CH', routeKey: 'packages' },
+
+  // German-only Phase 2 pages
+  { url: '/de/leistungen/',                           lang: 'de-CH', routeKey: 'leistungen' },
+  { url: '/de/leistungen/mobile-autoreinigung/',      lang: 'de-CH', routeKey: 'leistungen/mobile-autoreinigung' },
+  { url: '/de/leistungen/innenreinigung/',            lang: 'de-CH', routeKey: 'leistungen/innenreinigung' },
+  { url: '/de/leistungen/aussenreinigung/',           lang: 'de-CH', routeKey: 'leistungen/aussenreinigung' },
+  { url: '/de/leistungen/fahrzeugaufbereitung/',      lang: 'de-CH', routeKey: 'leistungen/fahrzeugaufbereitung' },
+  { url: '/de/einsatzgebiet/',                        lang: 'de-CH', routeKey: 'einsatzgebiet' },
+  { url: '/de/mobile-autoreinigung/zuerich/',         lang: 'de-CH', routeKey: 'mobile-autoreinigung/zuerich' },
 ];
 
 // Route clusters: pages that are translations of each other
+// Only fully-translated clusters are listed; German-only pages have no cluster
 const ROUTE_CLUSTERS = [
   ['/de/', '/en/', '/fr/'],
   ['/de/pakete/', '/en/packages/', '/fr/forfaits/'],
@@ -33,15 +44,12 @@ const ROUTE_CLUSTERS = [
 async function main() {
   console.log('[prerender] Starting static site generation…');
 
-  // Load the SSR bundle
   const ssrBundlePath = join(root, 'dist/server/entry-server.js');
   const { render } = await import(ssrBundlePath);
 
-  // Load the built client HTML template
   const templatePath = join(root, 'dist/public/index.html');
   const rawTemplate = readFileSync(templatePath, 'utf-8');
 
-  // Render each route
   for (const route of ROUTES) {
     const { html, metadata } = await render(route.url);
     const finalHtml = injectIntoTemplate(rawTemplate, html, metadata);
@@ -52,7 +60,6 @@ async function main() {
     console.log(`  ✓ ${route.url}`);
   }
 
-  // Generate sitemap.xml with hreflang alternates
   const sitemap = generateSitemap();
   writeFileSync(join(root, 'dist/public/sitemap.xml'), sitemap, 'utf-8');
   console.log('  ✓ /sitemap.xml');
@@ -62,11 +69,6 @@ async function main() {
 
 // ─── Head injection ───────────────────────────────────────────────────────────
 
-/**
- * Build the per-route <head> content block that replaces the entire
- * <!--app-head-start-->...<!--app-head-end--> sentinel in index.html.
- * The result contains exactly one authoritative set of SEO tags — no fallbacks.
- */
 function buildHeadBlock(meta) {
   const hreflangLinks = meta.hreflang
     .map((h) => `  <link rel="alternate" hreflang="${h.hreflang}" href="${h.href}" />`)
@@ -104,20 +106,16 @@ function buildHeadBlock(meta) {
 function injectIntoTemplate(template, appHtml, metadata) {
   const headBlock = buildHeadBlock(metadata);
 
-  // 1. Replace the entire <!--app-head-start-->...<!--app-head-end--> sentinel
-  //    with route-specific head content (removes any fallback/default meta).
   const headReplaced = template.replace(
     /<!--app-head-start-->[\s\S]*?<!--app-head-end-->/,
     headBlock,
   );
 
-  // 2. Set the correct html[lang] attribute
   const langReplaced = headReplaced.replace(
     /(<html[^>]*lang=")[^"]*(")/i,
     `$1${metadata.locale}$2`,
   );
 
-  // 3. Inject SSR-rendered body HTML
   return langReplaced.replace(
     '<div id="root"></div>',
     `<div id="root">${appHtml}</div>`,

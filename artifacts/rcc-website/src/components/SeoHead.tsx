@@ -7,9 +7,8 @@
 
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
-import { getMetadataForPath, get404Metadata } from '@/seo/metadata';
-import { detectLangFromPath, detectRouteKeyFromPath } from '@/seo/routes';
-import { BUSINESS } from '@/seo/businessData';
+import { getMetadataForPath, get404Metadata, isKnownPath } from '@/seo/metadata';
+import { detectLangFromPath } from '@/seo/routes';
 
 function setMeta(selector: string, attr: string, value: string) {
   const el = document.querySelector(selector);
@@ -27,7 +26,6 @@ function setMeta(selector: string, attr: string, value: string) {
 }
 
 function setLink(rel: string, hreflang: string | null, href: string) {
-  // Remove existing link with same rel (+hreflang if applicable)
   const existing = hreflang
     ? document.querySelector(`link[rel="${rel}"][hreflang="${hreflang}"]`)
     : document.querySelector(`link[rel="${rel}"]:not([hreflang])`);
@@ -50,21 +48,10 @@ export function SeoHead() {
   const [location] = useLocation();
 
   useEffect(() => {
-    // Build full path: base URL + wouter location
-    const basePath = import.meta.env.BASE_URL?.replace(/\/$/, '') ?? '';
-    const fullPath = basePath + location;
-
-    // Determine if this is a 404
     const lang = detectLangFromPath(location);
-    const routeKey = detectRouteKeyFromPath(location);
-    const isKnownRoute =
-      location === `/${lang}/` ||
-      (routeKey === 'packages' &&
-        (location === `/${lang}/pakete/` ||
-          location === `/${lang}/packages/` ||
-          location === `/${lang}/forfaits/`));
+    const known = isKnownPath(location);
 
-    const meta = isKnownRoute
+    const meta = known
       ? getMetadataForPath(location)
       : get404Metadata(lang);
 
@@ -92,14 +79,12 @@ export function SeoHead() {
 
     // Canonical + hreflang
     clearHreflangLinks();
-
     setLink('canonical', null, meta.canonical);
-
     for (const entry of meta.hreflang) {
       setLink('alternate', entry.hreflang, entry.href);
     }
 
-    // JSON-LD schema — update the main schema block
+    // JSON-LD schema
     let jsonLdScript = document.querySelector(
       'script[type="application/ld+json"][data-seo="page"]',
     ) as HTMLScriptElement | null;
