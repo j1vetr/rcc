@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Disallow: /api/
+
+Sitemap: https://royalcarcleaning.ch/sitemap.xml

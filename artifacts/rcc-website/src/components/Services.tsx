@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import { Link } from 'wouter';
 import { useListServices } from '@workspace/api-client-react';
 import packageDetailing from '@assets/generated_images/rcc-package-detailing.jpg';
 
 const CATEGORY_ORDER = ['inside-outside', 'interior', 'exterior'] as const;
 
 export function Services() {
-  const { t, lang } = useTranslation();
+  const { t, lang, getLangRoute } = useTranslation();
   const { data: services, isLoading } = useListServices({
     query: { queryKey: ['services'] },
   });
@@ -98,8 +97,8 @@ export function Services() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.11 }}
                   >
-                  <Link
-                    href={`/dienstleistungen#${category}`}
+                  <a
+                    href={`${getLangRoute('packages')}#${category}`}
                     className="group relative grid grid-cols-[1fr_auto] items-center gap-4 overflow-hidden px-5 py-5 transition-colors hover:bg-white/[0.025] focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary sm:gap-6 sm:px-8 sm:py-7"
                   >
                     {/* Gold sweep border on hover */}
@@ -125,7 +124,7 @@ export function Services() {
                       </span>
                       <span className="ml-1 text-[10px] text-primary/70">{t.servicesPage.price}</span>
                     </div>
-                  </Link>
+                  </a>
                   </motion.div>
                 );
               })
@@ -138,10 +137,10 @@ export function Services() {
             <span className="h-px w-8 bg-primary/50" />
             {t.servicesPage.teaser.priceHint}
           </div>
-          <Link href="/dienstleistungen" className="inline-flex items-center gap-3 bg-primary px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-background transition-colors hover:bg-[#ebcc7b]">
+          <a href={getLangRoute('packages')} className="inline-flex items-center gap-3 bg-primary px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-background transition-colors hover:bg-[#ebcc7b]">
             {t.servicesPage.teaser.viewAll}
             <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import type { Language } from '@/i18n/LanguageContext';
+import type { Lang as Language } from '@/seo/routes';
 
 export type FaqItem = {
   id: number;

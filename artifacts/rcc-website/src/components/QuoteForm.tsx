@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import { useSubmitQuote, useListServices } from '@workspace/api-client-react';
+import { BUSINESS } from '@/seo/businessData';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -249,22 +250,22 @@ export function QuoteForm() {
             </div>
 
             <div className="hidden gap-3 border-l border-white/10 pl-10 text-xs text-foreground/50 lg:grid lg:grid-cols-2">
-                <a href="tel:+41788803884" className="flex items-center gap-3 transition-colors hover:text-primary">
+                <a href={BUSINESS.phone.href} className="flex items-center gap-3 transition-colors hover:text-primary">
                   <Phone className="h-4 w-4 shrink-0 text-primary" strokeWidth={1.5} />
-                  +41 78 880 38 84
+                  {BUSINESS.phone.display}
                 </a>
-                <a href="mailto:Info@royalcarcleaning.ch" className="flex items-center gap-3 transition-colors hover:text-primary">
+                <a href={BUSINESS.email.href} className="flex items-center gap-3 transition-colors hover:text-primary">
                   <Mail className="h-4 w-4 shrink-0 text-primary" strokeWidth={1.5} />
-                  <span className="break-all">Info@royalcarcleaning.ch</span>
+                  <span className="break-all">{BUSINESS.email.display}</span>
                 </a>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Wechsel%C3%A4cherstrasse%2025%2C%208103%20Z%C3%BCrich"
+                  href={BUSINESS.address.mapsHref}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-start gap-3 transition-colors hover:text-primary"
                 >
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.5} />
-                  <span>Wechselächerstrasse 25, 8103 Zürich</span>
+                  <span>{BUSINESS.address.formatted}</span>
                 </a>
             </div>
           </div>

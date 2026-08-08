@@ -36,7 +36,7 @@ const CATEGORY_IMAGES: Record<CategoryKey, string> = {
 };
 
 export default function ServicesPage() {
-  const { t, lang } = useTranslation();
+  const { t, lang, getLangRoute } = useTranslation();
   const [, setLocation] = useLocation();
   const [selectedSize, setSelectedSize] = useState<SizeKey | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryKey | null>(null);
@@ -92,8 +92,9 @@ export default function ServicesPage() {
       params.set('car', selectedSize);
     }
     params.set('service', serviceId);
-    
-    setLocation(`/?${params.toString()}#quote`);
+    const homePath = getLangRoute('home');
+    // Navigate to the home page (current language) with quote params + hash
+    window.location.href = `${homePath}?${params.toString()}#quote`;
   };
 
   const selectCategory = (category: CategoryKey) => {
