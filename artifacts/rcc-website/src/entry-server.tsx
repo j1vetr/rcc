@@ -19,6 +19,23 @@ import { getMetadataForPath } from '@/seo/metadata';
 import { getLangPath, detectLangFromPath, type Lang } from '@/seo/routes';
 import { translations } from '@/i18n/translations';
 import { Check, ArrowUpRight, MapPin, ChevronRight } from 'lucide-react';
+import { BUSINESS } from '@/seo/businessData';
+
+// Actual page components — lang-aware via LanguageProvider/useLocation.
+// These are safe in SSR because none of them use lazy() directly.
+// (EinsatzgebietPage uses a lazy-wrapped map but the Suspense fallback is rendered in SSR.)
+import HomePage from '@/pages/HomePage';
+import ServicesPage from '@/pages/ServicesPage';
+import LeistungenPage from '@/pages/LeistungenPage';
+import MobileAutoreinigungPage from '@/pages/MobileAutoreinigungPage';
+import InnenreinigungPage from '@/pages/InnenreinigungPage';
+import AussenreinigungPage from '@/pages/AussenreinigungPage';
+import FahrzeugaufbereitungPage from '@/pages/FahrzeugaufbereitungPage';
+import EinsatzgebietPage from '@/pages/EinsatzgebietPage';
+import ZuerichPage from '@/pages/ZuerichPage';
+import ContactPage from '@/pages/ContactPage';
+import AboutPage from '@/pages/AboutPage';
+import FaqPage from '@/pages/FaqPage';
 
 // ─── Shared SSR primitives ────────────────────────────────────────────────────
 
@@ -612,24 +629,132 @@ function SSRZuerichPage() {
   );
 }
 
+// ─── SSR stubs for corporate pages ───────────────────────────────────────────
+
+function SSRContactPage() {
+  return (
+    <div className="bg-background min-h-screen text-foreground">
+      <Navigation />
+      <main className="pt-32 pb-20 px-6 max-w-5xl mx-auto">
+        <header className="mb-12">
+          <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">Kontakt / Contact</p>
+          <h1 className="text-3xl font-semibold uppercase text-white mb-4">RCC Royal Car Cleaning</h1>
+          <p className="text-sm font-light text-white/60 leading-relaxed">
+            {BUSINESS.phone.display} — {BUSINESS.email.display}
+          </p>
+          <p className="text-sm font-light text-white/60 mt-2">{BUSINESS.address.formatted}</p>
+        </header>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+function SSRAboutPage() {
+  return (
+    <div className="bg-background min-h-screen text-foreground">
+      <Navigation />
+      <main className="pt-32 pb-20 px-6 max-w-5xl mx-auto">
+        <header className="mb-12">
+          <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">About / Über uns</p>
+          <h1 className="text-3xl font-semibold uppercase text-white mb-4">RCC Royal Car Cleaning</h1>
+          <p className="text-sm font-light text-white/60 leading-relaxed max-w-xl">
+            Professioneller mobiler Fahrzeugreinigungsservice in der Schweiz. Service de nettoyage automobile mobile professionnel en Suisse.
+          </p>
+        </header>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+function SSRFaqPage() {
+  const faqs = [
+    { q: 'Was ist mobile Autoreinigung? / What is mobile car cleaning?', a: 'RCC kommt mit dem Equipment direkt zu Ihrem Fahrzeug — zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz.' },
+    { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist in der ganzen Schweiz im Einsatz und bedient alle 26 Kantone.' },
+    { q: 'Wie buche ich?', a: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon oder WhatsApp.' },
+  ];
+  return (
+    <div className="bg-background min-h-screen text-foreground">
+      <Navigation />
+      <main className="pt-32 pb-20 px-6 max-w-4xl mx-auto" itemScope itemType="https://schema.org/FAQPage">
+        <header className="mb-12">
+          <h1 className="text-3xl font-semibold uppercase text-white mb-4">FAQ</h1>
+        </header>
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <div key={i} className="border border-white/10 bg-[#090909] p-6" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h2 className="text-sm font-semibold text-white mb-3" itemProp="name">{faq.q}</h2>
+              <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <p className="text-sm font-light text-white/60" itemProp="text">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
 // ─── SSR App router ───────────────────────────────────────────────────────────
 
-function SSRApp({ lang }: { lang: Lang }) {
+/**
+ * SSRApp renders the correct localized page component for each URL.
+ *
+ * All components imported above use useTranslation() which reads lang from
+ * LanguageProvider → useLocation() → Wouter's hook (which is set to the
+ * current URL by the prerender `render(url)` call).
+ *
+ * This means every EN/FR route automatically renders in its declared language
+ * without any hardcoded German content.
+ */
+function SSRApp({ lang: _lang }: { lang: Lang }) {
   return (
     <Switch>
-      <Route path="/de/"                                      component={() => <SSRHomePage lang={lang} />} />
-      <Route path="/de/pakete/"                               component={() => <SSRPackagesPage lang={lang} />} />
-      <Route path="/de/leistungen/"                           component={() => <SSRLeistungenPage />} />
-      <Route path="/de/leistungen/mobile-autoreinigung/"      component={() => <SSRMobileAutoreinigungPage />} />
-      <Route path="/de/leistungen/innenreinigung/"            component={() => <SSRInnenreinigungPage />} />
-      <Route path="/de/leistungen/aussenreinigung/"           component={() => <SSRAussenreinigungPage />} />
-      <Route path="/de/leistungen/fahrzeugaufbereitung/"      component={() => <SSRFahrzeugaufbereitungPage />} />
-      <Route path="/de/einsatzgebiet/"                        component={() => <SSREinsatzgebietPage />} />
-      <Route path="/de/mobile-autoreinigung/zuerich/"         component={() => <SSRZuerichPage />} />
-      <Route path="/en/"                                      component={() => <SSRHomePage lang={lang} />} />
-      <Route path="/en/packages/"                             component={() => <SSRPackagesPage lang={lang} />} />
-      <Route path="/fr/"                                      component={() => <SSRHomePage lang={lang} />} />
-      <Route path="/fr/forfaits/"                             component={() => <SSRPackagesPage lang={lang} />} />
+      {/* ── German ── */}
+      <Route path="/de/"                                      component={HomePage} />
+      <Route path="/de/pakete/"                               component={ServicesPage} />
+      <Route path="/de/leistungen/"                           component={LeistungenPage} />
+      <Route path="/de/leistungen/mobile-autoreinigung/"      component={MobileAutoreinigungPage} />
+      <Route path="/de/leistungen/innenreinigung/"            component={InnenreinigungPage} />
+      <Route path="/de/leistungen/aussenreinigung/"           component={AussenreinigungPage} />
+      <Route path="/de/leistungen/fahrzeugaufbereitung/"      component={FahrzeugaufbereitungPage} />
+      <Route path="/de/einsatzgebiet/"                        component={EinsatzgebietPage} />
+      <Route path="/de/mobile-autoreinigung/zuerich/"         component={ZuerichPage} />
+      <Route path="/de/kontakt/"                              component={ContactPage} />
+      <Route path="/de/ueber-uns/"                            component={AboutPage} />
+      <Route path="/de/faq/"                                  component={FaqPage} />
+
+      {/* ── English ── */}
+      <Route path="/en/"                                      component={HomePage} />
+      <Route path="/en/packages/"                             component={ServicesPage} />
+      <Route path="/en/services/"                             component={LeistungenPage} />
+      <Route path="/en/services/mobile-car-cleaning/"         component={MobileAutoreinigungPage} />
+      <Route path="/en/services/interior-cleaning/"           component={InnenreinigungPage} />
+      <Route path="/en/services/exterior-cleaning/"           component={AussenreinigungPage} />
+      <Route path="/en/services/car-detailing/"               component={FahrzeugaufbereitungPage} />
+      <Route path="/en/service-area/"                         component={EinsatzgebietPage} />
+      <Route path="/en/mobile-car-cleaning/zurich/"           component={ZuerichPage} />
+      <Route path="/en/contact/"                              component={ContactPage} />
+      <Route path="/en/about/"                                component={AboutPage} />
+      <Route path="/en/faq/"                                  component={FaqPage} />
+
+      {/* ── French ── */}
+      <Route path="/fr/"                                      component={HomePage} />
+      <Route path="/fr/forfaits/"                             component={ServicesPage} />
+      <Route path="/fr/prestations/"                          component={LeistungenPage} />
+      <Route path="/fr/prestations/nettoyage-voiture-mobile/" component={MobileAutoreinigungPage} />
+      <Route path="/fr/prestations/nettoyage-interieur/"      component={InnenreinigungPage} />
+      <Route path="/fr/prestations/nettoyage-exterieur/"      component={AussenreinigungPage} />
+      <Route path="/fr/prestations/preparation-vehicule/"     component={FahrzeugaufbereitungPage} />
+      <Route path="/fr/zones-desservies/"                     component={EinsatzgebietPage} />
+      <Route path="/fr/nettoyage-voiture-mobile/zurich/"      component={ZuerichPage} />
+      <Route path="/fr/contact/"                              component={ContactPage} />
+      <Route path="/fr/a-propos/"                             component={AboutPage} />
+      <Route path="/fr/faq/"                                  component={FaqPage} />
+
+      {/* Fallback */}
       <Route>
         {() => (
           <div className="bg-background min-h-screen text-foreground">

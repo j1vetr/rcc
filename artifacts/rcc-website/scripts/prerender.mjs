@@ -16,7 +16,7 @@ const root = join(__dirname, '..');
 const domain = 'https://royalcarcleaning.ch';
 
 const ROUTES = [
-  // Trilingual routes
+  // ── Trilingual homepage + packages ──
   { url: '/de/',          lang: 'de-CH', routeKey: 'home' },
   { url: '/de/pakete/',   lang: 'de-CH', routeKey: 'packages' },
   { url: '/en/',          lang: 'en-CH', routeKey: 'home' },
@@ -24,21 +24,73 @@ const ROUTES = [
   { url: '/fr/',          lang: 'fr-CH', routeKey: 'home' },
   { url: '/fr/forfaits/', lang: 'fr-CH', routeKey: 'packages' },
 
-  // German-only Phase 2 pages
-  { url: '/de/leistungen/',                           lang: 'de-CH', routeKey: 'leistungen' },
-  { url: '/de/leistungen/mobile-autoreinigung/',      lang: 'de-CH', routeKey: 'leistungen/mobile-autoreinigung' },
-  { url: '/de/leistungen/innenreinigung/',            lang: 'de-CH', routeKey: 'leistungen/innenreinigung' },
-  { url: '/de/leistungen/aussenreinigung/',           lang: 'de-CH', routeKey: 'leistungen/aussenreinigung' },
-  { url: '/de/leistungen/fahrzeugaufbereitung/',      lang: 'de-CH', routeKey: 'leistungen/fahrzeugaufbereitung' },
-  { url: '/de/einsatzgebiet/',                        lang: 'de-CH', routeKey: 'einsatzgebiet' },
-  { url: '/de/mobile-autoreinigung/zuerich/',         lang: 'de-CH', routeKey: 'mobile-autoreinigung/zuerich' },
+  // ── Services hub (trilingual) ──
+  { url: '/de/leistungen/',    lang: 'de-CH', routeKey: 'leistungen' },
+  { url: '/en/services/',      lang: 'en-CH', routeKey: 'leistungen' },
+  { url: '/fr/prestations/',   lang: 'fr-CH', routeKey: 'leistungen' },
+
+  // ── Mobile car cleaning (trilingual) ──
+  { url: '/de/leistungen/mobile-autoreinigung/',          lang: 'de-CH', routeKey: 'leistungen/mobile-autoreinigung' },
+  { url: '/en/services/mobile-car-cleaning/',             lang: 'en-CH', routeKey: 'leistungen/mobile-autoreinigung' },
+  { url: '/fr/prestations/nettoyage-voiture-mobile/',     lang: 'fr-CH', routeKey: 'leistungen/mobile-autoreinigung' },
+
+  // ── Interior cleaning (trilingual) ──
+  { url: '/de/leistungen/innenreinigung/',                lang: 'de-CH', routeKey: 'leistungen/innenreinigung' },
+  { url: '/en/services/interior-cleaning/',               lang: 'en-CH', routeKey: 'leistungen/innenreinigung' },
+  { url: '/fr/prestations/nettoyage-interieur/',          lang: 'fr-CH', routeKey: 'leistungen/innenreinigung' },
+
+  // ── Exterior cleaning (trilingual) ──
+  { url: '/de/leistungen/aussenreinigung/',               lang: 'de-CH', routeKey: 'leistungen/aussenreinigung' },
+  { url: '/en/services/exterior-cleaning/',               lang: 'en-CH', routeKey: 'leistungen/aussenreinigung' },
+  { url: '/fr/prestations/nettoyage-exterieur/',          lang: 'fr-CH', routeKey: 'leistungen/aussenreinigung' },
+
+  // ── Car detailing (trilingual) ──
+  { url: '/de/leistungen/fahrzeugaufbereitung/',          lang: 'de-CH', routeKey: 'leistungen/fahrzeugaufbereitung' },
+  { url: '/en/services/car-detailing/',                   lang: 'en-CH', routeKey: 'leistungen/fahrzeugaufbereitung' },
+  { url: '/fr/prestations/preparation-vehicule/',         lang: 'fr-CH', routeKey: 'leistungen/fahrzeugaufbereitung' },
+
+  // ── Service area (trilingual) ──
+  { url: '/de/einsatzgebiet/',                            lang: 'de-CH', routeKey: 'einsatzgebiet' },
+  { url: '/en/service-area/',                             lang: 'en-CH', routeKey: 'einsatzgebiet' },
+  { url: '/fr/zones-desservies/',                         lang: 'fr-CH', routeKey: 'einsatzgebiet' },
+
+  // ── Zurich city page (trilingual) ──
+  { url: '/de/mobile-autoreinigung/zuerich/',             lang: 'de-CH', routeKey: 'mobile-autoreinigung/zuerich' },
+  { url: '/en/mobile-car-cleaning/zurich/',               lang: 'en-CH', routeKey: 'mobile-autoreinigung/zuerich' },
+  { url: '/fr/nettoyage-voiture-mobile/zurich/',          lang: 'fr-CH', routeKey: 'mobile-autoreinigung/zuerich' },
+
+  // ── Contact (trilingual) ──
+  { url: '/de/kontakt/',  lang: 'de-CH', routeKey: 'kontakt' },
+  { url: '/en/contact/',  lang: 'en-CH', routeKey: 'kontakt' },
+  { url: '/fr/contact/',  lang: 'fr-CH', routeKey: 'kontakt' },
+
+  // ── About (trilingual) ──
+  { url: '/de/ueber-uns/', lang: 'de-CH', routeKey: 'ueber-uns' },
+  { url: '/en/about/',     lang: 'en-CH', routeKey: 'ueber-uns' },
+  { url: '/fr/a-propos/',  lang: 'fr-CH', routeKey: 'ueber-uns' },
+
+  // ── FAQ (trilingual) ──
+  { url: '/de/faq/',  lang: 'de-CH', routeKey: 'faq' },
+  { url: '/en/faq/',  lang: 'en-CH', routeKey: 'faq' },
+  { url: '/fr/faq/',  lang: 'fr-CH', routeKey: 'faq' },
 ];
 
-// Route clusters: pages that are translations of each other
-// Only fully-translated clusters are listed; German-only pages have no cluster
+// Route clusters: pages that are translations of each other.
+// All entries here get full hreflang alternates in the sitemap.
 const ROUTE_CLUSTERS = [
+  // Trilingual pages
   ['/de/', '/en/', '/fr/'],
   ['/de/pakete/', '/en/packages/', '/fr/forfaits/'],
+  ['/de/leistungen/', '/en/services/', '/fr/prestations/'],
+  ['/de/leistungen/mobile-autoreinigung/', '/en/services/mobile-car-cleaning/', '/fr/prestations/nettoyage-voiture-mobile/'],
+  ['/de/leistungen/innenreinigung/', '/en/services/interior-cleaning/', '/fr/prestations/nettoyage-interieur/'],
+  ['/de/leistungen/aussenreinigung/', '/en/services/exterior-cleaning/', '/fr/prestations/nettoyage-exterieur/'],
+  ['/de/leistungen/fahrzeugaufbereitung/', '/en/services/car-detailing/', '/fr/prestations/preparation-vehicule/'],
+  ['/de/einsatzgebiet/', '/en/service-area/', '/fr/zones-desservies/'],
+  ['/de/mobile-autoreinigung/zuerich/', '/en/mobile-car-cleaning/zurich/', '/fr/nettoyage-voiture-mobile/zurich/'],
+  ['/de/kontakt/', '/en/contact/', '/fr/contact/'],
+  ['/de/ueber-uns/', '/en/about/', '/fr/a-propos/'],
+  ['/de/faq/', '/en/faq/', '/fr/faq/'],
 ];
 
 async function main() {
@@ -149,21 +201,16 @@ function generateSitemap() {
     '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...urlEntries,
     '</urlset>',
-    '',
   ].join('\n');
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
 function esc(str) {
-  return String(str)
+  return String(str ?? '')
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 }
-
-// ─── Run ──────────────────────────────────────────────────────────────────────
 
 main().catch((err) => {
   console.error('[prerender] Fatal error:', err);

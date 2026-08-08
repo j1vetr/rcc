@@ -6,7 +6,7 @@
  *
  * For German-only pages (Phase 2), en/fr slugs are omitted.
  * hreflang is generated only for languages that have a slug.
- * Phase 3 will add EN/FR equivalents.
+ * Phase 3: EN/FR equivalents for all pages + contact/about/faq.
  */
 
 import { BUSINESS } from './businessData';
@@ -22,7 +22,10 @@ export type RouteKey =
   | 'leistungen/aussenreinigung'
   | 'leistungen/fahrzeugaufbereitung'
   | 'einsatzgebiet'
-  | 'mobile-autoreinigung/zuerich';
+  | 'mobile-autoreinigung/zuerich'
+  | 'kontakt'
+  | 'ueber-uns'
+  | 'faq';
 
 export const LANG_LOCALES: Record<Lang, string> = {
   de: 'de-CH',
@@ -43,13 +46,16 @@ export const LANG_LABELS: Record<Lang, string> = {
 export const ROUTE_SLUGS: Record<RouteKey, Partial<Record<Lang, string>>> = {
   home:                                    { de: '', en: '', fr: '' },
   packages:                                { de: 'pakete', en: 'packages', fr: 'forfaits' },
-  leistungen:                              { de: 'leistungen' },
-  'leistungen/mobile-autoreinigung':       { de: 'leistungen/mobile-autoreinigung' },
-  'leistungen/innenreinigung':             { de: 'leistungen/innenreinigung' },
-  'leistungen/aussenreinigung':            { de: 'leistungen/aussenreinigung' },
-  'leistungen/fahrzeugaufbereitung':       { de: 'leistungen/fahrzeugaufbereitung' },
-  einsatzgebiet:                           { de: 'einsatzgebiet' },
-  'mobile-autoreinigung/zuerich':          { de: 'mobile-autoreinigung/zuerich' },
+  leistungen:                              { de: 'leistungen', en: 'services', fr: 'prestations' },
+  'leistungen/mobile-autoreinigung':       { de: 'leistungen/mobile-autoreinigung', en: 'services/mobile-car-cleaning', fr: 'prestations/nettoyage-voiture-mobile' },
+  'leistungen/innenreinigung':             { de: 'leistungen/innenreinigung', en: 'services/interior-cleaning', fr: 'prestations/nettoyage-interieur' },
+  'leistungen/aussenreinigung':            { de: 'leistungen/aussenreinigung', en: 'services/exterior-cleaning', fr: 'prestations/nettoyage-exterieur' },
+  'leistungen/fahrzeugaufbereitung':       { de: 'leistungen/fahrzeugaufbereitung', en: 'services/car-detailing', fr: 'prestations/preparation-vehicule' },
+  einsatzgebiet:                           { de: 'einsatzgebiet', en: 'service-area', fr: 'zones-desservies' },
+  'mobile-autoreinigung/zuerich':          { de: 'mobile-autoreinigung/zuerich', en: 'mobile-car-cleaning/zurich', fr: 'nettoyage-voiture-mobile/zurich' },
+  kontakt:                                 { de: 'kontakt', en: 'contact', fr: 'contact' },
+  'ueber-uns':                             { de: 'ueber-uns', en: 'about', fr: 'a-propos' },
+  faq:                                     { de: 'faq', en: 'faq', fr: 'faq' },
 };
 
 /**
@@ -98,14 +104,44 @@ export function detectRouteKeyFromPath(path: string): RouteKey {
   // Strip trailing slash for matching
   const p = path.replace(/\/$/, '');
 
-  if (/^\/(de\/pakete|en\/packages|fr\/forfaits)$/.test(p))        return 'packages';
-  if (/^\/de\/leistungen\/mobile-autoreinigung$/.test(p))           return 'leistungen/mobile-autoreinigung';
-  if (/^\/de\/leistungen\/innenreinigung$/.test(p))                 return 'leistungen/innenreinigung';
-  if (/^\/de\/leistungen\/aussenreinigung$/.test(p))                return 'leistungen/aussenreinigung';
-  if (/^\/de\/leistungen\/fahrzeugaufbereitung$/.test(p))           return 'leistungen/fahrzeugaufbereitung';
-  if (/^\/de\/leistungen$/.test(p))                                 return 'leistungen';
-  if (/^\/de\/einsatzgebiet$/.test(p))                              return 'einsatzgebiet';
-  if (/^\/de\/mobile-autoreinigung\/zuerich$/.test(p))              return 'mobile-autoreinigung/zuerich';
+  // Packages
+  if (/^\/(de\/pakete|en\/packages|fr\/forfaits)$/.test(p))                                         return 'packages';
+
+  // Services hub
+  if (/^\/(de\/leistungen|en\/services|fr\/prestations)$/.test(p))                                  return 'leistungen';
+
+  // Service detail: mobile car cleaning
+  if (/^\/(de\/leistungen\/mobile-autoreinigung|en\/services\/mobile-car-cleaning|fr\/prestations\/nettoyage-voiture-mobile)$/.test(p))
+    return 'leistungen/mobile-autoreinigung';
+
+  // Service detail: interior cleaning
+  if (/^\/(de\/leistungen\/innenreinigung|en\/services\/interior-cleaning|fr\/prestations\/nettoyage-interieur)$/.test(p))
+    return 'leistungen/innenreinigung';
+
+  // Service detail: exterior cleaning
+  if (/^\/(de\/leistungen\/aussenreinigung|en\/services\/exterior-cleaning|fr\/prestations\/nettoyage-exterieur)$/.test(p))
+    return 'leistungen/aussenreinigung';
+
+  // Service detail: car detailing
+  if (/^\/(de\/leistungen\/fahrzeugaufbereitung|en\/services\/car-detailing|fr\/prestations\/preparation-vehicule)$/.test(p))
+    return 'leistungen/fahrzeugaufbereitung';
+
+  // Service area
+  if (/^\/(de\/einsatzgebiet|en\/service-area|fr\/zones-desservies)$/.test(p))                       return 'einsatzgebiet';
+
+  // City: Zurich
+  if (/^\/(de\/mobile-autoreinigung\/zuerich|en\/mobile-car-cleaning\/zurich|fr\/nettoyage-voiture-mobile\/zurich)$/.test(p))
+    return 'mobile-autoreinigung/zuerich';
+
+  // Contact
+  if (/^\/(de\/kontakt|en\/contact|fr\/contact)$/.test(p))                                           return 'kontakt';
+
+  // About
+  if (/^\/(de\/ueber-uns|en\/about|fr\/a-propos)$/.test(p))                                          return 'ueber-uns';
+
+  // FAQ
+  if (/^\/(de\/faq|en\/faq|fr\/faq)$/.test(p))                                                       return 'faq';
+
   return 'home';
 }
 

@@ -5,13 +5,102 @@ import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { FaTiktok } from 'react-icons/fa';
 import { BUSINESS } from '@/seo/businessData';
 
+// Language-specific footer link definitions
+const FOOTER_SERVICE_LINKS: Record<string, { label: string; href: string; lang: string[] }[]> = {
+  de: [
+    { label: 'Mobile Autoreinigung', href: '/de/leistungen/mobile-autoreinigung/', lang: ['de'] },
+    { label: 'Innenreinigung', href: '/de/leistungen/innenreinigung/', lang: ['de'] },
+    { label: 'Aussenreinigung', href: '/de/leistungen/aussenreinigung/', lang: ['de'] },
+    { label: 'Fahrzeugaufbereitung', href: '/de/leistungen/fahrzeugaufbereitung/', lang: ['de'] },
+    { label: 'Pakete & Preise', href: '/de/pakete/', lang: ['de'] },
+  ],
+  en: [
+    { label: 'Mobile Car Cleaning', href: '/en/services/mobile-car-cleaning/', lang: ['en'] },
+    { label: 'Interior Cleaning', href: '/en/services/interior-cleaning/', lang: ['en'] },
+    { label: 'Exterior Cleaning', href: '/en/services/exterior-cleaning/', lang: ['en'] },
+    { label: 'Car Detailing', href: '/en/services/car-detailing/', lang: ['en'] },
+    { label: 'Packages & Pricing', href: '/en/packages/', lang: ['en'] },
+  ],
+  fr: [
+    { label: 'Nettoyage voiture mobile', href: '/fr/prestations/nettoyage-voiture-mobile/', lang: ['fr'] },
+    { label: 'Nettoyage intérieur', href: '/fr/prestations/nettoyage-interieur/', lang: ['fr'] },
+    { label: 'Nettoyage extérieur', href: '/fr/prestations/nettoyage-exterieur/', lang: ['fr'] },
+    { label: 'Préparation véhicule', href: '/fr/prestations/preparation-vehicule/', lang: ['fr'] },
+    { label: 'Forfaits & tarifs', href: '/fr/forfaits/', lang: ['fr'] },
+  ],
+};
+
+const FOOTER_LOCATION_LINKS: Record<string, { label: string; href: string }[]> = {
+  de: [
+    { label: 'Zürich', href: '/de/mobile-autoreinigung/zuerich/' },
+    { label: 'Einsatzgebiet Schweiz', href: '/de/einsatzgebiet/' },
+  ],
+  en: [
+    { label: 'Zurich', href: '/en/mobile-car-cleaning/zurich/' },
+    { label: 'Service Area Switzerland', href: '/en/service-area/' },
+  ],
+  fr: [
+    { label: 'Zurich', href: '/fr/nettoyage-voiture-mobile/zurich/' },
+    { label: 'Zones desservies Suisse', href: '/fr/zones-desservies/' },
+  ],
+};
+
+const FOOTER_COMPANY_LINKS: Record<string, { label: string; href: string }[]> = {
+  de: [
+    { label: 'Über uns', href: '/de/ueber-uns/' },
+    { label: 'Kontakt', href: '/de/kontakt/' },
+    { label: 'FAQ', href: '/de/faq/' },
+  ],
+  en: [
+    { label: 'About', href: '/en/about/' },
+    { label: 'Contact', href: '/en/contact/' },
+    { label: 'FAQ', href: '/en/faq/' },
+  ],
+  fr: [
+    { label: 'À propos', href: '/fr/a-propos/' },
+    { label: 'Contact', href: '/fr/contact/' },
+    { label: 'FAQ', href: '/fr/faq/' },
+  ],
+};
+
+const SERVICES_TITLE: Record<string, string> = {
+  de: 'Leistungen',
+  en: 'Services',
+  fr: 'Services',
+};
+
+const LOCATIONS_TITLE: Record<string, string> = {
+  de: 'Standorte',
+  en: 'Locations',
+  fr: 'Zones',
+};
+
+const COMPANY_TITLE: Record<string, string> = {
+  de: 'Unternehmen',
+  en: 'Company',
+  fr: 'Entreprise',
+};
+
+const CONTACT_TITLE: Record<string, string> = {
+  de: 'Kontakt',
+  en: 'Contact',
+  fr: 'Contact',
+};
+
+const LANG_TITLE: Record<string, string> = {
+  de: 'Sprache',
+  en: 'Language',
+  fr: 'Langue',
+};
+
 export function Footer() {
   const { t, lang, getLangRoute } = useTranslation();
   const homePath = getLangRoute('home');
   const packagesPath = getLangRoute('packages');
 
-  // German-only SEO section links (de only, Phase 2)
-  const isDE = lang === 'de';
+  const serviceLinks = FOOTER_SERVICE_LINKS[lang] ?? FOOTER_SERVICE_LINKS.de;
+  const locationLinks = FOOTER_LOCATION_LINKS[lang] ?? FOOTER_LOCATION_LINKS.de;
+  const companyLinks = FOOTER_COMPANY_LINKS[lang] ?? FOOTER_COMPANY_LINKS.de;
 
   return (
     <footer className="bg-background pt-16 pb-10 border-t border-primary/10 relative overflow-hidden">
@@ -21,7 +110,7 @@ export function Footer() {
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
           {/* Brand column */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             <a href={homePath} className="inline-block hover:opacity-80 transition-opacity">
               <img
                 src={logo}
@@ -44,67 +133,58 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Services column — German-only SEO links */}
-          {isDE && (
-            <div className="md:col-span-2">
-              <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
-                Leistungen
-              </h4>
-              <ul className="space-y-3 text-foreground/45 text-sm">
-                <li>
-                  <a href="/de/leistungen/mobile-autoreinigung/" className="hover:text-primary transition-colors font-light">
-                    Mobile Autoreinigung
+          {/* Services column */}
+          <div className="md:col-span-2">
+            <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
+              {SERVICES_TITLE[lang]}
+            </h4>
+            <ul className="space-y-3 text-foreground/45 text-sm">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-primary transition-colors font-light">
+                    {link.label}
                   </a>
                 </li>
-                <li>
-                  <a href="/de/leistungen/innenreinigung/" className="hover:text-primary transition-colors font-light">
-                    Innenreinigung
-                  </a>
-                </li>
-                <li>
-                  <a href="/de/leistungen/aussenreinigung/" className="hover:text-primary transition-colors font-light">
-                    Aussenreinigung
-                  </a>
-                </li>
-                <li>
-                  <a href="/de/leistungen/fahrzeugaufbereitung/" className="hover:text-primary transition-colors font-light">
-                    Fahrzeugaufbereitung
-                  </a>
-                </li>
-                <li>
-                  <a href={packagesPath} className="hover:text-primary transition-colors font-light">
-                    Pakete & Preise
-                  </a>
-                </li>
-              </ul>
-            </div>
-          )}
+              ))}
+            </ul>
+          </div>
 
-          {/* Regions column — German-only SEO links */}
-          {isDE && (
-            <div className="md:col-span-2">
-              <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
-                Standorte
-              </h4>
-              <ul className="space-y-3 text-foreground/45 text-sm">
-                <li>
-                  <a href="/de/mobile-autoreinigung/zuerich/" className="hover:text-primary transition-colors font-light">
-                    Zürich
+          {/* Locations column */}
+          <div className="md:col-span-2">
+            <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
+              {LOCATIONS_TITLE[lang]}
+            </h4>
+            <ul className="space-y-3 text-foreground/45 text-sm">
+              {locationLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-primary transition-colors font-light">
+                    {link.label}
                   </a>
                 </li>
-                <li>
-                  <a href="/de/einsatzgebiet/" className="hover:text-primary transition-colors font-light">
-                    Einsatzgebiet Schweiz
+              ))}
+            </ul>
+          </div>
+
+          {/* Company column */}
+          <div className="md:col-span-2">
+            <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
+              {COMPANY_TITLE[lang]}
+            </h4>
+            <ul className="space-y-3 text-foreground/45 text-sm">
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-primary transition-colors font-light">
+                    {link.label}
                   </a>
                 </li>
-              </ul>
-            </div>
-          )}
+              ))}
+            </ul>
+          </div>
 
           {/* Contact column */}
-          <div className={isDE ? 'md:col-span-2' : 'md:col-span-4'}>
+          <div className="md:col-span-2">
             <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
-              Kontakt
+              {CONTACT_TITLE[lang]}
             </h4>
             <ul className="space-y-4 text-foreground/50 text-sm">
               <li>
@@ -139,8 +219,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Social column */}
-          <div className="md:col-span-2">
+          {/* Social + Language column */}
+          <div className="md:col-span-1">
             <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-5">
               Social
             </h4>
@@ -167,7 +247,7 @@ export function Footer() {
 
             {/* Language links */}
             <h4 className="text-foreground/70 font-medium text-xs uppercase tracking-[0.18em] mb-3">
-              Sprache
+              {LANG_TITLE[lang]}
             </h4>
             <ul className="space-y-2 text-foreground/45 text-sm">
               <li>
