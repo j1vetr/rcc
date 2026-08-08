@@ -136,7 +136,7 @@ function Router() {
         {/* ── Guide: leather and fabric DE only ── */}
         <Route path="/de/ratgeber/innenreinigung-leder-stoff/" component={InnenreinigungLederStoffPage} />
 
-        {/* Legacy redirect — old German-only URL */}
+        {/* Legacy redirect ,  old German-only URL */}
         <Route path="/dienstleistungen">
           <Redirect to="/de/pakete/" />
         </Route>

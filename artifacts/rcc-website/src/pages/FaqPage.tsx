@@ -1,5 +1,5 @@
 /**
- * FAQ page — serves DE, EN, FR with visible FAQPage schema.
+ * FAQ page ,  serves DE, EN, FR with visible FAQPage schema.
  * DE: /de/faq/
  * EN: /en/faq/
  * FR: /fr/faq/
@@ -48,7 +48,7 @@ export default function FaqPage() {
           </p>
         </header>
 
-        {/* FAQ list — rendered as visible HTML for indexing */}
+        {/* FAQ list ,  rendered as visible HTML for indexing */}
         <section className="mb-16">
           <div className="space-y-1">
             {faqs.map((faq, idx) => (

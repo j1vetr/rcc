@@ -63,7 +63,7 @@ export default function HomePage() {
       <Navigation />
       <main>
         <Hero />
-        {/* AI-citable factual block — not lazy, present in SSR/prerendered HTML */}
+        {/* AI-citable factual block ,  not lazy, present in SSR/prerendered HTML */}
         <AICiteBlock />
         <Suspense fallback={<SectionFallback />}>
           <BeforeAfter />

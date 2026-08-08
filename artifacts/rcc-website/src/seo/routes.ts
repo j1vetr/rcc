@@ -1,5 +1,5 @@
 /**
- * SEO route definitions — canonical URL map for all indexable pages.
+ * SEO route definitions ,  canonical URL map for all indexable pages.
  *
  * Each route key maps to localized slugs for de/en/fr.
  * Use getLangPath() to build URLs. Never hardcode /de/ /en/ /fr/ paths in components.
@@ -56,7 +56,7 @@ export const LANG_LABELS: Record<Lang, string> = {
 };
 
 /**
- * Slug map — only the languages where a real page exists.
+ * Slug map ,  only the languages where a real page exists.
  * Missing entry = no page in that language yet.
  */
 export const ROUTE_SLUGS: Record<RouteKey, Partial<Record<Lang, string>>> = {
@@ -85,12 +85,12 @@ export const ROUTE_SLUGS: Record<RouteKey, Partial<Record<Lang, string>>> = {
   // Ratgeber / Guide hub
   ratgeber:                                { de: 'ratgeber', en: 'guides', fr: 'guides' },
 
-  // German guides — top 3 have EN/FR translations; others DE-only
+  // German guides ,  top 3 have EN/FR translations; others DE-only
   'ratgeber/auto-innenreinigung':                  { de: 'ratgeber/auto-innenreinigung', en: 'guides/car-interior-cleaning', fr: 'guides/nettoyage-interieur-voiture' },
   'ratgeber/autopflege-im-winter-schweiz':         { de: 'ratgeber/autopflege-im-winter-schweiz', en: 'guides/car-care-winter-switzerland', fr: 'guides/entretien-voiture-hiver-suisse' },
   'ratgeber/wie-oft-auto-reinigen':                { de: 'ratgeber/wie-oft-auto-reinigen', en: 'guides/how-often-clean-car', fr: 'guides/frequence-nettoyage-voiture' },
 
-  // DE-only guides (no EN/FR yet — hreflang alternates omitted)
+  // DE-only guides (no EN/FR yet ,  hreflang alternates omitted)
   'ratgeber/autoaufbereitung-kosten-schweiz':      { de: 'ratgeber/autoaufbereitung-kosten-schweiz' },
   'ratgeber/auto-vor-leasingrueckgabe-reinigen':   { de: 'ratgeber/auto-vor-leasingrueckgabe-reinigen' },
   'ratgeber/innenreinigung-leder-stoff':           { de: 'ratgeber/innenreinigung-leder-stoff' },
@@ -104,7 +104,7 @@ export function getLangPath(lang: Lang, routeKey: RouteKey): string {
   const slugs = ROUTE_SLUGS[routeKey];
   const slug = slugs[lang];
   if (slug === undefined) {
-    // No equivalent page in this language — fall back to the language homepage
+    // No equivalent page in this language ,  fall back to the language homepage
     return `/${lang}/`;
   }
   return `/${lang}/${slug ? slug + '/' : ''}`;

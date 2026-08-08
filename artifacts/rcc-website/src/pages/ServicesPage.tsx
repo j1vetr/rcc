@@ -161,7 +161,7 @@ export default function ServicesPage() {
     <div className="bg-[#050505] min-h-screen text-foreground selection:bg-primary/30 selection:text-foreground pb-20">
       <Navigation />
       <main className="pt-32 pb-20 container mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
-        {/* AI-citable factual block — present in SSR/prerendered HTML */}
+        {/* AI-citable factual block ,  present in SSR/prerendered HTML */}
         <div className="-mx-5 sm:-mx-6 lg:-mx-12 mb-8">
           <AICiteBlock />
         </div>

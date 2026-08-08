@@ -1,5 +1,5 @@
 /**
- * Central business data — single source of truth for NAP (Name, Address, Phone),
+ * Central business data ,  single source of truth for NAP (Name, Address, Phone),
  * contact links, social profiles, and schema data.
  *
  * All components, schema blocks, and metadata must read from here.

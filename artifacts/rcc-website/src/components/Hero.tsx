@@ -24,7 +24,7 @@ export function Hero() {
   return (
     <section ref={ref} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-black">
       <motion.div className="absolute inset-0 hero-video-stage" style={{ scale: videoScale }} aria-hidden="true">
-        {/* Desktop video — loaded after 3s delay so page content is LCP, not the iframe */}
+        {/* Desktop video ,  loaded after 3s delay so page content is LCP, not the iframe */}
         <YoutubeFacade
           src="https://www.youtube-nocookie.com/embed/RQ1YwgMtaGo?start=280&autoplay=1&mute=1&loop=1&playlist=RQ1YwgMtaGo&controls=0&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1"
           className="hero-video hero-video-desktop pointer-events-none"
@@ -34,7 +34,7 @@ export function Hero() {
           autoLoad
           autoLoadDelay={3000}
         />
-        {/* Mobile video — same lazy strategy */}
+        {/* Mobile video ,  same lazy strategy */}
         <YoutubeFacade
           src="https://www.youtube-nocookie.com/embed/uG1G1HuXKOw?autoplay=1&mute=1&loop=1&playlist=uG1G1HuXKOw&controls=0&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1"
           className="hero-video hero-video-mobile pointer-events-none"

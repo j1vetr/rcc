@@ -13,15 +13,15 @@ const CONFIG: GuidePageConfig = {
   ],
   eyebrow: 'RCC Ratgeber · Kosten & Preise',
   h1: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?',
-  lead: 'Der Preis einer professionellen Autoaufbereitung hängt von mehreren messbaren Faktoren ab — nicht von einer pauschalen Zahl. Wer die Einflussgrössen kennt, kann besser einschätzen, welches Paket für sein Fahrzeug passt.',
+  lead: 'Der Preis einer professionellen Autoaufbereitung hängt von mehreren messbaren Faktoren ab ,  nicht von einer pauschalen Zahl. Wer die Einflussgrössen kennt, kann besser einschätzen, welches Paket für sein Fahrzeug passt.',
   articleKey: 'autoaufbereitung-kosten-schweiz',
   language: 'de',
   sections: [
     {
       heading: 'Was meint „Autoaufbereitung" konkret?',
       paragraphs: [
-        'Der Begriff Autoaufbereitung wird unterschiedlich verwendet. Im weiteren Sinn umfasst er alles von einer einfachen Innenreinigung bis zu Lackpolitur und Versiegelung. Im engeren Sinn und im Kontext der RCC-Dienstleistungen meint Fahrzeugaufbereitung die Kombination aus Innen- und Aussenreinigung in einem Durchgang — was auch als Komplettreinigung bezeichnet wird.',
-        'RCC bietet Autopflege ohne Lackbearbeitung oder Keramikreinigung an. Die angebotenen Leistungen umfassen professionelle Innenreinigung, Aussenreinigung (Handwäsche) und die Kombination beider — je nach gewähltem Paket.',
+        'Der Begriff Autoaufbereitung wird unterschiedlich verwendet. Im weiteren Sinn umfasst er alles von einer einfachen Innenreinigung bis zu Lackpolitur und Versiegelung. Im engeren Sinn und im Kontext der RCC-Dienstleistungen meint Fahrzeugaufbereitung die Kombination aus Innen- und Aussenreinigung in einem Durchgang ,  was auch als Komplettreinigung bezeichnet wird.',
+        'RCC bietet Autopflege ohne Lackbearbeitung oder Keramikreinigung an. Die angebotenen Leistungen umfassen professionelle Innenreinigung, Aussenreinigung (Handwäsche) und die Kombination beider ,  je nach gewähltem Paket.',
       ],
     },
     {
@@ -29,7 +29,7 @@ const CONFIG: GuidePageConfig = {
       level: 'h2',
       paragraphs: [
         'Die Fahrzeuggrösse ist der wichtigste Preisfaktor bei RCC. Die Kategorien sind: S (Kleinwagen wie Smart, Mini, Fiat 500), M (Kompakt- und Mittelklasse wie VW Golf oder Passat), L (SUV) und XL (Van, 7-Sitzer, Nutzfahrzeuge).',
-        'Grössere Fahrzeuge haben mehr zu reinigende Fläche — mehr Sitzflächen, grössere Teppichflächen, mehr Karosserie. Das schlägt sich direkt im Preis nieder.',
+        'Grössere Fahrzeuge haben mehr zu reinigende Fläche ,  mehr Sitzflächen, grössere Teppichflächen, mehr Karosserie. Das schlägt sich direkt im Preis nieder.',
       ],
     },
     {
@@ -44,7 +44,7 @@ const CONFIG: GuidePageConfig = {
       heading: 'Faktor 3: Mobiler Service versus Reinigungsanlage',
       level: 'h2',
       paragraphs: [
-        'Ein mobiler Service wie RCC kommt mit dem Equipment direkt zum Fahrzeug — zu Hause, am Arbeitsplatz oder an einem anderen Ort. Das ist bequemer als eine Fahrt zur Reinigungsanlage, hat aber auch seinen Preis.',
+        'Ein mobiler Service wie RCC kommt mit dem Equipment direkt zum Fahrzeug ,  zu Hause, am Arbeitsplatz oder an einem anderen Ort. Das ist bequemer als eine Fahrt zur Reinigungsanlage, hat aber auch seinen Preis.',
         'Maschinenwaschstrassen sind günstiger, aber sie behandeln alle Fahrzeuge gleich und erreichen viele Stellen nicht. Die manuelle Handwäsche und Innenreinigung durch RCC ist aufwändiger und gründlicher.',
       ],
     },
@@ -52,7 +52,7 @@ const CONFIG: GuidePageConfig = {
       heading: 'Faktor 4: Verschmutzungsgrad',
       level: 'h2',
       paragraphs: [
-        'Ein stark verschmutztes Fahrzeug — mit eingetrockneten Flecken, vielen Tierhaaren oder hartnäckigem Belag auf Polstern — erfordert mehr Aufwand als ein regelmässig gepflegtes. Bei der Offertanfrage können Sie den Zustand Ihres Fahrzeugs angeben.',
+        'Ein stark verschmutztes Fahrzeug ,  mit eingetrockneten Flecken, vielen Tierhaaren oder hartnäckigem Belag auf Polstern ,  erfordert mehr Aufwand als ein regelmässig gepflegtes. Bei der Offertanfrage können Sie den Zustand Ihres Fahrzeugs angeben.',
       ],
     },
     {

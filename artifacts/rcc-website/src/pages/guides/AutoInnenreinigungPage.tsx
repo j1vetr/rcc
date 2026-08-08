@@ -1,5 +1,5 @@
 /**
- * Guide: Auto Innenreinigung — serves DE, EN, FR.
+ * Guide: Auto Innenreinigung ,  serves DE, EN, FR.
  * DE: /de/ratgeber/auto-innenreinigung/
  * EN: /en/guides/car-interior-cleaning/
  * FR: /fr/guides/nettoyage-interieur-voiture/
@@ -18,7 +18,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     ],
     eyebrow: 'RCC Ratgeber · Innenreinigung',
     h1: 'Auto Innenreinigung: Was wirklich zählt',
-    lead: 'Eine saubere Fahrzeugkabine bedeutet mehr als ein aufgeräumter Eindruck. Gründliche Innenreinigung beseitigt Schmutz, der sich in Polstern, Teppichen und Lüftungsschlitzen festsetzt — und den man oft nicht auf den ersten Blick sieht.',
+    lead: 'Eine saubere Fahrzeugkabine bedeutet mehr als ein aufgeräumter Eindruck. Gründliche Innenreinigung beseitigt Schmutz, der sich in Polstern, Teppichen und Lüftungsschlitzen festsetzt ,  und den man oft nicht auf den ersten Blick sieht.',
     articleKey: 'auto-innenreinigung',
     language: 'de',
     sections: [
@@ -33,8 +33,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Schritt für Schritt: Professionelle Vorgehensweise',
         level: 'h2',
         paragraphs: [
-          'Eine professionelle Innenreinigung folgt einer klaren Reihenfolge: Zuerst wird der gesamte Innenraum gründlich gesaugt — Sitze, Teppich, Fussmatten, Kofferraum. Dann folgen die Hartflächen: Armaturenbrett, Türverkleidungen, Mittelkonsole und Dachhimmel werden mit geeigneten Reinigungsmitteln abgewischt.',
-          'Die Scheiben werden von innen gereinigt, um Schlieren und Ablagerungen zu entfernen. Abschliessend werden Fussmatten entweder ausgeschüttelt und gesaugt oder — bei intensiverer Reinigung — mit Shampoo behandelt.',
+          'Eine professionelle Innenreinigung folgt einer klaren Reihenfolge: Zuerst wird der gesamte Innenraum gründlich gesaugt ,  Sitze, Teppich, Fussmatten, Kofferraum. Dann folgen die Hartflächen: Armaturenbrett, Türverkleidungen, Mittelkonsole und Dachhimmel werden mit geeigneten Reinigungsmitteln abgewischt.',
+          'Die Scheiben werden von innen gereinigt, um Schlieren und Ablagerungen zu entfernen. Abschliessend werden Fussmatten entweder ausgeschüttelt und gesaugt oder ,  bei intensiverer Reinigung ,  mit Shampoo behandelt.',
         ],
       },
       {
@@ -71,7 +71,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'Kommt RCC für die Innenreinigung zu mir?',
-        answer: 'Ja — RCC ist ein mobiler Service und kommt mit dem vollständigen Equipment direkt zu Ihrem Fahrzeugstandort in der Schweiz. Offerte über das Formular oder per Telefon/WhatsApp anfragen.',
+        answer: 'Ja ,  RCC ist ein mobiler Service und kommt mit dem vollständigen Equipment direkt zu Ihrem Fahrzeugstandort in der Schweiz. Offerte über das Formular oder per Telefon/WhatsApp anfragen.',
       },
       {
         question: 'Wie lange dauert eine Innenreinigung?',
@@ -103,7 +103,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     ],
     eyebrow: 'RCC Guides · Interior Cleaning',
     h1: 'Car Interior Cleaning: What Really Matters',
-    lead: 'A clean passenger compartment is more than a tidy first impression. Thorough interior cleaning removes dirt embedded in upholstery, carpets and air vents — the kind you often cannot see at first glance.',
+    lead: 'A clean passenger compartment is more than a tidy first impression. Thorough interior cleaning removes dirt embedded in upholstery, carpets and air vents ,  the kind you often cannot see at first glance.',
     articleKey: 'auto-innenreinigung',
     language: 'en',
     sections: [
@@ -118,8 +118,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Step by Step: The Professional Approach',
         level: 'h2',
         paragraphs: [
-          'A professional interior clean follows a clear sequence: the entire interior is thoroughly vacuumed first — seats, carpet, floor mats, boot. Then hard surfaces follow: dashboard, door panels, centre console and headliner are wiped with appropriate cleaners.',
-          'Windows are cleaned from the inside to remove streaks and deposits. Finally, floor mats are either shaken out and vacuumed or — for deeper cleaning — treated with shampoo.',
+          'A professional interior clean follows a clear sequence: the entire interior is thoroughly vacuumed first ,  seats, carpet, floor mats, boot. Then hard surfaces follow: dashboard, door panels, centre console and headliner are wiped with appropriate cleaners.',
+          'Windows are cleaned from the inside to remove streaks and deposits. Finally, floor mats are either shaken out and vacuumed or ,  for deeper cleaning ,  treated with shampoo.',
         ],
       },
       {
@@ -182,7 +182,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     ],
     eyebrow: 'Guides RCC · Nettoyage intérieur',
     h1: "Nettoyage intérieur voiture : l'essentiel",
-    lead: "Un habitacle propre va bien au-delà d'une première impression soignée. Un nettoyage intérieur complet élimine la saleté incrustée dans les tissus, les tapis et les aérations — celle que l'on ne voit souvent pas au premier regard.",
+    lead: "Un habitacle propre va bien au-delà d'une première impression soignée. Un nettoyage intérieur complet élimine la saleté incrustée dans les tissus, les tapis et les aérations ,  celle que l'on ne voit souvent pas au premier regard.",
     articleKey: 'auto-innenreinigung',
     language: 'fr',
     sections: [
@@ -197,8 +197,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: "Étape par étape : la démarche professionnelle",
         level: 'h2',
         paragraphs: [
-          "Un nettoyage intérieur professionnel suit une séquence claire : l'intégralité de l'habitacle est d'abord aspirée — sièges, moquette, tapis, coffre. Viennent ensuite les surfaces dures : tableau de bord, panneaux de porte, console centrale et ciel de toit sont essuyés avec des produits adaptés.",
-          "Les vitres sont nettoyées de l'intérieur pour éliminer les traces et dépôts. Enfin, les tapis sont soit secoués et aspirés, soit — pour un nettoyage plus poussé — traités au shampooing.",
+          "Un nettoyage intérieur professionnel suit une séquence claire : l'intégralité de l'habitacle est d'abord aspirée ,  sièges, moquette, tapis, coffre. Viennent ensuite les surfaces dures : tableau de bord, panneaux de porte, console centrale et ciel de toit sont essuyés avec des produits adaptés.",
+          "Les vitres sont nettoyées de l'intérieur pour éliminer les traces et dépôts. Enfin, les tapis sont soit secoués et aspirés, soit ,  pour un nettoyage plus poussé ,  traités au shampooing.",
         ],
       },
       {
@@ -226,7 +226,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: "RCC vient-il chez moi pour le nettoyage intérieur ?",
-        answer: "Oui — RCC est un service mobile et vient avec tout le matériel professionnel directement à l'emplacement de votre véhicule en Suisse. Demandez un devis via le formulaire ou par téléphone/WhatsApp.",
+        answer: "Oui ,  RCC est un service mobile et vient avec tout le matériel professionnel directement à l'emplacement de votre véhicule en Suisse. Demandez un devis via le formulaire ou par téléphone/WhatsApp.",
       },
       {
         question: "Quel est le prix du nettoyage intérieur ?",

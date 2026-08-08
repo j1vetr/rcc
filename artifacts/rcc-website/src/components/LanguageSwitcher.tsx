@@ -8,7 +8,7 @@ import flagEn from '@/assets/flags/en.svg';
 const flags: Record<Lang, string> = { de: flagDe, fr: flagFr, en: flagEn };
 
 /**
- * Language switcher — uses real <a> HTML links so search engines can follow them.
+ * Language switcher ,  uses real <a> HTML links so search engines can follow them.
  * Navigating to the equivalent page in another language preserves the user's context.
  */
 export function LanguageSwitcher() {

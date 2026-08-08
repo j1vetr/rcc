@@ -1,5 +1,5 @@
 /**
- * ServiceDetailPage — shared template for all service detail pages.
+ * ServiceDetailPage ,  shared template for all service detail pages.
  *
  * Parametric config: passed from each language-specific wrapper.
  * UI strings are fully localized via useTranslation.

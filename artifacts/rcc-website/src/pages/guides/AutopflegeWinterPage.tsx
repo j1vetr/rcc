@@ -1,5 +1,5 @@
 /**
- * Guide: Autopflege im Winter Schweiz — serves DE, EN, FR.
+ * Guide: Autopflege im Winter Schweiz ,  serves DE, EN, FR.
  * DE: /de/ratgeber/autopflege-im-winter-schweiz/
  * EN: /en/guides/car-care-winter-switzerland/
  * FR: /fr/guides/entretien-voiture-hiver-suisse/
@@ -26,14 +26,14 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Warum ist Autopflege im Winter wichtig?',
         paragraphs: [
           'Streusalz ist das grösste Winterproblem für Fahrzeuge. Es setzt sich am Unterboden, in Radkästen und an den Schwellern ab und fördert Korrosion. Das gilt auch für den Lack, wenn Salz über Spritzwasser auf die Karosserie gelangt.',
-          'Feuchtigkeit im Innenraum — eingebrachter Schnee und nasse Schuhe — führt zu feuchten Teppichen und kann langfristig zu Schimmel führen. Regelmässige Innenreinigung im Winter hilft, das zu verhindern.',
+          'Feuchtigkeit im Innenraum ,  eingebrachter Schnee und nasse Schuhe ,  führt zu feuchten Teppichen und kann langfristig zu Schimmel führen. Regelmässige Innenreinigung im Winter hilft, das zu verhindern.',
         ],
       },
       {
         heading: 'Aussenreinigung im Winter: Was zu beachten ist',
         level: 'h2',
         paragraphs: [
-          'Nach Fahrten auf gestreuten Strassen sollte das Fahrzeug möglichst zeitnah gereinigt werden, um Salz vom Lack und Unterboden zu entfernen. Bei der Aussenreinigung im Winter legt RCC besonderes Augenmerk auf Radkästen, Schweller und Türunterkanten — Bereiche, in denen sich Salz und Schmutz besonders absetzen.',
+          'Nach Fahrten auf gestreuten Strassen sollte das Fahrzeug möglichst zeitnah gereinigt werden, um Salz vom Lack und Unterboden zu entfernen. Bei der Aussenreinigung im Winter legt RCC besonderes Augenmerk auf Radkästen, Schweller und Türunterkanten ,  Bereiche, in denen sich Salz und Schmutz besonders absetzen.',
           'Die Aussenreinigung umfasst bei RCC Handwäsche der Karosserie, Felgenreinigung und sorgfältiges Trocknen. Das Premium-Paket ergänzt Reifenpflege und Insektenentfernung.',
         ],
       },
@@ -42,7 +42,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           'Im Winter bringen nasse Schuhe und feuchte Kleidung mehr Feuchtigkeit in den Innenraum als im Sommer. Gummi-Fussmatten als Wintermatten helfen, Nässe aufzufangen. Regelmässiges Absaugen entfernt Schmutzpartikel, bevor sie sich einarbeiten.',
-          'Eine gründlichere Innenreinigung nach dem Winter — wenn Salz und Wintergriess aus Matten und Teppichen entfernt werden — ist sinnvoll, um die Fahrzeugsubstanz zu schützen.',
+          'Eine gründlichere Innenreinigung nach dem Winter ,  wenn Salz und Wintergriess aus Matten und Teppichen entfernt werden ,  ist sinnvoll, um die Fahrzeugsubstanz zu schützen.',
         ],
       },
       {
@@ -50,14 +50,14 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           'Zwei Zeitpunkte sind besonders sinnvoll: eine Reinigung zu Beginn des Winters, um das Fahrzeug sauber in die Saison zu nehmen, und eine Reinigung nach dem Ende der Salzstreuperiode im Frühjahr, um Salz vollständig zu entfernen.',
-          'Zwischendurch — je nach Intensität der Strassenbehandlung und Fahrleistung — kann eine Aussenreinigung nach starkem Salzeinsatz sinnvoll sein.',
+          'Zwischendurch ,  je nach Intensität der Strassenbehandlung und Fahrleistung ,  kann eine Aussenreinigung nach starkem Salzeinsatz sinnvoll sein.',
         ],
       },
       {
         heading: 'Mobilität: RCC kommt auch im Winter zu Ihnen',
         level: 'h2',
         paragraphs: [
-          'RCC ist ein mobiler Service und kommt mit dem Equipment direkt zu Ihrem Fahrzeugstandort. Das gilt auch im Winter — auch wenn Fahrzeuge in der Tiefgarage oder unter einem Carport stehen.',
+          'RCC ist ein mobiler Service und kommt mit dem Equipment direkt zu Ihrem Fahrzeugstandort. Das gilt auch im Winter ,  auch wenn Fahrzeuge in der Tiefgarage oder unter einem Carport stehen.',
           'Für eine Offertanfrage nutzen Sie das Formular auf der Website oder kontaktieren Sie uns direkt per Telefon oder WhatsApp.',
         ],
       },
@@ -69,7 +69,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'Was sollte im Winter besonders gereinigt werden?',
-        answer: 'Aussenbereich: Radkästen, Schweller, Türunterkanten und die gesamte Karosserie — um Salz zu entfernen. Innenraum: Fussmatten und Teppich, die im Winter besonders viel Schmutz und Feuchtigkeit aufnehmen.',
+        answer: 'Aussenbereich: Radkästen, Schweller, Türunterkanten und die gesamte Karosserie ,  um Salz zu entfernen. Innenraum: Fussmatten und Teppich, die im Winter besonders viel Schmutz und Feuchtigkeit aufnehmen.',
       },
       {
         question: 'Kommt RCC auch im Winter für eine mobile Reinigung?',
@@ -83,7 +83,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       { label: 'Einsatzgebiet Schweiz', href: '/de/einsatzgebiet/' },
     ],
     ctaHeading: 'Winterreinigung anfragen',
-    ctaText: 'RCC kommt mit dem Equipment direkt zu Ihrem Fahrzeug — auch im Winter.',
+    ctaText: 'RCC kommt mit dem Equipment direkt zu Ihrem Fahrzeug ,  auch im Winter.',
     ctaLabel: 'Jetzt Offerte anfragen',
     ctaHref: '/de/#quote',
   },
@@ -104,14 +104,14 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Why Is Car Care Important in Winter?',
         paragraphs: [
           "Road salt is the biggest winter problem for vehicles. It settles on the undercarriage, in wheel arches and on the sills and accelerates corrosion. This also applies to paintwork when salt reaches the bodywork via splashwater.",
-          'Moisture inside the vehicle — snow brought in on shoes and wet clothing — leads to damp carpets and can cause mould over time. Regular interior cleaning in winter helps prevent this.',
+          'Moisture inside the vehicle ,  snow brought in on shoes and wet clothing ,  leads to damp carpets and can cause mould over time. Regular interior cleaning in winter helps prevent this.',
         ],
       },
       {
         heading: 'Exterior Cleaning in Winter: What to Watch For',
         level: 'h2',
         paragraphs: [
-          'After driving on salted roads, cleaning the vehicle as soon as possible helps remove salt from the paintwork and undercarriage. RCC pays particular attention to wheel arches, sills and door bottom edges in winter — areas where salt and dirt accumulate most heavily.',
+          'After driving on salted roads, cleaning the vehicle as soon as possible helps remove salt from the paintwork and undercarriage. RCC pays particular attention to wheel arches, sills and door bottom edges in winter ,  areas where salt and dirt accumulate most heavily.',
           'RCC exterior cleaning includes a hand wash of the bodywork, wheel cleaning and careful drying. The Premium package adds tyre care and insect removal.',
         ],
       },
@@ -120,7 +120,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           'In winter, wet shoes and damp clothing bring more moisture into the interior than in summer. Rubber floor mats as winter mats help catch moisture. Regular vacuuming removes dirt particles before they work their way in.',
-          'A thorough interior clean after winter — removing salt and grit from mats and carpets — is worthwhile to protect the vehicle.',
+          'A thorough interior clean after winter ,  removing salt and grit from mats and carpets ,  is worthwhile to protect the vehicle.',
         ],
       },
       {
@@ -128,7 +128,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           'Two moments make particular sense: a clean at the start of winter to take the vehicle into the season in good condition, and a clean after the end of the salting period in spring to remove salt completely.',
-          'In between — depending on the intensity of road treatment and mileage — an exterior clean after heavy salting can make sense.',
+          'In between ,  depending on the intensity of road treatment and mileage ,  an exterior clean after heavy salting can make sense.',
         ],
       },
     ],
@@ -139,7 +139,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'What should be cleaned especially in winter?',
-        answer: 'Exterior: wheel arches, sills, door bottom edges and the entire bodywork — to remove salt. Interior: floor mats and carpet, which absorb significantly more dirt and moisture in winter.',
+        answer: 'Exterior: wheel arches, sills, door bottom edges and the entire bodywork ,  to remove salt. Interior: floor mats and carpet, which absorb significantly more dirt and moisture in winter.',
       },
       {
         question: 'Does RCC come for mobile cleaning in winter?',
@@ -153,7 +153,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       { label: 'Service Area Switzerland', href: '/en/service-area/' },
     ],
     ctaHeading: 'Request Winter Cleaning',
-    ctaText: 'RCC brings the equipment directly to your vehicle — including in winter.',
+    ctaText: 'RCC brings the equipment directly to your vehicle ,  including in winter.',
     ctaLabel: 'Request a Quote',
     ctaHref: '/en/#quote',
   },
@@ -174,7 +174,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: "Pourquoi l'entretien est-il important en hiver ?",
         paragraphs: [
           "Le sel de déneigement est le principal problème hivernal pour les véhicules. Il se dépose sur le dessous de caisse, dans les passages de roues et sur les bas de caisse, favorisant la corrosion. La carrosserie est aussi touchée lorsque le sel atteint la peinture via les projections.",
-          "L'humidité dans l'habitacle — neige ramenée par les chaussures, vêtements mouillés — entraîne des tapis humides et peut provoquer des moisissures à long terme. Un nettoyage intérieur régulier en hiver aide à l'éviter.",
+          "L'humidité dans l'habitacle ,  neige ramenée par les chaussures, vêtements mouillés ,  entraîne des tapis humides et peut provoquer des moisissures à long terme. Un nettoyage intérieur régulier en hiver aide à l'éviter.",
         ],
       },
       {
@@ -190,7 +190,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           "En hiver, les chaussures mouillées et les vêtements humides apportent plus d'humidité dans l'habitacle. Des tapis en caoutchouc aident à retenir l'humidité. Un aspiration régulière retire les particules de saleté avant qu'elles ne s'incrustent.",
-          "Un nettoyage intérieur complet après l'hiver — pour éliminer le sel et le gravier des tapis — est utile pour protéger le véhicule.",
+          "Un nettoyage intérieur complet après l'hiver ,  pour éliminer le sel et le gravier des tapis ,  est utile pour protéger le véhicule.",
         ],
       },
     ],
@@ -211,7 +211,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       { label: 'Zone de service Suisse', href: '/fr/zones-desservies/' },
     ],
     ctaHeading: "Demander un nettoyage hivernal",
-    ctaText: "RCC vient avec le matériel directement à votre véhicule — même en hiver.",
+    ctaText: "RCC vient avec le matériel directement à votre véhicule ,  même en hiver.",
     ctaLabel: 'Demander un devis',
     ctaHref: '/fr/#quote',
   },

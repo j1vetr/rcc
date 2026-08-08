@@ -1,5 +1,5 @@
 /**
- * Contact page — serves DE, EN, FR.
+ * Contact page ,  serves DE, EN, FR.
  * DE: /de/kontakt/
  * EN: /en/contact/
  * FR: /fr/contact/

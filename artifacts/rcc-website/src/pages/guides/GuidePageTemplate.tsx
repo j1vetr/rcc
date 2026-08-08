@@ -36,7 +36,7 @@ export interface GuidePageConfig {
   breadcrumbs: BreadcrumbItem[];
   eyebrow: string;
   h1: string;
-  /** Short answer / lead paragraph — appears before the first H2 */
+  /** Short answer / lead paragraph ,  appears before the first H2 */
   lead: string;
   articleKey: GuideArticleKey;
   language: Lang;
@@ -88,7 +88,7 @@ export function GuidePageTemplate({ config }: Props) {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase leading-[0.95] tracking-[-0.04em] text-foreground mb-6">
             {article.title}
           </h1>
-          {/* Lead — clear answer up top */}
+          {/* Lead ,  clear answer up top */}
           <p className="text-sm md:text-base font-light text-foreground/65 leading-relaxed border-l-2 border-primary/50 pl-4">
             {lead}
           </p>

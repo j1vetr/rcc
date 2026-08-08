@@ -1,5 +1,5 @@
 /**
- * Guide: Wie oft Auto reinigen — serves DE, EN, FR.
+ * Guide: Wie oft Auto reinigen ,  serves DE, EN, FR.
  * DE: /de/ratgeber/wie-oft-auto-reinigen/
  * EN: /en/guides/how-often-clean-car/
  * FR: /fr/guides/frequence-nettoyage-voiture/
@@ -18,7 +18,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     ],
     eyebrow: 'RCC Ratgeber · Pflegerhythmus',
     h1: 'Wie oft soll man das Auto reinigen?',
-    lead: 'Eine einheitliche Antwort gibt es nicht — der richtige Reinigungsrhythmus hängt von mehreren Faktoren ab: Nutzungsintensität, Jahreszeit, Fahrzeugtyp und wo das Fahrzeug steht.',
+    lead: 'Eine einheitliche Antwort gibt es nicht ,  der richtige Reinigungsrhythmus hängt von mehreren Faktoren ab: Nutzungsintensität, Jahreszeit, Fahrzeugtyp und wo das Fahrzeug steht.',
     articleKey: 'wie-oft-auto-reinigen',
     language: 'de',
     sections: [
@@ -43,7 +43,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Innenreinigung: Wie oft ist sinnvoll?',
         level: 'h2',
         paragraphs: [
-          'Eine gründliche Innenreinigung — Saugen, Scheiben, Cockpit abwischen — alle zwei bis drei Monate ist ein realistischer Richtwert für normale Nutzung. Bei regelmässiger Mitnahme von Kindern, Haustieren oder Sportausrüstung ist monatliche Innenreinigung sinnvoller.',
+          'Eine gründliche Innenreinigung ,  Saugen, Scheiben, Cockpit abwischen ,  alle zwei bis drei Monate ist ein realistischer Richtwert für normale Nutzung. Bei regelmässiger Mitnahme von Kindern, Haustieren oder Sportausrüstung ist monatliche Innenreinigung sinnvoller.',
           'Kleinfussmatten regelmässig auszuschütteln und Hartflächen abzuwischen hilft, den Grundzustand zu halten und aufwändigere Reinigungen seltener nötig zu machen.',
         ],
       },
@@ -51,7 +51,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Wann lohnt eine Komplettreinigung (Innen & Aussen)?',
         level: 'h2',
         paragraphs: [
-          'Eine Komplettreinigung — Innen und Aussen in einem Durchgang — bietet sich zweimal jährlich an: einmal nach dem Winter (Salz von der Karosserie, Winterschmutz aus dem Innenraum) und einmal im Herbst (Laub, Feuchtigkeit, Reifenabrieb).',
+          'Eine Komplettreinigung ,  Innen und Aussen in einem Durchgang ,  bietet sich zweimal jährlich an: einmal nach dem Winter (Salz von der Karosserie, Winterschmutz aus dem Innenraum) und einmal im Herbst (Laub, Feuchtigkeit, Reifenabrieb).',
           'Vor dem Verkauf, vor einer Leasingrückgabe oder nach einem grösseren Ereignis (Umzug, Camping, Tierrücktransport) ist eine Komplettreinigung ebenfalls sinnvoll.',
         ],
       },
@@ -91,7 +91,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     ],
     eyebrow: 'RCC Guides · Cleaning Frequency',
     h1: 'How Often Should You Clean Your Car?',
-    lead: 'There is no single answer — the right cleaning frequency depends on several factors: how intensively you use the car, the season, vehicle type and where you park.',
+    lead: 'There is no single answer ,  the right cleaning frequency depends on several factors: how intensively you use the car, the season, vehicle type and where you park.',
     articleKey: 'wie-oft-auto-reinigen',
     language: 'en',
     sections: [
@@ -116,7 +116,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'Interior Cleaning: How Often Makes Sense?',
         level: 'h2',
         paragraphs: [
-          "A thorough interior clean — vacuuming, windows, wiping the cockpit — every two to three months is a realistic benchmark for normal use. With regular passengers including children, pets or sports equipment, monthly interior cleaning makes more sense.",
+          "A thorough interior clean ,  vacuuming, windows, wiping the cockpit ,  every two to three months is a realistic benchmark for normal use. With regular passengers including children, pets or sports equipment, monthly interior cleaning makes more sense.",
           "Regularly shaking out small floor mats and wiping hard surfaces helps maintain the baseline condition and reduces the need for intensive cleans.",
         ],
       },
@@ -124,7 +124,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: 'When Is a Complete Clean (Inside & Outside) Worth It?',
         level: 'h2',
         paragraphs: [
-          "A complete clean — inside and outside in one session — makes sense twice a year: once after winter (salt from bodywork, winter dirt from the interior) and once in autumn (leaves, moisture, tyre residue).",
+          "A complete clean ,  inside and outside in one session ,  makes sense twice a year: once after winter (salt from bodywork, winter dirt from the interior) and once in autumn (leaves, moisture, tyre residue).",
           "Before selling, before returning a leased vehicle, or after a major event (moving, camping, transporting animals) a complete clean is also worthwhile.",
         ],
       },
@@ -164,7 +164,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     ],
     eyebrow: "Guides RCC · Fréquence d'entretien",
     h1: "À quelle fréquence faut-il nettoyer sa voiture ?",
-    lead: "Il n'existe pas de réponse unique — la bonne fréquence de nettoyage dépend de plusieurs facteurs : l'intensité d'utilisation, la saison, le type de véhicule et l'endroit où vous garez votre voiture.",
+    lead: "Il n'existe pas de réponse unique ,  la bonne fréquence de nettoyage dépend de plusieurs facteurs : l'intensité d'utilisation, la saison, le type de véhicule et l'endroit où vous garez votre voiture.",
     articleKey: 'wie-oft-auto-reinigen',
     language: 'fr',
     sections: [
@@ -189,7 +189,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         heading: "Nettoyage intérieur : quelle fréquence est judicieuse ?",
         level: 'h2',
         paragraphs: [
-          "Un nettoyage intérieur complet — aspiration, vitres, essuyage du cockpit — tous les deux à trois mois est un repère réaliste pour une utilisation normale. Avec des passagers réguliers incluant des enfants, animaux ou équipements sportifs, un nettoyage mensuel est plus adapté.",
+          "Un nettoyage intérieur complet ,  aspiration, vitres, essuyage du cockpit ,  tous les deux à trois mois est un repère réaliste pour une utilisation normale. Avec des passagers réguliers incluant des enfants, animaux ou équipements sportifs, un nettoyage mensuel est plus adapté.",
           "Secouer régulièrement les petits tapis et essuyer les surfaces dures aide à maintenir l'état de base et réduit le besoin de nettoyages intensifs.",
         ],
       },

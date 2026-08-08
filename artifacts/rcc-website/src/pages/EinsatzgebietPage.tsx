@@ -1,10 +1,10 @@
 /**
- * Service area hub — serves DE, EN, FR.
+ * Service area hub ,  serves DE, EN, FR.
  * DE: /de/einsatzgebiet/
  * EN: /en/service-area/
  * FR: /fr/zones-desservies/
  *
- * Shows the Swiss canton map. Primary service area: Zürich region.
+ * Shows the Swiss canton map. RCC provides mobile service throughout Switzerland.
  * Reuses the SwitzerlandMap component (wrapped to avoid SSR lazy issues).
  * Links to the Zurich city page and the quote form.
  */
@@ -23,7 +23,7 @@ const SwitzerlandMap = lazy(() =>
   import('@/components/SwitzerlandMap').then((m) => ({ default: m.SwitzerlandMap })),
 );
 
-// Swiss cantons — shown for location selection; contact RCC to confirm service at your canton
+// Swiss cantons ,  shown for location selection; contact RCC to confirm service at your canton
 const CANTONS = [
   'Aargau', 'Appenzell Ausserrhoden', 'Appenzell Innerrhoden',
   'Basel-Landschaft', 'Basel-Stadt', 'Bern',
@@ -36,10 +36,31 @@ const CANTONS = [
   'Zug', 'Zürich',
 ];
 
-const ZURICH_CITY_PATH: Record<Lang, string> = {
-  de: '/de/mobile-autoreinigung/zuerich/',
-  en: '/en/mobile-car-cleaning/zurich/',
-  fr: '/fr/nettoyage-voiture-mobile/zurich/',
+const CITY_LINKS: Record<Lang, Array<{ label: string; href: string }>> = {
+  de: [
+    { label: 'Zürich', href: '/de/mobile-autoreinigung/zuerich/' },
+    { label: 'Winterthur', href: '/de/mobile-autoreinigung/winterthur/' },
+    { label: 'Zug', href: '/de/mobile-autoreinigung/zug/' },
+    { label: 'Luzern', href: '/de/mobile-autoreinigung/luzern/' },
+    { label: 'Basel', href: '/de/mobile-autoreinigung/basel/' },
+    { label: 'Bern', href: '/de/mobile-autoreinigung/bern/' },
+    { label: 'St. Gallen', href: '/de/mobile-autoreinigung/st-gallen/' },
+  ],
+  en: [
+    { label: 'Zurich', href: '/en/mobile-car-cleaning/zurich/' },
+    { label: 'Winterthur', href: '/en/mobile-car-cleaning/winterthur/' },
+    { label: 'Zug', href: '/en/mobile-car-cleaning/zug/' },
+    { label: 'Lucerne', href: '/en/mobile-car-cleaning/lucerne/' },
+    { label: 'Basel', href: '/en/mobile-car-cleaning/basel/' },
+    { label: 'Bern', href: '/en/mobile-car-cleaning/bern/' },
+    { label: 'Geneva', href: '/en/mobile-car-cleaning/geneva/' },
+    { label: 'Lausanne', href: '/en/mobile-car-cleaning/lausanne/' },
+  ],
+  fr: [
+    { label: 'Zurich', href: '/fr/nettoyage-voiture-mobile/zurich/' },
+    { label: 'Genève', href: '/fr/nettoyage-voiture-mobile/geneve/' },
+    { label: 'Lausanne', href: '/fr/nettoyage-voiture-mobile/lausanne/' },
+  ],
 };
 
 function MapFallback() {
@@ -49,7 +70,7 @@ function MapFallback() {
 export default function EinsatzgebietPage() {
   const { t, lang, getLangRoute } = useTranslation();
   const sa = t.serviceArea;
-  const zurichPath = ZURICH_CITY_PATH[lang];
+  const cityLinks = CITY_LINKS[lang];
 
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary/30 selection:text-foreground">
@@ -106,23 +127,25 @@ export default function EinsatzgebietPage() {
           <TravelCostNotice variant="serviceArea" />
         </section>
 
-        {/* Featured city */}
+        {/* City landing pages */}
         <section className="mb-16">
           <h2 className="text-xl font-semibold uppercase tracking-[-0.025em] text-foreground mb-8">
             {sa.featuredCityTitle}
           </h2>
-          <a
-            href={zurichPath}
-            className="group flex items-center justify-between border border-white/10 bg-[#090909] px-6 py-6 hover:bg-white/[0.025] transition-colors max-w-sm"
-          >
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.04em] text-foreground group-hover:text-primary transition-colors">
-                {sa.zurichLabel}
-              </p>
-              <p className="text-xs font-light text-foreground/45 mt-1">{sa.zurichDesc}</p>
-            </div>
-            <ArrowUpRight className="h-5 w-5 text-foreground/30 group-hover:text-primary transition-colors" />
-          </a>
+          <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+            {cityLinks.map((city) => (
+              <a
+                key={city.href}
+                href={city.href}
+                className="group flex items-center justify-between bg-[#090909] px-5 py-5 transition-colors hover:bg-white/[0.025]"
+              >
+                <span className="text-sm font-semibold uppercase tracking-[0.04em] text-foreground transition-colors group-hover:text-primary">
+                  {city.label}
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-foreground/30 transition-colors group-hover:text-primary" />
+              </a>
+            ))}
+          </div>
         </section>
 
         <section className="mb-16 grid gap-4 sm:grid-cols-2">

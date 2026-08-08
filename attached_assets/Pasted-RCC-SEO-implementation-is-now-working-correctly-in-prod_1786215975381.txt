@@ -1,0 +1,169 @@
+RCC SEO implementation is now working correctly in production.
+
+Do NOT refactor, redesign or modify the existing working SEO architecture.
+
+Make ONLY the following final cleanup changes.
+
+## 1. Fix `/llms.txt`
+
+The current llms.txt is outdated.
+
+It currently says RCC operates in Switzerland "(primarily Zürich region)".
+
+This is no longer correct.
+
+The business owner has confirmed:
+
+* RCC provides mobile vehicle cleaning throughout Switzerland.
+* RCC also serves companies, business vehicles and vehicle fleets.
+* Locations more than 30 km from Zürich may incur an additional travel fee. The exact amount depends on destination and is communicated before confirmation.
+
+Update `/llms.txt` accordingly.
+
+Remove any wording suggesting RCC operates primarily or only in Zürich.
+
+Keep Zürich as the business/base location, but describe the service area as Switzerland-wide.
+
+Add a curated set of important canonical URLs including:
+
+* https://royalcarcleaning.ch/de/
+* https://royalcarcleaning.ch/de/pakete/
+* https://royalcarcleaning.ch/de/einsatzgebiet/
+* https://royalcarcleaning.ch/de/firmenkunden/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/zuerich/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/winterthur/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/zug/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/luzern/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/basel/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/bern/
+* https://royalcarcleaning.ch/de/mobile-autoreinigung/st-gallen/
+* key French Geneva/Lausanne pages
+* key English city pages
+* DE/EN/FR corporate pages
+
+Do not dump the entire sitemap.
+
+Keep llms.txt:
+
+* HTTP 200
+* text/plain
+* concise
+* factual
+* canonical HTTPS non-www URLs only.
+
+## 2. Fix Package Structured Data
+
+Audit the structured data on:
+
+https://royalcarcleaning.ch/de/pakete/
+
+The current schema incorrectly/uncleanly uses:
+
+`priceRange` on `Offer`
+
+and:
+
+`provider` directly on `OfferCatalog`.
+
+Do not use `priceRange` on Offer.
+
+Do not use `provider` directly on OfferCatalog.
+
+If OfferCatalog is retained, model it according to Schema.org:
+
+Service or Organization
+→ `hasOfferCatalog`
+→ OfferCatalog
+→ itemListElement
+→ Offer
+
+Provider belongs on the Service entity.
+
+If exact individual prices cannot be represented accurately without creating misleading data, REMOVE the package Offer/OfferCatalog markup instead of inventing or approximating structured data.
+
+Visible prices on the page must remain unchanged.
+
+Do not change any package prices.
+
+Do not invent VAT information.
+
+Do not invent availability.
+
+Do not invent discounts.
+
+After the change, validate `/de/pakete/` with Schema.org Validator and report the result.
+
+Preserve:
+
+* AutoWash
+* BreadcrumbList
+* all visible package content
+* current design
+* prices
+* canonical
+* hreflang.
+
+## 3. Strengthen Service-Area Internal Linking
+
+On:
+
+`/de/einsatzgebiet/`
+
+the "Unsere Standorte" section currently links mainly to Zürich.
+
+Update this section to link to the existing real German city landing pages:
+
+* Zürich
+* Winterthur
+* Zug
+* Luzern
+* Basel
+* Bern
+* St. Gallen
+
+Do not create new city pages in this task.
+
+Do the equivalent on EN and FR service-area pages using only city landing pages that actually exist in those languages.
+
+Do not link a city to a homepage as if it were an equivalent city page.
+
+Keep the layout premium and compact.
+
+Do not turn the footer into keyword spam.
+
+## Regression requirements
+
+Do NOT change:
+
+* Nginx
+* filesystem `try_files` routing
+* URL architecture
+* titles except if technically required for the fixes above
+* homepage H1
+* existing city copy
+* city schemas
+* corporate pages
+* guide content
+* guide dates
+* package prices
+* AutoWash business entity
+* canonical URLs
+* hreflang architecture
+* robots.txt
+* sitemap structure
+* 404 behavior
+* design.
+
+After build verify:
+
+* `/de/` → 200
+* `/de/pakete/` → 200
+* `/de/einsatzgebiet/` → 200
+* `/de/firmenkunden/` → 200
+* `/de/mobile-autoreinigung/basel/` → 200
+* unknown city → 404
+* `/llms.txt` → 200 text/plain
+* OAI-SearchBot → 200
+* production build and prerender pass.
+
+Return only a short report of these three fixes.

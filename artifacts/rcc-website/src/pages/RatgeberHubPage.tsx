@@ -1,5 +1,5 @@
 /**
- * Ratgeber / Guides hub page — serves DE, EN, FR.
+ * Ratgeber / Guides hub page ,  serves DE, EN, FR.
  * DE: /de/ratgeber/
  * EN: /en/guides/
  * FR: /fr/guides/
@@ -18,11 +18,11 @@ import type { Lang } from '@/seo/routes';
 import { formatGuideDate, getGuideArticleMetadata, type GuideArticleKey } from '@/seo/articleMetadata';
 
 interface GuideEntry {
-  /** DE slug — always present */
+  /** DE slug ,  always present */
   slugDe: string;
-  /** EN slug — present only when EN version is published */
+  /** EN slug ,  present only when EN version is published */
   slugEn?: string;
-  /** FR slug — present only when FR version is published */
+  /** FR slug ,  present only when FR version is published */
   slugFr?: string;
   articleKey: GuideArticleKey;
 }

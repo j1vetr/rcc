@@ -1,5 +1,5 @@
 /**
- * SeoHead — injects per-route metadata into <head> on client-side navigation.
+ * SeoHead ,  injects per-route metadata into <head> on client-side navigation.
  *
  * In SSR prerendered pages the head tags are already written into the HTML;
  * this component updates them when the user navigates without a full page load.

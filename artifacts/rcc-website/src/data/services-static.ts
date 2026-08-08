@@ -1,5 +1,5 @@
 /**
- * Static copy of the services data — used for SSR prerendering.
+ * Static copy of the services data ,  used for SSR prerendering.
  * Must stay in sync with artifacts/api-server/src/routes/services.ts.
  */
 

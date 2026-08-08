@@ -1,10 +1,10 @@
 /**
- * Zurich city landing page — serves DE, EN, FR.
+ * Zurich city landing page ,  serves DE, EN, FR.
  * DE: /de/mobile-autoreinigung/zuerich/
  * EN: /en/mobile-car-cleaning/zurich/
  * FR: /fr/nettoyage-voiture-mobile/zurich/
  *
- * Unique Zurich-specific content — not a doorway page.
+ * Unique Zurich-specific content ,  not a doorway page.
  * Content derived only from verified package data.
  */
 

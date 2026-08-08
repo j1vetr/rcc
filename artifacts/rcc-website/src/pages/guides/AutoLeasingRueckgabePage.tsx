@@ -48,7 +48,7 @@ const CONFIG: GuidePageConfig = {
       heading: 'Aussenreinigung vor der Rückgabe',
       level: 'h2',
       paragraphs: [
-        'Ein sauberes Fahrzeug erlaubt es, den Lackzustand besser zu beurteilen. Das gilt für Sie selbst — um festzustellen, ob es Kratzer gibt, die Sie kennen sollten — und für den Prüfer. Eine Handwäsche mit sorgfältigem Trocknen, Felgenreinigung und Entfernung von Insektenresten und Harz gehört zur guten Vorbereitung.',
+        'Ein sauberes Fahrzeug erlaubt es, den Lackzustand besser zu beurteilen. Das gilt für Sie selbst ,  um festzustellen, ob es Kratzer gibt, die Sie kennen sollten ,  und für den Prüfer. Eine Handwäsche mit sorgfältigem Trocknen, Felgenreinigung und Entfernung von Insektenresten und Harz gehört zur guten Vorbereitung.',
         'Dabei gilt: Die Reinigung macht Schäden sichtbar, verdeckt sie nicht. Wenn nach der Reinigung Kratzer oder Dellen sichtbar sind, die vorher durch Schmutz verdeckt waren, ist das ein Hinweis darauf, diese Punkte vor der Rückgabe anzusprechen.',
       ],
     },
@@ -56,7 +56,7 @@ const CONFIG: GuidePageConfig = {
       heading: 'Zeitplanung: Wann reinigen?',
       level: 'h2',
       paragraphs: [
-        'Idealerweise kurz vor dem Rückgabetermin — ein bis zwei Tage vorher. So bleibt der Innenraum sauber und der Lack zeigt sich in gutem Zustand. Eine Reinigung eine Woche vorher kann durch normale Nutzung wieder neutralisiert werden.',
+        'Idealerweise kurz vor dem Rückgabetermin ,  ein bis zwei Tage vorher. So bleibt der Innenraum sauber und der Lack zeigt sich in gutem Zustand. Eine Reinigung eine Woche vorher kann durch normale Nutzung wieder neutralisiert werden.',
       ],
     },
   ],
@@ -67,7 +67,7 @@ const CONFIG: GuidePageConfig = {
     },
     {
       question: 'Kann RCC das Fahrzeug vor der Leasingrückgabe reinigen?',
-      answer: 'Ja. RCC bietet Innenreinigung, Aussenreinigung und Komplettreinigung als mobilen Service an — direkt bei Ihnen. Offerte anfragen über das Formular auf der Website oder per Telefon/WhatsApp.',
+      answer: 'Ja. RCC bietet Innenreinigung, Aussenreinigung und Komplettreinigung als mobilen Service an ,  direkt bei Ihnen. Offerte anfragen über das Formular auf der Website oder per Telefon/WhatsApp.',
     },
     {
       question: 'Werden durch Reinigung Kratzer oder Schäden beseitigt?',
@@ -82,7 +82,7 @@ const CONFIG: GuidePageConfig = {
     { label: 'Kontakt', href: '/de/kontakt/' },
   ],
   ctaHeading: 'Fahrzeug vor Rückgabe reinigen lassen',
-  ctaText: 'RCC kommt mobil zu Ihrem Fahrzeug — auch kurzfristig vor Rückgabeterminen.',
+  ctaText: 'RCC kommt mobil zu Ihrem Fahrzeug ,  auch kurzfristig vor Rückgabeterminen.',
   ctaLabel: 'Jetzt Offerte anfragen',
   ctaHref: '/de/#quote',
 };

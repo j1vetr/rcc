@@ -1,5 +1,5 @@
 /**
- * Mobile car cleaning service detail — serves DE, EN, FR via lang-aware config.
+ * Mobile car cleaning service detail ,  serves DE, EN, FR via lang-aware config.
  * DE: /de/leistungen/mobile-autoreinigung/
  * EN: /en/services/mobile-car-cleaning/
  * FR: /fr/prestations/nettoyage-voiture-mobile/
@@ -13,7 +13,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   de: {
     eyebrow: 'RCC Mobile Autopflege Schweiz',
     h1: 'Mobile Autoreinigung\nin der Schweiz',
-    lead: 'RCC kommt mit dem vollständigen Reinigungsequipment direkt zu Ihrem Fahrzeug — ob zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz. Kein Fahrtweg, kein Zeitverlust.',
+    lead: 'RCC kommt mit dem vollständigen Reinigungsequipment direkt zu Ihrem Fahrzeug ,  ob zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz. Kein Fahrtweg, kein Zeitverlust.',
     coverage: [
       'Reinigung direkt bei Ihnen vor Ort',
       'Keine Anreise zum Reinigungsstandort nötig',
@@ -30,7 +30,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
       { label: 'Mobile Autoreinigung' },
     ],
     faqs: [
-      { question: 'Was ist mobile Autoreinigung?', answer: 'Bei der mobilen Autoreinigung kommt das RCC-Team mit dem gesamten professionellen Equipment direkt zu Ihrem Fahrzeug — zu Ihnen nach Hause, an Ihren Arbeitsplatz oder einen anderen Ort. Sie müssen Ihr Fahrzeug nicht irgendwo hinbringen.' },
+      { question: 'Was ist mobile Autoreinigung?', answer: 'Bei der mobilen Autoreinigung kommt das RCC-Team mit dem gesamten professionellen Equipment direkt zu Ihrem Fahrzeug ,  zu Ihnen nach Hause, an Ihren Arbeitsplatz oder einen anderen Ort. Sie müssen Ihr Fahrzeug nicht irgendwo hinbringen.' },
       { question: 'In welchen Regionen der Schweiz ist RCC tätig?', answer: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Bitte nehmen Sie Kontakt auf oder nutzen Sie das Offertformular für Ihren gewünschten Termin und Standort.' },
       { question: 'Welche Fahrzeugtypen werden gereinigt?', answer: 'RCC reinigt alle gängigen Fahrzeugtypen: Kleinwagen, Kompakt- und Mittelklassefahrzeuge, SUV sowie grosse Fahrzeuge wie Vans und 7-Sitzer. Die Fahrzeuggrösse bestimmt den Paketpreis.' },
       { question: 'Wie buche ich eine mobile Autoreinigung?', answer: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon oder WhatsApp. Wir melden uns umgehend und vereinbaren einen Termin.' },
@@ -40,7 +40,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   en: {
     eyebrow: 'RCC Mobile Car Care Switzerland',
     h1: 'Mobile Car Cleaning\nin Switzerland',
-    lead: 'RCC brings the full professional cleaning equipment directly to your vehicle — at home, at work, or at your location. No driving, no time lost.',
+    lead: 'RCC brings the full professional cleaning equipment directly to your vehicle ,  at home, at work, or at your location. No driving, no time lost.',
     coverage: [
       'Cleaning directly at your location',
       'No need to bring the vehicle anywhere',
@@ -57,7 +57,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
       { label: 'Mobile Car Cleaning' },
     ],
     faqs: [
-      { question: 'What is mobile car cleaning?', answer: 'Mobile car cleaning means the RCC team brings the full professional equipment directly to your vehicle — at home, at work, or at your location. You do not need to take your vehicle anywhere.' },
+      { question: 'What is mobile car cleaning?', answer: 'Mobile car cleaning means the RCC team brings the full professional equipment directly to your vehicle ,  at home, at work, or at your location. You do not need to take your vehicle anywhere.' },
       { question: 'Which regions of Switzerland does RCC serve?', answer: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Please contact us or use the quote form to arrange your preferred appointment and location.' },
       { question: 'Which vehicle types are cleaned?', answer: 'RCC cleans all common vehicle types: small cars, compact and mid-size vehicles, SUVs and larger vehicles such as vans and 7-seaters. Vehicle size determines the package price.' },
       { question: 'How do I book mobile car cleaning?', answer: 'Use the quote form on our website or contact us directly by phone or WhatsApp. We respond promptly and arrange an appointment.' },
@@ -67,7 +67,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   fr: {
     eyebrow: 'RCC Nettoyage Voiture Mobile Suisse',
     h1: 'Nettoyage voiture mobile\nen Suisse',
-    lead: "RCC vient avec tout le matériel de nettoyage professionnel directement chez vous — à domicile, au bureau ou ailleurs en Suisse. Sans déplacement de votre part, sans perte de temps.",
+    lead: "RCC vient avec tout le matériel de nettoyage professionnel directement chez vous ,  à domicile, au bureau ou ailleurs en Suisse. Sans déplacement de votre part, sans perte de temps.",
     coverage: [
       'Nettoyage directement chez vous',
       "Pas besoin de déplacer le véhicule",
@@ -84,7 +84,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
       { label: 'Nettoyage voiture mobile' },
     ],
     faqs: [
-      { question: "Qu'est-ce que le nettoyage voiture mobile ?", answer: "Le nettoyage voiture mobile signifie que l'équipe RCC vient avec tout le matériel professionnel directement chez vous — à domicile, au bureau ou ailleurs en Suisse. Vous n'avez pas besoin de déplacer votre véhicule." },
+      { question: "Qu'est-ce que le nettoyage voiture mobile ?", answer: "Le nettoyage voiture mobile signifie que l'équipe RCC vient avec tout le matériel professionnel directement chez vous ,  à domicile, au bureau ou ailleurs en Suisse. Vous n'avez pas besoin de déplacer votre véhicule." },
       { question: 'Quelles régions de la Suisse RCC dessert-il ?', answer: 'Basé à Zurich, RCC propose un nettoyage automobile mobile dans toute la Suisse. Contactez-nous ou utilisez le formulaire de devis pour convenir du lieu et du rendez-vous souhaités.' },
       { question: 'Quels types de véhicules sont nettoyés ?', answer: 'RCC nettoie tous les types courants : petites voitures, compactes et berlines, SUV et grands véhicules comme les vans et 7 places. La taille du véhicule détermine le prix du forfait.' },
       { question: 'Comment réserver un nettoyage voiture mobile ?', answer: 'Utilisez le formulaire de devis sur notre site ou contactez-nous directement par téléphone ou WhatsApp. Nous répondons rapidement et convenons d\'un rendez-vous.' },

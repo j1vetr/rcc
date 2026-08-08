@@ -1,5 +1,5 @@
 /**
- * Exterior cleaning service detail — serves DE, EN, FR.
+ * Exterior cleaning service detail ,  serves DE, EN, FR.
  * DE: /de/leistungen/aussenreinigung/
  * EN: /en/services/exterior-cleaning/
  * FR: /fr/prestations/nettoyage-exterieur/
@@ -13,7 +13,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   de: {
     eyebrow: 'RCC Aussenreinigung Schweiz',
     h1: 'Aussenreinigung\nAuto Schweiz',
-    lead: 'Sorgfältige professionelle Aussenreinigung Ihres Fahrzeugs direkt bei Ihnen vor Ort. Handwäsche, Glanzpolitur, Felgenreinigung und Scheibenreinigung — von Meisterhand.',
+    lead: 'Sorgfältige professionelle Aussenreinigung Ihres Fahrzeugs direkt bei Ihnen vor Ort. Handwäsche, Glanzpolitur, Felgenreinigung und Scheibenreinigung ,  von Meisterhand.',
     coverage: [
       'Detaillierte Handwäsche',
       'Glanzpolitur von Hand',
@@ -38,7 +38,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   en: {
     eyebrow: 'RCC Exterior Cleaning Switzerland',
     h1: 'Exterior Car Cleaning\nin Switzerland',
-    lead: 'Careful professional exterior cleaning of your vehicle directly at your location. Hand wash, gloss polish, wheel cleaning and window cleaning — by skilled hands.',
+    lead: 'Careful professional exterior cleaning of your vehicle directly at your location. Hand wash, gloss polish, wheel cleaning and window cleaning ,  by skilled hands.',
     coverage: [
       'Detailed hand wash',
       'Hand-applied gloss polish',
@@ -63,7 +63,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   fr: {
     eyebrow: 'RCC Nettoyage Extérieur Suisse',
     h1: 'Nettoyage extérieur\nvoiture Suisse',
-    lead: 'Nettoyage extérieur professionnel soigné de votre véhicule directement chez vous. Lavage à la main, polissage brillant, nettoyage des jantes et des vitres — par des professionnels.',
+    lead: 'Nettoyage extérieur professionnel soigné de votre véhicule directement chez vous. Lavage à la main, polissage brillant, nettoyage des jantes et des vitres ,  par des professionnels.',
     coverage: [
       'Lavage à la main détaillé',
       'Polissage brillant à la main',

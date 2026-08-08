@@ -4,9 +4,9 @@ Allow: /
 Disallow: /api/
 
 # AI crawler policy (as of 2026-08-08):
-# GPTBot — allowed (OpenAI training crawler; policy unchanged)
-# OAI-SearchBot — allowed (ChatGPT Search indexing crawler)
-# Google-Extended — allowed (Google AI training crawler; policy unchanged)
+# GPTBot ,  allowed (OpenAI training crawler; policy unchanged)
+# OAI-SearchBot ,  allowed (ChatGPT Search indexing crawler)
+# Google-Extended ,  allowed (Google AI training crawler; policy unchanged)
 # All above bots are permitted under the wildcard Allow: / above.
 # No additional restrictions apply.
 

@@ -1,5 +1,5 @@
 /**
- * Services hub page — serves DE, EN, FR via lang-aware content.
+ * Services hub page ,  serves DE, EN, FR via lang-aware content.
  * DE: /de/leistungen/
  * EN: /en/services/
  * FR: /fr/prestations/
@@ -65,7 +65,7 @@ export default function LeistungenPage() {
           ]}
         />
 
-        {/* AI-citable factual block — present in SSR/prerendered HTML */}
+        {/* AI-citable factual block ,  present in SSR/prerendered HTML */}
         <div className="-mx-5 sm:-mx-6 lg:-mx-12 mb-10">
           <AICiteBlock />
         </div>

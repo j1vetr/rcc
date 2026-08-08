@@ -1,5 +1,5 @@
 /**
- * YoutubeFacade — lazy YouTube embed that loads only on interaction.
+ * YoutubeFacade ,  lazy YouTube embed that loads only on interaction.
  *
  * Replaces an always-on iframe with a lightweight poster image.
  * The real iframe is injected only when the user clicks or the component
@@ -46,7 +46,7 @@ export function YoutubeFacade({
   useEffect(() => {
     if (!autoLoad) return;
 
-    // Load after delay — lets the page render + LCP settle first
+    // Load after delay ,  lets the page render + LCP settle first
     timerRef.current = setTimeout(() => setLoaded(true), autoLoadDelay);
 
     return () => {
@@ -55,7 +55,7 @@ export function YoutubeFacade({
   }, [autoLoad, autoLoadDelay]);
 
   if (!loaded) {
-    // Render nothing visible — the parent section provides the background colour.
+    // Render nothing visible ,  the parent section provides the background colour.
     // When autoLoad fires, the iframe appears seamlessly.
     return null;
   }

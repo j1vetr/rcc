@@ -1,5 +1,5 @@
 /**
- * Complete car detailing / Fahrzeugaufbereitung — serves DE, EN, FR.
+ * Complete car detailing / Fahrzeugaufbereitung ,  serves DE, EN, FR.
  * DE: /de/leistungen/fahrzeugaufbereitung/
  * EN: /en/services/car-detailing/
  * FR: /fr/prestations/preparation-vehicule/
@@ -13,7 +13,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   de: {
     eyebrow: 'RCC Fahrzeugaufbereitung Schweiz',
     h1: 'Fahrzeugaufbereitung\nSchweiz',
-    lead: 'Komplette Rundum-Pflege Ihres Fahrzeugs in einem Paket: Innen- und Aussenreinigung, gleichzeitig und professionell — direkt bei Ihnen vor Ort in der Schweiz.',
+    lead: 'Komplette Rundum-Pflege Ihres Fahrzeugs in einem Paket: Innen- und Aussenreinigung, gleichzeitig und professionell ,  direkt bei Ihnen vor Ort in der Schweiz.',
     coverage: [
       'Innenreinigung: Saugen, Scheiben, Armaturenbrett',
       'Innenreinigung: Türen, Leder, Fussmatten',
@@ -38,7 +38,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   en: {
     eyebrow: 'RCC Car Detailing Switzerland',
     h1: 'Complete Car Detailing\nin Switzerland',
-    lead: 'Complete all-round care for your vehicle in one package: interior and exterior cleaning, simultaneously and professionally — directly at your location.',
+    lead: 'Complete all-round care for your vehicle in one package: interior and exterior cleaning, simultaneously and professionally ,  directly at your location.',
     coverage: [
       'Interior: vacuuming, windows, dashboard',
       'Interior: doors, leather, floor mats',
@@ -63,7 +63,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   fr: {
     eyebrow: 'RCC Préparation Véhicule Suisse',
     h1: 'Préparation complète\nvéhicule Suisse',
-    lead: "Entretien complet de votre véhicule en un seul forfait : nettoyage intérieur et extérieur, simultanément et professionnellement — directement chez vous en Suisse.",
+    lead: "Entretien complet de votre véhicule en un seul forfait : nettoyage intérieur et extérieur, simultanément et professionnellement ,  directement chez vous en Suisse.",
     coverage: [
       "Intérieur : aspiration, vitres, tableau de bord",
       "Intérieur : portes, cuir, tapis",

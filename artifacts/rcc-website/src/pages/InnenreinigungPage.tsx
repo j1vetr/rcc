@@ -1,5 +1,5 @@
 /**
- * Interior cleaning service detail — serves DE, EN, FR.
+ * Interior cleaning service detail ,  serves DE, EN, FR.
  * DE: /de/leistungen/innenreinigung/
  * EN: /en/services/interior-cleaning/
  * FR: /fr/prestations/nettoyage-interieur/

@@ -1,5 +1,5 @@
 /**
- * About page — serves DE, EN, FR.
+ * About page ,  serves DE, EN, FR.
  * DE: /de/ueber-uns/
  * EN: /en/about/
  * FR: /fr/a-propos/

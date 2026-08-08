@@ -1,5 +1,5 @@
 /**
- * Breadcrumb — visible breadcrumb navigation, matches BreadcrumbList schema.
+ * Breadcrumb ,  visible breadcrumb navigation, matches BreadcrumbList schema.
  *
  * All items are real HTML links. Aria-current marks the current page.
  * Used on service pages, city pages, and any page with a parent hierarchy.
