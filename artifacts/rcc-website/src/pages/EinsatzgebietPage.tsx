@@ -4,7 +4,7 @@
  * EN: /en/service-area/
  * FR: /fr/zones-desservies/
  *
- * Shows the real coverage area: all 26 Swiss cantons.
+ * Shows the Swiss canton map. Primary service area: Zürich region.
  * Reuses the SwitzerlandMap component (wrapped to avoid SSR lazy issues).
  * Links to the Zurich city page and the quote form.
  */
@@ -22,7 +22,7 @@ const SwitzerlandMap = lazy(() =>
   import('@/components/SwitzerlandMap').then((m) => ({ default: m.SwitzerlandMap })),
 );
 
-// Swiss cantons — all 26 cantons served nationwide
+// Swiss cantons — shown for location selection; contact RCC to confirm service at your canton
 const CANTONS = [
   'Aargau', 'Appenzell Ausserrhoden', 'Appenzell Innerrhoden',
   'Basel-Landschaft', 'Basel-Stadt', 'Bern',

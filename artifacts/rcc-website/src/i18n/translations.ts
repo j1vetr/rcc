@@ -11,7 +11,7 @@ export const translations = {
       headline: 'Schweizer Präzision für Ihr Automobil.',
       subheadline: 'Der exklusive mobile Autopflege-Service der Schweiz. Meisterhafte Aufbereitung direkt bei Ihnen vor Ort.',
       cta: 'Jetzt Offerte anfragen',
-      eyebrow: 'Mobile Autopflege in der ganzen Schweiz',
+      eyebrow: 'Mobile Autopflege in der Schweiz',
       whatsapp: 'WhatsApp',
       whatsappMessage: 'Hallo RCC Mobile Autopflege, ich möchte eine unverbindliche Offerte anfragen.',
     },
@@ -20,7 +20,7 @@ export const translations = {
       eyebrow: 'Ihr mobiler Pflegestudio-Ablauf',
       intro: 'Sie wählen den Ort und das passende Programm. Wir bringen professionelle Autopflege direkt zu Ihrem Fahrzeug.',
       steps: [
-        { title: 'Standort wählen', desc: 'Wir kommen in alle 26 Kantone der Schweiz direkt zu Ihnen.' },
+        { title: 'Standort wählen', desc: 'Wir kommen direkt zu Ihnen — nehmen Sie Kontakt auf für Ihren Standort.' },
         { title: 'Paket buchen', desc: 'Wählen Sie aus unseren massgeschneiderten Pflegeprogrammen.' },
         { title: 'Wir kommen zu Ihnen', desc: 'Lehnen Sie sich zurück. Unsere Meister erledigen den Rest.' }
       ]
@@ -235,7 +235,7 @@ export const translations = {
       eyebrow: 'Mobile Autopflege Schweiz',
       h1Line1: 'Mobile Autoreinigung',
       h1Line2: 'in der Schweiz',
-      intro: 'RCC bietet professionelle mobile Fahrzeugreinigung in der ganzen Schweiz. Wählen Sie den Bereich, der für Ihr Fahrzeug jetzt zählt — wir kommen direkt zu Ihnen.',
+      intro: 'RCC bietet professionelle mobile Fahrzeugreinigung in der Schweiz. Wählen Sie den Bereich, der für Ihr Fahrzeug jetzt zählt — wir kommen direkt zu Ihnen.',
       sectionTitle: 'Leistungsübersicht',
       footerText: 'Alle Leistungen mit exakten Preisen nach Fahrzeuggrösse finden Sie auf der Paketseite.',
       packagesLink: 'Alle Pakete & Preise ansehen',
@@ -249,8 +249,8 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Schweizweit im Einsatz',
       h1: 'Einsatzgebiet\nSchweiz',
-      intro: 'RCC Mobile Autopflege ist in der ganzen Schweiz tätig. Wir kommen direkt zu Ihnen — in alle 26 Kantone.',
-      cantonsTitle: 'Alle 26 Kantone',
+      intro: 'RCC Mobile Autopflege ist vorwiegend im Kanton Zürich und Umgebung tätig. Nehmen Sie Kontakt auf, um Ihren Standort zu bestätigen.',
+      cantonsTitle: 'Kantone in der Schweiz',
       howTitle: 'So funktioniert der Einsatz',
       steps: [
         { step: '01', title: 'Standort mitteilen', desc: 'Geben Sie bei der Anfrage Ihren genauen Standort oder Kanton an.' },
@@ -302,7 +302,7 @@ export const translations = {
       emailDesc: 'Per E-Mail',
       addressDesc: 'Geschäftsadresse',
       serviceAreaLabel: 'Einsatzgebiet',
-      serviceAreaText: 'Wir sind in der ganzen Schweiz im Einsatz — alle 26 Kantone.',
+      serviceAreaText: 'Vorwiegend im Kanton Zürich und Umgebung — Standort auf Anfrage bestätigen.',
     },
     about: {
       eyebrow: 'Über uns',
@@ -325,7 +325,7 @@ export const translations = {
         { title: 'Umweltbewusstsein', desc: 'Wir setzen auf moderne, wasserschonende Reinigungstechniken.' },
       ],
       areaTitle: 'Einsatzgebiet',
-      areaText: 'RCC ist in der ganzen Schweiz tätig und bedient alle 26 Kantone.',
+      areaText: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Kontaktieren Sie uns für eine Bestätigung Ihres Standorts.',
       ctaTitle: 'Offerte anfragen',
       ctaDesc: 'Nehmen Sie Kontakt auf — wir beraten Sie gerne.',
       ctaButton: 'Offerte anfragen',
@@ -351,7 +351,7 @@ export const translations = {
       headline: 'La précision suisse pour votre automobile.',
       subheadline: 'Le service exclusif d\'entretien automobile mobile en Suisse. Un detailing de maître directement chez vous.',
       cta: 'Demander un devis maintenant',
-      eyebrow: 'Entretien automobile mobile dans toute la Suisse',
+      eyebrow: 'Entretien automobile mobile en Suisse',
       whatsapp: 'WhatsApp',
       whatsappMessage: 'Bonjour RCC Mobile Autopflege, je souhaite demander un devis sans engagement.',
     },
@@ -360,7 +360,7 @@ export const translations = {
       eyebrow: 'Votre studio mobile en trois étapes',
       intro: 'Choisissez le lieu et le programme adapté. Nous apportons un entretien professionnel directement à votre véhicule.',
       steps: [
-        { title: 'Choisissez l\'emplacement', desc: 'Nous nous déplaçons dans les 26 cantons suisses.' },
+        { title: 'Choisissez l\'emplacement', desc: 'Nous venons directement chez vous — contactez-nous pour confirmer votre zone.' },
         { title: 'Réservez un forfait', desc: 'Choisissez parmi nos programmes d\'entretien sur mesure.' },
         { title: 'Nous venons à vous', desc: 'Détendez-vous. Nos maîtres s\'occupent du reste.' }
       ]
@@ -575,7 +575,7 @@ export const translations = {
       eyebrow: 'Entretien automobile mobile Suisse',
       h1Line1: 'Nettoyage voiture',
       h1Line2: 'mobile en Suisse',
-      intro: 'RCC propose un nettoyage automobile mobile professionnel dans toute la Suisse. Choisissez la zone qui compte le plus pour votre véhicule — nous venons directement chez vous.',
+      intro: 'RCC propose un nettoyage automobile mobile professionnel en Suisse. Choisissez la zone qui compte le plus pour votre véhicule — nous venons directement chez vous.',
       sectionTitle: 'Aperçu des services',
       footerText: 'Tous les services avec les prix exacts selon la taille du véhicule sont disponibles sur la page des forfaits.',
       packagesLink: 'Voir tous les forfaits & tarifs',
@@ -587,10 +587,10 @@ export const translations = {
       ],
     },
     serviceArea: {
-      eyebrow: 'Présents dans toute la Suisse',
+      eyebrow: 'Service en Suisse',
       h1: 'Zone de service\nSuisse',
-      intro: 'RCC Nettoyage Voiture Mobile intervient dans toute la Suisse. Nous venons directement chez vous — dans les 26 cantons.',
-      cantonsTitle: 'Les 26 cantons',
+      intro: 'RCC Nettoyage Voiture Mobile intervient principalement dans le canton de Zurich et ses environs. Contactez-nous pour confirmer votre emplacement.',
+      cantonsTitle: 'Cantons en Suisse',
       howTitle: "Comment fonctionne l'intervention",
       steps: [
         { step: '01', title: 'Indiquer votre emplacement', desc: 'Précisez votre emplacement exact ou votre canton lors de la demande.' },
@@ -642,7 +642,7 @@ export const translations = {
       emailDesc: 'Par e-mail',
       addressDesc: 'Adresse commerciale',
       serviceAreaLabel: 'Zone de service',
-      serviceAreaText: 'Nous intervenons dans toute la Suisse — les 26 cantons.',
+      serviceAreaText: 'Principalement dans le canton de Zurich et ses environs — contactez-nous pour confirmer.',
     },
     about: {
       eyebrow: 'À propos',
@@ -665,7 +665,7 @@ export const translations = {
         { title: 'Respect de l\'environnement', desc: 'Nous utilisons des techniques de nettoyage modernes économes en eau.' },
       ],
       areaTitle: 'Zone de service',
-      areaText: 'RCC intervient dans toute la Suisse et dessert les 26 cantons.',
+      areaText: 'RCC intervient principalement dans le canton de Zurich et ses environs. Contactez-nous pour confirmer votre emplacement.',
       ctaTitle: 'Demander un devis',
       ctaDesc: 'Prenez contact — nous vous conseillons avec plaisir.',
       ctaButton: 'Demander un devis',
@@ -691,7 +691,7 @@ export const translations = {
       headline: 'Swiss precision for your automobile.',
       subheadline: 'Switzerland\'s exclusive mobile car care service. Masterful detailing directly at your location.',
       cta: 'Request a quote now',
-      eyebrow: 'Mobile car care across Switzerland',
+      eyebrow: 'Mobile car care in Switzerland',
       whatsapp: 'WhatsApp',
       whatsappMessage: 'Hello RCC Mobile Autopflege, I would like to request a no-obligation quote.',
     },
@@ -700,7 +700,7 @@ export const translations = {
       eyebrow: 'Your mobile studio in three steps',
       intro: 'Choose your location and the right program. We bring professional car care directly to your vehicle.',
       steps: [
-        { title: 'Select location', desc: 'We come directly to you in all 26 cantons of Switzerland.' },
+        { title: 'Select location', desc: 'We come directly to you — contact us to confirm your area.' },
         { title: 'Book package', desc: 'Choose from our tailor-made care programs.' },
         { title: 'We come to you', desc: 'Sit back and relax. Our masters will handle the rest.' }
       ]
@@ -915,22 +915,22 @@ export const translations = {
       eyebrow: 'Mobile Car Care Switzerland',
       h1Line1: 'Mobile Car Cleaning',
       h1Line2: 'in Switzerland',
-      intro: 'RCC provides professional mobile car cleaning across Switzerland. Choose the area that matters most for your vehicle — we come directly to you.',
+      intro: 'RCC provides professional mobile car cleaning in Switzerland. Choose the area that matters most for your vehicle — we come directly to you.',
       sectionTitle: 'Services overview',
       footerText: 'All services with exact pricing by vehicle size are available on the packages page.',
       packagesLink: 'View all packages & pricing',
       services: [
-        { slug: 'mobile-car-cleaning', title: 'Mobile Car Cleaning', description: 'Professional vehicle cleaning directly at your location — at home, at work, or anywhere across Switzerland. No driving, no time lost.', priceFrom: 85, tags: ['Hand wash', 'Interior cleaning', 'Exterior cleaning'] },
+        { slug: 'mobile-car-cleaning', title: 'Mobile Car Cleaning', description: 'Professional vehicle cleaning directly at your location — at home, at work, or at your chosen address. No driving, no time lost.', priceFrom: 85, tags: ['Hand wash', 'Interior cleaning', 'Exterior cleaning'] },
         { slug: 'interior-cleaning', title: 'Interior Cleaning', description: 'Thorough cleaning of the vehicle interior: vacuuming, windows, dashboard, door panels, leather trim and floor mats.', priceFrom: 85, tags: ['Passenger compartment', 'Floor mats', 'Dashboard', 'Doors'] },
         { slug: 'exterior-cleaning', title: 'Exterior Cleaning', description: 'Careful exterior care with detailed hand wash, gloss polish, wheel cleaning and window cleaning by hand.', priceFrom: 85, tags: ['Hand wash', 'Wheels', 'Windows', 'Bodywork'] },
         { slug: 'car-detailing', title: 'Car Detailing', description: 'Complete all-round care: interior and exterior cleaning in one package. Ideal for a thorough overall treatment of your vehicle.', priceFrom: 170, tags: ['Complete cleaning', 'Interior + Exterior', 'Basic & Premium'] },
       ],
     },
     serviceArea: {
-      eyebrow: 'Operating across Switzerland',
+      eyebrow: 'Service area Switzerland',
       h1: 'Service Area\nSwitzerland',
-      intro: 'RCC Mobile Car Cleaning operates across Switzerland. We come directly to you — across all 26 cantons.',
-      cantonsTitle: 'All 26 cantons',
+      intro: 'RCC Mobile Car Cleaning primarily operates in the canton of Zürich and surrounding areas. Contact us to confirm service availability at your location.',
+      cantonsTitle: 'Swiss cantons',
       howTitle: 'How a service visit works',
       steps: [
         { step: '01', title: 'Share your location', desc: 'Provide your exact location or canton when making your request.' },
@@ -982,14 +982,14 @@ export const translations = {
       emailDesc: 'By email',
       addressDesc: 'Business address',
       serviceAreaLabel: 'Service area',
-      serviceAreaText: 'We operate across Switzerland — all 26 cantons.',
+      serviceAreaText: 'Primarily canton of Zürich and surrounding areas — contact us to confirm your location.',
     },
     about: {
       eyebrow: 'About',
       h1: 'RCC Royal Car Cleaning',
       intro: 'Professional mobile car care service in Switzerland.',
       conceptTitle: 'The concept',
-      conceptText: 'RCC Royal Car Cleaning is a professional mobile car care service in Switzerland. We bring the full cleaning equipment directly to your vehicle — at home, at work or anywhere across Switzerland. No driving, no time lost.',
+      conceptText: 'RCC Royal Car Cleaning is a professional mobile car care service in Switzerland. We bring the full cleaning equipment directly to your vehicle — at home, at work, or at your location. No driving, no time lost.',
       servicesTitle: 'Our services',
       servicesList: [
         'Interior Cleaning — Basic and Premium',
@@ -1005,7 +1005,7 @@ export const translations = {
         { title: 'Eco-conscious', desc: 'We use modern, water-saving cleaning techniques.' },
       ],
       areaTitle: 'Service area',
-      areaText: 'RCC operates across Switzerland and serves all 26 cantons.',
+      areaText: 'RCC primarily operates in the canton of Zürich and surrounding areas. Contact us to confirm your location.',
       ctaTitle: 'Request a quote',
       ctaDesc: 'Get in touch — we are happy to advise you.',
       ctaButton: 'Request a quote',

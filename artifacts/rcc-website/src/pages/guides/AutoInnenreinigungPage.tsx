@@ -155,7 +155,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'Does RCC come to me for interior cleaning?',
-        answer: 'Yes — RCC is a mobile service and comes with the full professional equipment directly to your vehicle location anywhere in Switzerland. Request a quote via the form or by phone/WhatsApp.',
+        answer: 'Yes — RCC is a mobile service and comes with the full professional equipment directly to your vehicle location. RCC primarily operates in the Zürich region; contact us to confirm availability at your address.',
       },
       {
         question: 'What does interior cleaning cost?',

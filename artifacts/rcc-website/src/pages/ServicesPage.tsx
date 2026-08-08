@@ -5,6 +5,7 @@ import { useTranslation } from '@/i18n/LanguageContext';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
+import { AICiteBlock } from '@/components/AICiteBlock';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, Sparkles } from 'lucide-react';
 import { useLocation } from 'wouter';
@@ -158,8 +159,11 @@ export default function ServicesPage() {
   return (
     <div className="bg-[#050505] min-h-screen text-foreground selection:bg-primary/30 selection:text-foreground pb-20">
       <Navigation />
-      
       <main className="pt-32 pb-20 container mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
+        {/* AI-citable factual block — present in SSR/prerendered HTML */}
+        <div className="-mx-5 sm:-mx-6 lg:-mx-12 mb-8">
+          <AICiteBlock />
+        </div>
         <header className="mb-16 text-center max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 10 }}

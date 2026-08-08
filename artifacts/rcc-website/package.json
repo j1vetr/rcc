@@ -10,7 +10,8 @@
     "build:ssr": "vite build --config vite.config.ssr.ts",
     "prerender": "node scripts/prerender.mjs",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "validate:seo": "node scripts/validate-seo.mjs"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",

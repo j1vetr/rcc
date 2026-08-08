@@ -24,9 +24,10 @@ import { BUSINESS } from '@/seo/businessData';
 // Actual page components — lang-aware via LanguageProvider/useLocation.
 // These are safe in SSR because none of them use lazy() directly.
 // (EinsatzgebietPage uses a lazy-wrapped map but the Suspense fallback is rendered in SSR.)
-import HomePage from '@/pages/HomePage';
-import ServicesPage from '@/pages/ServicesPage';
-import LeistungenPage from '@/pages/LeistungenPage';
+// Note: HomePage / ServicesPage / LeistungenPage were previously used in SSRApp
+// but are now replaced by SSR-specific components (SSRHomePage / SSRPackagesPage /
+// SSRLeistungenPage) to ensure AI-citable content is present in prerendered HTML.
+// They remain registered routes in the client router (src/App.tsx).
 import MobileAutoreinigungPage from '@/pages/MobileAutoreinigungPage';
 import InnenreinigungPage from '@/pages/InnenreinigungPage';
 import AussenreinigungPage from '@/pages/AussenreinigungPage';
@@ -172,11 +173,11 @@ function SSRHomeSeoSection() {
             {[
               {
                 q: 'Was ist mobile Autoreinigung Schweiz?',
-                a: 'Mobile Autoreinigung bedeutet, dass das RCC-Team mit dem professionellen Reinigungsequipment direkt zu Ihrem Fahrzeug kommt — in der ganzen Schweiz. Sie müssen Ihr Fahrzeug nicht irgendwo hinbringen.',
+                a: 'Mobile Autoreinigung bedeutet, dass das RCC-Team mit dem professionellen Reinigungsequipment direkt zu Ihrem Fahrzeug kommt — zu Ihnen nach Hause, an Ihren Arbeitsplatz oder an einen anderen Ort. Sie müssen Ihr Fahrzeug nicht irgendwo hinbringen.',
               },
               {
                 q: 'In welchen Kantonen bietet RCC mobile Autopflege an?',
-                a: 'RCC ist in allen 26 Kantonen der Schweiz im Einsatz. Kontaktieren Sie uns für eine Terminabsprache für Ihren genauen Standort.',
+                a: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Kontaktieren Sie uns für eine Terminabsprache für Ihren genauen Standort.',
               },
               {
                 q: 'Welche Fahrzeuggrössen werden gereinigt?',
@@ -199,12 +200,25 @@ function SSRHomeSeoSection() {
   );
 }
 
+/** Language-indexed factual summaries for AI-citable blocks on the homepage. */
+const HOME_AI_CITE: Record<Lang, string> = {
+  de: 'RCC Royal Car Cleaning ist ein mobiler Fahrzeugreinigungsservice in der Schweiz. Das Team bringt das professionelle Reinigungsequipment direkt zum Fahrzeug des Kunden — ob zu Hause, am Arbeitsplatz oder an einem anderen Ort. Das Leistungsangebot umfasst Innenreinigung, Aussenreinigung und vollständige Fahrzeugaufbereitung in verschiedenen Paketen. Telefon: +41 78 880 38 84 · Info@royalcarcleaning.ch.',
+  en: "RCC Royal Car Cleaning is a professional mobile vehicle cleaning service in Switzerland. The team brings cleaning equipment directly to the customer's vehicle — at home, at the workplace, or any other location. Services include interior cleaning, exterior cleaning, and full vehicle detailing across several packages. Phone: +41 78 880 38 84 · Info@royalcarcleaning.ch.",
+  fr: "RCC Royal Car Cleaning est un service de nettoyage automobile mobile en Suisse. L'équipe apporte le matériel de nettoyage professionnel directement au véhicule du client — à domicile, au bureau ou à tout autre endroit. Les prestations comprennent le nettoyage intérieur, le nettoyage extérieur et la préparation complète du véhicule selon différentes formules. Tél. : +41 78 880 38 84 · Info@royalcarcleaning.ch.",
+};
+
 function SSRHomePage({ lang }: { lang: Lang }) {
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
       <main>
         <SSRHeroContent lang={lang} />
+        {/* AI-citable factual summary — visible, non-lazy, present in prerendered HTML */}
+        <section data-ai-cite="home" aria-label="Kurzübersicht" className="bg-[#070707] border-b border-white/5 px-6 py-8">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-sm font-light text-white/55 leading-relaxed">{HOME_AI_CITE[lang]}</p>
+          </div>
+        </section>
         <SSRWhyContent lang={lang} />
         {lang === 'de' && <SSRHomeSeoSection />}
       </main>
@@ -269,11 +283,24 @@ function SSRServicesContent({ lang }: { lang: Lang }) {
   );
 }
 
+/** Language-indexed factual summaries for the packages page. */
+const PACKAGES_AI_CITE: Record<Lang, string> = {
+  de: 'RCC bietet mobile Fahrzeugreinigung in der Schweiz in mehreren Paketen an: Innenreinigung, Aussenreinigung und Komplettreinigung (Innen + Aussen). Die Pakete sind nach Fahrzeuggrösse gestaffelt — Kleinwagen, Kompakt-/Mittelklasse, SUV und Vans. Preise ab CHF 85.',
+  en: 'RCC offers mobile vehicle cleaning in Switzerland across several packages: interior cleaning, exterior cleaning, and full combined packages (interior + exterior). Packages are tiered by vehicle size — compact, mid-size, SUV, and van. Prices from CHF 85.',
+  fr: "RCC propose des formules de nettoyage automobile mobile en Suisse : nettoyage intérieur, nettoyage extérieur et nettoyage complet (intérieur + extérieur). Les formules sont échelonnées selon la taille du véhicule — compacte, moyenne, SUV et van. À partir de CHF 85.",
+};
+
 function SSRPackagesPage({ lang }: { lang: Lang }) {
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
       <main className="pt-32">
+        {/* AI-citable factual summary — visible, non-lazy, present in prerendered HTML */}
+        <section data-ai-cite="packages" aria-label="Paketübersicht" className="bg-[#070707] border-b border-white/5 px-6 py-8 mb-4">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-sm font-light text-white/55 leading-relaxed">{PACKAGES_AI_CITE[lang]}</p>
+          </div>
+        </section>
         <SSRServicesContent lang={lang} />
       </main>
       <Footer />
@@ -281,29 +308,90 @@ function SSRPackagesPage({ lang }: { lang: Lang }) {
   );
 }
 
-// ─── German-only SEO pages SSR ────────────────────────────────────────────────
+// ─── Services hub SSR (trilingual) ───────────────────────────────────────────
 
-function SSRLeistungenPage() {
+const LEISTUNGEN_CONTENT: Record<Lang, {
+  breadcrumb: Array<{ label: string; href?: string }>;
+  eyebrow: string;
+  h1: string;
+  lead: string;
+  aiCite: string;
+  navLabel: string;
+  services: Array<{ href: string; label: string; desc: string }>;
+  packagesHref: string;
+  packagesCta: string;
+}> = {
+  de: {
+    breadcrumb: [{ label: 'RCC Royal Car Cleaning', href: '/de/' }, { label: 'Leistungen' }],
+    eyebrow: 'Mobile Autopflege Schweiz',
+    h1: 'Mobile Autoreinigung in der Schweiz',
+    lead: 'RCC bietet professionelle mobile Fahrzeugreinigung in der Schweiz. Wählen Sie den Bereich, der für Ihr Fahrzeug jetzt zählt.',
+    aiCite: 'RCC bietet vier Kategorien mobiler Fahrzeugreinigung in der Schweiz: Mobile Autoreinigung (direkt vor Ort), Innenreinigung (Fahrgastraum, Sitze, Armaturenbrett), Aussenreinigung (Handwäsche, Felgen, Scheiben) und Fahrzeugaufbereitung (Komplettreinigung Innen & Aussen). Das Equipment wird stets mitgebracht.',
+    navLabel: 'Leistungsübersicht',
+    services: [
+      { href: '/de/leistungen/mobile-autoreinigung/', label: 'Mobile Autoreinigung', desc: 'Reinigung direkt bei Ihnen vor Ort in der Schweiz.' },
+      { href: '/de/leistungen/innenreinigung/', label: 'Innenreinigung', desc: 'Fahrgastraum, Sitze, Armaturenbrett und mehr.' },
+      { href: '/de/leistungen/aussenreinigung/', label: 'Aussenreinigung', desc: 'Handwäsche, Felgen, Scheiben und Karosseriepflege.' },
+      { href: '/de/leistungen/fahrzeugaufbereitung/', label: 'Fahrzeugaufbereitung', desc: 'Komplettreinigung Innen & Aussen.' },
+    ],
+    packagesHref: '/de/pakete/',
+    packagesCta: 'Pakete & Preise ansehen',
+  },
+  en: {
+    breadcrumb: [{ label: 'RCC Royal Car Cleaning', href: '/en/' }, { label: 'Services' }],
+    eyebrow: 'Mobile Car Cleaning Switzerland',
+    h1: 'Mobile Car Cleaning in Switzerland',
+    lead: "RCC offers professional mobile vehicle cleaning in Switzerland (primary area: Zürich region). Choose the service that fits your vehicle's needs.",
+    aiCite: "RCC offers four categories of mobile vehicle cleaning in Switzerland: Mobile Car Cleaning (service at your location), Interior Cleaning (cabin, seats, dashboard), Exterior Cleaning (hand wash, wheels, windows), and Car Detailing (full interior + exterior combined). All equipment is brought to the customer.",
+    navLabel: 'Services overview',
+    services: [
+      { href: '/en/services/mobile-car-cleaning/', label: 'Mobile Car Cleaning', desc: 'Cleaning at your location in Switzerland.' },
+      { href: '/en/services/interior-cleaning/', label: 'Interior Cleaning', desc: 'Cabin, seats, dashboard, and more.' },
+      { href: '/en/services/exterior-cleaning/', label: 'Exterior Cleaning', desc: 'Hand wash, wheels, windows, and bodywork.' },
+      { href: '/en/services/car-detailing/', label: 'Car Detailing', desc: 'Full interior & exterior combined.' },
+    ],
+    packagesHref: '/en/packages/',
+    packagesCta: 'View Packages & Pricing',
+  },
+  fr: {
+    breadcrumb: [{ label: 'RCC Royal Car Cleaning', href: '/fr/' }, { label: 'Prestations' }],
+    eyebrow: 'Nettoyage auto mobile Suisse',
+    h1: 'Nettoyage auto mobile en Suisse',
+    lead: 'RCC propose un nettoyage automobile professionnel mobile en Suisse (zone principale : région de Zurich). Choisissez la prestation adaptée à votre véhicule.',
+    aiCite: "RCC propose quatre catégories de nettoyage automobile mobile en Suisse : nettoyage voiture mobile (à domicile), nettoyage intérieur (habitacle, sièges, tableau de bord), nettoyage extérieur (lavage main, jantes, vitres) et préparation véhicule (nettoyage complet intérieur + extérieur). Le matériel est apporté par l'équipe.",
+    navLabel: 'Vue d\'ensemble des prestations',
+    services: [
+      { href: '/fr/prestations/nettoyage-voiture-mobile/', label: 'Nettoyage voiture mobile', desc: 'Nettoyage directement à votre emplacement en Suisse.' },
+      { href: '/fr/prestations/nettoyage-interieur/', label: 'Nettoyage intérieur', desc: 'Habitacle, sièges, tableau de bord et plus.' },
+      { href: '/fr/prestations/nettoyage-exterieur/', label: 'Nettoyage extérieur', desc: 'Lavage main, jantes, vitres et carrosserie.' },
+      { href: '/fr/prestations/preparation-vehicule/', label: 'Préparation du véhicule', desc: 'Nettoyage complet intérieur & extérieur.' },
+    ],
+    packagesHref: '/fr/forfaits/',
+    packagesCta: 'Voir les forfaits & tarifs',
+  },
+};
+
+function SSRLeistungenPage({ lang }: { lang: Lang }) {
+  const c = LEISTUNGEN_CONTENT[lang];
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
       <main className="pt-32 pb-20 px-6 max-w-5xl mx-auto">
-        <SSRBreadcrumb items={[{ label: 'RCC Royal Car Cleaning', href: '/de/' }, { label: 'Leistungen' }]} />
+        <SSRBreadcrumb items={c.breadcrumb} />
+        {/* AI-citable factual summary — visible, non-lazy, present in prerendered HTML */}
+        <section data-ai-cite="leistungen" aria-label="Servicekurzübersicht" className="bg-[#070707] border border-white/5 px-6 py-6 mb-10 -mx-6">
+          <div className="max-w-3xl">
+            <p className="text-sm font-light text-white/55 leading-relaxed">{c.aiCite}</p>
+          </div>
+        </section>
         <header className="mb-12">
-          <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">Mobile Autopflege Schweiz</p>
-          <h1 className="text-3xl font-semibold uppercase text-white mb-4">Mobile Autoreinigung in der Schweiz</h1>
-          <p className="text-sm font-light text-white/60 leading-relaxed max-w-xl">
-            RCC bietet professionelle mobile Fahrzeugreinigung in der ganzen Schweiz. Wählen Sie den Bereich, der für Ihr Fahrzeug jetzt zählt.
-          </p>
+          <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">{c.eyebrow}</p>
+          <h1 className="text-3xl font-semibold uppercase text-white mb-4">{c.h1}</h1>
+          <p className="text-sm font-light text-white/60 leading-relaxed max-w-xl">{c.lead}</p>
         </header>
-        <nav aria-label="Leistungsübersicht">
+        <nav aria-label={c.navLabel}>
           <ul className="grid gap-4 sm:grid-cols-2">
-            {[
-              { href: '/de/leistungen/mobile-autoreinigung/', label: 'Mobile Autoreinigung', desc: 'Reinigung direkt bei Ihnen vor Ort in der Schweiz.' },
-              { href: '/de/leistungen/innenreinigung/', label: 'Innenreinigung', desc: 'Fahrgastraum, Sitze, Armaturenbrett und mehr.' },
-              { href: '/de/leistungen/aussenreinigung/', label: 'Aussenreinigung', desc: 'Handwäsche, Felgen, Scheiben und Karosseriepflege.' },
-              { href: '/de/leistungen/fahrzeugaufbereitung/', label: 'Fahrzeugaufbereitung', desc: 'Komplettreinigung Innen & Aussen.' },
-            ].map((item) => (
+            {c.services.map((item) => (
               <li key={item.href}>
                 <a href={item.href} className="block border border-white/10 bg-[#090909] p-6 hover:border-[#c9a553]/50">
                   <h2 className="text-base font-semibold uppercase text-white mb-2">{item.label}</h2>
@@ -314,8 +402,8 @@ function SSRLeistungenPage() {
           </ul>
         </nav>
         <div className="mt-8">
-          <a href="/de/pakete/" className="inline-flex items-center gap-2 border border-[#c9a553]/50 px-6 py-3 text-xs uppercase tracking-widest text-[#c9a553]">
-            Pakete & Preise ansehen <ArrowUpRight className="w-4 h-4" />
+          <a href={c.packagesHref} className="inline-flex items-center gap-2 border border-[#c9a553]/50 px-6 py-3 text-xs uppercase tracking-widest text-[#c9a553]">
+            {c.packagesCta} <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </main>
@@ -435,7 +523,7 @@ function SSRMobileAutoreinigungPage() {
       category="inside-outside"
       faqs={[
         { q: 'Was ist mobile Autoreinigung?', a: 'Das RCC-Team kommt mit dem gesamten professionellen Equipment direkt zu Ihrem Fahrzeug — zu Ihnen nach Hause, an Ihren Arbeitsplatz oder einen anderen Ort.' },
-        { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist in der ganzen Schweiz im Einsatz. Bitte kontaktieren Sie uns für eine Bestätigung Ihres Standorts.' },
+        { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Bitte kontaktieren Sie uns für eine Bestätigung Ihres Standorts.' },
         { q: 'Welche Fahrzeugtypen werden gereinigt?', a: 'Kleinwagen, Kompakt- und Mittelklassefahrzeuge, SUV sowie Vans und 7-Sitzer.' },
       ]}
     />
@@ -526,11 +614,11 @@ function SSREinsatzgebietPage() {
           <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">Mobile Autopflege Schweiz</p>
           <h1 className="text-3xl font-semibold uppercase text-white mb-4">Unser Einsatzgebiet</h1>
           <p className="text-sm font-light text-white/60 leading-relaxed">
-            RCC Mobile Autopflege ist in der ganzen Schweiz im Einsatz. Wir kommen in alle 26 Kantone direkt zu Ihrem Fahrzeug.
+            RCC Mobile Autopflege ist vorwiegend im Kanton Zürich und Umgebung tätig. Kontaktieren Sie uns für eine Bestätigung Ihres Standorts.
           </p>
         </header>
         <section className="mb-12">
-          <h2 className="text-lg font-semibold uppercase text-white mb-6">Alle 26 Kantone</h2>
+          <h2 className="text-lg font-semibold uppercase text-white mb-6">Kantone in der Schweiz</h2>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
             {CANTONS.map((canton) => (
               <li key={canton} className="flex items-center gap-2 border border-white/10 bg-[#090909] px-3 py-2 text-xs font-light text-white/55">
@@ -678,7 +766,7 @@ function SSRAboutPage() {
 function SSRFaqPage() {
   const faqs = [
     { q: 'Was ist mobile Autoreinigung? / What is mobile car cleaning?', a: 'RCC kommt mit dem Equipment direkt zu Ihrem Fahrzeug — zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz.' },
-    { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist in der ganzen Schweiz im Einsatz und bedient alle 26 Kantone.' },
+    { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Nehmen Sie Kontakt auf, um Ihren Standort zu bestätigen.' },
     { q: 'Wie buche ich?', a: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon oder WhatsApp.' },
   ];
   return (
@@ -720,9 +808,12 @@ function SSRApp({ lang: _lang }: { lang: Lang }) {
   return (
     <Switch>
       {/* ── German ── */}
-      <Route path="/de/"                                      component={HomePage} />
-      <Route path="/de/pakete/"                               component={ServicesPage} />
-      <Route path="/de/leistungen/"                           component={LeistungenPage} />
+      {/* Home/packages/services-hub use SSR-specific components so AI-citable blocks
+          appear in prerendered HTML — client pages use lazy() which would only render
+          fallback divs at SSR time. */}
+      <Route path="/de/">{() => <SSRHomePage lang="de" />}</Route>
+      <Route path="/de/pakete/">{() => <SSRPackagesPage lang="de" />}</Route>
+      <Route path="/de/leistungen/">{() => <SSRLeistungenPage lang="de" />}</Route>
       <Route path="/de/leistungen/mobile-autoreinigung/"      component={MobileAutoreinigungPage} />
       <Route path="/de/leistungen/innenreinigung/"            component={InnenreinigungPage} />
       <Route path="/de/leistungen/aussenreinigung/"           component={AussenreinigungPage} />
@@ -734,9 +825,9 @@ function SSRApp({ lang: _lang }: { lang: Lang }) {
       <Route path="/de/faq/"                                  component={FaqPage} />
 
       {/* ── English ── */}
-      <Route path="/en/"                                      component={HomePage} />
-      <Route path="/en/packages/"                             component={ServicesPage} />
-      <Route path="/en/services/"                             component={LeistungenPage} />
+      <Route path="/en/">{() => <SSRHomePage lang="en" />}</Route>
+      <Route path="/en/packages/">{() => <SSRPackagesPage lang="en" />}</Route>
+      <Route path="/en/services/">{() => <SSRLeistungenPage lang="en" />}</Route>
       <Route path="/en/services/mobile-car-cleaning/"         component={MobileAutoreinigungPage} />
       <Route path="/en/services/interior-cleaning/"           component={InnenreinigungPage} />
       <Route path="/en/services/exterior-cleaning/"           component={AussenreinigungPage} />
@@ -748,9 +839,9 @@ function SSRApp({ lang: _lang }: { lang: Lang }) {
       <Route path="/en/faq/"                                  component={FaqPage} />
 
       {/* ── French ── */}
-      <Route path="/fr/"                                      component={HomePage} />
-      <Route path="/fr/forfaits/"                             component={ServicesPage} />
-      <Route path="/fr/prestations/"                          component={LeistungenPage} />
+      <Route path="/fr/">{() => <SSRHomePage lang="fr" />}</Route>
+      <Route path="/fr/forfaits/">{() => <SSRPackagesPage lang="fr" />}</Route>
+      <Route path="/fr/prestations/">{() => <SSRLeistungenPage lang="fr" />}</Route>
       <Route path="/fr/prestations/nettoyage-voiture-mobile/" component={MobileAutoreinigungPage} />
       <Route path="/fr/prestations/nettoyage-interieur/"      component={InnenreinigungPage} />
       <Route path="/fr/prestations/nettoyage-exterieur/"      component={AussenreinigungPage} />

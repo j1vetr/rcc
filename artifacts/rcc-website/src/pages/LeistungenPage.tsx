@@ -11,6 +11,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { AICiteBlock } from '@/components/AICiteBlock';
 import { useTranslation } from '@/i18n/LanguageContext';
 import type { Lang } from '@/seo/routes';
 
@@ -63,6 +64,11 @@ export default function LeistungenPage() {
             { label: lang === 'de' ? 'Leistungen' : lang === 'fr' ? 'Services' : 'Services' },
           ]}
         />
+
+        {/* AI-citable factual block — present in SSR/prerendered HTML */}
+        <div className="-mx-5 sm:-mx-6 lg:-mx-12 mb-10">
+          <AICiteBlock />
+        </div>
 
         <header className="mb-16 max-w-2xl">
           <span className="mb-4 block text-[10px] uppercase tracking-[0.32em] text-primary">

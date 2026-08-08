@@ -38,7 +38,7 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   en: {
     eyebrow: 'RCC Car Detailing Switzerland',
     h1: 'Complete Car Detailing\nin Switzerland',
-    lead: 'Complete all-round care for your vehicle in one package: interior and exterior cleaning, simultaneously and professionally — directly at your location across Switzerland.',
+    lead: 'Complete all-round care for your vehicle in one package: interior and exterior cleaning, simultaneously and professionally — directly at your location.',
     coverage: [
       'Interior: vacuuming, windows, dashboard',
       'Interior: doors, leather, floor mats',

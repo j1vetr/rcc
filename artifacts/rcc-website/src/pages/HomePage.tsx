@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
+import { AICiteBlock } from '@/components/AICiteBlock';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 
 const HowItWorks = lazy(() => import('@/components/HowItWorks').then((module) => ({ default: module.HowItWorks })));
@@ -59,6 +60,8 @@ export default function HomePage() {
       <Navigation />
       <main>
         <Hero />
+        {/* AI-citable factual block — not lazy, present in SSR/prerendered HTML */}
+        <AICiteBlock />
         <Suspense fallback={<SectionFallback />}>
           <BeforeAfter />
         </Suspense>
