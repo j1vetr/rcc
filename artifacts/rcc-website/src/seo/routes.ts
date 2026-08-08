@@ -25,7 +25,14 @@ export type RouteKey =
   | 'mobile-autoreinigung/zuerich'
   | 'kontakt'
   | 'ueber-uns'
-  | 'faq';
+  | 'faq'
+  | 'ratgeber'
+  | 'ratgeber/auto-innenreinigung'
+  | 'ratgeber/autoaufbereitung-kosten-schweiz'
+  | 'ratgeber/auto-vor-leasingrueckgabe-reinigen'
+  | 'ratgeber/autopflege-im-winter-schweiz'
+  | 'ratgeber/innenreinigung-leder-stoff'
+  | 'ratgeber/wie-oft-auto-reinigen';
 
 export const LANG_LOCALES: Record<Lang, string> = {
   de: 'de-CH',
@@ -56,6 +63,19 @@ export const ROUTE_SLUGS: Record<RouteKey, Partial<Record<Lang, string>>> = {
   kontakt:                                 { de: 'kontakt', en: 'contact', fr: 'contact' },
   'ueber-uns':                             { de: 'ueber-uns', en: 'about', fr: 'a-propos' },
   faq:                                     { de: 'faq', en: 'faq', fr: 'faq' },
+
+  // Ratgeber / Guide hub
+  ratgeber:                                { de: 'ratgeber', en: 'guides', fr: 'guides' },
+
+  // German guides — top 3 have EN/FR translations; others DE-only
+  'ratgeber/auto-innenreinigung':                  { de: 'ratgeber/auto-innenreinigung', en: 'guides/car-interior-cleaning', fr: 'guides/nettoyage-interieur-voiture' },
+  'ratgeber/autopflege-im-winter-schweiz':         { de: 'ratgeber/autopflege-im-winter-schweiz', en: 'guides/car-care-winter-switzerland', fr: 'guides/entretien-voiture-hiver-suisse' },
+  'ratgeber/wie-oft-auto-reinigen':                { de: 'ratgeber/wie-oft-auto-reinigen', en: 'guides/how-often-clean-car', fr: 'guides/frequence-nettoyage-voiture' },
+
+  // DE-only guides (no EN/FR yet — hreflang alternates omitted)
+  'ratgeber/autoaufbereitung-kosten-schweiz':      { de: 'ratgeber/autoaufbereitung-kosten-schweiz' },
+  'ratgeber/auto-vor-leasingrueckgabe-reinigen':   { de: 'ratgeber/auto-vor-leasingrueckgabe-reinigen' },
+  'ratgeber/innenreinigung-leder-stoff':           { de: 'ratgeber/innenreinigung-leder-stoff' },
 };
 
 /**
@@ -141,6 +161,33 @@ export function detectRouteKeyFromPath(path: string): RouteKey {
 
   // FAQ
   if (/^\/(de\/faq|en\/faq|fr\/faq)$/.test(p))                                                       return 'faq';
+
+  // Ratgeber / Guides hub
+  if (/^\/(de\/ratgeber|en\/guides|fr\/guides)$/.test(p))                                             return 'ratgeber';
+
+  // Guide: interior cleaning
+  if (/^\/(de\/ratgeber\/auto-innenreinigung|en\/guides\/car-interior-cleaning|fr\/guides\/nettoyage-interieur-voiture)$/.test(p))
+    return 'ratgeber/auto-innenreinigung';
+
+  // Guide: autoaufbereitung costs
+  if (/^\/de\/ratgeber\/autoaufbereitung-kosten-schweiz$/.test(p))
+    return 'ratgeber/autoaufbereitung-kosten-schweiz';
+
+  // Guide: leasing return
+  if (/^\/de\/ratgeber\/auto-vor-leasingrueckgabe-reinigen$/.test(p))
+    return 'ratgeber/auto-vor-leasingrueckgabe-reinigen';
+
+  // Guide: winter car care
+  if (/^\/(de\/ratgeber\/autopflege-im-winter-schweiz|en\/guides\/car-care-winter-switzerland|fr\/guides\/entretien-voiture-hiver-suisse)$/.test(p))
+    return 'ratgeber/autopflege-im-winter-schweiz';
+
+  // Guide: leather vs fabric
+  if (/^\/de\/ratgeber\/innenreinigung-leder-stoff$/.test(p))
+    return 'ratgeber/innenreinigung-leder-stoff';
+
+  // Guide: how often
+  if (/^\/(de\/ratgeber\/wie-oft-auto-reinigen|en\/guides\/how-often-clean-car|fr\/guides\/frequence-nettoyage-voiture)$/.test(p))
+    return 'ratgeber/wie-oft-auto-reinigen';
 
   return 'home';
 }

@@ -14,6 +14,13 @@ import ZuerichPage from '@/pages/ZuerichPage';
 import ContactPage from '@/pages/ContactPage';
 import AboutPage from '@/pages/AboutPage';
 import FaqPage from '@/pages/FaqPage';
+import RatgeberHubPage from '@/pages/RatgeberHubPage';
+import AutoInnenreinigungPage from '@/pages/guides/AutoInnenreinigungPage';
+import AutoaufbereitungKostenPage from '@/pages/guides/AutoaufbereitungKostenPage';
+import AutoLeasingRueckgabePage from '@/pages/guides/AutoLeasingRueckgabePage';
+import AutopflegeWinterPage from '@/pages/guides/AutopflegeWinterPage';
+import InnenreinigungLederStoffPage from '@/pages/guides/InnenreinigungLederStoffPage';
+import WieOftAutoReinigenPage from '@/pages/guides/WieOftAutoReinigenPage';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { LanguageProvider } from '@/i18n/LanguageContext';
 import { SeoHead } from '@/components/SeoHead';
@@ -80,6 +87,35 @@ function Router() {
         <Route path="/fr/contact/" component={ContactPage} />
         <Route path="/fr/a-propos/" component={AboutPage} />
         <Route path="/fr/faq/" component={FaqPage} />
+
+        {/* ── Ratgeber / Guides hub (trilingual) ── */}
+        <Route path="/de/ratgeber/" component={RatgeberHubPage} />
+        <Route path="/en/guides/" component={RatgeberHubPage} />
+        <Route path="/fr/guides/" component={RatgeberHubPage} />
+
+        {/* ── Guide: interior cleaning (trilingual) ── */}
+        <Route path="/de/ratgeber/auto-innenreinigung/" component={AutoInnenreinigungPage} />
+        <Route path="/en/guides/car-interior-cleaning/" component={AutoInnenreinigungPage} />
+        <Route path="/fr/guides/nettoyage-interieur-voiture/" component={AutoInnenreinigungPage} />
+
+        {/* ── Guide: winter care (trilingual) ── */}
+        <Route path="/de/ratgeber/autopflege-im-winter-schweiz/" component={AutopflegeWinterPage} />
+        <Route path="/en/guides/car-care-winter-switzerland/" component={AutopflegeWinterPage} />
+        <Route path="/fr/guides/entretien-voiture-hiver-suisse/" component={AutopflegeWinterPage} />
+
+        {/* ── Guide: how often (trilingual) ── */}
+        <Route path="/de/ratgeber/wie-oft-auto-reinigen/" component={WieOftAutoReinigenPage} />
+        <Route path="/en/guides/how-often-clean-car/" component={WieOftAutoReinigenPage} />
+        <Route path="/fr/guides/frequence-nettoyage-voiture/" component={WieOftAutoReinigenPage} />
+
+        {/* ── Guide: costs DE only ── */}
+        <Route path="/de/ratgeber/autoaufbereitung-kosten-schweiz/" component={AutoaufbereitungKostenPage} />
+
+        {/* ── Guide: leasing return DE only ── */}
+        <Route path="/de/ratgeber/auto-vor-leasingrueckgabe-reinigen/" component={AutoLeasingRueckgabePage} />
+
+        {/* ── Guide: leather and fabric DE only ── */}
+        <Route path="/de/ratgeber/innenreinigung-leder-stoff/" component={InnenreinigungLederStoffPage} />
 
         {/* Legacy redirect — old German-only URL */}
         <Route path="/dienstleistungen">

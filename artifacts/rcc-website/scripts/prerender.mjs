@@ -73,6 +73,35 @@ const ROUTES = [
   { url: '/de/faq/',  lang: 'de-CH', routeKey: 'faq' },
   { url: '/en/faq/',  lang: 'en-CH', routeKey: 'faq' },
   { url: '/fr/faq/',  lang: 'fr-CH', routeKey: 'faq' },
+
+  // ── Ratgeber / Guides hub (trilingual) ──
+  { url: '/de/ratgeber/', lang: 'de-CH', routeKey: 'ratgeber' },
+  { url: '/en/guides/',   lang: 'en-CH', routeKey: 'ratgeber' },
+  { url: '/fr/guides/',   lang: 'fr-CH', routeKey: 'ratgeber' },
+
+  // ── Guide: interior cleaning (trilingual) ──
+  { url: '/de/ratgeber/auto-innenreinigung/',         lang: 'de-CH', routeKey: 'ratgeber/auto-innenreinigung' },
+  { url: '/en/guides/car-interior-cleaning/',         lang: 'en-CH', routeKey: 'ratgeber/auto-innenreinigung' },
+  { url: '/fr/guides/nettoyage-interieur-voiture/',   lang: 'fr-CH', routeKey: 'ratgeber/auto-innenreinigung' },
+
+  // ── Guide: winter care (trilingual) ──
+  { url: '/de/ratgeber/autopflege-im-winter-schweiz/',    lang: 'de-CH', routeKey: 'ratgeber/autopflege-im-winter-schweiz' },
+  { url: '/en/guides/car-care-winter-switzerland/',       lang: 'en-CH', routeKey: 'ratgeber/autopflege-im-winter-schweiz' },
+  { url: '/fr/guides/entretien-voiture-hiver-suisse/',    lang: 'fr-CH', routeKey: 'ratgeber/autopflege-im-winter-schweiz' },
+
+  // ── Guide: how often (trilingual) ──
+  { url: '/de/ratgeber/wie-oft-auto-reinigen/',       lang: 'de-CH', routeKey: 'ratgeber/wie-oft-auto-reinigen' },
+  { url: '/en/guides/how-often-clean-car/',           lang: 'en-CH', routeKey: 'ratgeber/wie-oft-auto-reinigen' },
+  { url: '/fr/guides/frequence-nettoyage-voiture/',   lang: 'fr-CH', routeKey: 'ratgeber/wie-oft-auto-reinigen' },
+
+  // ── Guide: costs (DE only) ──
+  { url: '/de/ratgeber/autoaufbereitung-kosten-schweiz/',    lang: 'de-CH', routeKey: 'ratgeber/autoaufbereitung-kosten-schweiz' },
+
+  // ── Guide: leasing return (DE only) ──
+  { url: '/de/ratgeber/auto-vor-leasingrueckgabe-reinigen/', lang: 'de-CH', routeKey: 'ratgeber/auto-vor-leasingrueckgabe-reinigen' },
+
+  // ── Guide: leather and fabric (DE only) ──
+  { url: '/de/ratgeber/innenreinigung-leder-stoff/',         lang: 'de-CH', routeKey: 'ratgeber/innenreinigung-leder-stoff' },
 ];
 
 // Route clusters: pages that are translations of each other.
@@ -91,6 +120,23 @@ const ROUTE_CLUSTERS = [
   ['/de/kontakt/', '/en/contact/', '/fr/contact/'],
   ['/de/ueber-uns/', '/en/about/', '/fr/a-propos/'],
   ['/de/faq/', '/en/faq/', '/fr/faq/'],
+
+  // Ratgeber / Guides hub (trilingual)
+  ['/de/ratgeber/', '/en/guides/', '/fr/guides/'],
+
+  // Guide: interior cleaning (trilingual)
+  ['/de/ratgeber/auto-innenreinigung/', '/en/guides/car-interior-cleaning/', '/fr/guides/nettoyage-interieur-voiture/'],
+
+  // Guide: winter care (trilingual)
+  ['/de/ratgeber/autopflege-im-winter-schweiz/', '/en/guides/car-care-winter-switzerland/', '/fr/guides/entretien-voiture-hiver-suisse/'],
+
+  // Guide: how often (trilingual)
+  ['/de/ratgeber/wie-oft-auto-reinigen/', '/en/guides/how-often-clean-car/', '/fr/guides/frequence-nettoyage-voiture/'],
+
+  // DE-only guides — single-URL clusters (no alternates)
+  ['/de/ratgeber/autoaufbereitung-kosten-schweiz/'],
+  ['/de/ratgeber/auto-vor-leasingrueckgabe-reinigen/'],
+  ['/de/ratgeber/innenreinigung-leder-stoff/'],
 ];
 
 async function main() {

@@ -50,16 +50,19 @@ const FOOTER_COMPANY_LINKS: Record<string, { label: string; href: string }[]> = 
     { label: 'Über uns', href: '/de/ueber-uns/' },
     { label: 'Kontakt', href: '/de/kontakt/' },
     { label: 'FAQ', href: '/de/faq/' },
+    { label: 'Ratgeber', href: '/de/ratgeber/' },
   ],
   en: [
     { label: 'About', href: '/en/about/' },
     { label: 'Contact', href: '/en/contact/' },
     { label: 'FAQ', href: '/en/faq/' },
+    { label: 'Guides', href: '/en/guides/' },
   ],
   fr: [
     { label: 'À propos', href: '/fr/a-propos/' },
     { label: 'Contact', href: '/fr/contact/' },
     { label: 'FAQ', href: '/fr/faq/' },
+    { label: 'Guides', href: '/fr/guides/' },
   ],
 };
 

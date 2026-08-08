@@ -250,6 +250,109 @@ const META: MetaMap = {
         'Réponses aux questions fréquentes sur le nettoyage automobile mobile RCC : réservation, forfaits, tarifs, types de véhicules, zone de service et déroulement.',
     },
   },
+
+  // ── Ratgeber / Guides hub ──────────────────────────────────────────────────
+  ratgeber: {
+    de: {
+      title: 'Ratgeber Autopflege Schweiz | RCC Royal Car Cleaning',
+      description:
+        'Praxisratgeber rund um Autopflege in der Schweiz: Innenreinigung, Winterpflege, Pflegerhythmus, Leder und Stoff, Leasingrückgabe. Von RCC Mobile Autopflege.',
+    },
+    en: {
+      title: 'Car Care Guides Switzerland | RCC Royal Car Cleaning',
+      description:
+        'Practical car care guides for Switzerland: interior cleaning, winter care, cleaning frequency, leather and fabric seats, lease returns. From RCC Mobile Car Cleaning.',
+    },
+    fr: {
+      title: "Guides Entretien Voiture Suisse | RCC Royal Car Cleaning",
+      description:
+        "Guides pratiques sur l'entretien automobile en Suisse : nettoyage intérieur, entretien hivernal, fréquence de nettoyage, sièges cuir et tissu. Par RCC Nettoyage Mobile.",
+    },
+  },
+
+  // ── Guide: interior cleaning ───────────────────────────────────────────────
+  'ratgeber/auto-innenreinigung': {
+    de: {
+      title: 'Auto Innenreinigung: Was wirklich zählt | RCC Ratgeber',
+      description:
+        'Schritt für Schritt durch die Autoinnenreinigung — Sitze, Teppiche, Cockpit, Scheiben. Wann ist Basic ausreichend, wann lohnt Premium? RCC Ratgeber Autopflege.',
+    },
+    en: {
+      title: 'Car Interior Cleaning: What Really Matters | RCC Guide',
+      description:
+        'Step by step through car interior cleaning — seats, carpets, dashboard, windows. When is Basic enough, when is Premium worth it? RCC Car Care Guide.',
+    },
+    fr: {
+      title: "Nettoyage Intérieur Voiture : l'essentiel | Guide RCC",
+      description:
+        "Étape par étape : nettoyage intérieur voiture — sièges, tapis, tableau de bord, vitres. Quand le Basic suffit-il, quand le Premium vaut-il la peine ? Guide RCC.",
+    },
+  },
+
+  // ── Guide: Autoaufbereitung Kosten (DE only) ───────────────────────────────
+  'ratgeber/autoaufbereitung-kosten-schweiz': {
+    de: {
+      title: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis? | RCC',
+      description:
+        'Welche Faktoren bestimmen den Preis einer professionellen Autoaufbereitung in der Schweiz? Fahrzeuggrösse, Reinigungsumfang, mobiler Service. RCC Ratgeber.',
+    },
+  },
+
+  // ── Guide: Leasingrückgabe (DE only) ──────────────────────────────────────
+  'ratgeber/auto-vor-leasingrueckgabe-reinigen': {
+    de: {
+      title: 'Auto vor der Leasingrückgabe reinigen | RCC Ratgeber',
+      description:
+        'Was Reinigung vor der Leasingrückgabe leisten kann — ohne rechtliche Einschätzungen. Praktische Hinweise zu Innen- und Aussenreinigung. RCC Mobile Autopflege.',
+    },
+  },
+
+  // ── Guide: winter care ─────────────────────────────────────────────────────
+  'ratgeber/autopflege-im-winter-schweiz': {
+    de: {
+      title: 'Autopflege im Winter Schweiz: Streusalz & Feuchtigkeit | RCC',
+      description:
+        'Streusalz, Feuchtigkeit und Temperaturschwankungen: Was Schweizer Autofahrer im Winter über Aussen- und Innenreinigung wissen sollten. RCC Ratgeber.',
+    },
+    en: {
+      title: 'Car Care in Winter Switzerland: Salt & Moisture | RCC Guide',
+      description:
+        'Road salt, moisture and temperature swings: what Swiss drivers should know about exterior and interior cleaning in winter. RCC Car Care Guide.',
+    },
+    fr: {
+      title: "Entretien Voiture Hiver Suisse : Sel & Humidité | Guide RCC",
+      description:
+        "Sel de déneigement, humidité et températures : ce que les conducteurs suisses doivent savoir sur le nettoyage en hiver. Guide RCC Nettoyage Mobile.",
+    },
+  },
+
+  // ── Guide: leather and fabric (DE only) ───────────────────────────────────
+  'ratgeber/innenreinigung-leder-stoff': {
+    de: {
+      title: 'Innenreinigung Leder und Stoff: Unterschiede | RCC Ratgeber',
+      description:
+        'Ledersitze und Stoffpolster brauchen unterschiedliche Pflege. Was bei der Innenreinigung zu beachten ist und wie professionelle Reinigung den Unterschied macht.',
+    },
+  },
+
+  // ── Guide: how often ──────────────────────────────────────────────────────
+  'ratgeber/wie-oft-auto-reinigen': {
+    de: {
+      title: 'Wie oft Auto reinigen? Richtig­er Pflegerhythmus | RCC',
+      description:
+        'Keine Pauschalantwort: Nutzungsintensität, Jahreszeit, Fahrzeugtyp und Standort bestimmen den optimalen Reinigungsrhythmus. RCC Ratgeber Autopflege Schweiz.',
+    },
+    en: {
+      title: 'How Often Should You Clean Your Car? | RCC Guide',
+      description:
+        'No blanket answer: usage intensity, season, vehicle type and location determine the optimal cleaning frequency. RCC Car Care Guide Switzerland.',
+    },
+    fr: {
+      title: "À quelle fréquence nettoyer sa voiture ? | Guide RCC",
+      description:
+        "Pas de réponse unique : intensité d'utilisation, saison, type de véhicule et lieu déterminent la bonne fréquence. Guide RCC Nettoyage Auto Suisse.",
+    },
+  },
 };
 
 // ─── Schema builders ──────────────────────────────────────────────────────────
@@ -847,6 +950,107 @@ const FAQ_PAGE_CONTENT: Record<Lang, Array<{ question: string; answer: string }>
   ],
 };
 
+// Guide Article/BlogPosting schema builder
+function buildGuideArticleJsonLd(
+  lang: Lang,
+  canonical: string,
+  headline: string,
+  description: string,
+  datePublished: string,
+  breadcrumbItems: Array<{ name: string; url: string }>,
+): object {
+  const ratgeberHubPath: Record<Lang, string> = {
+    de: `${BUSINESS.domain}/de/ratgeber/`,
+    en: `${BUSINESS.domain}/en/guides/`,
+    fr: `${BUSINESS.domain}/fr/guides/`,
+  };
+  const ratgeberHubName: Record<Lang, string> = {
+    de: 'Ratgeber',
+    en: 'Guides',
+    fr: 'Guides',
+  };
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBusinessNode(),
+      buildBreadcrumb(breadcrumbItems),
+      {
+        '@type': 'Article',
+        '@id': `${canonical}#article`,
+        headline,
+        description,
+        datePublished,
+        dateModified: datePublished,
+        inLanguage: LANG_LOCALES[lang],
+        url: canonical,
+        isPartOf: {
+          '@type': 'WebPage',
+          url: canonical,
+        },
+        publisher: { '@id': `${BUSINESS.domain}/#business` },
+        author: { '@id': `${BUSINESS.domain}/#business` },
+      },
+    ],
+  };
+}
+
+// Guide-specific JSON-LD data
+const GUIDE_JSONLD: Record<string, Record<Lang, { headline: string; description: string; datePublished: string }>> = {
+  'ratgeber/auto-innenreinigung': {
+    de: { headline: 'Auto Innenreinigung: Was wirklich zählt', description: 'Schritt für Schritt durch die Autoinnenreinigung. Wann Basic, wann Premium?', datePublished: '2025-01-15' },
+    en: { headline: 'Car Interior Cleaning: What Really Matters', description: 'Step by step through car interior cleaning. When Basic, when Premium?', datePublished: '2025-01-15' },
+    fr: { headline: "Nettoyage Intérieur Voiture : l'essentiel", description: "Étape par étape pour le nettoyage intérieur voiture.", datePublished: '2025-01-15' },
+  },
+  'ratgeber/autoaufbereitung-kosten-schweiz': {
+    de: { headline: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?', description: 'Faktoren, die den Preis einer Autoaufbereitung bestimmen.', datePublished: '2025-02-05' },
+    en: { headline: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?', description: 'Faktoren, die den Preis einer Autoaufbereitung bestimmen.', datePublished: '2025-02-05' },
+    fr: { headline: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?', description: 'Faktoren, die den Preis einer Autoaufbereitung bestimmen.', datePublished: '2025-02-05' },
+  },
+  'ratgeber/auto-vor-leasingrueckgabe-reinigen': {
+    de: { headline: 'Auto vor der Leasingrückgabe reinigen', description: 'Was Reinigung vor der Leasingrückgabe leisten kann.', datePublished: '2025-02-12' },
+    en: { headline: 'Auto vor der Leasingrückgabe reinigen', description: 'Was Reinigung vor der Leasingrückgabe leisten kann.', datePublished: '2025-02-12' },
+    fr: { headline: 'Auto vor der Leasingrückgabe reinigen', description: 'Was Reinigung vor der Leasingrückgabe leisten kann.', datePublished: '2025-02-12' },
+  },
+  'ratgeber/autopflege-im-winter-schweiz': {
+    de: { headline: 'Autopflege im Winter in der Schweiz', description: 'Streusalz, Feuchtigkeit und Winterpflege für Schweizer Fahrzeuge.', datePublished: '2025-01-22' },
+    en: { headline: 'Car Care in Winter in Switzerland', description: 'Road salt, moisture and winter care for Swiss vehicles.', datePublished: '2025-01-22' },
+    fr: { headline: "Entretien voiture en hiver en Suisse", description: "Sel de déneigement, humidité et entretien hivernal pour les véhicules suisses.", datePublished: '2025-01-22' },
+  },
+  'ratgeber/innenreinigung-leder-stoff': {
+    de: { headline: 'Innenreinigung: Leder oder Stoff richtig reinigen', description: 'Unterschiede bei der Pflege von Leder- und Stoffsitzen.', datePublished: '2025-02-19' },
+    en: { headline: 'Innenreinigung: Leder oder Stoff richtig reinigen', description: 'Unterschiede bei der Pflege von Leder- und Stoffsitzen.', datePublished: '2025-02-19' },
+    fr: { headline: 'Innenreinigung: Leder oder Stoff richtig reinigen', description: 'Unterschiede bei der Pflege von Leder- und Stoffsitzen.', datePublished: '2025-02-19' },
+  },
+  'ratgeber/wie-oft-auto-reinigen': {
+    de: { headline: 'Wie oft soll man das Auto reinigen?', description: 'Nutzung, Jahreszeit und Fahrzeugtyp bestimmen den richtigen Pflegerhythmus.', datePublished: '2025-01-29' },
+    en: { headline: 'How Often Should You Clean Your Car?', description: 'Usage, season and vehicle type determine the right cleaning frequency.', datePublished: '2025-01-29' },
+    fr: { headline: "À quelle fréquence faut-il nettoyer sa voiture ?", description: "Utilisation, saison et type de véhicule déterminent la bonne fréquence.", datePublished: '2025-01-29' },
+  },
+};
+
+function buildRatgeberHubJsonLd(lang: Lang, canonical: string): object {
+  const labels: Record<Lang, string> = { de: 'Ratgeber', en: 'Guides', fr: 'Guides' };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBusinessNode(),
+      buildBreadcrumb([
+        { name: 'RCC Royal Car Cleaning', url: `${BUSINESS.domain}/${lang}/` },
+        { name: labels[lang], url: canonical },
+      ]),
+      {
+        '@type': 'CollectionPage',
+        '@id': `${canonical}#collection`,
+        url: canonical,
+        name: labels[lang],
+        inLanguage: LANG_LOCALES[lang],
+        publisher: { '@id': `${BUSINESS.domain}/#business` },
+      },
+    ],
+  };
+}
+
 function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object {
   switch (routeKey) {
     case 'home':
@@ -880,6 +1084,37 @@ function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object 
 
     case 'faq':
       return buildFaqPageJsonLd(lang, canonical, FAQ_PAGE_CONTENT[lang]);
+
+    case 'ratgeber':
+      return buildRatgeberHubJsonLd(lang, canonical);
+
+    case 'ratgeber/auto-innenreinigung':
+    case 'ratgeber/autoaufbereitung-kosten-schweiz':
+    case 'ratgeber/auto-vor-leasingrueckgabe-reinigen':
+    case 'ratgeber/autopflege-im-winter-schweiz':
+    case 'ratgeber/innenreinigung-leder-stoff':
+    case 'ratgeber/wie-oft-auto-reinigen': {
+      const guideData = GUIDE_JSONLD[routeKey]?.[lang] ?? GUIDE_JSONLD[routeKey]?.['de'];
+      const ratgeberPath: Record<Lang, string> = {
+        de: `${BUSINESS.domain}/de/ratgeber/`,
+        en: `${BUSINESS.domain}/en/guides/`,
+        fr: `${BUSINESS.domain}/fr/guides/`,
+      };
+      const ratgeberName: Record<Lang, string> = { de: 'Ratgeber', en: 'Guides', fr: 'Guides' };
+      if (!guideData) return {};
+      return buildGuideArticleJsonLd(
+        lang,
+        canonical,
+        guideData.headline,
+        guideData.description,
+        guideData.datePublished,
+        [
+          { name: 'RCC Royal Car Cleaning', url: `${BUSINESS.domain}/${lang}/` },
+          { name: ratgeberName[lang], url: ratgeberPath[lang] },
+          { name: guideData.headline, url: canonical },
+        ],
+      );
+    }
 
     default:
       return {};

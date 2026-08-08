@@ -13,9 +13,9 @@ import carSmall from '@assets/optimized/car-small.webp';
 import carMedium from '@assets/optimized/car-medium.webp';
 import carSuv from '@assets/optimized/car-suv.webp';
 import carVan from '@assets/optimized/car-van.webp';
-import categoryKomplett from '@assets/generated_images/rcc-category-komplett.jpg';
-import categoryInterior from '@assets/generated_images/rcc-category-interior.jpg';
-import categoryExterior from '@assets/generated_images/rcc-category-exterior.jpg';
+import categoryKomplett from '@assets/generated_images/rcc-category-komplett.webp';
+import categoryInterior from '@assets/generated_images/rcc-category-interior.webp';
+import categoryExterior from '@assets/generated_images/rcc-category-exterior.webp';
 
 type SizeKey = 'small' | 'medium' | 'large' | 'xl';
 type CategoryKey = 'inside-outside' | 'interior' | 'exterior';
