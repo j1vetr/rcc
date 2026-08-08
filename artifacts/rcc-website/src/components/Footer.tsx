@@ -51,18 +51,21 @@ const FOOTER_COMPANY_LINKS: Record<string, { label: string; href: string }[]> = 
     { label: 'Kontakt', href: '/de/kontakt/' },
     { label: 'FAQ', href: '/de/faq/' },
     { label: 'Ratgeber', href: '/de/ratgeber/' },
+    { label: 'Firmenkunden', href: '/de/firmenkunden/' },
   ],
   en: [
     { label: 'About', href: '/en/about/' },
     { label: 'Contact', href: '/en/contact/' },
     { label: 'FAQ', href: '/en/faq/' },
     { label: 'Guides', href: '/en/guides/' },
+    { label: 'Business Customers', href: '/en/business-customers/' },
   ],
   fr: [
     { label: 'À propos', href: '/fr/a-propos/' },
     { label: 'Contact', href: '/fr/contact/' },
     { label: 'FAQ', href: '/fr/faq/' },
     { label: 'Guides', href: '/fr/guides/' },
+    { label: 'Clients professionnels', href: '/fr/clients-professionnels/' },
   ],
 };
 

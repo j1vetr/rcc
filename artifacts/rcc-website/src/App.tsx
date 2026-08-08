@@ -11,6 +11,7 @@ import AussenreinigungPage from '@/pages/AussenreinigungPage';
 import FahrzeugaufbereitungPage from '@/pages/FahrzeugaufbereitungPage';
 import EinsatzgebietPage from '@/pages/EinsatzgebietPage';
 import ZuerichPage from '@/pages/ZuerichPage';
+import FirmenkundenPage from '@/pages/FirmenkundenPage';
 import ContactPage from '@/pages/ContactPage';
 import AboutPage from '@/pages/AboutPage';
 import FaqPage from '@/pages/FaqPage';
@@ -56,6 +57,7 @@ function Router() {
         <Route path="/de/leistungen/fahrzeugaufbereitung/" component={FahrzeugaufbereitungPage} />
         <Route path="/de/einsatzgebiet/" component={EinsatzgebietPage} />
         <Route path="/de/mobile-autoreinigung/zuerich/" component={ZuerichPage} />
+        <Route path="/de/firmenkunden/" component={FirmenkundenPage} />
         <Route path="/de/kontakt/" component={ContactPage} />
         <Route path="/de/ueber-uns/" component={AboutPage} />
         <Route path="/de/faq/" component={FaqPage} />
@@ -70,6 +72,7 @@ function Router() {
         <Route path="/en/services/car-detailing/" component={FahrzeugaufbereitungPage} />
         <Route path="/en/service-area/" component={EinsatzgebietPage} />
         <Route path="/en/mobile-car-cleaning/zurich/" component={ZuerichPage} />
+        <Route path="/en/business-customers/" component={FirmenkundenPage} />
         <Route path="/en/contact/" component={ContactPage} />
         <Route path="/en/about/" component={AboutPage} />
         <Route path="/en/faq/" component={FaqPage} />
@@ -84,6 +87,7 @@ function Router() {
         <Route path="/fr/prestations/preparation-vehicule/" component={FahrzeugaufbereitungPage} />
         <Route path="/fr/zones-desservies/" component={EinsatzgebietPage} />
         <Route path="/fr/nettoyage-voiture-mobile/zurich/" component={ZuerichPage} />
+        <Route path="/fr/clients-professionnels/" component={FirmenkundenPage} />
         <Route path="/fr/contact/" component={ContactPage} />
         <Route path="/fr/a-propos/" component={AboutPage} />
         <Route path="/fr/faq/" component={FaqPage} />

@@ -1,7 +1,7 @@
 import { ArrowUpRight, Route } from 'lucide-react';
 import { useTranslation } from '@/i18n/LanguageContext';
 
-type TravelCostNoticeVariant = 'serviceArea' | 'packages' | 'faq';
+type TravelCostNoticeVariant = 'serviceArea' | 'packages' | 'faq' | 'business';
 
 export function TravelCostNotice({ variant = 'serviceArea' }: { variant?: TravelCostNoticeVariant }) {
   const { t, getLangRoute } = useTranslation();

@@ -201,6 +201,23 @@ const META: MetaMap = {
         'Nettoyage automobile mobile professionnel à Zurich. RCC nettoie votre véhicule chez vous — nettoyage intérieur, extérieur et complet dans la région de Zurich.',
     },
   },
+  firmenkunden: {
+    de: {
+      title: 'Fahrzeugreinigung für Firmen & Fuhrparks | RCC Schweiz',
+      description:
+        'Mobile Fahrzeugreinigung für Firmen, Geschäftsfahrzeuge, Firmenwagen und Fuhrparks in der Schweiz. Individuelle Firmenofferte von RCC anfragen.',
+    },
+    en: {
+      title: 'Mobile Vehicle Cleaning for Businesses | RCC Switzerland',
+      description:
+        'Mobile vehicle cleaning for companies, business vehicles, company cars and fleets in Switzerland. Request an individual business quote from RCC.',
+    },
+    fr: {
+      title: 'Nettoyage Automobile pour Entreprises | RCC Suisse',
+      description:
+        'Nettoyage automobile mobile pour entreprises, véhicules professionnels, voitures de société et flottes en Suisse. Demandez une offre entreprise RCC.',
+    },
+  },
   kontakt: {
     de: {
       title: 'Kontakt | RCC Mobile Autopflege Schweiz',
@@ -877,6 +894,45 @@ function buildEinsatzgebietJsonLdLang(lang: Lang, canonical: string): object {
   };
 }
 
+function buildBusinessCustomersJsonLd(lang: Lang, canonical: string): object {
+  const labels: Record<Lang, { name: string; description: string; breadcrumb: string }> = {
+    de: {
+      name: 'Mobile Fahrzeugreinigung für Firmenkunden',
+      description: 'Mobile Fahrzeugreinigung für Unternehmen, Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge und Fuhrparks in der Schweiz.',
+      breadcrumb: 'Firmenkunden',
+    },
+    en: {
+      name: 'Mobile Vehicle Cleaning for Business Customers',
+      description: 'Mobile vehicle cleaning for companies, business vehicles, company cars, employee vehicles and fleets in Switzerland.',
+      breadcrumb: 'Business Customers',
+    },
+    fr: {
+      name: 'Nettoyage Automobile Mobile pour Clients Professionnels',
+      description: 'Nettoyage automobile mobile pour entreprises, véhicules professionnels, voitures de société, véhicules des collaborateurs et flottes en Suisse.',
+      breadcrumb: 'Clients professionnels',
+    },
+  };
+  const data = labels[lang];
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBusinessNode(),
+      buildBreadcrumb([
+        { name: 'RCC Royal Car Cleaning', url: `${BUSINESS.domain}/${lang}/` },
+        { name: data.breadcrumb, url: canonical },
+      ]),
+      {
+        '@type': 'Service',
+        '@id': `${canonical}#service`,
+        name: data.name,
+        description: data.description,
+        provider: { '@id': `${BUSINESS.domain}/#business` },
+        areaServed: { '@type': 'Country', name: 'Switzerland' },
+      },
+    ],
+  };
+}
+
 function buildZuerichJsonLdLang(lang: Lang, canonical: string): object {
   const d = ZURICH_JSONLD[lang];
   const mobilePath: Record<Lang, string> = {
@@ -1010,6 +1066,9 @@ function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object 
 
     case 'mobile-autoreinigung/zuerich':
       return buildZuerichJsonLdLang(lang, canonical);
+
+    case 'firmenkunden':
+      return buildBusinessCustomersJsonLd(lang, canonical);
 
     case 'kontakt':
       return buildContactJsonLd(lang, canonical);

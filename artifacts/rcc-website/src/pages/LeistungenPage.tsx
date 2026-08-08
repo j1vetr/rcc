@@ -145,6 +145,23 @@ export default function LeistungenPage() {
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </section>
+
+        <section className="mt-6 border border-white/10 bg-[#090909] px-8 py-9">
+          <h2 className="text-lg font-semibold uppercase tracking-[-0.025em] text-foreground">
+            {lang === 'de' ? 'Fahrzeugreinigung für Unternehmen' : lang === 'fr' ? 'Nettoyage pour les entreprises' : 'Vehicle cleaning for businesses'}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-foreground/55">
+            {lang === 'de'
+              ? 'RCC reinigt Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge und Fuhrparks mobil am vereinbarten Standort.'
+              : lang === 'fr'
+                ? 'RCC nettoie les véhicules professionnels, voitures de société, véhicules des collaborateurs et flottes sur le lieu convenu.'
+                : 'RCC cleans business vehicles, company cars, employee vehicles and fleets at an agreed location.'}
+          </p>
+          <a href={getLangRoute('firmenkunden')} className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-primary hover:underline">
+            {lang === 'de' ? 'Mehr für Firmenkunden' : lang === 'fr' ? 'En savoir plus pour les entreprises' : 'Learn more for businesses'}
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </section>
       </main>
 
       <Footer />

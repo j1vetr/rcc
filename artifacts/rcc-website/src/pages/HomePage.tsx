@@ -2,6 +2,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { AICiteBlock } from '@/components/AICiteBlock';
+import { useTranslation } from '@/i18n/LanguageContext';
+import { ArrowUpRight } from 'lucide-react';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 
 const HowItWorks = lazy(() => import('@/components/HowItWorks').then((module) => ({ default: module.HowItWorks })));
@@ -17,6 +19,7 @@ function SectionFallback() {
 }
 
 export default function HomePage() {
+  const { lang, getLangRoute } = useTranslation();
   useEffect(() => {
     if (window.location.hash !== '#quote') return;
 
@@ -70,6 +73,27 @@ export default function HomePage() {
           <SwitzerlandMap onSelectCanton={handleSelectCanton} />
           <Services />
           <WhyRcc />
+          <section className="bg-[#080808] px-6 py-16">
+            <div className="mx-auto max-w-5xl border border-white/10 bg-[#090909] px-7 py-9 sm:px-10">
+              <span className="block text-[10px] uppercase tracking-[0.24em] text-primary">
+                {lang === 'de' ? 'Für Unternehmen' : lang === 'fr' ? 'Pour les entreprises' : 'For businesses'}
+              </span>
+              <h2 className="mt-3 text-2xl font-semibold uppercase tracking-[-0.03em] text-foreground">
+                {lang === 'de' ? 'Mobile Fahrzeugreinigung für Firmenkunden' : lang === 'fr' ? 'Nettoyage automobile mobile pour les entreprises' : 'Mobile vehicle cleaning for business customers'}
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-foreground/55">
+                {lang === 'de'
+                  ? 'RCC reinigt Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge und Fuhrparks direkt am vereinbarten Standort.'
+                  : lang === 'fr'
+                    ? 'RCC nettoie les véhicules professionnels, voitures de société, véhicules des collaborateurs et flottes directement sur le lieu convenu.'
+                    : 'RCC cleans business vehicles, company cars, employee vehicles and fleets directly at an agreed location.'}
+              </p>
+              <a href={getLangRoute('firmenkunden')} className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-primary hover:underline">
+                {lang === 'de' ? 'Firmenkunden entdecken' : lang === 'fr' ? 'Découvrir les offres entreprises' : 'Explore business customers'}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </section>
           <QuoteForm />
         </Suspense>
       </main>

@@ -142,14 +142,18 @@ export default function EinsatzgebietPage() {
             </p>
           </a>
           <a
-            href={zurichPath}
+            href={getLangRoute('firmenkunden')}
             className="group border border-white/10 bg-[#090909] px-6 py-6 transition-colors hover:border-primary/40 hover:bg-white/[0.025]"
           >
             <p className="text-sm font-semibold uppercase tracking-[0.06em] text-foreground transition-colors group-hover:text-primary">
-              {sa.zurichLabel}
+              {lang === 'de' ? 'Firmenkunden' : lang === 'fr' ? 'Clients professionnels' : 'Business Customers'}
             </p>
             <p className="mt-2 text-sm font-light leading-relaxed text-foreground/55">
-              {sa.zurichDesc}
+              {lang === 'de'
+                ? 'Mobile Fahrzeugreinigung für Geschäftsfahrzeuge, Firmenwagen und Fuhrparks.'
+                : lang === 'fr'
+                  ? 'Nettoyage mobile pour véhicules professionnels, voitures de société et flottes.'
+                  : 'Mobile vehicle cleaning for business vehicles, company cars and fleets.'}
             </p>
           </a>
         </section>

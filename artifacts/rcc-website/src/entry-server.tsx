@@ -34,6 +34,7 @@ import AussenreinigungPage from '@/pages/AussenreinigungPage';
 import FahrzeugaufbereitungPage from '@/pages/FahrzeugaufbereitungPage';
 import EinsatzgebietPage from '@/pages/EinsatzgebietPage';
 import ZuerichPage from '@/pages/ZuerichPage';
+import FirmenkundenPage from '@/pages/FirmenkundenPage';
 import ContactPage from '@/pages/ContactPage';
 import AboutPage from '@/pages/AboutPage';
 import FaqPage from '@/pages/FaqPage';
@@ -215,6 +216,12 @@ const HOME_AI_CITE: Record<Lang, string> = {
 };
 
 function SSRHomePage({ lang }: { lang: Lang }) {
+  const businessLink = getLangPath(lang, 'firmenkunden');
+  const copy = lang === 'de'
+    ? { eyebrow: 'Für Unternehmen', title: 'Mobile Fahrzeugreinigung für Firmenkunden', text: 'RCC reinigt Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge und Fuhrparks direkt am vereinbarten Standort.', cta: 'Firmenkunden entdecken' }
+    : lang === 'fr'
+      ? { eyebrow: 'Pour les entreprises', title: 'Nettoyage automobile mobile pour les entreprises', text: 'RCC nettoie les véhicules professionnels, voitures de société, véhicules des collaborateurs et flottes directement sur le lieu convenu.', cta: 'Découvrir les offres entreprises' }
+      : { eyebrow: 'For businesses', title: 'Mobile vehicle cleaning for business customers', text: 'RCC cleans business vehicles, company cars, employee vehicles and fleets directly at an agreed location.', cta: 'Explore business customers' };
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
@@ -227,6 +234,16 @@ function SSRHomePage({ lang }: { lang: Lang }) {
           </div>
         </section>
         <SSRWhyContent lang={lang} />
+        <section className="bg-[#080808] px-6 py-16">
+          <div className="mx-auto max-w-5xl border border-white/10 bg-[#090909] px-7 py-9">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-[#c9a553]">{copy.eyebrow}</p>
+            <h2 className="mt-3 text-2xl font-semibold uppercase text-white">{copy.title}</h2>
+            <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-white/55">{copy.text}</p>
+            <a href={businessLink} className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#c9a553]">
+              {copy.cta} <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </section>
         {lang === 'de' && <SSRHomeSeoSection />}
       </main>
       <Footer />
@@ -304,6 +321,11 @@ function SSRPackagesPage({ lang }: { lang: Lang }) {
     en: '/en/contact/#quote',
     fr: '/fr/contact/#quote',
   };
+  const business = {
+    de: { title: 'Reinigung für Firmenfahrzeuge', text: 'Für Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge oder Fuhrparks erstellen wir gerne eine individuelle Firmenofferte.', cta: 'Firmenkunden entdecken' },
+    en: { title: 'Cleaning for business vehicles', text: 'For business vehicles, company cars, employee vehicles or fleets, we are happy to prepare an individual business quote.', cta: 'Explore business customers' },
+    fr: { title: 'Nettoyage pour véhicules professionnels', text: 'Pour les véhicules professionnels, voitures de société, véhicules des collaborateurs ou flottes, nous préparons volontiers une offre entreprise personnalisée.', cta: 'Découvrir les offres entreprises' },
+  }[lang];
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
@@ -322,6 +344,13 @@ function SSRPackagesPage({ lang }: { lang: Lang }) {
             <p className="mt-2 max-w-2xl text-sm font-light leading-relaxed text-white/65">{travel.detail}</p>
             <a href={contactHref[lang]} className="mt-5 inline-flex items-center gap-2 border border-[#c9a553]/50 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#c9a553]">
               {travel.cta} <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="mx-auto mt-6 max-w-5xl border border-white/10 bg-[#090909] px-6 py-7 sm:px-8">
+            <h2 className="text-lg font-semibold uppercase text-white">{business.title}</h2>
+            <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-white/55">{business.text}</p>
+            <a href={getLangPath(lang, 'firmenkunden')} className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#c9a553]">
+              {business.cta} <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </section>
@@ -396,6 +425,11 @@ const LEISTUNGEN_CONTENT: Record<Lang, {
 
 function SSRLeistungenPage({ lang }: { lang: Lang }) {
   const c = LEISTUNGEN_CONTENT[lang];
+  const business = lang === 'de'
+    ? { title: 'Fahrzeugreinigung für Unternehmen', text: 'RCC reinigt Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge und Fuhrparks mobil am vereinbarten Standort.', cta: 'Mehr für Firmenkunden' }
+    : lang === 'fr'
+      ? { title: 'Nettoyage pour les entreprises', text: 'RCC nettoie les véhicules professionnels, voitures de société, véhicules des collaborateurs et flottes sur le lieu convenu.', cta: 'En savoir plus pour les entreprises' }
+      : { title: 'Vehicle cleaning for businesses', text: 'RCC cleans business vehicles, company cars, employee vehicles and fleets at an agreed location.', cta: 'Learn more for businesses' };
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
@@ -429,6 +463,13 @@ function SSRLeistungenPage({ lang }: { lang: Lang }) {
             {c.packagesCta} <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
+        <section className="mt-6 border border-white/10 bg-[#090909] px-7 py-8">
+          <h2 className="text-lg font-semibold uppercase text-white">{business.title}</h2>
+          <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-white/55">{business.text}</p>
+          <a href={getLangPath(lang, 'firmenkunden')} className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#c9a553]">
+            {business.cta} <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </section>
       </main>
       <Footer />
     </div>
@@ -843,6 +884,7 @@ function SSRApp({ lang: _lang }: { lang: Lang }) {
       <Route path="/de/leistungen/fahrzeugaufbereitung/"      component={FahrzeugaufbereitungPage} />
       <Route path="/de/einsatzgebiet/"                        component={EinsatzgebietPage} />
       <Route path="/de/mobile-autoreinigung/zuerich/"         component={ZuerichPage} />
+      <Route path="/de/firmenkunden/"                         component={FirmenkundenPage} />
       <Route path="/de/kontakt/"                              component={ContactPage} />
       <Route path="/de/ueber-uns/"                            component={AboutPage} />
       <Route path="/de/faq/"                                  component={FaqPage} />
@@ -857,6 +899,7 @@ function SSRApp({ lang: _lang }: { lang: Lang }) {
       <Route path="/en/services/car-detailing/"               component={FahrzeugaufbereitungPage} />
       <Route path="/en/service-area/"                         component={EinsatzgebietPage} />
       <Route path="/en/mobile-car-cleaning/zurich/"           component={ZuerichPage} />
+      <Route path="/en/business-customers/"                   component={FirmenkundenPage} />
       <Route path="/en/contact/"                              component={ContactPage} />
       <Route path="/en/about/"                                component={AboutPage} />
       <Route path="/en/faq/"                                  component={FaqPage} />
@@ -871,6 +914,7 @@ function SSRApp({ lang: _lang }: { lang: Lang }) {
       <Route path="/fr/prestations/preparation-vehicule/"     component={FahrzeugaufbereitungPage} />
       <Route path="/fr/zones-desservies/"                     component={EinsatzgebietPage} />
       <Route path="/fr/nettoyage-voiture-mobile/zurich/"      component={ZuerichPage} />
+      <Route path="/fr/clients-professionnels/"               component={FirmenkundenPage} />
       <Route path="/fr/contact/"                              component={ContactPage} />
       <Route path="/fr/a-propos/"                             component={AboutPage} />
       <Route path="/fr/faq/"                                  component={FaqPage} />

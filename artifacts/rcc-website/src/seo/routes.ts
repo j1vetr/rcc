@@ -23,6 +23,7 @@ export type RouteKey =
   | 'leistungen/fahrzeugaufbereitung'
   | 'einsatzgebiet'
   | 'mobile-autoreinigung/zuerich'
+  | 'firmenkunden'
   | 'kontakt'
   | 'ueber-uns'
   | 'faq'
@@ -60,6 +61,7 @@ export const ROUTE_SLUGS: Record<RouteKey, Partial<Record<Lang, string>>> = {
   'leistungen/fahrzeugaufbereitung':       { de: 'leistungen/fahrzeugaufbereitung', en: 'services/car-detailing', fr: 'prestations/preparation-vehicule' },
   einsatzgebiet:                           { de: 'einsatzgebiet', en: 'service-area', fr: 'zones-desservies' },
   'mobile-autoreinigung/zuerich':          { de: 'mobile-autoreinigung/zuerich', en: 'mobile-car-cleaning/zurich', fr: 'nettoyage-voiture-mobile/zurich' },
+  firmenkunden:                             { de: 'firmenkunden', en: 'business-customers', fr: 'clients-professionnels' },
   kontakt:                                 { de: 'kontakt', en: 'contact', fr: 'contact' },
   'ueber-uns':                             { de: 'ueber-uns', en: 'about', fr: 'a-propos' },
   faq:                                     { de: 'faq', en: 'faq', fr: 'faq' },
@@ -152,6 +154,10 @@ export function detectRouteKeyFromPath(path: string): RouteKey {
   // City: Zurich
   if (/^\/(de\/mobile-autoreinigung\/zuerich|en\/mobile-car-cleaning\/zurich|fr\/nettoyage-voiture-mobile\/zurich)$/.test(p))
     return 'mobile-autoreinigung/zuerich';
+
+  // Business customers
+  if (/^\/(de\/firmenkunden|en\/business-customers|fr\/clients-professionnels)$/.test(p))
+    return 'firmenkunden';
 
   // Contact
   if (/^\/(de\/kontakt|en\/contact|fr\/contact)$/.test(p))                                           return 'kontakt';

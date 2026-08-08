@@ -377,6 +377,23 @@ export default function ServicesPage() {
 
             <TravelCostNotice variant="packages" />
 
+            <section className="border border-white/10 bg-[#090909] px-7 py-8">
+              <h2 className="text-lg font-semibold uppercase tracking-[-0.025em] text-foreground">
+                {lang === 'de' ? 'Reinigung für Firmenfahrzeuge' : lang === 'fr' ? 'Nettoyage pour véhicules professionnels' : 'Cleaning for business vehicles'}
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-foreground/55">
+                {lang === 'de'
+                  ? 'Für Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge oder Fuhrparks erstellen wir gerne eine individuelle Firmenofferte.'
+                  : lang === 'fr'
+                    ? 'Pour les véhicules professionnels, voitures de société, véhicules des collaborateurs ou flottes, nous préparons volontiers une offre entreprise personnalisée.'
+                    : 'For business vehicles, company cars, employee vehicles or fleets, we are happy to prepare an individual business quote.'}
+              </p>
+              <a href={getLangRoute('firmenkunden')} className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-primary hover:underline">
+                {lang === 'de' ? 'Firmenkunden entdecken' : lang === 'fr' ? 'Découvrir les offres entreprises' : 'Explore business customers'}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </section>
+
             <div className="space-y-16">
               {activeCategory && (
                 <div className="flex items-center justify-between border-y border-primary/20 bg-primary/[0.04] px-5 py-4 sm:px-6">

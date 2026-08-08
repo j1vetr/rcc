@@ -59,6 +59,11 @@ const ROUTES = [
   { url: '/en/mobile-car-cleaning/zurich/',               lang: 'en-CH', routeKey: 'mobile-autoreinigung/zuerich' },
   { url: '/fr/nettoyage-voiture-mobile/zurich/',          lang: 'fr-CH', routeKey: 'mobile-autoreinigung/zuerich' },
 
+  // ── Business customers (trilingual) ──
+  { url: '/de/firmenkunden/',                             lang: 'de-CH', routeKey: 'firmenkunden' },
+  { url: '/en/business-customers/',                       lang: 'en-CH', routeKey: 'firmenkunden' },
+  { url: '/fr/clients-professionnels/',                   lang: 'fr-CH', routeKey: 'firmenkunden' },
+
   // ── Contact (trilingual) ──
   { url: '/de/kontakt/',  lang: 'de-CH', routeKey: 'kontakt' },
   { url: '/en/contact/',  lang: 'en-CH', routeKey: 'kontakt' },
@@ -117,6 +122,7 @@ const ROUTE_CLUSTERS = [
   ['/de/leistungen/fahrzeugaufbereitung/', '/en/services/car-detailing/', '/fr/prestations/preparation-vehicule/'],
   ['/de/einsatzgebiet/', '/en/service-area/', '/fr/zones-desservies/'],
   ['/de/mobile-autoreinigung/zuerich/', '/en/mobile-car-cleaning/zurich/', '/fr/nettoyage-voiture-mobile/zurich/'],
+  ['/de/firmenkunden/', '/en/business-customers/', '/fr/clients-professionnels/'],
   ['/de/kontakt/', '/en/contact/', '/fr/contact/'],
   ['/de/ueber-uns/', '/en/about/', '/fr/a-propos/'],
   ['/de/faq/', '/en/faq/', '/fr/faq/'],

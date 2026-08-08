@@ -263,6 +263,36 @@ export const translations = {
       zurichLabel: 'Zürich',
       zurichDesc: 'Mobile Autoreinigung im Raum Zürich',
     },
+    businessPage: {
+      eyebrow: 'Mobile Fahrzeugreinigung für Unternehmen',
+      h1Line1: 'Firmenkunden',
+      h1Line2: 'in der ganzen Schweiz',
+      intro: 'RCC bietet mobile Fahrzeugreinigung für Unternehmen, Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge und Fuhrparks. Wir kommen mit unserem professionellen Equipment an Ihren Firmenstandort oder an den vereinbarten Einsatzort.',
+      audienceTitle: 'Für welche Fahrzeuge?',
+      audienceIntro: 'Ob einzelnes Geschäftsfahrzeug oder mehrere Fahrzeuge eines Unternehmens: Wir klären Ihren Bedarf und erstellen eine individuelle Firmenofferte.',
+      audiences: [
+        { title: 'Geschäftsfahrzeuge', desc: 'Mobile Innen-, Aussen- oder Komplettreinigung für Fahrzeuge, die im geschäftlichen Alltag eingesetzt werden.' },
+        { title: 'Firmenwagen', desc: 'Fahrzeugpflege direkt am Unternehmensstandort, ohne den Weg zu einer Waschanlage organisieren zu müssen.' },
+        { title: 'Mitarbeiterfahrzeuge', desc: 'Eine mobile Lösung für Fahrzeuge von Mitarbeitenden am vereinbarten Standort.' },
+        { title: 'Fuhrparks und Flotten', desc: 'Reinigung für mehrere Fahrzeuge. Umfang und Einsatzort besprechen wir persönlich.' },
+      ],
+      benefitsTitle: 'Vorteile des mobilen Services',
+      benefits: [
+        { title: 'Am Firmenstandort', desc: 'Wir reinigen die Fahrzeuge dort, wo sie sich befinden, am Unternehmensstandort oder an einem anderen vereinbarten Ort.' },
+        { title: 'Weniger Fahrten', desc: 'Ihre Fahrzeuge müssen für die Reinigung nicht zu einer Waschanlage gebracht werden.' },
+        { title: 'Flexible Koordination', desc: 'Wir stimmen Standort, Fahrzeugbedarf und gewünschtes Paket individuell mit Ihnen ab.' },
+        { title: 'Individuelle Offerte', desc: 'Für Unternehmen klären wir die Anfrage persönlich und erstellen eine passende Firmenofferte.' },
+      ],
+      processTitle: 'So starten Sie Ihre Anfrage',
+      process: [
+        { step: '01', title: 'Bedarf mitteilen', desc: 'Nennen Sie uns Ihre Fahrzeuge, den gewünschten Standort und Ihren Reinigungsbedarf.' },
+        { step: '02', title: 'Offerte erhalten', desc: 'Wir prüfen die Angaben und senden Ihnen eine individuelle Firmenofferte.' },
+        { step: '03', title: 'Einsatz abstimmen', desc: 'Gemeinsam koordinieren wir den passenden Ort und den gewünschten Termin.' },
+      ],
+      ctaTitle: 'Firmenofferte anfragen',
+      ctaDesc: 'Senden Sie uns Ihre Anfrage für Geschäftsfahrzeuge, Firmenwagen, Mitarbeiterfahrzeuge oder Ihren Fuhrpark.',
+      ctaButton: 'Individuelle Firmenofferte anfragen',
+    },
     travelCosts: {
       serviceArea: {
         title: 'Anfahrt ausserhalb von Zürich',
@@ -281,6 +311,12 @@ export const translations = {
         description: 'Für Einsätze ausserhalb eines Radius von 30 km ab Zürich können zusätzliche Anfahrtskosten anfallen.',
         detail: 'Die Höhe hängt vom Zielort ab. Sie erhalten die genaue Information vor der Terminbestätigung und können jederzeit eine individuelle Offerte anfragen.',
         cta: 'Individuelle Offerte',
+      },
+      business: {
+        title: 'Anfahrt für Firmenkunden',
+        description: 'RCC ist schweizweit mobil für Unternehmen im Einsatz. Bei einem Standort mehr als 30 km von Zürich entfernt können zusätzlich zum gewählten Paket Anfahrtskosten anfallen.',
+        detail: 'Die genaue Höhe richtet sich nach dem Einsatzort und wird vor der Terminbestätigung transparent mitgeteilt. Fragen Sie für Ihren Fuhrpark gerne eine individuelle Firmenofferte an.',
+        cta: 'Anfahrt klären',
       },
     },
     cityPage: {
@@ -623,6 +659,36 @@ export const translations = {
       zurichLabel: 'Zurich',
       zurichDesc: 'Nettoyage voiture mobile dans la région de Zurich',
     },
+    businessPage: {
+      eyebrow: 'Nettoyage automobile mobile pour les entreprises',
+      h1Line1: 'Clients professionnels',
+      h1Line2: 'dans toute la Suisse',
+      intro: 'RCC propose un nettoyage automobile mobile pour les entreprises, les véhicules professionnels, les voitures de société, les véhicules des collaborateurs et les flottes. Nous apportons notre matériel professionnel sur votre site ou sur le lieu convenu.',
+      audienceTitle: 'Quels véhicules sont concernés ?',
+      audienceIntro: 'Qu’il s’agisse d’un seul véhicule professionnel ou de plusieurs véhicules d’une entreprise, nous discutons de vos besoins et préparons une offre entreprise personnalisée.',
+      audiences: [
+        { title: 'Véhicules professionnels', desc: 'Nettoyage intérieur, extérieur ou complet pour les véhicules utilisés dans le cadre professionnel.' },
+        { title: 'Voitures de société', desc: 'Entretien directement sur le site de l’entreprise, sans organiser le déplacement vers une station de lavage.' },
+        { title: 'Véhicules des collaborateurs', desc: 'Une solution mobile pour les véhicules des collaborateurs sur le lieu convenu.' },
+        { title: 'Flottes de véhicules', desc: 'Nettoyage de plusieurs véhicules. Nous discutons ensemble du périmètre et du lieu d’intervention.' },
+      ],
+      benefitsTitle: 'Les avantages du service mobile',
+      benefits: [
+        { title: 'Sur votre site', desc: 'Nous nettoyons les véhicules là où ils se trouvent, sur votre site ou à un autre endroit convenu.' },
+        { title: 'Moins de déplacements', desc: 'Vos véhicules ne doivent pas être conduits jusqu’à une station de lavage pour être nettoyés.' },
+        { title: 'Coordination flexible', desc: 'Nous coordonnons avec vous le lieu, les besoins des véhicules et le forfait choisi.' },
+        { title: 'Offre personnalisée', desc: 'Nous examinons personnellement les demandes d’entreprise et préparons une offre adaptée.' },
+      ],
+      processTitle: 'Comment commencer ?',
+      process: [
+        { step: '01', title: 'Décrire votre besoin', desc: 'Indiquez-nous vos véhicules, le lieu souhaité et vos besoins en matière de nettoyage.' },
+        { step: '02', title: 'Recevoir une offre', desc: 'Nous examinons les informations et vous envoyons une offre entreprise personnalisée.' },
+        { step: '03', title: 'Coordonner l’intervention', desc: 'Nous convenons ensemble du lieu et du rendez-vous souhaité.' },
+      ],
+      ctaTitle: 'Demander une offre entreprise',
+      ctaDesc: 'Envoyez-nous votre demande pour des véhicules professionnels, des voitures de société, les véhicules de vos collaborateurs ou votre flotte.',
+      ctaButton: 'Demander une offre entreprise',
+    },
     travelCosts: {
       serviceArea: {
         title: 'Déplacements en dehors de Zurich',
@@ -641,6 +707,12 @@ export const translations = {
         description: 'Pour les interventions au-delà d’un rayon de 30 km autour de Zurich, des frais de déplacement supplémentaires peuvent s’appliquer.',
         detail: 'Le montant dépend de la destination. Nous vous communiquons l’information exacte avant la confirmation du rendez-vous et pouvons préparer un devis personnalisé.',
         cta: 'Demander un devis personnalisé',
+      },
+      business: {
+        title: 'Déplacements pour les entreprises',
+        description: 'RCC intervient dans toute la Suisse auprès des entreprises avec un service mobile. Pour un site situé à plus de 30 km de Zurich, des frais de déplacement peuvent s’ajouter au forfait choisi.',
+        detail: 'Le montant exact dépend du lieu d’intervention et vous est communiqué en toute transparence avant la confirmation. Demandez une offre entreprise personnalisée pour votre parc de véhicules.',
+        cta: 'Préciser le déplacement',
       },
     },
     cityPage: {
@@ -983,6 +1055,36 @@ export const translations = {
       zurichLabel: 'Zurich',
       zurichDesc: 'Mobile car cleaning in the Zurich area',
     },
+    businessPage: {
+      eyebrow: 'Mobile vehicle cleaning for companies',
+      h1Line1: 'Business customers',
+      h1Line2: 'across Switzerland',
+      intro: 'RCC provides mobile vehicle cleaning for companies, business vehicles, company cars, employee vehicles and fleets. We bring our professional equipment to your company location or another agreed service location.',
+      audienceTitle: 'Which vehicles can we clean?',
+      audienceIntro: 'Whether you need one business vehicle or cleaning for several company vehicles, we discuss your needs and prepare an individual business quote.',
+      audiences: [
+        { title: 'Business vehicles', desc: 'Mobile interior, exterior or complete cleaning for vehicles used in day-to-day business.' },
+        { title: 'Company cars', desc: 'Vehicle care at your company location, without arranging a trip to a car wash.' },
+        { title: 'Employee vehicles', desc: 'A mobile option for employee vehicles at an agreed company location.' },
+        { title: 'Fleets', desc: 'Cleaning for several vehicles. We discuss the scope and location with you personally.' },
+      ],
+      benefitsTitle: 'Benefits of mobile service',
+      benefits: [
+        { title: 'At your company location', desc: 'We clean vehicles where they are, at your company location or another agreed place.' },
+        { title: 'Fewer vehicle movements', desc: 'Your vehicles do not need to be taken to a car wash for cleaning.' },
+        { title: 'Flexible coordination', desc: 'We coordinate the location, vehicle needs and selected package with you individually.' },
+        { title: 'Individual quote', desc: 'We review business enquiries personally and prepare a quote tailored to the request.' },
+      ],
+      processTitle: 'How to get started',
+      process: [
+        { step: '01', title: 'Share your needs', desc: 'Tell us about your vehicles, preferred location and cleaning requirements.' },
+        { step: '02', title: 'Receive a quote', desc: 'We review the details and send you an individual business quote.' },
+        { step: '03', title: 'Coordinate the visit', desc: 'Together we agree on the right location and preferred appointment.' },
+      ],
+      ctaTitle: 'Request a business quote',
+      ctaDesc: 'Send us your enquiry for business vehicles, company cars, employee vehicles or your fleet.',
+      ctaButton: 'Request a business quote',
+    },
     travelCosts: {
       serviceArea: {
         title: 'Travel outside the Zurich area',
@@ -1001,6 +1103,12 @@ export const translations = {
         description: 'For visits beyond a 30 km radius from Zurich, additional travel costs may apply.',
         detail: 'The amount depends on the destination. We provide the exact information before booking confirmation and can prepare an individual quote.',
         cta: 'Request an individual quote',
+      },
+      business: {
+        title: 'Travel costs for business customers',
+        description: 'RCC provides mobile service for companies throughout Switzerland. For a location more than 30 km from Zurich, additional travel costs may apply on top of the selected package.',
+        detail: 'The exact amount depends on the service location and is communicated transparently before booking confirmation. Request an individual business quote for your vehicles or fleet.',
+        cta: 'Clarify travel costs',
       },
     },
     cityPage: {
