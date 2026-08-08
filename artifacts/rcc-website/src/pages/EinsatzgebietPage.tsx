@@ -15,6 +15,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { TravelCostNotice } from '@/components/TravelCostNotice';
 import { useTranslation } from '@/i18n/LanguageContext';
 import type { Lang } from '@/seo/routes';
 
@@ -101,6 +102,10 @@ export default function EinsatzgebietPage() {
           </div>
         </section>
 
+        <section className="mb-16">
+          <TravelCostNotice variant="serviceArea" />
+        </section>
+
         {/* Featured city */}
         <section className="mb-16">
           <h2 className="text-xl font-semibold uppercase tracking-[-0.025em] text-foreground mb-8">
@@ -117,6 +122,35 @@ export default function EinsatzgebietPage() {
               <p className="text-xs font-light text-foreground/45 mt-1">{sa.zurichDesc}</p>
             </div>
             <ArrowUpRight className="h-5 w-5 text-foreground/30 group-hover:text-primary transition-colors" />
+          </a>
+        </section>
+
+        <section className="mb-16 grid gap-4 sm:grid-cols-2">
+          <a
+            href={getLangRoute('packages')}
+            className="group border border-white/10 bg-[#090909] px-6 py-6 transition-colors hover:border-primary/40 hover:bg-white/[0.025]"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.06em] text-foreground transition-colors group-hover:text-primary">
+              {t.nav.packages}
+            </p>
+            <p className="mt-2 text-sm font-light leading-relaxed text-foreground/55">
+              {lang === 'de'
+                ? 'Wählen Sie Ihr Reinigungspaket und sehen Sie die Basispreise nach Fahrzeuggrösse.'
+                : lang === 'fr'
+                  ? 'Choisissez votre forfait de nettoyage et consultez les prix de base selon la taille du véhicule.'
+                  : 'Choose your cleaning package and view base prices by vehicle size.'}
+            </p>
+          </a>
+          <a
+            href={zurichPath}
+            className="group border border-white/10 bg-[#090909] px-6 py-6 transition-colors hover:border-primary/40 hover:bg-white/[0.025]"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.06em] text-foreground transition-colors group-hover:text-primary">
+              {sa.zurichLabel}
+            </p>
+            <p className="mt-2 text-sm font-light leading-relaxed text-foreground/55">
+              {sa.zurichDesc}
+            </p>
           </a>
         </section>
 

@@ -298,6 +298,12 @@ const PACKAGES_AI_CITE: Record<Lang, string> = {
 };
 
 function SSRPackagesPage({ lang }: { lang: Lang }) {
+  const travel = translations[lang].travelCosts.packages;
+  const contactHref: Record<Lang, string> = {
+    de: '/de/kontakt/#quote',
+    en: '/en/contact/#quote',
+    fr: '/fr/contact/#quote',
+  };
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Navigation />
@@ -309,6 +315,16 @@ function SSRPackagesPage({ lang }: { lang: Lang }) {
           </div>
         </section>
         <SSRServicesContent lang={lang} />
+        <section className="bg-[#080808] px-6 pb-16">
+          <div className="mx-auto max-w-5xl border border-[#c9a553]/25 bg-[#c9a553]/[0.045] px-6 py-7 sm:px-8">
+            <h2 className="text-lg font-semibold uppercase tracking-[-0.025em] text-white">{travel.title}</h2>
+            <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-white/65">{travel.description}</p>
+            <p className="mt-2 max-w-2xl text-sm font-light leading-relaxed text-white/65">{travel.detail}</p>
+            <a href={contactHref[lang]} className="mt-5 inline-flex items-center gap-2 border border-[#c9a553]/50 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.16em] text-[#c9a553]">
+              {travel.cta} <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

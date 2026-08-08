@@ -249,7 +249,7 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Schweizweit im Einsatz',
       h1: 'Einsatzgebiet\nSchweiz',
-      intro: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Für Ihren gewünschten Termin und Standort nehmen Sie bitte Kontakt auf.',
+      intro: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Wir bringen unser professionelles Equipment direkt zu Ihrem Fahrzeug.',
       cantonsTitle: 'Kantone in der Schweiz',
       howTitle: 'So funktioniert der Einsatz',
       steps: [
@@ -262,6 +262,26 @@ export const translations = {
       featuredCityTitle: 'Unsere Standorte',
       zurichLabel: 'Zürich',
       zurichDesc: 'Mobile Autoreinigung im Raum Zürich',
+    },
+    travelCosts: {
+      serviceArea: {
+        title: 'Anfahrt ausserhalb von Zürich',
+        description: 'RCC ist schweizweit mobil für Sie unterwegs. Bei Einsatzorten mehr als 30 km von Zürich entfernt kann zusätzlich zum gewählten Reinigungspaket eine Anfahrtsgebühr anfallen.',
+        detail: 'Die genaue Höhe richtet sich nach dem Zielort und wird vor der Terminbestätigung transparent mitgeteilt. Fragen Sie gerne eine individuelle Offerte an.',
+        cta: 'Anfahrt anfragen',
+      },
+      packages: {
+        title: 'Hinweis zur Anfahrt',
+        description: 'Die angezeigten Paketpreise sind die unveränderten Basispreise für die jeweilige Fahrzeuggrösse und das gewählte Paket.',
+        detail: 'Bei Standorten mehr als 30 km von Zürich entfernt können zusätzliche Anfahrtskosten anfallen. Die genaue Gebühr teilen wir Ihnen abhängig vom Zielort vor der Bestätigung mit.',
+        cta: 'Anfahrt anfragen',
+      },
+      faq: {
+        title: 'Anfahrt transparent klären',
+        description: 'Für Einsätze ausserhalb eines Radius von 30 km ab Zürich können zusätzliche Anfahrtskosten anfallen.',
+        detail: 'Die Höhe hängt vom Zielort ab. Sie erhalten die genaue Information vor der Terminbestätigung und können jederzeit eine individuelle Offerte anfragen.',
+        cta: 'Individuelle Offerte',
+      },
     },
     cityPage: {
       eyebrow: 'Autopflege Zürich',
@@ -589,7 +609,7 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Service en Suisse',
       h1: 'Zone de service\nSuisse',
-      intro: 'Basé à Zurich, RCC propose un service mobile de nettoyage automobile dans toute la Suisse. Contactez-nous pour convenir du lieu et du rendez-vous souhaités.',
+      intro: 'Basé à Zurich, RCC propose un service mobile de nettoyage automobile dans toute la Suisse. Nous apportons notre matériel professionnel directement à votre véhicule.',
       cantonsTitle: 'Cantons en Suisse',
       howTitle: "Comment fonctionne l'intervention",
       steps: [
@@ -602,6 +622,26 @@ export const translations = {
       featuredCityTitle: 'Nos zones desservies',
       zurichLabel: 'Zurich',
       zurichDesc: 'Nettoyage voiture mobile dans la région de Zurich',
+    },
+    travelCosts: {
+      serviceArea: {
+        title: 'Déplacements en dehors de Zurich',
+        description: 'RCC intervient dans toute la Suisse avec un service mobile. Pour les lieux situés à plus de 30 km de Zurich, des frais de déplacement supplémentaires peuvent s’ajouter au forfait choisi.',
+        detail: 'Le montant exact dépend de la destination et vous est communiqué en toute transparence avant la confirmation du rendez-vous. Demandez volontiers un devis personnalisé.',
+        cta: 'Demander les frais',
+      },
+      packages: {
+        title: 'Information sur les déplacements',
+        description: 'Les prix des forfaits affichés restent les prix de base inchangés selon la taille du véhicule et la prestation choisie.',
+        detail: 'Pour les lieux situés à plus de 30 km de Zurich, des frais de déplacement supplémentaires peuvent s’appliquer. Le montant exact lié à la destination est communiqué avant confirmation.',
+        cta: 'Demander les frais',
+      },
+      faq: {
+        title: 'Des frais clairement expliqués',
+        description: 'Pour les interventions au-delà d’un rayon de 30 km autour de Zurich, des frais de déplacement supplémentaires peuvent s’appliquer.',
+        detail: 'Le montant dépend de la destination. Nous vous communiquons l’information exacte avant la confirmation du rendez-vous et pouvons préparer un devis personnalisé.',
+        cta: 'Demander un devis personnalisé',
+      },
     },
     cityPage: {
       eyebrow: 'Nettoyage auto Zurich',
@@ -929,7 +969,7 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Service area Switzerland',
       h1: 'Service Area\nSwitzerland',
-      intro: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Contact us to arrange your preferred appointment and location.',
+      intro: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. We bring our professional equipment directly to your vehicle.',
       cantonsTitle: 'Swiss cantons',
       howTitle: 'How a service visit works',
       steps: [
@@ -942,6 +982,26 @@ export const translations = {
       featuredCityTitle: 'Our service locations',
       zurichLabel: 'Zurich',
       zurichDesc: 'Mobile car cleaning in the Zurich area',
+    },
+    travelCosts: {
+      serviceArea: {
+        title: 'Travel outside the Zurich area',
+        description: 'RCC provides mobile service throughout Switzerland. For locations more than 30 km from Zurich, additional travel costs may apply on top of the selected package.',
+        detail: 'The exact amount depends on the destination and is communicated transparently before booking confirmation. You can request an individual quote.',
+        cta: 'Ask about travel',
+      },
+      packages: {
+        title: 'Travel cost note',
+        description: 'The package prices shown remain the unchanged base prices for the selected vehicle size and service.',
+        detail: 'For locations more than 30 km from Zurich, additional travel costs may apply. We communicate the exact destination-based amount before confirmation.',
+        cta: 'Ask about travel',
+      },
+      faq: {
+        title: 'Clear travel information',
+        description: 'For visits beyond a 30 km radius from Zurich, additional travel costs may apply.',
+        detail: 'The amount depends on the destination. We provide the exact information before booking confirmation and can prepare an individual quote.',
+        cta: 'Request an individual quote',
+      },
     },
     cityPage: {
       eyebrow: 'Car Care Zurich',

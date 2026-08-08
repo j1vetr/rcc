@@ -11,6 +11,7 @@
  */
 
 import { BUSINESS } from './businessData';
+import { FAQ_CONTENT } from '@/data/faq-content';
 import { getGuideArticleMetadata, type GuideArticleKey } from './articleMetadata';
 import {
   type Lang,
@@ -917,40 +918,6 @@ function buildZuerichJsonLdLang(lang: Lang, canonical: string): object {
   };
 }
 
-// FAQ page content per language (verified operational facts only)
-const FAQ_PAGE_CONTENT: Record<Lang, Array<{ question: string; answer: string }>> = {
-  de: [
-    { question: 'Was ist mobile Autoreinigung?', answer: 'Mobile Autoreinigung bedeutet, dass das RCC-Team mit dem professionellen Equipment direkt zu Ihrem Fahrzeug kommt — zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz. Sie müssen Ihr Fahrzeug nirgendwo hinbringen.' },
-    { question: 'In welchen Regionen der Schweiz ist RCC tätig?', answer: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Bitte nehmen Sie Kontakt auf oder nutzen Sie das Offertformular für Ihren gewünschten Termin und Standort.' },
-    { question: 'Welche Fahrzeugtypen werden gereinigt?', answer: 'RCC reinigt alle gängigen Fahrzeugtypen: Kleinwagen (S), Kompakt- und Mittelklassefahrzeuge (M), SUV (L) sowie grosse Fahrzeuge wie Vans und 7-Sitzer (XL). Die Fahrzeuggrösse bestimmt den Paketpreis.' },
-    { question: 'Wie buche ich eine mobile Autoreinigung?', answer: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon, E-Mail oder WhatsApp. Wir melden uns umgehend und vereinbaren einen Termin.' },
-    { question: 'Muss ich bei der Reinigung anwesend sein?', answer: 'Das ist nicht zwingend erforderlich. Bitte sprechen Sie die Details bei der Terminabsprache ab, damit wir den Ablauf optimal planen können.' },
-    { question: 'Was ist im Basic-Paket und was im Premium-Paket enthalten?', answer: 'Basic umfasst alle wesentlichen Reinigungsschritte. Premium ergänzt diese mit intensiverer Pflege: z. B. Fussmatten shampoonieren, Cockpit und Türen mit Bürste detailliert reinigen und Reifenglanz. Die genauen Leistungen finden Sie auf der Paketseite.' },
-    { question: 'Was kosten die Reinigungspakete?', answer: 'Die Preise richten sich nach Fahrzeuggrösse und gewähltem Paket. Beispiele: Innenreinigung Basic ab CHF 85, Innen & Aussen Premium ab CHF 200. Die vollständige Preistabelle finden Sie auf der Paketseite.' },
-    { question: 'Wird eine Aufzahlung für weite Anfahrten erhoben?', answer: 'Für Informationen zu Anfahrtskosten kontaktieren Sie uns bitte direkt — wir geben Ihnen gerne Auskunft für Ihren genauen Standort.' },
-  ],
-  en: [
-    { question: 'What is mobile car cleaning?', answer: 'Mobile car cleaning means the RCC team brings the full professional equipment directly to your vehicle — at home, at work, or at your location. You do not need to take your vehicle anywhere.' },
-    { question: 'Which regions of Switzerland does RCC serve?', answer: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Please contact us or use the quote form to arrange your preferred appointment and location.' },
-    { question: 'Which vehicle types are cleaned?', answer: 'RCC cleans all common vehicle types: small cars (S), compact and mid-size vehicles (M), SUVs (L) and large vehicles such as vans and 7-seaters (XL). Vehicle size determines the package price.' },
-    { question: 'How do I book mobile car cleaning?', answer: 'Use the quote form on our website or contact us directly by phone, email or WhatsApp. We respond promptly and arrange an appointment.' },
-    { question: 'Do I need to be present during cleaning?', answer: 'It is not strictly required. Please discuss the details when arranging your appointment so we can plan the visit as conveniently as possible.' },
-    { question: 'What is included in Basic vs. Premium?', answer: 'Basic covers all essential cleaning steps. Premium adds more intensive care: e.g. shampoo cleaning of floor mats, detailed brush cleaning of the cockpit and doors, and tyre shine. Full details are on the packages page.' },
-    { question: 'What do the cleaning packages cost?', answer: 'Prices depend on vehicle size and chosen package. Examples: Interior Cleaning Basic from CHF 85, Interior & Exterior Premium from CHF 200. The full price table is on the packages page.' },
-    { question: 'Is there a surcharge for remote locations?', answer: 'For information on travel charges please contact us directly — we are happy to advise for your specific location.' },
-  ],
-  fr: [
-    { question: "Qu'est-ce que le nettoyage voiture mobile ?", answer: "Le nettoyage voiture mobile signifie que l'équipe RCC vient directement chez vous avec tout le matériel professionnel — à domicile, au bureau ou ailleurs en Suisse. Vous n'avez pas besoin de déplacer votre véhicule." },
-    { question: 'Quelles régions de la Suisse RCC dessert-il ?', answer: 'Basé à Zurich, RCC propose un nettoyage automobile mobile dans toute la Suisse. Contactez-nous ou utilisez le formulaire de devis pour convenir du lieu et du rendez-vous souhaités.' },
-    { question: 'Quels types de véhicules sont nettoyés ?', answer: 'RCC nettoie tous les types de véhicules courants : petites voitures (S), compactes et berlines (M), SUV (L) et grands véhicules comme les vans et 7 places (XL). La taille du véhicule détermine le prix du forfait.' },
-    { question: 'Comment réserver un nettoyage automobile mobile ?', answer: 'Utilisez le formulaire de devis sur notre site ou contactez-nous directement par téléphone, e-mail ou WhatsApp. Nous répondons rapidement et convenons d\'un rendez-vous.' },
-    { question: 'Dois-je être présent pendant le nettoyage ?', answer: "Ce n'est pas strictement obligatoire. Veuillez discuter des détails lors de la prise de rendez-vous afin que nous puissions planifier la visite le plus commodément possible." },
-    { question: "Qu'est-ce qui est inclus dans Basic et Premium ?", answer: "Basic couvre toutes les étapes essentielles du nettoyage. Premium ajoute un entretien plus intensif : nettoyage des tapis au shampooing, nettoyage détaillé du cockpit et des portes à la brosse, finition brillante des pneus. Les détails complets sont sur la page des forfaits." },
-    { question: 'Quel est le coût des forfaits de nettoyage ?', answer: 'Les prix varient selon la taille du véhicule et le forfait choisi. Exemples : Nettoyage intérieur Basic à partir de CHF 85, Intérieur & Extérieur Premium à partir de CHF 200. Le tableau de prix complet est sur la page des forfaits.' },
-    { question: 'Y a-t-il un supplément pour les lieux éloignés ?', answer: 'Pour les informations sur les frais de déplacement, contactez-nous directement — nous sommes heureux de vous conseiller pour votre emplacement spécifique.' },
-  ],
-};
-
 // Guide Article/BlogPosting schema builder
 function buildGuideArticleJsonLd(
   lang: Lang,
@@ -1051,7 +1018,7 @@ function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object 
       return buildAboutJsonLd(lang, canonical);
 
     case 'faq':
-      return buildFaqPageJsonLd(lang, canonical, FAQ_PAGE_CONTENT[lang]);
+      return buildFaqPageJsonLd(lang, canonical, FAQ_CONTENT[lang]);
 
     case 'ratgeber':
       return buildRatgeberHubJsonLd(lang, canonical);

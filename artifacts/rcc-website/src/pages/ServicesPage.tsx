@@ -6,6 +6,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 import { AICiteBlock } from '@/components/AICiteBlock';
+import { TravelCostNotice } from '@/components/TravelCostNotice';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, Sparkles } from 'lucide-react';
 import { useLocation } from 'wouter';
@@ -373,6 +374,8 @@ export default function ServicesPage() {
                 })}
               </div>
             </section>
+
+            <TravelCostNotice variant="packages" />
 
             <div className="space-y-16">
               {activeCategory && (
