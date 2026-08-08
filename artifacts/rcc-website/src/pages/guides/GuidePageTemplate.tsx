@@ -12,6 +12,8 @@ import { Footer } from '@/components/Footer';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import type { BreadcrumbItem } from '@/components/Breadcrumb';
+import { formatGuideDate, getGuideArticleMetadata, type GuideArticleKey } from '@/seo/articleMetadata';
+import type { Lang } from '@/seo/routes';
 
 export interface GuideSection {
   heading: string;
@@ -36,8 +38,8 @@ export interface GuidePageConfig {
   h1: string;
   /** Short answer / lead paragraph — appears before the first H2 */
   lead: string;
-  publishDate: string; // ISO 8601
-  displayDate: string;
+  articleKey: GuideArticleKey;
+  language: Lang;
   sections: GuideSection[];
   faqs?: FaqItem[];
   /** Localised FAQ section heading (defaults to 'Häufige Fragen') */
@@ -59,7 +61,8 @@ export function GuidePageTemplate({ config }: Props) {
     eyebrow,
     h1,
     lead,
-    displayDate,
+    articleKey,
+    language,
     sections,
     faqs,
     internalLinks,
@@ -68,6 +71,7 @@ export function GuidePageTemplate({ config }: Props) {
     ctaLabel,
     ctaHref,
   } = config;
+  const article = getGuideArticleMetadata(articleKey, language);
 
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary/30 selection:text-foreground">
@@ -82,14 +86,14 @@ export function GuidePageTemplate({ config }: Props) {
             {eyebrow}
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold uppercase leading-[0.95] tracking-[-0.04em] text-foreground mb-6">
-            {h1}
+            {article.title}
           </h1>
           {/* Lead — clear answer up top */}
           <p className="text-sm md:text-base font-light text-foreground/65 leading-relaxed border-l-2 border-primary/50 pl-4">
             {lead}
           </p>
           <p className="mt-4 text-[10px] uppercase tracking-[0.18em] text-foreground/35">
-            {displayDate}
+            <time dateTime={article.datePublished}>{formatGuideDate(article.datePublished, language)}</time>
           </p>
         </header>
 

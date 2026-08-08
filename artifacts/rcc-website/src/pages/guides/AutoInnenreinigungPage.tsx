@@ -19,8 +19,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'RCC Ratgeber · Innenreinigung',
     h1: 'Auto Innenreinigung: Was wirklich zählt',
     lead: 'Eine saubere Fahrzeugkabine bedeutet mehr als ein aufgeräumter Eindruck. Gründliche Innenreinigung beseitigt Schmutz, der sich in Polstern, Teppichen und Lüftungsschlitzen festsetzt — und den man oft nicht auf den ersten Blick sieht.',
-    publishDate: '2025-01-15',
-    displayDate: '15. Januar 2025',
+    articleKey: 'auto-innenreinigung',
+    language: 'de',
     sections: [
       {
         heading: 'Was gehört zur Autoinnenreinigung?',
@@ -104,8 +104,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'RCC Guides · Interior Cleaning',
     h1: 'Car Interior Cleaning: What Really Matters',
     lead: 'A clean passenger compartment is more than a tidy first impression. Thorough interior cleaning removes dirt embedded in upholstery, carpets and air vents — the kind you often cannot see at first glance.',
-    publishDate: '2025-01-15',
-    displayDate: '15 January 2025',
+    articleKey: 'auto-innenreinigung',
+    language: 'en',
     sections: [
       {
         heading: 'What Does Car Interior Cleaning Include?',
@@ -155,7 +155,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'Does RCC come to me for interior cleaning?',
-        answer: 'Yes — RCC is a mobile service and comes with the full professional equipment directly to your vehicle location. RCC primarily operates in the Zürich region; contact us to confirm availability at your address.',
+        answer: 'RCC is a mobile service and comes with the full professional equipment directly to your vehicle location. Based in Zurich, RCC provides mobile car cleaning throughout Switzerland.',
       },
       {
         question: 'What does interior cleaning cost?',
@@ -183,8 +183,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'Guides RCC · Nettoyage intérieur',
     h1: "Nettoyage intérieur voiture : l'essentiel",
     lead: "Un habitacle propre va bien au-delà d'une première impression soignée. Un nettoyage intérieur complet élimine la saleté incrustée dans les tissus, les tapis et les aérations — celle que l'on ne voit souvent pas au premier regard.",
-    publishDate: '2025-01-15',
-    displayDate: '15 janvier 2025',
+    articleKey: 'auto-innenreinigung',
+    language: 'fr',
     sections: [
       {
         heading: "Que comprend le nettoyage intérieur d'une voiture ?",

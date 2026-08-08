@@ -65,14 +65,21 @@ export function Hero() {
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.26em] text-primary">{t.hero.eyebrow}</span>
           </motion.div>
 
-          <motion.h1
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(2.35rem,8.5vw,4.8rem)] font-semibold text-foreground leading-[0.96] mb-5 uppercase tracking-[-0.045em]"
           >
             {t.hero.headline}
-          </motion.h1>
+          </motion.p>
+          <h1 className="sr-only">
+            {lang === 'de'
+              ? 'Mobile Autoreinigung in der Schweiz'
+              : lang === 'fr'
+              ? 'Nettoyage voiture mobile en Suisse'
+              : 'Mobile Car Cleaning in Switzerland'}
+          </h1>
 
           <motion.p
             initial={{ opacity: 0 }}

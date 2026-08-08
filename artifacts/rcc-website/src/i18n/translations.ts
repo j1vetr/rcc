@@ -213,7 +213,7 @@ export const translations = {
         { title: 'Mobiler Service', desc: 'Kein Fahrtweg. Kein Zeitverlust. Wir bringen das Studio zu Ihnen.' },
         { title: 'Professionelle Ausrüstung', desc: 'Wir arbeiten ausschliesslich mit dem besten Werkzeug der Industrie.' },
         { title: 'Diskrete Behandlung', desc: 'Ihre Privatsphäre ist unser höchstes Gut. Diskreter Service garantiert.' },
-        { title: 'Umweltschonend', desc: 'Modernste, wassersparende Techniken und umweltfreundliche Produkte.' },
+        { title: 'Sorgfältige Arbeitsweise', desc: 'Wir arbeiten mit professionellem Equipment und abgestimmten Reinigungsabläufen.' },
       ]
     },
     footer: {
@@ -249,7 +249,7 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Schweizweit im Einsatz',
       h1: 'Einsatzgebiet\nSchweiz',
-      intro: 'RCC Mobile Autopflege ist vorwiegend im Kanton Zürich und Umgebung tätig. Nehmen Sie Kontakt auf, um Ihren Standort zu bestätigen.',
+      intro: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Für Ihren gewünschten Termin und Standort nehmen Sie bitte Kontakt auf.',
       cantonsTitle: 'Kantone in der Schweiz',
       howTitle: 'So funktioniert der Einsatz',
       steps: [
@@ -302,7 +302,7 @@ export const translations = {
       emailDesc: 'Per E-Mail',
       addressDesc: 'Geschäftsadresse',
       serviceAreaLabel: 'Einsatzgebiet',
-      serviceAreaText: 'Vorwiegend im Kanton Zürich und Umgebung — Standort auf Anfrage bestätigen.',
+      serviceAreaText: 'In Zürich zuhause und schweizweit mobil für Sie im Einsatz.',
     },
     about: {
       eyebrow: 'Über uns',
@@ -322,10 +322,10 @@ export const translations = {
         { title: 'Mobiler Service', desc: 'Wir kommen zu Ihnen — kein Aufwand Ihrerseits.' },
         { title: 'Professionelles Equipment', desc: 'Wir arbeiten ausschliesslich mit professionellem Reinigungswerkzeug.' },
         { title: 'Diskretion', desc: 'Ihre Privatsphäre ist uns wichtig. Diskreter, respektvoller Service.' },
-        { title: 'Umweltbewusstsein', desc: 'Wir setzen auf moderne, wasserschonende Reinigungstechniken.' },
+        { title: 'Sorgfältige Arbeitsweise', desc: 'Wir arbeiten mit professionellem Equipment und abgestimmten Reinigungsabläufen.' },
       ],
       areaTitle: 'Einsatzgebiet',
-      areaText: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Kontaktieren Sie uns für eine Bestätigung Ihres Standorts.',
+      areaText: 'RCC ist in Zürich zuhause und kommt als mobiler Service zu Fahrzeugen in der ganzen Schweiz.',
       ctaTitle: 'Offerte anfragen',
       ctaDesc: 'Nehmen Sie Kontakt auf — wir beraten Sie gerne.',
       ctaButton: 'Offerte anfragen',
@@ -589,7 +589,7 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Service en Suisse',
       h1: 'Zone de service\nSuisse',
-      intro: 'RCC Nettoyage Voiture Mobile intervient principalement dans le canton de Zurich et ses environs. Contactez-nous pour confirmer votre emplacement.',
+      intro: 'Basé à Zurich, RCC propose un service mobile de nettoyage automobile dans toute la Suisse. Contactez-nous pour convenir du lieu et du rendez-vous souhaités.',
       cantonsTitle: 'Cantons en Suisse',
       howTitle: "Comment fonctionne l'intervention",
       steps: [
@@ -642,7 +642,7 @@ export const translations = {
       emailDesc: 'Par e-mail',
       addressDesc: 'Adresse commerciale',
       serviceAreaLabel: 'Zone de service',
-      serviceAreaText: 'Principalement dans le canton de Zurich et ses environs — contactez-nous pour confirmer.',
+      serviceAreaText: 'Basé à Zurich et présent dans toute la Suisse avec un service mobile.',
     },
     about: {
       eyebrow: 'À propos',
@@ -662,10 +662,10 @@ export const translations = {
         { title: 'Service mobile', desc: 'Nous venons chez vous — aucun effort de votre côté.' },
         { title: 'Matériel professionnel', desc: 'Nous travaillons exclusivement avec du matériel de nettoyage professionnel.' },
         { title: 'Discrétion', desc: 'Votre vie privée nous tient à cœur. Service discret et respectueux.' },
-        { title: 'Respect de l\'environnement', desc: 'Nous utilisons des techniques de nettoyage modernes économes en eau.' },
+        { title: 'Travail soigné', desc: 'Nous utilisons un équipement professionnel et des processus de nettoyage adaptés.' },
       ],
       areaTitle: 'Zone de service',
-      areaText: 'RCC intervient principalement dans le canton de Zurich et ses environs. Contactez-nous pour confirmer votre emplacement.',
+      areaText: 'RCC est basé à Zurich et propose un nettoyage automobile mobile dans toute la Suisse.',
       ctaTitle: 'Demander un devis',
       ctaDesc: 'Prenez contact — nous vous conseillons avec plaisir.',
       ctaButton: 'Demander un devis',
@@ -893,7 +893,7 @@ export const translations = {
         { title: 'Mobile Service', desc: 'No driving. No time lost. We bring the studio to you.' },
         { title: 'Professional Equipment', desc: 'We work exclusively with the best tools in the industry.' },
         { title: 'Discreet Treatment', desc: 'Your privacy is our highest good. Discreet service guaranteed.' },
-        { title: 'Eco-friendly', desc: 'State-of-the-art, water-saving techniques and environmentally friendly products.' },
+        { title: 'Careful Work', desc: 'We use professional equipment and carefully planned cleaning processes.' },
       ]
     },
     footer: {
@@ -929,7 +929,7 @@ export const translations = {
     serviceArea: {
       eyebrow: 'Service area Switzerland',
       h1: 'Service Area\nSwitzerland',
-      intro: 'RCC Mobile Car Cleaning primarily operates in the canton of Zürich and surrounding areas. Contact us to confirm service availability at your location.',
+      intro: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Contact us to arrange your preferred appointment and location.',
       cantonsTitle: 'Swiss cantons',
       howTitle: 'How a service visit works',
       steps: [
@@ -982,7 +982,7 @@ export const translations = {
       emailDesc: 'By email',
       addressDesc: 'Business address',
       serviceAreaLabel: 'Service area',
-      serviceAreaText: 'Primarily canton of Zürich and surrounding areas — contact us to confirm your location.',
+      serviceAreaText: 'Based in Zurich and serving customers throughout Switzerland with a mobile service.',
     },
     about: {
       eyebrow: 'About',
@@ -1002,10 +1002,10 @@ export const translations = {
         { title: 'Mobile service', desc: 'We come to you — no effort on your part.' },
         { title: 'Professional equipment', desc: 'We work exclusively with professional cleaning tools.' },
         { title: 'Discretion', desc: 'Your privacy matters to us. Discreet, respectful service.' },
-        { title: 'Eco-conscious', desc: 'We use modern, water-saving cleaning techniques.' },
+        { title: 'Careful Work', desc: 'We use professional equipment and carefully planned cleaning processes.' },
       ],
       areaTitle: 'Service area',
-      areaText: 'RCC primarily operates in the canton of Zürich and surrounding areas. Contact us to confirm your location.',
+      areaText: 'RCC is based in Zurich and provides mobile car cleaning throughout Switzerland.',
       ctaTitle: 'Request a quote',
       ctaDesc: 'Get in touch — we are happy to advise you.',
       ctaButton: 'Request a quote',

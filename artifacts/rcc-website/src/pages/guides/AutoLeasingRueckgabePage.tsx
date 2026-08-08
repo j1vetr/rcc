@@ -16,14 +16,14 @@ const CONFIG: GuidePageConfig = {
   ],
   eyebrow: 'RCC Ratgeber · Leasingrückgabe',
   h1: 'Auto vor der Leasingrückgabe reinigen',
-  lead: 'Wer ein Leasingfahrzeug zurückgibt, steht beim Rückgabeprotokoll oft unter Beobachtung. Welchen Zustand das Fahrzeug sein muss und was Reinigung leisten kann — ohne rechtliche Einschätzungen, nur Praxis.',
-  publishDate: '2025-02-12',
-  displayDate: '12. Februar 2025',
+  lead: 'Wer ein Leasingfahrzeug zurückgibt, steht beim Rückgabeprotokoll oft unter Beobachtung. Welchen Zustand das Fahrzeug haben muss und was Reinigung leisten kann, erklären wir ohne rechtliche Einschätzungen und mit praktischen Hinweisen.',
+  articleKey: 'auto-vor-leasingrueckgabe-reinigen',
+  language: 'de',
   sections: [
     {
       heading: 'Was steht im Leasingvertrag?',
       paragraphs: [
-        'Die konkreten Anforderungen an den Fahrzeugzustand bei Rückgabe sind im jeweiligen Leasingvertrag geregelt. Dort ist festgelegt, was als normaler Verschleiss gilt und was als Schaden eingestuft werden kann. Lesen Sie Ihren Vertrag, bevor Sie irgendwelche Annahmen treffen — die Konditionen unterscheiden sich je nach Leasinggeber.',
+        'Die konkreten Anforderungen an den Fahrzeugzustand bei Rückgabe sind im jeweiligen Leasingvertrag geregelt. Dort ist festgelegt, was als normaler Verschleiss gilt und was als Schaden eingestuft werden kann. Lesen Sie Ihren Vertrag, bevor Sie irgendwelche Annahmen treffen. Die Konditionen unterscheiden sich je nach Leasinggeber.',
         'Dieser Ratgeber macht keine rechtlichen Aussagen darüber, was bei Ihrer Leasingrückgabe akzeptiert oder berechnet wird. Das hängt von Ihrem konkreten Vertrag und dem Leasinggeber ab.',
       ],
     },
@@ -31,8 +31,8 @@ const CONFIG: GuidePageConfig = {
       heading: 'Was Reinigung leisten kann',
       level: 'h2',
       paragraphs: [
-        'Eine professionelle Fahrzeugreinigung entfernt Verschmutzungen im Innenraum und an der Aussenoberfläche. Sie setzt das Fahrzeug in einen sauberen, gepflegten Zustand — was bei der Rückgabe einen besseren ersten Eindruck hinterlässt.',
-        'Konkret: Gereinigter Innenraum ohne Geruch, saubere Sitze und Fussmatten, klare Scheiben, polierter Lack ohne Insektenreste — das ist der Zustand, den eine professionelle Reinigung liefern kann.',
+        'Eine professionelle Fahrzeugreinigung entfernt Verschmutzungen im Innenraum und an der Aussenoberfläche. Sie setzt das Fahrzeug in einen sauberen, gepflegten Zustand. Das hinterlässt bei der Rückgabe einen besseren ersten Eindruck.',
+        'Konkret bedeutet das einen gereinigten Innenraum ohne Geruch, saubere Sitze und Fussmatten, klare Scheiben und polierten Lack ohne Insektenreste.',
         'Kratzer, Dellen, beschädigte Polster oder defekte Teile lassen sich durch Reinigung nicht beheben. Solche Schäden müssen separat und vertragsgemäss adressiert werden.',
       ],
     },
@@ -41,7 +41,7 @@ const CONFIG: GuidePageConfig = {
       level: 'h2',
       paragraphs: [
         'Der Innenraum ist bei der Rückgabe eines Leasingfahrzeugs oft der erste Blick des Prüfers. Ein sauber gesaugter Fahrgastraum, gereinigte Fussmatten, kein Geruch, klare Scheiben von innen und ein gepflegtes Cockpit hinterlassen einen ordentlichen Eindruck.',
-        'Vor allem bei Fahrzeugen, die intensiv genutzt wurden — mit Kindern, Haustieren oder regelmässigen Langstrecken — ist eine gründliche Innenreinigung vor der Rückgabe sinnvoll.',
+        'Vor allem bei Fahrzeugen, die intensiv genutzt wurden, etwa mit Kindern, Haustieren oder regelmässigen Langstrecken, ist eine gründliche Innenreinigung vor der Rückgabe sinnvoll.',
       ],
     },
     {

@@ -14,8 +14,8 @@ const CONFIG: GuidePageConfig = {
   eyebrow: 'RCC Ratgeber · Kosten & Preise',
   h1: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?',
   lead: 'Der Preis einer professionellen Autoaufbereitung hängt von mehreren messbaren Faktoren ab — nicht von einer pauschalen Zahl. Wer die Einflussgrössen kennt, kann besser einschätzen, welches Paket für sein Fahrzeug passt.',
-  publishDate: '2025-02-05',
-  displayDate: '5. Februar 2025',
+  articleKey: 'autoaufbereitung-kosten-schweiz',
+  language: 'de',
   sections: [
     {
       heading: 'Was meint „Autoaufbereitung" konkret?',

@@ -15,6 +15,7 @@ import { FloatingAssistant } from '@/components/FloatingAssistant';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { useTranslation } from '@/i18n/LanguageContext';
 import type { Lang } from '@/seo/routes';
+import { formatGuideDate, getGuideArticleMetadata, type GuideArticleKey } from '@/seo/articleMetadata';
 
 interface GuideEntry {
   /** DE slug — always present */
@@ -23,11 +24,7 @@ interface GuideEntry {
   slugEn?: string;
   /** FR slug — present only when FR version is published */
   slugFr?: string;
-  title: Record<Lang, string | null>;
-  description: Record<Lang, string | null>;
-  /** Visible date for the article */
-  dateIso: string;
-  dateDisplay: string;
+  articleKey: GuideArticleKey;
 }
 
 const GUIDES: GuideEntry[] = [
@@ -35,97 +32,31 @@ const GUIDES: GuideEntry[] = [
     slugDe: 'auto-innenreinigung',
     slugEn: 'car-interior-cleaning',
     slugFr: 'nettoyage-interieur-voiture',
-    title: {
-      de: 'Auto Innenreinigung: Was wirklich zählt',
-      en: 'Car Interior Cleaning: What Really Matters',
-      fr: "Nettoyage intérieur voiture : l'essentiel à savoir",
-    },
-    description: {
-      de: 'Schritt für Schritt durch eine gründliche Autoinnenreinigung — von Sitzen und Teppichen bis zu Cockpit und Scheiben. Wann reicht Basic, wann lohnt Premium?',
-      en: 'Step by step through a thorough car interior clean — from seats and carpets to dashboard and windows. When is Basic enough, when is Premium worth it?',
-      fr: "Étape par étape pour un nettoyage intérieur complet — des sièges aux tapis, du tableau de bord aux vitres. Quand le Basic suffit-il, quand le Premium vaut-il la peine ?",
-    },
-    dateIso: '2025-01-15',
-    dateDisplay: '15. Januar 2025',
+    articleKey: 'auto-innenreinigung',
   },
   {
     slugDe: 'autopflege-im-winter-schweiz',
     slugEn: 'car-care-winter-switzerland',
     slugFr: 'entretien-voiture-hiver-suisse',
-    title: {
-      de: 'Autopflege im Winter in der Schweiz',
-      en: 'Car Care in Winter in Switzerland',
-      fr: "Entretien voiture en hiver en Suisse",
-    },
-    description: {
-      de: 'Streusalz, Nässe und Temperaturen unter null: Was Schweizer Autofahrer im Winter wissen sollten, um Lack, Unterboden und Innenraum zu schützen.',
-      en: 'Road salt, moisture and temperatures below zero: what Swiss drivers should know to protect the paintwork, undercarriage and interior in winter.',
-      fr: "Sel de déneigement, humidité et températures négatives : ce que les conducteurs suisses doivent savoir pour protéger la carrosserie, le dessous de caisse et l'habitacle en hiver.",
-    },
-    dateIso: '2025-01-22',
-    dateDisplay: '22. Januar 2025',
+    articleKey: 'autopflege-im-winter-schweiz',
   },
   {
     slugDe: 'wie-oft-auto-reinigen',
     slugEn: 'how-often-clean-car',
     slugFr: 'frequence-nettoyage-voiture',
-    title: {
-      de: 'Wie oft soll man das Auto reinigen?',
-      en: 'How Often Should You Clean Your Car?',
-      fr: "À quelle fréquence faut-il nettoyer sa voiture ?",
-    },
-    description: {
-      de: 'Keine pauschale Antwort, sondern klare Faktoren: Nutzung, Jahreszeit, Fahrzeugtyp und Standort bestimmen den richtigen Rhythmus für Innen- und Aussenreinigung.',
-      en: 'No blanket answer — clear factors: usage, season, vehicle type and location determine the right cleaning rhythm for interior and exterior.',
-      fr: "Pas de réponse uniforme — des facteurs clairs : utilisation, saison, type de véhicule et lieu déterminent le bon rythme de nettoyage intérieur et extérieur.",
-    },
-    dateIso: '2025-01-29',
-    dateDisplay: '29. Januar 2025',
+    articleKey: 'wie-oft-auto-reinigen',
   },
   {
     slugDe: 'autoaufbereitung-kosten-schweiz',
-    title: {
-      de: 'Autoaufbereitung Schweiz: Was kostet die Reinigung?',
-      en: null,
-      fr: null,
-    },
-    description: {
-      de: 'Welche Faktoren beeinflussen den Preis einer professionellen Autoaufbereitung in der Schweiz? Fahrzeuggrösse, Reinigungsumfang und mobiler Service im Vergleich.',
-      en: null,
-      fr: null,
-    },
-    dateIso: '2025-02-05',
-    dateDisplay: '5. Februar 2025',
+    articleKey: 'autoaufbereitung-kosten-schweiz',
   },
   {
     slugDe: 'auto-vor-leasingrueckgabe-reinigen',
-    title: {
-      de: 'Auto vor der Leasingrückgabe reinigen',
-      en: null,
-      fr: null,
-    },
-    description: {
-      de: 'Was ist bei der Rückgabe eines Leasingfahrzeugs in Bezug auf Sauberkeit zu beachten? Praktische Hinweise zur Vorbereitung und was RCC dabei leisten kann.',
-      en: null,
-      fr: null,
-    },
-    dateIso: '2025-02-12',
-    dateDisplay: '12. Februar 2025',
+    articleKey: 'auto-vor-leasingrueckgabe-reinigen',
   },
   {
     slugDe: 'innenreinigung-leder-stoff',
-    title: {
-      de: 'Innenreinigung: Leder oder Stoff richtig reinigen',
-      en: null,
-      fr: null,
-    },
-    description: {
-      de: 'Ledersitze und Stoffpolster brauchen unterschiedliche Pflege. Was bei der Innenreinigung zu beachten ist und wie professionelle Reinigung den Unterschied macht.',
-      en: null,
-      fr: null,
-    },
-    dateIso: '2025-02-19',
-    dateDisplay: '19. Februar 2025',
+    articleKey: 'innenreinigung-leder-stoff',
   },
 ];
 
@@ -201,8 +132,9 @@ export default function RatgeberHubPage() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visibleGuides.map((guide) => {
-            const title = guide.title[lang] ?? guide.title.de!;
-            const description = guide.description[lang] ?? guide.description.de!;
+            const article = getGuideArticleMetadata(guide.articleKey, lang);
+            const title = article.title;
+            const description = article.description;
             const href = SLUG_PATHS[lang](guide);
             if (!href) return null;
 
@@ -211,8 +143,8 @@ export default function RatgeberHubPage() {
                 <div className="flex-1 p-6 md:p-8">
                   <div className="flex items-center gap-2 mb-4">
                     <BookOpen className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden="true" />
-                    <time dateTime={guide.dateIso} className="text-[10px] uppercase tracking-[0.18em] text-foreground/40">
-                      {guide.dateDisplay}
+                    <time dateTime={article.datePublished} className="text-[10px] uppercase tracking-[0.18em] text-foreground/40">
+                      {formatGuideDate(article.datePublished, lang)}
                     </time>
                   </div>
                   <h2 className="text-base font-semibold uppercase tracking-[-0.015em] text-foreground mb-3 leading-snug group-hover:text-primary transition-colors">

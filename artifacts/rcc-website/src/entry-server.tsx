@@ -81,7 +81,14 @@ function SSRHeroContent({ lang }: { lang: Lang }) {
     <section className="bg-black min-h-[50vh] flex items-center justify-center px-6 py-24 text-center">
       <div className="max-w-2xl">
         <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">{t.hero.eyebrow}</p>
-        <h1 className="mb-4 text-4xl font-semibold uppercase leading-tight text-white">{t.hero.headline}</h1>
+        <p className="mb-4 text-4xl font-semibold uppercase leading-tight text-white">{t.hero.headline}</p>
+        <h1 className="sr-only">
+          {lang === 'de'
+            ? 'Mobile Autoreinigung in der Schweiz'
+            : lang === 'fr'
+            ? 'Nettoyage voiture mobile en Suisse'
+            : 'Mobile Car Cleaning in Switzerland'}
+        </h1>
         <p className="mb-8 text-base font-light text-white/75 leading-relaxed">{t.hero.subheadline}</p>
         <div className="flex justify-center gap-4 flex-wrap">
           <a
@@ -173,11 +180,11 @@ function SSRHomeSeoSection() {
             {[
               {
                 q: 'Was ist mobile Autoreinigung Schweiz?',
-                a: 'Mobile Autoreinigung bedeutet, dass das RCC-Team mit dem professionellen Reinigungsequipment direkt zu Ihrem Fahrzeug kommt — zu Ihnen nach Hause, an Ihren Arbeitsplatz oder an einen anderen Ort. Sie müssen Ihr Fahrzeug nicht irgendwo hinbringen.',
+                a: 'Mobile Autoreinigung bedeutet, dass das RCC-Team mit dem professionellen Reinigungsequipment direkt zu Ihrem Fahrzeug kommt, zu Ihnen nach Hause, an Ihren Arbeitsplatz oder an einen anderen Ort. Sie müssen Ihr Fahrzeug nicht irgendwo hinbringen.',
               },
               {
                 q: 'In welchen Kantonen bietet RCC mobile Autopflege an?',
-                a: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Kontaktieren Sie uns für eine Terminabsprache für Ihren genauen Standort.',
+                a: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Kontaktieren Sie uns für eine Terminabsprache für Ihren genauen Standort.',
               },
               {
                 q: 'Welche Fahrzeuggrössen werden gereinigt?',
@@ -522,8 +529,8 @@ function SSRMobileAutoreinigungPage() {
       coverage={['Reinigung direkt bei Ihnen vor Ort', 'Innenreinigung und Aussenreinigung', 'Komplettreinigung Innen & Aussen', 'Alle Fahrzeugtypen', 'Equipment wird mitgebracht']}
       category="inside-outside"
       faqs={[
-        { q: 'Was ist mobile Autoreinigung?', a: 'Das RCC-Team kommt mit dem gesamten professionellen Equipment direkt zu Ihrem Fahrzeug — zu Ihnen nach Hause, an Ihren Arbeitsplatz oder einen anderen Ort.' },
-        { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Bitte kontaktieren Sie uns für eine Bestätigung Ihres Standorts.' },
+        { q: 'Was ist mobile Autoreinigung?', a: 'Das RCC-Team kommt mit dem gesamten professionellen Equipment direkt zu Ihrem Fahrzeug, zu Ihnen nach Hause, an Ihren Arbeitsplatz oder einen anderen Ort.' },
+        { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist in Zürich zuhause und bietet mobile Autopflege in der ganzen Schweiz an. Bitte kontaktieren Sie uns für Ihren gewünschten Termin und Standort.' },
         { q: 'Welche Fahrzeugtypen werden gereinigt?', a: 'Kleinwagen, Kompakt- und Mittelklassefahrzeuge, SUV sowie Vans und 7-Sitzer.' },
       ]}
     />
@@ -614,7 +621,7 @@ function SSREinsatzgebietPage() {
           <p className="mb-3 text-xs uppercase tracking-widest text-[#c9a553]">Mobile Autopflege Schweiz</p>
           <h1 className="text-3xl font-semibold uppercase text-white mb-4">Unser Einsatzgebiet</h1>
           <p className="text-sm font-light text-white/60 leading-relaxed">
-            RCC Mobile Autopflege ist vorwiegend im Kanton Zürich und Umgebung tätig. Kontaktieren Sie uns für eine Bestätigung Ihres Standorts.
+            RCC ist in Zürich zuhause und bietet mobile Autopflege in der ganzen Schweiz. Kontaktieren Sie uns für Ihren gewünschten Termin und Standort.
           </p>
         </header>
         <section className="mb-12">
@@ -765,8 +772,8 @@ function SSRAboutPage() {
 
 function SSRFaqPage() {
   const faqs = [
-    { q: 'Was ist mobile Autoreinigung? / What is mobile car cleaning?', a: 'RCC kommt mit dem Equipment direkt zu Ihrem Fahrzeug — zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz.' },
-    { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Nehmen Sie Kontakt auf, um Ihren Standort zu bestätigen.' },
+    { q: 'Was ist mobile Autoreinigung? / What is mobile car cleaning?', a: 'RCC kommt mit dem Equipment direkt zu Ihrem Fahrzeug, zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz.' },
+    { q: 'In welchen Regionen ist RCC tätig?', a: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Nehmen Sie Kontakt auf, um Ihren Termin und Standort abzusprechen.' },
     { q: 'Wie buche ich?', a: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon oder WhatsApp.' },
   ];
   return (

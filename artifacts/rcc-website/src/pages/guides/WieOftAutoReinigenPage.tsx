@@ -19,8 +19,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'RCC Ratgeber · Pflegerhythmus',
     h1: 'Wie oft soll man das Auto reinigen?',
     lead: 'Eine einheitliche Antwort gibt es nicht — der richtige Reinigungsrhythmus hängt von mehreren Faktoren ab: Nutzungsintensität, Jahreszeit, Fahrzeugtyp und wo das Fahrzeug steht.',
-    publishDate: '2025-01-29',
-    displayDate: '29. Januar 2025',
+    articleKey: 'wie-oft-auto-reinigen',
+    language: 'de',
     sections: [
       {
         heading: 'Vier Faktoren bestimmen den Rhythmus',
@@ -92,8 +92,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'RCC Guides · Cleaning Frequency',
     h1: 'How Often Should You Clean Your Car?',
     lead: 'There is no single answer — the right cleaning frequency depends on several factors: how intensively you use the car, the season, vehicle type and where you park.',
-    publishDate: '2025-01-29',
-    displayDate: '29 January 2025',
+    articleKey: 'wie-oft-auto-reinigen',
+    language: 'en',
     sections: [
       {
         heading: 'Four Factors Determine the Rhythm',
@@ -165,8 +165,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: "Guides RCC · Fréquence d'entretien",
     h1: "À quelle fréquence faut-il nettoyer sa voiture ?",
     lead: "Il n'existe pas de réponse unique — la bonne fréquence de nettoyage dépend de plusieurs facteurs : l'intensité d'utilisation, la saison, le type de véhicule et l'endroit où vous garez votre voiture.",
-    publishDate: '2025-01-29',
-    displayDate: '29 janvier 2025',
+    articleKey: 'wie-oft-auto-reinigen',
+    language: 'fr',
     sections: [
       {
         heading: "Quatre facteurs déterminent le rythme",

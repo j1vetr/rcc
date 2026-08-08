@@ -1,4 +1,4 @@
-# RCC Phase 2 — Manual Verification Checklist
+# RCC Manual Verification Checklist
 
 Items that cannot be verified from the codebase and require manual confirmation by the business owner.
 
@@ -6,16 +6,14 @@ Items that cannot be verified from the codebase and require manual confirmation 
 
 ## 1. Service Area — Exact Coverage
 
-**Status: UNVERIFIED — needs confirmation**
+**Status: VERIFIED BY OWNER**
 
-The website currently claims coverage in "alle 26 Kantone der Schweiz" (all 26 Swiss cantons) based on existing website copy and the interactive canton map.
+RCC is based in the Zürich area and provides mobile vehicle cleaning throughout Switzerland. Nationwide service is subject to scheduling and travel conditions.
 
 **To confirm:**
-- Does RCC actually serve all 26 cantons, or only specific cantons/regions?
 - Are there distance or travel cost limits for certain cantons?
-- Should specific cantons be marked as "on request" rather than standard service?
 
-**Action:** Update the `EinsatzgebietPage.tsx` and `entry-server.tsx` SSR content to reflect actual coverage if it differs.
+**Action:** Keep Switzerland-wide coverage consistent in future copy and structured data without implying physical branches.
 
 ---
 
@@ -100,16 +98,16 @@ No confirmation needed.
 
 ## 8. Ecological / Environmental Claims
 
-**Status: CONDITIONALLY PRESENT**
+**Status: REMOVED PENDING EVIDENCE**
 
-The `why.points` translation includes "Umweltschonend" (eco-friendly) with the description "Modernste, wassersparende Techniken und umweltfreundliche Produkte."
+Environmental claims have been removed from public copy because supporting evidence is not recorded.
 
 **To confirm:**
 - Is this claim accurate and provable?
 - If specific products or techniques are used, can they be named?
 - If this claim cannot be substantiated, it should be removed or softened.
 
-**Action:** Review and confirm or remove the eco-claim in `translations.ts`.
+**Action:** Add only specific, supportable environmental claims when evidence is available.
 
 ---
 
@@ -123,7 +121,7 @@ Prices are: 85–400 CHF depending on package and vehicle size. These match the 
 - Are these prices inclusive or exclusive of Swiss VAT (MWST/TVA)?
 - Should "inkl. MwSt." or "exkl. MwSt." be added next to prices?
 
-**Action:** Add VAT clarification to package page copy if applicable.
+**Action:** Confirm the VAT treatment before adding any inclusive or exclusive VAT statement to public copy.
 
 ---
 
@@ -150,4 +148,4 @@ No action needed unless there is a specific keyword overlap concern.
 
 ---
 
-*This checklist was generated during Phase 2 SEO implementation. Items should be reviewed before site launch or publication of the new pages.*
+*Review this checklist before site launch or publication of new pages.*

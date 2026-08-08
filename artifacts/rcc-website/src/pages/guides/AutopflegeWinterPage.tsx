@@ -19,8 +19,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'RCC Ratgeber · Winterpflege',
     h1: 'Autopflege im Winter in der Schweiz',
     lead: 'Schweizer Winter bedeuten Streusalz auf den Strassen, Feuchtigkeit unter dem Fahrzeug und häufige Temperaturwechsel. Das Fahrzeug braucht in dieser Jahreszeit andere Pflege als im Sommer.',
-    publishDate: '2025-01-22',
-    displayDate: '22. Januar 2025',
+    articleKey: 'autopflege-im-winter-schweiz',
+    language: 'de',
     sections: [
       {
         heading: 'Warum ist Autopflege im Winter wichtig?',
@@ -97,8 +97,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: 'RCC Guides · Winter Care',
     h1: 'Car Care in Winter in Switzerland',
     lead: 'Swiss winters mean road salt on the streets, moisture under the vehicle and frequent temperature swings. Your vehicle needs different care in this season than in summer.',
-    publishDate: '2025-01-22',
-    displayDate: '22 January 2025',
+    articleKey: 'autopflege-im-winter-schweiz',
+    language: 'en',
     sections: [
       {
         heading: 'Why Is Car Care Important in Winter?',
@@ -167,8 +167,8 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     eyebrow: "Guides RCC · Entretien hivernal",
     h1: "Entretien voiture en hiver en Suisse",
     lead: "Les hivers suisses signifient sel de déneigement sur les routes, humidité sous le véhicule et changements de température fréquents. Votre voiture a besoin d'un entretien différent en cette saison.",
-    publishDate: '2025-01-22',
-    displayDate: '22 janvier 2025',
+    articleKey: 'autopflege-im-winter-schweiz',
+    language: 'fr',
     sections: [
       {
         heading: "Pourquoi l'entretien est-il important en hiver ?",

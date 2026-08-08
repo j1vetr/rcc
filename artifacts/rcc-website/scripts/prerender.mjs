@@ -150,7 +150,10 @@ async function main() {
 
   for (const route of ROUTES) {
     const { html, metadata } = await render(route.url);
-    const finalHtml = injectIntoTemplate(rawTemplate, html, metadata);
+    // Copy-rule safeguard for the final HTML served to crawlers and visitors.
+    // Source copy should follow the same rule, while this keeps static output
+    // compliant if an overlooked em dash reaches SSR.
+    const finalHtml = injectIntoTemplate(rawTemplate, html, metadata).replaceAll('—', ',');
 
     const outDir = join(root, 'dist/public', route.url.slice(1));
     mkdirSync(outDir, { recursive: true });

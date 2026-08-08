@@ -11,6 +11,7 @@
  */
 
 import { BUSINESS } from './businessData';
+import { getGuideArticleMetadata, type GuideArticleKey } from './articleMetadata';
 import {
   type Lang,
   type RouteKey,
@@ -169,17 +170,17 @@ const META: MetaMap = {
     de: {
       title: 'Einsatzgebiet Schweiz | RCC Mobile Autopflege',
       description:
-        'RCC Mobile Autopflege ist vorwiegend im Kanton Zürich und Umgebung im Einsatz. Erfahren Sie mehr über das Einsatzgebiet und bestätigen Sie Ihren Standort.',
+        'RCC ist in Zürich zuhause und bietet mobile Autopflege in der ganzen Schweiz. Erfahren Sie mehr über unser Einsatzgebiet.',
     },
     en: {
       title: 'Service Area Switzerland | RCC Mobile Car Cleaning',
       description:
-        'RCC Mobile Car Cleaning primarily operates in the canton of Zürich and surrounding areas. Find out more and confirm your location.',
+        'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Learn more about the service area and request a quote.',
     },
     fr: {
       title: 'Zone de Service Suisse | RCC Nettoyage Voiture Mobile',
       description:
-        'RCC Nettoyage Voiture Mobile intervient principalement dans le canton de Zurich et ses environs. Découvrez la zone de service et confirmez votre emplacement.',
+        'Basé à Zurich, RCC propose un nettoyage automobile mobile dans toute la Suisse. Découvrez la zone de service et demandez un devis.',
     },
   },
   'mobile-autoreinigung/zuerich': {
@@ -208,7 +209,7 @@ const META: MetaMap = {
     en: {
       title: 'Contact | RCC Mobile Car Cleaning Switzerland',
       description:
-        'Contact RCC Mobile Car Cleaning: phone, email, WhatsApp or online quote. We respond promptly — primarily serving the Zürich region.',
+        'Contact RCC Mobile Car Cleaning by phone, email, WhatsApp or online quote. Based in Zurich, we serve customers throughout Switzerland.',
     },
     fr: {
       title: 'Contact | RCC Nettoyage Voiture Mobile Suisse',
@@ -696,7 +697,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       breadcrumb: 'Mobile Autoreinigung',
       faqs: [
         { question: 'Was ist mobile Autoreinigung?', answer: 'Bei der mobilen Autoreinigung kommt das RCC-Team mit dem professionellen Equipment direkt zu Ihrem Fahrzeug — ob zu Hause, am Arbeitsplatz oder an einem anderen Ort.' },
-        { question: 'Wo bietet RCC mobile Autoreinigung an?', answer: 'RCC ist vorwiegend im Kanton Zürich und Umgebung tätig. Bitte kontaktieren Sie uns für eine Bestätigung Ihres genauen Standorts.' },
+        { question: 'Wo bietet RCC mobile Autoreinigung an?', answer: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Kontaktieren Sie uns für Ihren gewünschten Termin und Standort.' },
         { question: 'Welche Fahrzeugtypen werden gereinigt?', answer: 'RCC reinigt Klein- und Kompaktwagen, Mittelklasse, SUV und grössere Fahrzeuge wie Vans und 7-Sitzer. Die Grösse bestimmt den Paketpreis.' },
       ],
     },
@@ -706,7 +707,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       breadcrumb: 'Mobile Car Cleaning',
       faqs: [
         { question: 'What is mobile car cleaning?', answer: 'Mobile car cleaning means the RCC team brings the full professional equipment directly to your vehicle — at home, at work, or at your location.' },
-        { question: 'Where does RCC offer mobile car cleaning?', answer: 'RCC primarily operates in the canton of Zürich and surrounding areas. Please contact us to confirm your exact location.' },
+        { question: 'Where does RCC offer mobile car cleaning?', answer: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Contact us to arrange your preferred appointment and location.' },
         { question: 'Which vehicle types are cleaned?', answer: 'RCC cleans small cars, compact and mid-size vehicles, SUVs and larger vehicles such as vans and 7-seaters. Vehicle size determines the exact package price.' },
       ],
     },
@@ -716,7 +717,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       breadcrumb: 'Nettoyage voiture mobile',
       faqs: [
         { question: "Qu'est-ce que le nettoyage voiture mobile ?", answer: "Le nettoyage voiture mobile signifie que l'équipe RCC vient directement chez vous avec tout le matériel professionnel — à domicile, au bureau ou ailleurs." },
-        { question: 'Où RCC propose-t-il le nettoyage voiture mobile ?', answer: 'RCC intervient principalement dans le canton de Zurich et ses environs. Contactez-nous pour confirmer votre emplacement exact.' },
+        { question: 'Où RCC propose-t-il le nettoyage voiture mobile ?', answer: 'Basé à Zurich, RCC propose un nettoyage automobile mobile dans toute la Suisse. Contactez-nous pour convenir du lieu et du rendez-vous souhaités.' },
         { question: 'Quels types de véhicules sont nettoyés ?', answer: 'RCC nettoie les petites voitures, les compactes et berlines, les SUV ainsi que les grands véhicules comme les vans et 7 places. La taille du véhicule détermine le prix exact.' },
       ],
     },
@@ -920,7 +921,7 @@ function buildZuerichJsonLdLang(lang: Lang, canonical: string): object {
 const FAQ_PAGE_CONTENT: Record<Lang, Array<{ question: string; answer: string }>> = {
   de: [
     { question: 'Was ist mobile Autoreinigung?', answer: 'Mobile Autoreinigung bedeutet, dass das RCC-Team mit dem professionellen Equipment direkt zu Ihrem Fahrzeug kommt — zu Hause, am Arbeitsplatz oder an einem anderen Ort in der Schweiz. Sie müssen Ihr Fahrzeug nirgendwo hinbringen.' },
-    { question: 'In welchen Regionen der Schweiz ist RCC tätig?', answer: 'RCC ist vorwiegend im Kanton Zürich und der Umgebung tätig. Bitte nehmen Sie Kontakt auf oder nutzen Sie das Offertformular, damit wir Ihren Standort bestätigen können.' },
+    { question: 'In welchen Regionen der Schweiz ist RCC tätig?', answer: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Bitte nehmen Sie Kontakt auf oder nutzen Sie das Offertformular für Ihren gewünschten Termin und Standort.' },
     { question: 'Welche Fahrzeugtypen werden gereinigt?', answer: 'RCC reinigt alle gängigen Fahrzeugtypen: Kleinwagen (S), Kompakt- und Mittelklassefahrzeuge (M), SUV (L) sowie grosse Fahrzeuge wie Vans und 7-Sitzer (XL). Die Fahrzeuggrösse bestimmt den Paketpreis.' },
     { question: 'Wie buche ich eine mobile Autoreinigung?', answer: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon, E-Mail oder WhatsApp. Wir melden uns umgehend und vereinbaren einen Termin.' },
     { question: 'Muss ich bei der Reinigung anwesend sein?', answer: 'Das ist nicht zwingend erforderlich. Bitte sprechen Sie die Details bei der Terminabsprache ab, damit wir den Ablauf optimal planen können.' },
@@ -930,7 +931,7 @@ const FAQ_PAGE_CONTENT: Record<Lang, Array<{ question: string; answer: string }>
   ],
   en: [
     { question: 'What is mobile car cleaning?', answer: 'Mobile car cleaning means the RCC team brings the full professional equipment directly to your vehicle — at home, at work, or at your location. You do not need to take your vehicle anywhere.' },
-    { question: 'Which regions of Switzerland does RCC serve?', answer: 'RCC primarily operates in the canton of Zürich and surrounding areas. Please contact us or use the quote form so we can confirm your exact location.' },
+    { question: 'Which regions of Switzerland does RCC serve?', answer: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Please contact us or use the quote form to arrange your preferred appointment and location.' },
     { question: 'Which vehicle types are cleaned?', answer: 'RCC cleans all common vehicle types: small cars (S), compact and mid-size vehicles (M), SUVs (L) and large vehicles such as vans and 7-seaters (XL). Vehicle size determines the package price.' },
     { question: 'How do I book mobile car cleaning?', answer: 'Use the quote form on our website or contact us directly by phone, email or WhatsApp. We respond promptly and arrange an appointment.' },
     { question: 'Do I need to be present during cleaning?', answer: 'It is not strictly required. Please discuss the details when arranging your appointment so we can plan the visit as conveniently as possible.' },
@@ -940,7 +941,7 @@ const FAQ_PAGE_CONTENT: Record<Lang, Array<{ question: string; answer: string }>
   ],
   fr: [
     { question: "Qu'est-ce que le nettoyage voiture mobile ?", answer: "Le nettoyage voiture mobile signifie que l'équipe RCC vient directement chez vous avec tout le matériel professionnel — à domicile, au bureau ou ailleurs en Suisse. Vous n'avez pas besoin de déplacer votre véhicule." },
-    { question: 'Quelles régions de la Suisse RCC dessert-il ?', answer: 'RCC intervient principalement dans le canton de Zurich et ses environs. Contactez-nous ou utilisez le formulaire de devis pour que nous puissions confirmer votre emplacement exact.' },
+    { question: 'Quelles régions de la Suisse RCC dessert-il ?', answer: 'Basé à Zurich, RCC propose un nettoyage automobile mobile dans toute la Suisse. Contactez-nous ou utilisez le formulaire de devis pour convenir du lieu et du rendez-vous souhaités.' },
     { question: 'Quels types de véhicules sont nettoyés ?', answer: 'RCC nettoie tous les types de véhicules courants : petites voitures (S), compactes et berlines (M), SUV (L) et grands véhicules comme les vans et 7 places (XL). La taille du véhicule détermine le prix du forfait.' },
     { question: 'Comment réserver un nettoyage automobile mobile ?', answer: 'Utilisez le formulaire de devis sur notre site ou contactez-nous directement par téléphone, e-mail ou WhatsApp. Nous répondons rapidement et convenons d\'un rendez-vous.' },
     { question: 'Dois-je être présent pendant le nettoyage ?', answer: "Ce n'est pas strictement obligatoire. Veuillez discuter des détails lors de la prise de rendez-vous afin que nous puissions planifier la visite le plus commodément possible." },
@@ -957,6 +958,7 @@ function buildGuideArticleJsonLd(
   headline: string,
   description: string,
   datePublished: string,
+  dateModified: string,
   breadcrumbItems: Array<{ name: string; url: string }>,
 ): object {
   const ratgeberHubPath: Record<Lang, string> = {
@@ -981,7 +983,7 @@ function buildGuideArticleJsonLd(
         headline,
         description,
         datePublished,
-        dateModified: datePublished,
+        dateModified,
         inLanguage: LANG_LOCALES[lang],
         url: canonical,
         isPartOf: {
@@ -994,40 +996,6 @@ function buildGuideArticleJsonLd(
     ],
   };
 }
-
-// Guide-specific JSON-LD data
-const GUIDE_JSONLD: Record<string, Record<Lang, { headline: string; description: string; datePublished: string }>> = {
-  'ratgeber/auto-innenreinigung': {
-    de: { headline: 'Auto Innenreinigung: Was wirklich zählt', description: 'Schritt für Schritt durch die Autoinnenreinigung. Wann Basic, wann Premium?', datePublished: '2025-01-15' },
-    en: { headline: 'Car Interior Cleaning: What Really Matters', description: 'Step by step through car interior cleaning. When Basic, when Premium?', datePublished: '2025-01-15' },
-    fr: { headline: "Nettoyage Intérieur Voiture : l'essentiel", description: "Étape par étape pour le nettoyage intérieur voiture.", datePublished: '2025-01-15' },
-  },
-  'ratgeber/autoaufbereitung-kosten-schweiz': {
-    de: { headline: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?', description: 'Faktoren, die den Preis einer Autoaufbereitung bestimmen.', datePublished: '2025-02-05' },
-    en: { headline: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?', description: 'Faktoren, die den Preis einer Autoaufbereitung bestimmen.', datePublished: '2025-02-05' },
-    fr: { headline: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis?', description: 'Faktoren, die den Preis einer Autoaufbereitung bestimmen.', datePublished: '2025-02-05' },
-  },
-  'ratgeber/auto-vor-leasingrueckgabe-reinigen': {
-    de: { headline: 'Auto vor der Leasingrückgabe reinigen', description: 'Was Reinigung vor der Leasingrückgabe leisten kann.', datePublished: '2025-02-12' },
-    en: { headline: 'Auto vor der Leasingrückgabe reinigen', description: 'Was Reinigung vor der Leasingrückgabe leisten kann.', datePublished: '2025-02-12' },
-    fr: { headline: 'Auto vor der Leasingrückgabe reinigen', description: 'Was Reinigung vor der Leasingrückgabe leisten kann.', datePublished: '2025-02-12' },
-  },
-  'ratgeber/autopflege-im-winter-schweiz': {
-    de: { headline: 'Autopflege im Winter in der Schweiz', description: 'Streusalz, Feuchtigkeit und Winterpflege für Schweizer Fahrzeuge.', datePublished: '2025-01-22' },
-    en: { headline: 'Car Care in Winter in Switzerland', description: 'Road salt, moisture and winter care for Swiss vehicles.', datePublished: '2025-01-22' },
-    fr: { headline: "Entretien voiture en hiver en Suisse", description: "Sel de déneigement, humidité et entretien hivernal pour les véhicules suisses.", datePublished: '2025-01-22' },
-  },
-  'ratgeber/innenreinigung-leder-stoff': {
-    de: { headline: 'Innenreinigung: Leder oder Stoff richtig reinigen', description: 'Unterschiede bei der Pflege von Leder- und Stoffsitzen.', datePublished: '2025-02-19' },
-    en: { headline: 'Innenreinigung: Leder oder Stoff richtig reinigen', description: 'Unterschiede bei der Pflege von Leder- und Stoffsitzen.', datePublished: '2025-02-19' },
-    fr: { headline: 'Innenreinigung: Leder oder Stoff richtig reinigen', description: 'Unterschiede bei der Pflege von Leder- und Stoffsitzen.', datePublished: '2025-02-19' },
-  },
-  'ratgeber/wie-oft-auto-reinigen': {
-    de: { headline: 'Wie oft soll man das Auto reinigen?', description: 'Nutzung, Jahreszeit und Fahrzeugtyp bestimmen den richtigen Pflegerhythmus.', datePublished: '2025-01-29' },
-    en: { headline: 'How Often Should You Clean Your Car?', description: 'Usage, season and vehicle type determine the right cleaning frequency.', datePublished: '2025-01-29' },
-    fr: { headline: "À quelle fréquence faut-il nettoyer sa voiture ?", description: "Utilisation, saison et type de véhicule déterminent la bonne fréquence.", datePublished: '2025-01-29' },
-  },
-};
 
 function buildRatgeberHubJsonLd(lang: Lang, canonical: string): object {
   const labels: Record<Lang, string> = { de: 'Ratgeber', en: 'Guides', fr: 'Guides' };
@@ -1094,24 +1062,27 @@ function buildJsonLd(routeKey: RouteKey, lang: Lang, canonical: string): object 
     case 'ratgeber/autopflege-im-winter-schweiz':
     case 'ratgeber/innenreinigung-leder-stoff':
     case 'ratgeber/wie-oft-auto-reinigen': {
-      const guideData = GUIDE_JSONLD[routeKey]?.[lang] ?? GUIDE_JSONLD[routeKey]?.['de'];
+      const guideData = getGuideArticleMetadata(
+        routeKey.replace('ratgeber/', '') as GuideArticleKey,
+        lang,
+      );
       const ratgeberPath: Record<Lang, string> = {
         de: `${BUSINESS.domain}/de/ratgeber/`,
         en: `${BUSINESS.domain}/en/guides/`,
         fr: `${BUSINESS.domain}/fr/guides/`,
       };
       const ratgeberName: Record<Lang, string> = { de: 'Ratgeber', en: 'Guides', fr: 'Guides' };
-      if (!guideData) return {};
       return buildGuideArticleJsonLd(
         lang,
         canonical,
-        guideData.headline,
+        guideData.title,
         guideData.description,
         guideData.datePublished,
+        guideData.dateModified,
         [
           { name: 'RCC Royal Car Cleaning', url: `${BUSINESS.domain}/${lang}/` },
           { name: ratgeberName[lang], url: ratgeberPath[lang] },
-          { name: guideData.headline, url: canonical },
+          { name: guideData.title, url: canonical },
         ],
       );
     }

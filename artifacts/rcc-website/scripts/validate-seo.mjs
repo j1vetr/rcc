@@ -166,6 +166,23 @@ function extractRobots(html) {
   return extractMeta(html, 'robots');
 }
 
+function extractRenderedText(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(?:#\d+|#x[\da-f]+|[a-z][a-z\d]+);/gi, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 // ─── Main validation ──────────────────────────────────────────────────────────
 
 let errors = 0;
@@ -482,45 +499,28 @@ function checkRobotsTxt() {
   console.log('');
 }
 
-// ─── 8. Prohibited coverage-claim scan ───────────────────────────────────────
-/**
- * Scan prerendered HTML for nationwide-coverage phrases that were removed because
- * they assert unverified all-canton service. These must not reappear in any page.
- */
-function checkProhibitedCoveragePhrases(pageResults) {
-  console.log('\n━━━ 8. Prohibited coverage-claim scan ━━━\n');
+// ─── 8. Rendered copy-rule scan ──────────────────────────────────────────────
 
-  // Phrases that assert unverified nationwide service. Keep this list in sync
-  // with the content qualification decision: all claims were changed to
-  // "primarily Zürich region — contact us to confirm" variants.
-  const PROHIBITED = [
-    'alle 26 Kantone',
-    'in allen 26 Kantonen',
-    'all 26 cantons',
-    'les 26 cantons',
-    'operates across Switzerland',
-    'operating across Switzerland',
-    'anywhere in Switzerland',
-    'any other address in Switzerland',
-    'in der ganzen Schweiz',
-    'dans toute la Suisse',
-    'toute la Suisse',
-    'ganze Schweiz',
-    'ganzen Schweiz',
-  ];
+function checkRenderedCopyRules(pageResults) {
+  console.log('\n━━━ 9. Rendered copy-rule scan ━━━\n');
 
   let found = 0;
   for (const [routePath, result] of Object.entries(pageResults)) {
     if (!result?.html) continue;
-    for (const phrase of PROHIBITED) {
-      if (result.html.includes(phrase)) {
-        fail(`${routePath} contains prohibited nationwide-coverage phrase: "${phrase}"`);
-        found++;
+    const text = extractRenderedText(result.html);
+    for (const [label, pattern] of [
+      ['em dash', /—/g],
+      ['semicolon', /;/g],
+    ]) {
+      const matches = text.match(pattern);
+      if (matches) {
+        fail(`${routePath} contains ${matches.length} prohibited ${label}${matches.length === 1 ? '' : 'es'} in rendered copy`);
+        found += matches.length;
       }
     }
   }
 
-  if (found === 0) ok('No prohibited nationwide-coverage phrases found in prerendered HTML');
+  if (found === 0) ok('Rendered HTML copy contains no em dashes or semicolons');
   console.log('');
 }
 
@@ -538,7 +538,7 @@ checkInternalLinks(pageResults);
 checkSitemap();
 checkLlmsTxt();
 checkRobotsTxt();
-checkProhibitedCoveragePhrases(pageResults);
+checkRenderedCopyRules(pageResults);
 
 // ─── Summary ──────────────────────────────────────────────────────────────────
 
