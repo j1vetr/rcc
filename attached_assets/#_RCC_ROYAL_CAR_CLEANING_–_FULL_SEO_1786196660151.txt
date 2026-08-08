@@ -1,0 +1,3222 @@
+# RCC ROYAL CAR CLEANING – FULL SEO + LOCAL SEO + MULTILINGUAL SEO + LLM / AI DISCOVERABILITY
+
+Website:
+
+`https://royalcarcleaning.ch/`
+
+Brand:
+
+RCC – Royal Car Cleaning
+
+Market:
+
+Switzerland / Schweiz / Suisse
+
+Business model:
+
+Mobile professional vehicle cleaning / car care service.
+
+Primary language:
+
+Swiss Standard German – `de-CH`
+
+Additional languages:
+
+English – `en-CH`
+
+French – `fr-CH`
+
+This is a FULL SEO implementation task.
+
+Do not perform cosmetic SEO only.
+
+Audit the current production website first, understand the current application architecture and existing routes, then implement a complete technical, on-page, multilingual, local, entity, content, performance and AI/LLM discoverability architecture.
+
+The website is new and currently has very little Google index coverage.
+
+There is currently a homepage and at least one packages/pricing page.
+
+Because the site is still early in its indexing lifecycle, this is the correct time to establish a clean long-term URL and SEO architecture.
+
+---
+
+# 1. PRIMARY BUSINESS OBJECTIVE
+
+RCC should become highly relevant in Switzerland for transactional searches around:
+
+* mobile car cleaning
+* mobile car wash
+* professional car cleaning
+* car detailing
+* vehicle cleaning
+* interior car cleaning
+* exterior car cleaning
+* car care
+* city + car cleaning
+* city + mobile car cleaning
+* city + auto detailing
+
+The strongest SEO focus is German-speaking Switzerland.
+
+French and English versions should also be fully indexable and properly localized.
+
+Do NOT build an SEO system that only targets the brand name.
+
+The website should clearly communicate to search engines:
+
+RCC
+→ mobile vehicle cleaning company
+→ Switzerland
+→ professional car cleaning at the customer's location
+→ interior + exterior vehicle care
+→ multiple service packages
+→ specific real service areas/cities
+
+---
+
+# 2. LANGUAGE RULE – VERY IMPORTANT
+
+German content must use:
+
+Swiss Standard German / Schweizer Hochdeutsch.
+
+Do NOT write German dialect.
+
+Do NOT write Germany-specific orthography.
+
+Never use:
+
+`ß`
+
+Use:
+
+`ss`
+
+Examples:
+
+Correct Swiss spelling:
+
+`Strasse`
+
+`Aussenreinigung`
+
+`grösste`
+
+`heisst`
+
+`müssen`
+
+Avoid German-Germany spellings such as:
+
+`Straße`
+
+`Außenreinigung`
+
+Copy must sound natural for customers in Switzerland.
+
+Use:
+
+* CHF
+* Swiss terminology
+* Swiss spelling
+* Swiss addresses
+* Swiss phone formatting
+* natural local commercial vocabulary
+
+Do NOT keyword-stuff Swiss expressions unnaturally.
+
+---
+
+# 3. LIVE AUDIT FIRST
+
+Before changing anything, crawl and document the current production website.
+
+Determine:
+
+* framework
+* route system
+* SSR / prerender status
+* current titles
+* current H1s
+* current metadata
+* current canonical implementation
+* current language system
+* current package route
+* current contact information
+* current booking/contact flow
+* current structured data
+* current robots.txt
+* current sitemap.xml
+* current HTTP redirects
+* www behavior
+* trailing slash behavior
+* real 404 behavior
+* image implementation
+* video implementation
+* JS rendering dependence
+* current NAP information
+* existing social links
+* service area claims
+* package/pricing data
+
+Do NOT guess existing information.
+
+Create a before-state technical audit before implementation.
+
+---
+
+# 4. DO NOT INVENT BUSINESS FACTS
+
+Never invent:
+
+* service areas
+* cities served
+* prices
+* opening hours
+* customer counts
+* review counts
+* ratings
+* awards
+* certifications
+* years of experience
+* employees
+* water usage
+* ecological claims
+* insurance claims
+* guarantees
+* equipment
+* chemicals/products used
+* response times
+* free travel distances
+* package inclusions
+* discounts
+
+Use only existing verified business data.
+
+If information is needed but cannot be verified:
+
+flag it for manual confirmation in the final report.
+
+Do NOT silently fabricate it.
+
+---
+
+# 5. KEYWORD STRATEGY – GERMAN / SWITZERLAND
+
+Build the German architecture around search intent, not one keyword repeated everywhere.
+
+Primary keyword pool:
+
+`mobile Autoreinigung Schweiz`
+
+`mobile Autoreinigung Zürich`
+
+`Autoreinigung Zürich`
+
+`Autopflege Zürich`
+
+`mobile Autopflege Zürich`
+
+`Fahrzeugreinigung Zürich`
+
+`mobile Fahrzeugreinigung`
+
+`Fahrzeugreinigung Schweiz`
+
+`Autoaufbereitung Zürich`
+
+`Autoaufbereitung Schweiz`
+
+`Auto Innenreinigung Zürich`
+
+`Autoinnenreinigung Zürich`
+
+`Innenreinigung Auto Zürich`
+
+`Auto Aussenreinigung Zürich`
+
+`Aussenreinigung Auto`
+
+`Autowäsche Zürich`
+
+`mobile Autowäsche`
+
+`Auto waschen Zürich`
+
+`Auto waschen lassen`
+
+`Autoreinigung vor Ort`
+
+`Autopflege vor Ort`
+
+`Auto Detailing Zürich`
+
+`Car Detailing Zürich`
+
+Also naturally cover semantic variations such as:
+
+* Fahrzeugpflege
+* Innenraumpflege
+* Innenraumreinigung
+* Komplettreinigung
+* Handwäsche
+* Fahrzeugaufbereitung
+* mobile Fahrzeugpflege
+* Reinigung beim Kunden
+* Reinigung zu Hause
+* Reinigung am Arbeitsplatz
+
+Do not create one page per synonym.
+
+Group search intents intelligently.
+
+---
+
+# 6. KEYWORD CANNIBALIZATION RULE
+
+Do NOT create:
+
+`/autopflege-zuerich/`
+
+`/autoreinigung-zuerich/`
+
+`/fahrzeugreinigung-zuerich/`
+
+`/auto-waschen-zuerich/`
+
+as four nearly identical pages.
+
+These belong to one strong city landing page.
+
+Example:
+
+`/de/mobile-autoreinigung/zuerich/`
+
+can naturally target:
+
+* mobile Autoreinigung Zürich
+* Autopflege Zürich
+* Fahrzeugreinigung Zürich
+* Auto waschen Zürich
+* Autoreinigung vor Ort Zürich
+
+One intent cluster = one authoritative page.
+
+---
+
+# 7. RECOMMENDED LANGUAGE URL ARCHITECTURE
+
+Preferred long-term architecture:
+
+German:
+
+`/de/`
+
+English:
+
+`/en/`
+
+French:
+
+`/fr/`
+
+Because the website currently has very little index history, normalize the language structure now if technically feasible.
+
+However:
+
+first inspect the existing router.
+
+If stable language URLs already exist, preserve them if migration would provide no benefit.
+
+---
+
+# 8. ROOT URL
+
+Preferred setup:
+
+`/`
+
+→ permanent 301
+
+→ `/de/`
+
+German is the primary Swiss market version.
+
+Do NOT use browser-language-dependent redirects for crawlers.
+
+Do NOT change the destination depending on:
+
+* IP
+* browser locale
+* Accept-Language
+
+Visitors can manually select language.
+
+The root redirect must be deterministic.
+
+---
+
+# 9. EXISTING INDEXED HOMEPAGE MIGRATION
+
+The existing root homepage already has search-engine history.
+
+If moving German homepage from:
+
+`/`
+
+to:
+
+`/de/`
+
+use a permanent:
+
+301 redirect.
+
+Preserve ranking signals.
+
+Do NOT allow:
+
+`/`
+
+and:
+
+`/de/`
+
+to both serve equivalent German content with HTTP 200.
+
+---
+
+# 10. HREFLANG SYSTEM
+
+Every translated equivalent page must contain reciprocal hreflang.
+
+Use:
+
+`de-CH`
+
+`fr-CH`
+
+`en-CH`
+
+and:
+
+`x-default`
+
+German is the default market, therefore x-default may point to the German equivalent where appropriate.
+
+Example homepage cluster:
+
+German:
+
+`/de/`
+
+English:
+
+`/en/`
+
+French:
+
+`/fr/`
+
+Each must reference all versions.
+
+---
+
+# 11. HREFLANG RULES
+
+All hreflang relationships must be:
+
+* reciprocal
+* absolute HTTPS URLs
+* canonical URLs
+* 200 status URLs
+* correct language equivalents
+
+Never hreflang:
+
+a German service page
+
+to:
+
+an English homepage
+
+just because an English translation is missing.
+
+If no translated equivalent exists:
+
+omit that alternate until the real translation exists.
+
+---
+
+# 12. CANONICAL RULE
+
+Every language page receives self-canonical.
+
+Example:
+
+German page canonical → German page.
+
+French page canonical → French page.
+
+English page canonical → English page.
+
+Do NOT canonical French or English content back to German.
+
+Translations are not duplicate pages that should be consolidated via canonical.
+
+---
+
+# 13. HTML LANG
+
+Use accurate document language:
+
+German:
+
+`<html lang="de-CH">`
+
+French:
+
+`<html lang="fr-CH">`
+
+English:
+
+`<html lang="en-CH">`
+
+---
+
+# 14. LANGUAGE SWITCHER
+
+Language selector must use real HTML links.
+
+Not JS-only buttons.
+
+For equivalent pages:
+
+German Zurich page
+↔ English Zurich page
+↔ French Zurich page
+
+Do not send visitors back to homepage when changing language if an equivalent page exists.
+
+---
+
+# 15. PRIMARY HOMEPAGE STRATEGY
+
+German homepage should target national/business intent rather than only one city.
+
+Recommended intent:
+
+Mobile Autoreinigung Schweiz
+
+Suggested title direction:
+
+`Mobile Autoreinigung Schweiz | RCC Royal Car Cleaning`
+
+Alternative if wording fits actual service offering better:
+
+`Mobile Autopflege Schweiz | RCC Royal Car Cleaning`
+
+Use only one primary concept.
+
+Do not keyword-stuff title.
+
+---
+
+# 16. GERMAN HOMEPAGE H1
+
+Recommended:
+
+`Mobile Autoreinigung direkt bei Ihnen vor Ort`
+
+or:
+
+`Mobile Autoreinigung in der Schweiz`
+
+depending on actual service coverage.
+
+Include Switzerland and local relevance naturally in supporting copy.
+
+---
+
+# 17. HOMEPAGE CONTENT
+
+German homepage should contain server-rendered sections covering:
+
+* what RCC does
+* mobile nature of the service
+* interior cleaning
+* exterior cleaning
+* vehicle care / detailing
+* how booking works
+* packages
+* service area
+* why mobile cleaning is convenient
+* real before/after work if available
+* trust information
+* FAQs
+* city links
+* contact / booking CTA
+
+Do NOT turn homepage into a 3,000-word keyword block.
+
+Premium visual identity must remain.
+
+---
+
+# 18. SERVICE PAGE ARCHITECTURE – GERMAN
+
+Create a proper service hub if it does not exist:
+
+`/de/leistungen/`
+
+Recommended core service pages:
+
+`/de/leistungen/mobile-autoreinigung/`
+
+`/de/leistungen/innenreinigung/`
+
+`/de/leistungen/aussenreinigung/`
+
+`/de/leistungen/fahrzeugaufbereitung/`
+
+Only create services RCC really performs.
+
+Do not create unsupported services solely because they have keywords.
+
+---
+
+# 19. MOBILE AUTOREINIGUNG PAGE
+
+Target intent:
+
+* mobile Autoreinigung
+* Autoreinigung vor Ort
+* mobile Fahrzeugreinigung
+* mobile Autopflege
+
+Explain:
+
+* service concept
+* where service takes place
+* typical process
+* what customer needs to prepare, if anything
+* eligible vehicle types
+* package selection
+* service area
+* booking process
+* FAQs
+
+All claims must match actual RCC operations.
+
+---
+
+# 20. INNENREINIGUNG PAGE
+
+Target:
+
+* Auto Innenreinigung
+* Autoinnenreinigung
+* Innenraumreinigung Auto
+* Fahrzeug Innenreinigung
+
+Content can cover verified services such as:
+
+* vacuuming
+* surfaces
+* mats
+* seats
+* upholstery
+* leather care
+* windows
+* detailed interior cleaning
+
+ONLY include features that actually exist in RCC packages.
+
+---
+
+# 21. AUSSENREINIGUNG PAGE
+
+Target:
+
+* Auto Aussenreinigung
+* Autowäsche
+* Auto waschen lassen
+* Fahrzeug Aussenreinigung
+* mobile Autowäsche
+
+Describe actual method.
+
+Do NOT claim:
+
+* waterless
+* eco-friendly
+* biodegradable
+* scratch-free
+* ceramic protection
+
+unless verified.
+
+---
+
+# 22. FAHRZEUGAUFBEREITUNG PAGE
+
+Target higher-end intent:
+
+* Fahrzeugaufbereitung
+* Autoaufbereitung
+* Car Detailing
+* Fahrzeugpflege
+
+Explain the difference between:
+
+basic cleaning
+
+and
+
+more detailed vehicle care
+
+using RCC's actual services.
+
+Do not promise paint correction, polishing or ceramic coating unless those services genuinely exist.
+
+---
+
+# 23. PACKAGES / PRICING PAGE
+
+There is already a packages page.
+
+Audit it first.
+
+Do not destroy existing pricing or package logic.
+
+Preferred German canonical:
+
+`/de/pakete/`
+
+English:
+
+`/en/packages/`
+
+French:
+
+`/fr/forfaits/`
+
+If the current route changes:
+
+301 redirect the old route to the new canonical equivalent.
+
+---
+
+# 24. PACKAGES PAGE SEO
+
+German intent:
+
+`Autoreinigung Pakete`
+
+`Autoreinigung Preise Schweiz`
+
+`Autoreinigung Zürich Preise`
+
+`mobile Autoreinigung Preise`
+
+Possible title:
+
+`Autoreinigung Pakete & Preise | RCC Schweiz`
+
+Do not promise fixed pricing if current prices vary by vehicle/category.
+
+---
+
+# 25. PACKAGE CONTENT
+
+Each package should clearly show verified:
+
+* package name
+* price or starting price
+* vehicle category if relevant
+* what's included
+* approximate service scope
+* add-ons
+* booking CTA
+
+Do not hide all meaningful package text behind JS interaction.
+
+Package information must exist in initial crawlable HTML.
+
+---
+
+# 26. SERVICE AREA HUB
+
+Create:
+
+`/de/einsatzgebiet/`
+
+English:
+
+`/en/service-area/`
+
+French:
+
+`/fr/zones-desservies/`
+
+This page explains exactly where RCC operates.
+
+Use real coverage only.
+
+---
+
+# 27. CITY SEO STRATEGY
+
+Create individual city landing pages ONLY for cities RCC genuinely serves.
+
+Zürich should be a major landing page because it is already central to current RCC positioning.
+
+Recommended German structure:
+
+`/de/mobile-autoreinigung/zuerich/`
+
+Then, only if truly serviced:
+
+`/de/mobile-autoreinigung/winterthur/`
+
+`/de/mobile-autoreinigung/zug/`
+
+`/de/mobile-autoreinigung/basel/`
+
+`/de/mobile-autoreinigung/bern/`
+
+`/de/mobile-autoreinigung/luzern/`
+
+`/de/mobile-autoreinigung/st-gallen/`
+
+Do not automatically create all of them until service coverage is verified.
+
+---
+
+# 28. FRENCH-SPEAKING CITY PAGES
+
+If RCC genuinely serves French-speaking Switzerland, create relevant local pages.
+
+Examples ONLY if real service coverage exists:
+
+`/fr/nettoyage-voiture-mobile/lausanne/`
+
+`/fr/nettoyage-voiture-mobile/geneve/`
+
+Never create Geneva / Lausanne pages merely for SEO if RCC cannot realistically serve customers there.
+
+---
+
+# 29. ENGLISH CITY PAGES
+
+Example:
+
+`/en/mobile-car-cleaning/zurich/`
+
+and equivalent pages only for real service locations.
+
+English pages are useful for:
+
+* expatriates
+* international customers
+* tourists
+* business clients
+
+but should remain Switzerland-specific.
+
+---
+
+# 30. CITY PAGE TEMPLATE – NOT DOORWAY SPAM
+
+Every city page must contain unique, useful content.
+
+Do NOT generate a template where only the city name changes.
+
+Each city page should include, where factual:
+
+* RCC service availability in that area
+* mobile service explanation
+* types of services available
+* package links
+* booking process
+* service logistics
+* actual travel/service conditions
+* local service-area context
+* city-specific FAQ
+* neighbouring served areas
+* contact CTA
+* internal links
+
+Do not invent city-specific facts.
+
+---
+
+# 31. ZÜRICH LANDING PAGE
+
+This should be one of the strongest pages on the website.
+
+Primary keyword:
+
+`Mobile Autoreinigung Zürich`
+
+Secondary:
+
+`Autoreinigung Zürich`
+
+`Autopflege Zürich`
+
+`Fahrzeugreinigung Zürich`
+
+`Autoaufbereitung Zürich`
+
+`Auto Innenreinigung Zürich`
+
+`Auto waschen Zürich`
+
+`Autoreinigung vor Ort Zürich`
+
+Suggested title direction:
+
+`Mobile Autoreinigung Zürich | Autopflege vor Ort | RCC`
+
+Suggested H1:
+
+`Mobile Autoreinigung in Zürich`
+
+Do not overstuff.
+
+---
+
+# 32. NATIONAL VS CITY INTENT
+
+Homepage:
+
+Switzerland-wide brand/service intent.
+
+Zurich page:
+
+Zurich transactional local intent.
+
+This prevents homepage and Zurich landing page from competing for exactly the same query.
+
+---
+
+# 33. FRENCH KEYWORD MAP
+
+Build French content around natural Swiss-French terminology.
+
+Potential intent pool:
+
+`nettoyage voiture mobile Suisse`
+
+`lavage auto mobile`
+
+`nettoyage voiture à domicile`
+
+`nettoyage automobile`
+
+`nettoyage intérieur voiture`
+
+`nettoyage extérieur voiture`
+
+`nettoyage complet voiture`
+
+`detailing automobile`
+
+`nettoyage voiture Zurich`
+
+Use actual Swiss French copy.
+
+Do not directly translate German keywords word-for-word when unnatural.
+
+---
+
+# 34. ENGLISH KEYWORD MAP
+
+Potential intent pool:
+
+`mobile car cleaning Switzerland`
+
+`mobile car wash Switzerland`
+
+`mobile car cleaning Zurich`
+
+`mobile car wash Zurich`
+
+`car detailing Zurich`
+
+`car interior cleaning Zurich`
+
+`car exterior cleaning Zurich`
+
+`car detailing Switzerland`
+
+Keep language natural and useful for English-speaking Swiss customers.
+
+---
+
+# 35. NO FAKE KEYWORD VOLUMES
+
+Do not invent:
+
+* monthly volume
+* CPC
+* keyword difficulty
+* ranking potential
+
+unless an actual data provider is connected.
+
+The implementation task is intent-driven, not fake-metrics-driven.
+
+---
+
+# 36. CONTENT HUB
+
+Create a German advice / guide hub:
+
+`/de/ratgeber/`
+
+English:
+
+`/en/guides/`
+
+French:
+
+`/fr/guides/`
+
+The content hub should build topical authority around professional car cleaning in Switzerland.
+
+---
+
+# 37. FIRST GUIDE CLUSTER
+
+Create useful articles based on actual RCC expertise.
+
+Recommended initial topics:
+
+German:
+
+`/de/ratgeber/auto-innenreinigung/`
+
+Topic:
+
+How professional interior cleaning works.
+
+---
+
+`/de/ratgeber/autoaufbereitung-kosten-schweiz/`
+
+Topic:
+
+What affects vehicle detailing / preparation prices in Switzerland.
+
+Do not invent price ranges if RCC does not publish them.
+
+---
+
+`/de/ratgeber/auto-vor-leasingrueckgabe-reinigen/`
+
+Topic:
+
+Preparing a vehicle visually before leasing return.
+
+Do not make legal or contractual guarantees.
+
+---
+
+`/de/ratgeber/autopflege-im-winter-schweiz/`
+
+Topic:
+
+Winter vehicle cleaning / road salt / interior dirt in Switzerland.
+
+---
+
+`/de/ratgeber/innenreinigung-leder-stoff/`
+
+Topic:
+
+Differences in cleaning leather vs textile interiors.
+
+---
+
+`/de/ratgeber/wie-oft-auto-reinigen/`
+
+Topic:
+
+Factors affecting cleaning frequency.
+
+Do not give arbitrary absolute rules.
+
+---
+
+# 38. GUIDE QUALITY
+
+Each guide must contain:
+
+* unique title
+* unique H1
+* useful introduction
+* clear answer near top
+* structured H2/H3
+* original RCC-oriented explanation
+* relevant service links
+* relevant package links
+* relevant city links
+* FAQ where genuinely helpful
+* contact/booking CTA
+
+Avoid generic AI filler.
+
+---
+
+# 39. AI CONTENT QUALITY RULE
+
+Do not produce sentences like:
+
+"Welcome to the ultimate destination for all your automotive cleaning needs."
+
+Avoid:
+
+* empty adjectives
+* repetitive SEO paragraphs
+* generic AI clichés
+* unnatural keyword repetition
+
+Copy must sound like a real Swiss service business.
+
+---
+
+# 40. ENTITY-FIRST CONTENT
+
+Important pages should answer factual questions clearly.
+
+Example:
+
+What is RCC?
+
+What does RCC offer?
+
+Where does RCC operate?
+
+Is RCC mobile?
+
+How does booking work?
+
+What services are included?
+
+What packages exist?
+
+How can RCC be contacted?
+
+Which languages are supported?
+
+Clear factual passages improve both traditional search understanding and AI retrieval.
+
+---
+
+# 41. SSR / PRERENDER – CRITICAL
+
+All SEO-important pages must be visible in the raw initial HTTP response.
+
+Google, Bing and AI crawlers must not depend on client-side JavaScript to see:
+
+* title
+* meta description
+* H1
+* body copy
+* internal links
+* canonical
+* hreflang
+* JSON-LD
+* breadcrumbs
+* package information
+* FAQs
+
+If the project is currently SPA-only:
+
+implement SSR or build-time prerendering for all indexable SEO routes.
+
+---
+
+# 42. SSR TEST
+
+For every major template, test with curl.
+
+Example:
+
+`curl -L https://royalcarcleaning.ch/de/`
+
+The response itself must contain meaningful content.
+
+Not:
+
+`<div id="root"></div>`
+
+with all content arriving only after JS execution.
+
+---
+
+# 43. PAGE-SPECIFIC METADATA REGISTRY
+
+Build a centralized SEO registry / metadata system.
+
+Every indexable route must define:
+
+* title
+* description
+* canonical
+* language
+* hreflang mapping
+* OG title
+* OG description
+* OG URL
+* OG image
+* Twitter metadata
+* robots state
+
+Do not reuse one global title across all pages.
+
+---
+
+# 44. TITLE STRATEGY
+
+Titles must reflect intent.
+
+Examples:
+
+German home:
+
+`Mobile Autoreinigung Schweiz | RCC Royal Car Cleaning`
+
+German Zurich:
+
+`Mobile Autoreinigung Zürich | Autopflege vor Ort | RCC`
+
+German interior:
+
+`Auto Innenreinigung | Mobile Innenraumpflege | RCC`
+
+German packages:
+
+`Autoreinigung Pakete & Preise | RCC Schweiz`
+
+English Zurich:
+
+`Mobile Car Cleaning Zurich | RCC Royal Car Cleaning`
+
+French:
+
+`Nettoyage voiture mobile à Zurich | RCC`
+
+These are directions, not rigid strings.
+
+Optimize based on natural language and actual page content.
+
+---
+
+# 45. META DESCRIPTIONS
+
+Each page must have unique description.
+
+Descriptions should include:
+
+* service
+* location where relevant
+* mobile benefit
+* meaningful CTA
+
+Do not stuff keyword lists.
+
+---
+
+# 46. H1 RULE
+
+One primary semantic H1 per page.
+
+Visual hero slogans may remain visually large without becoming additional H1s.
+
+Do not use multiple SEO H1s unnecessarily.
+
+---
+
+# 47. HEADING HIERARCHY
+
+Use:
+
+H1
+→ H2
+→ H3
+
+for real content structure.
+
+Do not choose heading elements purely by font size.
+
+---
+
+# 48. INTERNAL LINKING
+
+Build strong contextual links between:
+
+Homepage
+
+↓
+
+Services
+
+↓
+
+Packages
+
+↓
+
+Service Area
+
+↓
+
+City pages
+
+↓
+
+Guides
+
+↓
+
+Booking / Contact
+
+City pages should link to:
+
+* main service page
+* interior/exterior pages
+* packages
+* useful guides
+* contact
+
+Guides should link back to commercial pages naturally.
+
+---
+
+# 49. FOOTER SEO
+
+Footer should include useful links without becoming keyword spam.
+
+Recommended sections:
+
+Services
+
+Service Areas
+
+Company
+
+Guides
+
+Languages
+
+Contact
+
+Include the real business NAP.
+
+---
+
+# 50. BREADCRUMBS
+
+Use visual HTML breadcrumbs on:
+
+* service pages
+* city pages
+* guides
+
+Example:
+
+Home
+→ Service Areas
+→ Zürich
+
+or:
+
+Home
+→ Services
+→ Interior Cleaning
+
+---
+
+# 51. SCHEMA – PRIMARY BUSINESS ENTITY
+
+Use Schema.org JSON-LD.
+
+A valid specific type exists for a car wash business:
+
+`AutoWash`
+
+Use it as primary business entity if it accurately represents RCC.
+
+Possible graph:
+
+`AutoWash`
+
+`WebSite`
+
+and page-specific entities.
+
+Do not create duplicate competing LocalBusiness nodes.
+
+---
+
+# 52. BUSINESS ENTITY ID
+
+Use a stable ID:
+
+`https://royalcarcleaning.ch/#business`
+
+WebSite:
+
+`https://royalcarcleaning.ch/#website`
+
+All Service nodes should reference the same provider entity.
+
+---
+
+# 53. AUTOWASH SCHEMA PROPERTIES
+
+Only add verified properties:
+
+* name
+* alternateName
+* url
+* logo
+* image
+* telephone
+* email
+* address
+* geo
+* openingHoursSpecification
+* areaServed
+* sameAs
+* currenciesAccepted
+* paymentAccepted
+* priceRange
+* availableLanguage
+
+Do NOT add fields merely because Schema.org supports them.
+
+Every fact must be accurate.
+
+---
+
+# 54. MOBILE BUSINESS / ADDRESS
+
+Determine whether the address is:
+
+* customer-facing location
+* administrative/base location
+* service-area business address
+
+Do not imply customers can arrive at a physical wash location if RCC only provides mobile service.
+
+Website copy and schema must accurately describe the actual business model.
+
+---
+
+# 55. SERVICE AREA SCHEMA
+
+Use:
+
+`areaServed`
+
+with real:
+
+* Country
+* AdministrativeArea
+* City
+
+entities.
+
+Do not list the entire country if RCC does not actually serve the entire country.
+
+---
+
+# 56. SERVICE SCHEMA
+
+Each major service page should include a `Service` entity.
+
+Example fields:
+
+* name
+* serviceType
+* provider → RCC business entity
+* areaServed
+* description
+* url
+
+Only factual information.
+
+---
+
+# 57. PACKAGE / OFFER STRUCTURED DATA
+
+If package pricing is publicly visible and stable, the package page may use:
+
+* Service
+* OfferCatalog
+* Offer
+
+with factual:
+
+* name
+* price
+* priceCurrency = CHF
+* description
+* URL
+
+Do not use Offer if actual prices are not publicly committed.
+
+Do not invent availability.
+
+---
+
+# 58. BREADCRUMB SCHEMA
+
+Use:
+
+`BreadcrumbList`
+
+matching visible breadcrumbs.
+
+---
+
+# 59. ARTICLE SCHEMA
+
+Each real guide should use:
+
+`Article`
+
+or appropriate `BlogPosting`.
+
+Include factual:
+
+* headline
+* description
+* datePublished
+* dateModified
+* author/publisher
+* image
+
+Do not fake publication dates.
+
+---
+
+# 60. FAQ STRUCTURED DATA
+
+Visible FAQ sections may use `FAQPage` where appropriate.
+
+Do not create hidden FAQ text solely for schema.
+
+Do not promise Google FAQ rich results.
+
+The visible page must contain the same questions and answers.
+
+---
+
+# 61. WEBSITE ENTITY
+
+Homepage should define:
+
+`WebSite`
+
+with:
+
+* name
+* url
+* publisher → RCC business entity
+* inLanguage as applicable
+
+Do not add SearchAction unless the site has a functioning site search.
+
+---
+
+# 62. SAMEAS
+
+Use `sameAs` only for verified official RCC profiles.
+
+Examples may include:
+
+* Instagram
+* Facebook
+* Google Business related official profile where technically appropriate
+
+Never add competitor or unverified profiles.
+
+---
+
+# 63. SCHEMA VALIDATION
+
+After deployment test important URLs in:
+
+Schema.org Validator
+
+and where supported:
+
+Google Rich Results Test.
+
+Zero schema parse errors.
+
+Do not remove valid schema merely because Google Rich Results Test does not support that specific Schema.org type.
+
+---
+
+# 64. NAP CONSISTENCY
+
+Create one central business data configuration containing:
+
+* business name
+* phone
+* email
+* address
+* postal code
+* city
+* country
+* opening hours
+* coordinates
+* social profiles
+
+Use this same source across:
+
+* footer
+* contact page
+* schema
+* meta
+* localized pages
+
+Do not duplicate hardcoded values throughout the codebase.
+
+---
+
+# 65. LOCAL SEO LANDING CONTENT
+
+Create a strong service-area section on the homepage and service hub.
+
+Make it obvious:
+
+* RCC is mobile
+* where RCC operates
+* how customers book
+* how location affects availability, if applicable
+
+This should be real content, not a keyword footer.
+
+---
+
+# 66. NO DOORWAY PAGES
+
+Never create dozens of location pages that are 95% identical.
+
+Do not create pages for every Swiss municipality automatically.
+
+Start with real commercial service areas.
+
+Expand only where:
+
+* RCC actually services the area
+* page can contain unique useful information
+* business wants customers from that area
+
+---
+
+# 67. IMAGE SEO
+
+Audit all images.
+
+For meaningful images:
+
+* descriptive localized alt text
+* width
+* height
+* correct aspect ratio
+* modern format
+* lazy loading below fold
+* no lazy loading for primary LCP hero
+* descriptive filenames where practical
+* crawlable URLs
+
+Do not keyword-stuff ALT attributes.
+
+---
+
+# 68. BEFORE / AFTER IMAGES
+
+If real RCC before-and-after photos exist:
+
+use them.
+
+Create semantic captions such as:
+
+German:
+
+`Innenraum vor der professionellen Reinigung`
+
+`Innenraum nach der mobilen Fahrzeugreinigung durch RCC`
+
+Only describe what the image genuinely shows.
+
+---
+
+# 69. DO NOT GENERATE FAKE WORK
+
+Never create fake:
+
+* customer vehicles
+* before/after cases
+* testimonials
+* service cities
+* staff photos
+* review screenshots
+
+for SEO.
+
+Use existing genuine RCC media.
+
+---
+
+# 70. IMAGE SITEMAP
+
+If there is a meaningful amount of original RCC vehicle imagery, include important images in sitemap metadata or a dedicated image sitemap.
+
+Prioritize:
+
+* before/after
+* service process
+* real completed vehicles
+* branded RCC work
+
+---
+
+# 71. VIDEO SEO / PERFORMANCE
+
+If the site uses hero video:
+
+do not allow it to destroy LCP.
+
+Implement:
+
+* optimized poster
+* compressed media
+* appropriate preload
+* deferred non-critical playback
+* mobile-safe loading
+* reduced unnecessary video downloads
+* no layout shift
+
+Primary page content must not depend on video.
+
+---
+
+# 72. CORE WEB VITALS
+
+Audit and improve:
+
+* LCP
+* CLS
+* INP
+
+Prioritize mobile.
+
+Avoid redesigning the site unnecessarily.
+
+---
+
+# 73. HERO LCP
+
+Determine the actual LCP element.
+
+If image:
+
+* optimized responsive image
+* correct dimensions
+* fetchpriority high if appropriate
+* preload only if truly needed
+
+Do not preload every image.
+
+---
+
+# 74. JAVASCRIPT
+
+Audit bundle size.
+
+Remove or lazy-load unnecessarily heavy:
+
+* animation libraries
+* sliders
+* videos
+* third-party widgets
+
+only where safe.
+
+Do not break design.
+
+SEO content must still render server-side.
+
+---
+
+# 75. FONTS
+
+Optimize fonts:
+
+* subset if appropriate
+* preload only critical fonts
+* font-display strategy
+* avoid excessive font weights
+
+---
+
+# 76. CANONICAL HOST
+
+Pick one permanent host:
+
+`https://royalcarcleaning.ch`
+
+Preferred:
+
+non-[www](http://www).
+
+If:
+
+`https://www.royalcarcleaning.ch`
+
+is accessible:
+
+301 it to non-[www](http://www).
+
+Preserve paths and query strings.
+
+---
+
+# 77. HTTP → HTTPS
+
+All HTTP requests must permanently redirect to HTTPS.
+
+Avoid unnecessary redirect chains.
+
+---
+
+# 78. TRAILING SLASH POLICY
+
+Pick one URL convention and enforce consistently.
+
+Recommended for new multilingual structure:
+
+trailing slash.
+
+Example:
+
+`/de/pakete/`
+
+not both:
+
+`/de/pakete`
+
+and:
+
+`/de/pakete/`
+
+If changing existing indexed URLs:
+
+implement 301 redirects.
+
+---
+
+# 79. REDIRECT MAP
+
+Create explicit redirect mappings for every current URL replaced by the new architecture.
+
+Especially:
+
+* old homepage
+* old package route
+* old language routes
+* changed service URLs
+
+Do NOT simply redirect every old page to homepage.
+
+Map equivalent → equivalent.
+
+---
+
+# 80. REAL 404
+
+Unknown routes must return:
+
+HTTP 404.
+
+Not:
+
+HTTP 200 + homepage.
+
+Not:
+
+HTTP 200 + "not found".
+
+Create a useful multilingual 404 page.
+
+Status must remain 404.
+
+---
+
+# 81. 404 CONTENT
+
+404 can include:
+
+* RCC logo
+* explanation
+* homepage link
+* services
+* packages
+* contact
+
+But should not be included in sitemap.
+
+Use noindex where appropriate.
+
+---
+
+# 82. ROBOTS.TXT
+
+Create/verify:
+
+`/robots.txt`
+
+Allow public SEO content.
+
+Disallow technical/private areas only if they exist, for example:
+
+* API
+* admin
+* internal preview
+
+Do not block:
+
+* CSS
+* JS required to render
+* images
+* localized pages
+* service pages
+* city pages
+* guides
+
+Include sitemap reference.
+
+---
+
+# 83. XML SITEMAP
+
+Create:
+
+`/sitemap.xml`
+
+containing all canonical indexable pages.
+
+It must include:
+
+* all German pages
+* all English pages
+* all French pages
+* services
+* city pages
+* guides
+* packages
+* contact/about where indexable
+
+No:
+
+* redirects
+* 404
+* query parameters
+* staging URLs
+* www duplicates
+* llms.txt
+
+---
+
+# 84. HREFLANG IN SITEMAP
+
+Where architecture supports it cleanly, add multilingual alternate annotations to sitemap entries.
+
+HTML hreflang remains mandatory in implementation.
+
+---
+
+# 85. SITEMAP VALIDATION
+
+Every sitemap URL must:
+
+* return 200
+* be canonical
+* be indexable
+* not redirect
+* not contain noindex
+
+Run automated validation.
+
+---
+
+# 86. MOBILE-FIRST
+
+All meaningful desktop content should exist for mobile users.
+
+Do not hide major SEO copy entirely on mobile.
+
+Accordions are acceptable.
+
+Mobile navigation must expose crawlable links.
+
+---
+
+# 87. CONTACT PAGE
+
+Create/upgrade localized contact pages.
+
+German:
+
+`/de/kontakt/`
+
+English:
+
+`/en/contact/`
+
+French:
+
+`/fr/contact/`
+
+Include verified:
+
+* phone
+* email
+* WhatsApp if used
+* booking CTA
+* business/base address if appropriate
+* service area
+* hours
+* map only if accurate
+
+---
+
+# 88. ABOUT PAGE
+
+Create/upgrade:
+
+German:
+
+`/de/ueber-uns/`
+
+English:
+
+`/en/about/`
+
+French:
+
+`/fr/a-propos/`
+
+Use real company story.
+
+Include:
+
+* who RCC is
+* mobile service concept
+* quality philosophy
+* actual team/business information
+* real imagery
+
+Do not fabricate history.
+
+---
+
+# 89. TRUST
+
+Use factual trust elements.
+
+Possible examples only if verified:
+
+* real business address
+* Swiss phone number
+* actual reviews
+* secure booking
+* real photos
+* real company registration information
+* accepted payment methods
+
+No fake trust badges.
+
+---
+
+# 90. TESTIMONIALS
+
+Only use genuine testimonials.
+
+If reviews originate from Google or another platform:
+
+do not fake AggregateRating schema.
+
+Do not copy review content without considering platform rights/terms.
+
+---
+
+# 91. GOOGLE BUSINESS – MANUAL TASK
+
+Replit cannot automatically fix external Google Business configuration.
+
+Final report should provide a manual checklist:
+
+* business name consistency
+* website URL
+* service area
+* phone
+* hours
+* correct categories
+* services
+* photos
+* reviews
+* booking URL
+* NAP consistency
+
+Do NOT alter external profiles without explicit access.
+
+---
+
+# 92. LOCAL CITATIONS – MANUAL
+
+Final report should identify need for consistent Swiss business citations/directories.
+
+Do not create spam listings automatically.
+
+Do not buy fake local citations.
+
+Use authoritative/relevant Swiss directories and local business profiles manually.
+
+---
+
+# 93. LOCAL BACKLINK STRATEGY – MANUAL
+
+Recommended future outreach categories:
+
+* local garages
+* dealerships
+* fleet companies
+* car rental businesses
+* automotive clubs/communities
+* Swiss automobile blogs
+* local business associations
+* genuine partners
+
+No PBN.
+
+No bulk spam backlinks.
+
+No fake guest posts.
+
+---
+
+# 94. SERVICE BUSINESS / FLEET PAGE
+
+If RCC genuinely serves companies/fleets, create:
+
+`/de/firmenkunden/`
+
+English:
+
+`/en/business-customers/`
+
+French:
+
+`/fr/clients-professionnels/`
+
+Only if service exists.
+
+Potential intent:
+
+* fleet cleaning
+* company car cleaning
+* vehicle fleet care
+
+Do not create if RCC is consumer-only.
+
+---
+
+# 95. FAQ PAGE
+
+If useful, create:
+
+`/de/faq/`
+
+with real questions such as:
+
+* Wie funktioniert die mobile Autoreinigung?
+* Wo findet die Reinigung statt?
+* Welche Regionen werden bedient?
+* Wie lange dauert eine Reinigung?
+* Was ist in den Paketen enthalten?
+* Wie kann ich einen Termin buchen?
+* Welche Fahrzeugtypen werden gereinigt?
+
+Answers must come from real RCC operating rules.
+
+Translate properly.
+
+---
+
+# 96. LLM / AI DISCOVERABILITY
+
+Create a clean AI discoverability layer.
+
+This should complement regular SEO.
+
+It must not replace HTML content.
+
+---
+
+# 97. CREATE /llms.txt
+
+Create:
+
+`/llms.txt`
+
+It must return:
+
+HTTP 200
+
+Content-Type:
+
+`text/plain; charset=utf-8`
+
+Use Markdown-compatible plain text.
+
+---
+
+# 98. LLMS.TXT STRUCTURE
+
+Suggested:
+
+# RCC Royal Car Cleaning
+
+> Concise factual description of RCC.
+
+## Main Pages
+
+## Services
+
+## Packages
+
+## Service Areas
+
+## German
+
+## French
+
+## English
+
+## Guides
+
+## Contact
+
+Use curated canonical URLs.
+
+Do not dump the whole sitemap.
+
+---
+
+# 99. LLMS DESCRIPTION
+
+Example style:
+
+# RCC Royal Car Cleaning
+
+> RCC Royal Car Cleaning provides mobile professional vehicle cleaning services in Switzerland, with interior and exterior car care delivered at the customer's location.
+
+Adjust only according to verified actual service coverage.
+
+Do not say "throughout Switzerland" unless it is genuinely true.
+
+---
+
+# 100. LLMS CANONICAL LINKS
+
+Use only:
+
+HTTPS
+
+non-www
+
+canonical
+
+200-status
+
+indexable URLs.
+
+No:
+
+* redirects
+* staging
+* Replit preview
+* old paths
+* query parameters
+* booking-system technical URLs
+
+---
+
+# 101. DO NOT CREATE llms-full.txt BY DEFAULT
+
+Start with:
+
+`/llms.txt`
+
+Only.
+
+Do not create experimental duplicate Markdown mirrors of every page.
+
+---
+
+# 102. OAI-SEARCHBOT
+
+Ensure public RCC content is accessible to:
+
+OAI-SearchBot.
+
+This crawler is distinct from GPTBot.
+
+If existing robots wildcard already allows it:
+
+do not add redundant rules unnecessarily.
+
+---
+
+# 103. OAI-SEARCHBOT TEST
+
+After deployment test:
+
+`curl -I -A "OAI-SearchBot" https://royalcarcleaning.ch/de/`
+
+`curl -I -A "OAI-SearchBot" https://royalcarcleaning.ch/de/leistungen/mobile-autoreinigung/`
+
+`curl -I -A "OAI-SearchBot" https://royalcarcleaning.ch/de/mobile-autoreinigung/zuerich/`
+
+`curl -I -A "OAI-SearchBot" https://royalcarcleaning.ch/llms.txt`
+
+Expected:
+
+200 after normal canonical redirects where applicable.
+
+Do not allow:
+
+403
+
+401
+
+429
+
+CAPTCHA
+
+bot challenge.
+
+---
+
+# 104. CDN / WAF
+
+If Cloudflare or another WAF exists:
+
+check whether legitimate crawlers are blocked.
+
+Report:
+
+* Googlebot access
+* Bingbot access where testable
+* OAI-SearchBot access
+
+Do not weaken security globally just to allow bots.
+
+---
+
+# 105. GPTBOT
+
+Treat GPTBot separately.
+
+GPTBot relates to training policy, not ChatGPT Search discoverability.
+
+Do not change GPTBot policy without an explicit business decision.
+
+Report existing behavior.
+
+---
+
+# 106. GOOGLE-EXTENDED
+
+Treat Google-Extended separately from normal Google Search crawling.
+
+Do not confuse it with Googlebot.
+
+Report current robots behavior.
+
+Do not modify unless explicitly required.
+
+---
+
+# 107. AI-CITABLE CONTENT
+
+Important pages should contain concise factual blocks that AI systems can quote accurately.
+
+Examples:
+
+"RCC is a mobile vehicle cleaning service..."
+
+"Customers select a package..."
+
+"RCC serves..."
+
+"The interior package includes..."
+
+Use facts only.
+
+Avoid vague luxury marketing as the only content.
+
+---
+
+# 108. CHATGPT REFERRAL ANALYTICS
+
+If analytics exists, make it possible to identify:
+
+`utm_source=chatgpt.com`
+
+and other AI referral traffic.
+
+Do not break existing GA4.
+
+---
+
+# 109. ANALYTICS
+
+Audit current analytics setup.
+
+Track relevant conversions:
+
+* booking click
+* booking completion if possible
+* WhatsApp click
+* phone click
+* email click
+* package CTA
+* city-page CTA
+* language change
+* contact form
+
+Avoid duplicate GA events.
+
+---
+
+# 110. SEARCH CONSOLE
+
+After deployment, final report should provide manual instructions for:
+
+* Domain property verification
+* sitemap submission
+* URL Inspection
+* important page indexing request
+* Page indexing report
+* Core Web Vitals
+* Enhancements
+* query tracking
+
+Replit cannot assume Search Console access.
+
+---
+
+# 111. INDEXING PRIORITY
+
+After launch prioritize indexing:
+
+1. German homepage
+2. German packages
+3. German service hub
+4. Mobile Autoreinigung service
+5. Interior
+6. Exterior
+7. Fahrzeugaufbereitung
+8. Zürich landing page
+9. Service area hub
+10. high-value city pages
+11. English homepage
+12. French homepage
+13. guides
+
+Do not request indexing for hundreds of thin URLs.
+
+---
+
+# 112. BING / INDEXNOW
+
+Optionally implement IndexNow if it can be added safely and correctly.
+
+Do not claim it affects Google indexing.
+
+Use it only for participating search engines.
+
+If implementation introduces complexity, leave it as a documented optional task.
+
+---
+
+# 113. CONTENT TRANSLATION RULE
+
+English and French pages must not be token-for-token translations.
+
+Localize:
+
+* terminology
+* CTAs
+* sentence structure
+* currency
+* service vocabulary
+
+But preserve factual equivalence.
+
+---
+
+# 114. NO AUTOMATIC MACHINE TRANSLATION OUTPUT
+
+If translations are generated programmatically:
+
+review them for natural commercial language.
+
+Especially French.
+
+Avoid obvious AI translation artifacts.
+
+---
+
+# 115. DUPLICATE CONTENT
+
+Do not generate three languages whose visible content is accidentally still German.
+
+Every translated URL must contain primarily its declared language.
+
+---
+
+# 116. NO THIN PAGES
+
+Do not publish a city page with:
+
+H1
+
+* two sentences
+
+* CTA.
+
+City pages must be useful enough to stand independently.
+
+---
+
+# 117. NO INDEX FOR INCOMPLETE PAGES
+
+If a translated page is unfinished:
+
+keep it unpublished or noindex temporarily.
+
+Do not index placeholder content.
+
+---
+
+# 118. OPEN GRAPH
+
+Each important page should have:
+
+* og:title
+* og:description
+* og:url
+* og:image
+* og:type
+* locale where appropriate
+
+Use real RCC imagery.
+
+---
+
+# 119. SOCIAL SHARING
+
+Set meaningful localized social preview text.
+
+Do not use one German OG description across French and English pages.
+
+---
+
+# 120. ACCESSIBILITY
+
+SEO implementation must preserve:
+
+* semantic buttons/links
+* alt text
+* keyboard navigation
+* form labels
+* contrast
+* aria labels where appropriate
+
+Do not hide SEO text visually in inaccessible ways.
+
+---
+
+# 121. SECURITY / INDEXING
+
+Do not index:
+
+* internal admin
+* API responses
+* preview/staging routes
+* booking callbacks
+* test pages
+* debug pages
+
+But do not use robots.txt to protect sensitive information.
+
+Actual sensitive routes require proper authentication.
+
+---
+
+# 122. URL PARAMETERS
+
+Identify parameters from:
+
+* booking
+* campaigns
+* languages
+* filters
+
+Avoid indexable parameter duplicates.
+
+Canonicalize appropriately.
+
+Do not strip legitimate analytics parameters from actual user URLs unnecessarily.
+
+---
+
+# 123. BOOKING SYSTEM
+
+If booking occurs through external software:
+
+keep RCC informational/service pages indexable on the main domain.
+
+Do not let an external booking system replace key SEO landing pages.
+
+External booking pages should not become duplicates of RCC's main landing pages.
+
+---
+
+# 124. CTA STRUCTURE
+
+Every transactional page should offer clear actions such as:
+
+* Termin buchen
+* Paket wählen
+* WhatsApp
+* Anrufen
+* Anfrage senden
+
+CTA copy should be localized.
+
+---
+
+# 125. CITY CTA
+
+A city landing page should link directly to a relevant booking/contact action.
+
+Not merely back to homepage.
+
+---
+
+# 126. STRUCTURED SERVICE AREAS
+
+If RCC has defined travel zones / radius / surcharge rules:
+
+make them visible to users.
+
+Do not hide important geographic restrictions in fine print only.
+
+Only implement verified rules.
+
+---
+
+# 127. PAGE SPEED TEST
+
+After implementation test:
+
+* German homepage
+* packages
+* service page
+* city landing page
+* French page
+* English page
+
+on mobile and desktop.
+
+Record before/after Lighthouse metrics where possible.
+
+---
+
+# 128. BUILD VALIDATION
+
+Run:
+
+TypeScript checks
+
+production build
+
+prerender generation
+
+route generation
+
+link checks
+
+according to the actual framework.
+
+No production build errors.
+
+---
+
+# 129. AUTOMATED URL VALIDATION
+
+Create a script that checks every sitemap URL.
+
+Report:
+
+* URL
+* status
+* canonical
+* title exists
+* description exists
+* H1 exists
+* index/noindex
+* language
+* hreflang
+* JSON-LD presence
+
+Fail build/report on:
+
+* accidental 404
+* 500
+* redirect in sitemap
+* missing canonical
+* empty title
+
+---
+
+# 130. HREFLANG AUTOMATED TEST
+
+For each localization cluster verify:
+
+German → English + French
+
+English → German + French
+
+French → German + English
+
+All reciprocal.
+
+Include x-default.
+
+Detect broken alternates automatically.
+
+---
+
+# 131. BROKEN LINK TEST
+
+Crawl internal links.
+
+Zero internal links should point to:
+
+* 404
+* staging
+* old paths
+* wrong language routes
+
+---
+
+# 132. FINAL HTTP TEST MATRIX
+
+Run after deployment.
+
+Root:
+
+`curl -I https://royalcarcleaning.ch/`
+
+Expected if new architecture implemented:
+
+301
+→ `/de/`
+
+German:
+
+`curl -I https://royalcarcleaning.ch/de/`
+
+Expected:
+
+200
+
+English:
+
+`curl -I https://royalcarcleaning.ch/en/`
+
+Expected:
+
+200
+
+French:
+
+`curl -I https://royalcarcleaning.ch/fr/`
+
+Expected:
+
+200
+
+WWW:
+
+`curl -I https://www.royalcarcleaning.ch/de/`
+
+Expected:
+
+301
+→ non-www
+
+HTTP:
+
+`curl -I http://royalcarcleaning.ch/de/`
+
+Expected:
+
+301
+→ HTTPS canonical
+
+Unknown:
+
+`curl -I https://royalcarcleaning.ch/de/this-page-does-not-exist-918273/`
+
+Expected:
+
+404
+
+---
+
+# 133. SSR FINAL TEST
+
+German homepage:
+
+`curl -sL https://royalcarcleaning.ch/de/`
+
+must visibly contain:
+
+* title
+* meta description
+* canonical
+* hreflang
+* H1
+* German content
+* business JSON-LD
+* service links
+* city links
+
+---
+
+# 134. CITY SSR TEST
+
+`curl -sL https://royalcarcleaning.ch/de/mobile-autoreinigung/zuerich/`
+
+must contain:
+
+* unique title
+* canonical
+* de-CH
+* hreflang
+* H1
+* city-specific content
+* Service schema
+* BreadcrumbList
+* packages/contact links
+
+---
+
+# 135. PACKAGES SSR TEST
+
+The packages page must expose package names and relevant visible pricing/content in raw HTML.
+
+No JS-only pricing cards.
+
+---
+
+# 136. LLMS TEST
+
+`curl -I https://royalcarcleaning.ch/llms.txt`
+
+Expected:
+
+200
+
+`text/plain; charset=utf-8`
+
+Then:
+
+`curl https://royalcarcleaning.ch/llms.txt`
+
+must return actual Markdown/text, not homepage HTML.
+
+---
+
+# 137. ROBOTS TEST
+
+`curl https://royalcarcleaning.ch/robots.txt`
+
+Verify:
+
+* public content allowed
+* sitemap correct
+* no accidental Disallow: /
+* AI search crawler not accidentally blocked
+
+---
+
+# 138. SITEMAP TEST
+
+`curl https://royalcarcleaning.ch/sitemap.xml`
+
+Verify every URL.
+
+Do not stop at XML syntax.
+
+Actually request every URL.
+
+---
+
+# 139. SCHEMA TEST MATRIX
+
+Test at minimum:
+
+German homepage
+
+German service page
+
+German city page
+
+German packages
+
+German guide
+
+English homepage
+
+French homepage
+
+Expected entity graph may include:
+
+* AutoWash
+* WebSite
+* Service
+* BreadcrumbList
+* Article
+* Offer / OfferCatalog only where factual
+* FAQPage only where visible and appropriate
+
+Zero parsing errors.
+
+---
+
+# 140. MANUAL FACT CHECK
+
+Before finalizing copy, produce a manual verification list for business facts that code cannot safely infer.
+
+Examples:
+
+* exact service area
+* business address role
+* opening hours
+* pricing
+* package inclusions
+* payment types
+* booking rules
+* travel charges
+* company legal name
+* official social links
+
+Do not block technical implementation where these can simply remain unchanged.
+
+---
+
+# 141. EXTERNAL SEO TASKS – DO NOT FAKE IMPLEMENTATION
+
+Final report must separately list tasks requiring human/external work:
+
+* Google Business optimization
+* Search Console submission
+* Bing Webmaster Tools
+* Swiss citations
+* review strategy
+* backlink outreach
+* partner links
+* Google Maps consistency
+* social profile consistency
+
+Do not mark them completed unless actually completed.
+
+---
+
+# 142. PHASE ORDER
+
+Implement in this order.
+
+## P0 – Technical foundation
+
+* crawl audit
+* language architecture
+* SSR/prerender
+* canonical
+* hreflang
+* redirects
+* 404
+* robots
+* sitemap
+* host normalization
+
+## P1 – Commercial SEO
+
+* homepage
+* services
+* packages
+* service area
+* Zürich landing page
+* schema/entity
+* internal linking
+
+## P2 – Expansion
+
+* additional verified cities
+* guides
+* image SEO
+* performance
+* English/French completeness
+
+## P3 – AI / LLM
+
+* llms.txt
+* OAI-SearchBot
+* WAF checks
+* AI-readable factual copy
+* referral tracking
+* optional IndexNow
+
+---
+
+# 143. VERY IMPORTANT – DO NOT OVERCREATE CITY PAGES
+
+The goal is not:
+
+300 Swiss city URLs.
+
+The goal is:
+
+a small number of strong commercial landing pages in markets RCC actually serves.
+
+Quality > quantity.
+
+---
+
+# 144. VERY IMPORTANT – GERMAN PRIORITY
+
+German SEO is P1 priority.
+
+English and French must be technically correct and complete, but do not delay the strongest German transactional pages just to create dozens of translations.
+
+Once the German template architecture is stable, translate equivalent high-value pages.
+
+---
+
+# 145. RECOMMENDED INITIAL INDEXABLE SET
+
+Aim initially for approximately:
+
+3 language homepages
+
+3 package pages
+
+3 contact pages
+
+3 about pages
+
+12–15 core service translations
+
+3 service-area hub translations
+
+3 Zürich translations
+
+a small number of additional verified city clusters
+
+guide hub + first quality guides
+
+Do not chase page count.
+
+Create only useful pages.
+
+---
+
+# 146. FINAL REPORT FORMAT
+
+At completion provide a detailed but clear report:
+
+## Current Audit
+
+What existed before.
+
+## New URL Architecture
+
+Every new canonical route grouped by language.
+
+## Redirects
+
+Old → new.
+
+## Multilingual
+
+* de-CH
+* en-CH
+* fr-CH
+* x-default
+* reciprocal hreflang status
+
+## Technical SEO
+
+* SSR
+* canonical
+* robots
+* sitemap
+* 404
+* host redirects
+* mobile
+
+## On-Page SEO
+
+Titles / H1 / metadata.
+
+## Local SEO
+
+* service area
+* city pages
+* Zürich
+* internal links
+
+## Structured Data
+
+List actual schema types added.
+
+## Content
+
+List new service/guide pages.
+
+## Performance
+
+Before/after where measured.
+
+## LLM / AI
+
+* llms.txt
+* OAI-SearchBot
+* GPTBot current policy
+* Google-Extended current policy
+* WAF result
+
+## Analytics
+
+Events / referral tracking.
+
+## Manual Tasks
+
+Everything requiring external access.
+
+## Tests
+
+Include actual HTTP status results.
+
+---
+
+# 147. FINAL ACCEPTANCE CRITERIA
+
+The project is not finished until:
+
+* German content is crawlable without JS
+* English content is crawlable
+* French content is crawlable
+* every important page has unique title
+* every page has self-canonical
+* hreflang is reciprocal
+* no duplicate www/non-www
+* HTTPS is canonical
+* unknown URLs return real 404
+* sitemap contains only valid canonical pages
+* service pages exist
+* package page is crawlable
+* strong Zürich page exists
+* additional city pages exist only for verified areas
+* AutoWash business entity is valid
+* Service schema is factual
+* package prices are never fabricated
+* llms.txt works
+* OAI-SearchBot is not blocked
+* no fake reviews
+* no fake locations
+* no fake business claims
+* no doorway-page spam
+* no broken internal links
+* production build passes
+
+---
+
+# 148. DO NOT STOP AFTER METADATA
+
+This is NOT completed by:
+
+changing homepage title
+
+adding meta description
+
+adding keywords
+
+and generating sitemap.
+
+The goal is to build a real multilingual Swiss local-search architecture that can grow over time.
+
+---
+
+# 149. DO NOT REDESIGN WITHOUT NEED
+
+Preserve RCC branding and visual identity.
+
+SEO changes may add:
+
+* sections
+* content
+* navigation
+* breadcrumbs
+* city/service links
+* guides
+
+but should not unnecessarily redesign the existing premium brand.
+
+---
+
+# 150. FINAL OBJECTIVE
+
+After implementation a crawler should be able to understand RCC as:
+
+RCC Royal Car Cleaning
+→ professional mobile vehicle cleaning
+→ Switzerland
+→ German / French / English
+→ mobile service at the customer's location
+→ interior cleaning
+→ exterior cleaning
+→ vehicle care / detailing
+→ transparent packages
+→ defined real service areas
+→ strong Zürich relevance
+→ additional real Swiss city relevance
+→ useful automotive cleaning expertise
+
+Build for humans first, but make every entity, service, location and language relationship technically explicit for search engines and AI systems.
