@@ -298,6 +298,7 @@ export function buildQuoteEmailPreviews(
 
 export type MailDeliveryResult = {
   recipient: "admin" | "customer";
+  adminIndex?: number;
   result: PromiseSettledResult<unknown>;
 };
 
@@ -310,26 +311,36 @@ export async function sendQuoteEmails(
   const transport = getMailTransport();
   const from = `"${config.fromName}" <${config.fromAddress}>`;
 
-  const results = await Promise.allSettled([
-    transport.sendMail({
-      from,
-      to: config.adminNotificationEmails,
-      replyTo: quote.email,
-      subject: previews.admin.subject,
-      text: previews.admin.text,
-      html: previews.admin.html,
-    }),
-    transport.sendMail({
-      from,
-      to: quote.email,
-      subject: previews.customer.subject,
-      text: previews.customer.text,
-      html: previews.customer.html,
-    }),
+  const [adminResults, customerResults] = await Promise.all([
+    Promise.allSettled(
+      config.adminNotificationEmails.map((adminEmail) =>
+        transport.sendMail({
+          from,
+          to: adminEmail,
+          replyTo: quote.email,
+          subject: previews.admin.subject,
+          text: previews.admin.text,
+          html: previews.admin.html,
+        }),
+      ),
+    ),
+    Promise.allSettled([
+      transport.sendMail({
+        from,
+        to: quote.email,
+        subject: previews.customer.subject,
+        text: previews.customer.text,
+        html: previews.customer.html,
+      }),
+    ]),
   ]);
 
   return [
-    { recipient: "admin", result: results[0] },
-    { recipient: "customer", result: results[1] },
+    ...adminResults.map((result, index) => ({
+      recipient: "admin" as const,
+      adminIndex: index + 1,
+      result,
+    })),
+    { recipient: "customer" as const, result: customerResults[0] },
   ];
 }

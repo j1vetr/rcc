@@ -57,6 +57,7 @@ router.post("/quotes", async (req, res): Promise<void> => {
         {
           quoteId: quote.id,
           notification: delivery.recipient,
+          adminIndex: delivery.adminIndex,
           errorType:
             delivery.result.reason instanceof Error &&
             delivery.result.reason.name
