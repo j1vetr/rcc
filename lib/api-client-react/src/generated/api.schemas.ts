@@ -22,6 +22,15 @@ export interface Quote {
   createdAt: string;
 }
 
+export type QuoteInputLanguage = typeof QuoteInputLanguage[keyof typeof QuoteInputLanguage];
+
+
+export const QuoteInputLanguage = {
+  de: 'de',
+  fr: 'fr',
+  en: 'en',
+} as const;
+
 export interface QuoteInput {
   /** @minLength 1 */
   name: string;
@@ -35,6 +44,7 @@ export interface QuoteInput {
   serviceType: string;
   /** @minLength 1 */
   carType: string;
+  language?: QuoteInputLanguage;
   message?: string;
 }
 

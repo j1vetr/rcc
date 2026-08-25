@@ -2,7 +2,7 @@ import { Router, type IRouter } from "express";
 
 const router: IRouter = Router();
 
-const services = [
+export const services = [
   {
     id: "inside-outside-basic",
     category: "inside-outside",
@@ -116,5 +116,9 @@ const services = [
 router.get("/services", async (_req, res): Promise<void> => {
   res.json(services);
 });
+
+export function getServiceById(serviceId: string) {
+  return services.find((service) => service.id === serviceId);
+}
 
 export default router;

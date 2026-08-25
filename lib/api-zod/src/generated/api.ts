@@ -26,7 +26,7 @@ export const HealthCheckResponse = zod.object({
 
 
 
-
+export const submitQuoteBodyLanguageDefault = `de`;
 
 export const SubmitQuoteBody = zod.object({
   "name": zod.string().min(1),
@@ -35,6 +35,7 @@ export const SubmitQuoteBody = zod.object({
   "canton": zod.string().min(1),
   "serviceType": zod.string().min(1),
   "carType": zod.string().min(1),
+  "language": zod.enum(['de', 'fr', 'en']).default(submitQuoteBodyLanguageDefault),
   "message": zod.string().optional()
 })
 

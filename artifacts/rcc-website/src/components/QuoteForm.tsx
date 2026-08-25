@@ -106,7 +106,7 @@ export function QuoteForm() {
   }, [form]);
 
   const onSubmit = (data: FormValues) => {
-    submitQuote.mutate({ data });
+    submitQuote.mutate({ data: { ...data, language: lang } });
   };
 
   const onInvalid = () => {

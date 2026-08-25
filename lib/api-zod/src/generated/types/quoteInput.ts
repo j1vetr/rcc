@@ -5,6 +5,7 @@
  * RCC Mobile Autopflege API
  * OpenAPI spec version: 0.1.0
  */
+import type { QuoteInputLanguage } from './quoteInputLanguage';
 
 export interface QuoteInput {
   /** @minLength 1 */
@@ -19,5 +20,6 @@ export interface QuoteInput {
   serviceType: string;
   /** @minLength 1 */
   carType: string;
+  language?: QuoteInputLanguage;
   message?: string;
 }

@@ -11,6 +11,7 @@ export * from './featureList';
 export * from './healthStatus';
 export * from './quote';
 export * from './quoteInput';
+export * from './quoteInputLanguage';
 export * from './service';
 export * from './serviceCategory';
 export * from './serviceLevel';

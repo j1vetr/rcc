@@ -125,6 +125,10 @@ components:
         carType:
           type: string
           minLength: 1
+        language:
+          type: string
+          enum: [de, fr, en]
+          default: de
         message:
           type: string
 
