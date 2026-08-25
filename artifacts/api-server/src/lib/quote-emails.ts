@@ -4,6 +4,9 @@ import { getMailConfig, getMailTransport } from "./mail";
 
 export type MailLanguage = "de" | "fr" | "en";
 
+const EMAIL_LOGO_URL =
+  "https://royalcarcleaning.ch/assets/rcc-logo-MSOWP9q-.webp";
+
 type QuoteEmailDetails = {
   quote: Quote;
   language: MailLanguage;
@@ -190,7 +193,7 @@ function layout(
   signature: string,
   footerLine: string,
 ): string {
-  return `<!doctype html><html lang="${language}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${escapeHtml(title)}</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"></head><body style="margin:0;background:#080808;color:#f4f0e8;font-family:'Montserrat',Arial,sans-serif"><div style="display:none;max-height:0;overflow:hidden;opacity:0">${escapeHtml(preview)}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#080808"><tr><td align="center" style="padding:36px 16px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:620px;background:#11110f;border:1px solid #353027"><tr><td style="padding:34px 36px 26px;border-bottom:1px solid #353027"><div style="font-size:12px;font-weight:600;letter-spacing:3px;color:#d1ae63;text-transform:uppercase">RCC</div><div style="margin-top:9px;font-size:10px;letter-spacing:2px;color:#77736a;text-transform:uppercase">Royal Car Cleaning</div></td></tr><tr><td style="padding:38px 36px 42px">${content}</td></tr><tr><td style="padding:22px 36px;border-top:1px solid #353027;color:#77736a;font-size:11px;line-height:1.7">${escapeHtml(signature)}<br>${escapeHtml(footerLine)}</td></tr></table></td></tr></table></body></html>`;
+  return `<!doctype html><html lang="${language}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${escapeHtml(title)}</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"></head><body style="margin:0;background:#080808;color:#f4f0e8;font-family:'Montserrat',Arial,sans-serif"><div style="display:none;max-height:0;overflow:hidden;opacity:0">${escapeHtml(preview)}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#080808"><tr><td align="center" style="padding:36px 16px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:620px;background:#11110f;border:1px solid #353027"><tr><td align="center" style="padding:30px 36px;border-bottom:1px solid #353027;text-align:center"><img src="${EMAIL_LOGO_URL}" alt="RCC Royal Car Cleaning" width="290" style="display:block;width:290px;max-width:100%;height:auto;margin:0 auto"></td></tr><tr><td style="padding:38px 36px 42px">${content}</td></tr><tr><td style="padding:22px 36px;border-top:1px solid #353027;color:#77736a;font-size:11px;line-height:1.7">${escapeHtml(signature)}<br>${escapeHtml(footerLine)}</td></tr></table></td></tr></table></body></html>`;
 }
 
 function adminEmail(details: QuoteEmailDetails): { html: string; text: string; subject: string } {

@@ -27,6 +27,10 @@ for (const language of ["de", "fr", "en"] as const) {
 
     for (const email of [previews.admin, previews.customer]) {
       assert.match(email.html, /Montserrat/);
+      assert.match(
+        email.html,
+        /https:\/\/royalcarcleaning\.ch\/assets\/rcc-logo-MSOWP9q-\.webp/,
+      );
       assert.doesNotMatch(email.html, /—/u);
       assert.doesNotMatch(email.text, /[—;]/u);
       assert.doesNotMatch(email.text, /[\u{1F300}-\u{1FAFF}]/u);
