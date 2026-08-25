@@ -1,7 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { Quote } from "@workspace/db";
+import { parseAdminNotificationEmails } from "./mail";
 import { buildQuoteEmailPreviews } from "./quote-emails";
+
+test("parses multiple admin notification recipients", () => {
+  assert.deepEqual(
+    parseAdminNotificationEmails(
+      " first-admin@example.com,second-admin@example.com ",
+    ),
+    ["first-admin@example.com", "second-admin@example.com"],
+  );
+});
 
 const quote: Quote = {
   id: 42,

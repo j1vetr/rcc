@@ -9,7 +9,7 @@ export type MailConfig = {
   password: string;
   fromAddress: string;
   fromName: string;
-  adminNotificationEmail: string;
+  adminNotificationEmails: string[];
 };
 
 let transporter: Transporter | undefined;
@@ -38,6 +38,19 @@ function parseSecure(value: string | undefined, port: number): boolean {
   throw new Error("SMTP_SECURE must be true or false");
 }
 
+export function parseAdminNotificationEmails(value: string): string[] {
+  const emails = value
+    .split(",")
+    .map((email) => email.trim())
+    .filter(Boolean);
+
+  if (emails.length === 0) {
+    throw new Error("ADMIN_NOTIFICATION_EMAIL must contain at least one address");
+  }
+
+  return emails;
+}
+
 export function getMailConfig(): MailConfig {
   const port = parsePort(process.env.SMTP_PORT);
 
@@ -49,7 +62,9 @@ export function getMailConfig(): MailConfig {
     password: requiredEnv("SMTP_PASSWORD"),
     fromAddress: process.env.SMTP_FROM_ADDRESS?.trim() || requiredEnv("SMTP_USER"),
     fromName: process.env.SMTP_FROM_NAME?.trim() || "RCC Royal Car Cleaning",
-    adminNotificationEmail: requiredEnv("ADMIN_NOTIFICATION_EMAIL"),
+    adminNotificationEmails: parseAdminNotificationEmails(
+      requiredEnv("ADMIN_NOTIFICATION_EMAIL"),
+    ),
   };
 }
 

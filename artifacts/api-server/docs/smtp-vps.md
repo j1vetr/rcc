@@ -12,7 +12,7 @@ SMTP_USER=no-reply@toov.com.tr
 SMTP_PASSWORD=replace-with-a-rotated-secret
 SMTP_FROM_ADDRESS=no-reply@toov.com.tr
 SMTP_FROM_NAME=RCC Royal Car Cleaning
-ADMIN_NOTIFICATION_EMAIL=replace-with-the-private-admin-address
+ADMIN_NOTIFICATION_EMAIL=first-admin@example.com,second-admin@example.com
 ```
 
 Use port `465` with `SMTP_SECURE=true` for implicit TLS. If the mail provider requires STARTTLS on port `587`, set `SMTP_PORT=587` and `SMTP_SECURE=false`.
@@ -30,3 +30,9 @@ The root PM2 daemon also hosts unrelated applications. Do not use global PM2 mai
 ## Secret rotation
 
 If an SMTP password has been shared outside the private environment file, rotate it in the mail provider panel, update `/etc/rcc-api.env` and restart with `rccup`. Keep the previous password out of commits, logs and support messages.
+
+Multiple admin recipients can be added to `ADMIN_NOTIFICATION_EMAIL` with commas and no semicolons:
+
+```dotenv
+ADMIN_NOTIFICATION_EMAIL=first-admin@example.com,second-admin@example.com
+```

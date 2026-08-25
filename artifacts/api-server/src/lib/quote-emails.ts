@@ -313,7 +313,7 @@ export async function sendQuoteEmails(
   const results = await Promise.allSettled([
     transport.sendMail({
       from,
-      to: config.adminNotificationEmail,
+      to: config.adminNotificationEmails,
       replyTo: quote.email,
       subject: previews.admin.subject,
       text: previews.admin.text,
