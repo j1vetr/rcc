@@ -219,6 +219,7 @@ export const translations = {
     footer: {
       coverage: '',
       copyright: '© 2026 RCC Mobile Autopflege. Alle Rechte vorbehalten.',
+      developerCredit: 'Entwicklung & Design',
     },
     serviceDetail: {
       recommended: 'Unsere Empfehlung',
@@ -615,6 +616,7 @@ export const translations = {
     footer: {
       coverage: '',
       copyright: '© 2026 RCC Mobile Autopflege. Tous droits réservés.',
+      developerCredit: 'Développement & Design',
     },
     serviceDetail: {
       recommended: 'Notre recommandation',
@@ -1011,6 +1013,7 @@ export const translations = {
     footer: {
       coverage: '',
       copyright: '© 2026 RCC Mobile Autopflege. All rights reserved.',
+      developerCredit: 'Development & Design',
     },
     serviceDetail: {
       recommended: 'Our recommendation',

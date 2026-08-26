@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
 import logo from '@assets/optimized/rcc-logo.webp';
+import toovLogo from '@assets/toov_beyaz_1787710328289.png';
 import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { FaTiktok } from 'react-icons/fa';
 import { BUSINESS } from '@/seo/businessData';
@@ -276,9 +277,34 @@ export function Footer() {
         </div>
 
         <div className="border-t border-foreground/5 pt-8 flex items-center justify-center">
-          <p className="text-foreground/30 text-[10px] sm:text-xs tracking-[0.02em] sm:tracking-[0.1em] font-light normal-case sm:uppercase text-center">
-            {t.footer.copyright}
-          </p>
+          <div className="flex flex-col items-center text-center">
+            <p className="text-foreground/30 text-[10px] sm:text-xs tracking-[0.02em] sm:tracking-[0.1em] font-light normal-case sm:uppercase">
+              {t.footer.copyright}
+            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-foreground/35">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] font-light">
+                {t.footer.developerCredit}
+              </span>
+              <span aria-hidden="true" className="h-3 w-px bg-primary/30" />
+              <a
+                href="https://toov.com.tr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TOOV Internet Solutions"
+                className="inline-flex items-center opacity-75 transition-opacity hover:opacity-100"
+              >
+                <img
+                  src={toovLogo}
+                  alt="TOOV Internet Solutions"
+                  width="1923"
+                  height="876"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-5 sm:h-6 w-auto"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
