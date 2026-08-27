@@ -138,6 +138,12 @@ export const translations = {
       }
     },
     quote: {
+      launchNotice: {
+        badge: 'Betriebsstart',
+        heading: 'RCC nimmt am 15. September 2026 den Betrieb auf.',
+        body: 'Wir bereiten alles vor, damit Ihr Fahrzeug von Anfang an in den besten Händen ist. Ab dem 15. September können Sie hier Ihre Offerte einreichen. Bis dahin erreichen Sie uns jederzeit per Telefon oder WhatsApp.',
+        cta: 'Jetzt Kontakt aufnehmen',
+      },
       title: 'Kostenlose Offerte anfragen',
       subtitle: 'Geben Sie Ihre Details ein. Wir melden uns umgehend bei Ihnen.',
       form: {
@@ -535,6 +541,12 @@ export const translations = {
       }
     },
     quote: {
+      launchNotice: {
+        badge: 'Ouverture',
+        heading: 'RCC commence ses activités le 15 septembre 2026.',
+        body: 'Nous préparons tout pour que votre véhicule soit entre les meilleures mains dès le premier jour. A partir du 15 septembre, vous pourrez soumettre votre devis directement ici. En attendant, contactez-nous par téléphone ou WhatsApp.',
+        cta: 'Nous contacter',
+      },
       title: 'Demander un devis gratuit',
       subtitle: 'Entrez vos coordonnées. Nous vous contacterons rapidement.',
       form: {
@@ -932,6 +944,12 @@ export const translations = {
       }
     },
     quote: {
+      launchNotice: {
+        badge: 'Launch Date',
+        heading: 'RCC opens for business on 15 September 2026.',
+        body: 'We are preparing everything so your vehicle is in the best hands from day one. From 15 September you will be able to submit your quote request right here. Until then, reach us any time by phone or WhatsApp.',
+        cta: 'Get in touch now',
+      },
       title: 'Request a free quote',
       subtitle: 'Enter your details. We will contact you promptly.',
       form: {
