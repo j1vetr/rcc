@@ -1,6 +1,17 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from '@/i18n/LanguageContext';
-import { useSubmitQuote, useListServices } from '@workspace/api-client-react';
+import { useSubmitQuote } from '@workspace/api-client-react';
+import {
+  services as CATALOG_SERVICES,
+  vehicleCategories,
+  calculatePrice,
+  getServiceById,
+  isVehicleCategory,
+  sanitizeExtraSelections,
+  type ExtraSelection,
+} from '@workspace/service-catalog';
+import { ExtraSelector, PriceBreakdown } from './pricing/ExtraSelector';
+import { PRICING_LABELS, asCatalogLang } from '@/data/pricing-labels';
 import { BUSINESS } from '@/seo/businessData';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -23,7 +34,10 @@ const formSchema = z.object({
   serviceType: z.string().min(1, 'required'),
   carType: z.string().min(1, 'required'),
   message: z.string().optional(),
+  extras: z.array(z.object({ id: z.string(), variantId: z.string() })),
 });
+
+const LAUNCH_DISABLED = true;
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -51,7 +65,9 @@ const labelClass =
 export function QuoteForm() {
   const { t, lang } = useTranslation();
   const submitQuote = useSubmitQuote();
-  const { data: services } = useListServices({ query: { queryKey: ['services'] } });
+  const services = CATALOG_SERVICES;
+  const cl = asCatalogLang(lang);
+  const PL = PRICING_LABELS[cl];
   const [step, setStep] = useState(0);
 
   const form = useForm<FormValues>({
@@ -64,16 +80,18 @@ export function QuoteForm() {
       serviceType: '',
       carType: '',
       message: '',
+      extras: [],
     }
   });
 
   useEffect(() => {
     const handleSelectService = (e: Event) => {
-      const customEvent = e as CustomEvent<{ serviceId?: string; carType?: string } | string>;
+      const customEvent = e as CustomEvent<{ serviceId?: string; carType?: string; extras?: unknown } | string>;
       const selection = customEvent.detail;
       form.setValue('serviceType', typeof selection === 'string' ? selection : selection.serviceId ?? '');
-      if (typeof selection !== 'string' && selection.carType) {
-        form.setValue('carType', selection.carType);
+      if (typeof selection !== 'string') {
+        if (isVehicleCategory(selection.carType)) form.setValue('carType', selection.carType);
+        if (selection.extras !== undefined) form.setValue('extras', sanitizeExtraSelections(selection.extras));
       }
     };
 
@@ -94,19 +112,30 @@ export function QuoteForm() {
     const params = new URLSearchParams(window.location.search);
     const serviceId = params.get('service');
     const carType = params.get('car');
-    const validCarTypes = ['small', 'medium', 'large', 'xl'];
+    let extras: ExtraSelection[] = [];
+    try {
+      const raw = params.get('extras');
+      if (raw) extras = sanitizeExtraSelections(JSON.parse(raw));
+    } catch {
+      extras = [];
+    }
+    const validService = serviceId && getServiceById(serviceId) ? serviceId : '';
 
-    if (!serviceId && !validCarTypes.includes(carType ?? '')) return;
+    if (!validService && !isVehicleCategory(carType) && extras.length === 0) return;
 
     form.reset({
       ...form.getValues(),
-      serviceType: serviceId ?? '',
-      carType: validCarTypes.includes(carType ?? '') ? carType! : '',
+      serviceType: validService,
+      carType: isVehicleCategory(carType) ? carType : '',
+      extras,
     });
   }, [form]);
 
   const onSubmit = (data: FormValues) => {
-    submitQuote.mutate({ data: { ...data, language: lang } });
+    if (LAUNCH_DISABLED) return;
+    const carType = data.carType;
+    if (!isVehicleCategory(carType)) return;
+    submitQuote.mutate({ data: { ...data, carType, language: lang } });
   };
 
   const onInvalid = () => {
@@ -177,16 +206,22 @@ export function QuoteForm() {
     () => services?.find((service) => service.id === watchedServiceType),
     [services, watchedServiceType],
   );
-  const selectedPrice = selectedService && watchedCarType
-    ? selectedService.prices[watchedCarType as keyof typeof selectedService.prices]
-    : undefined;
+  const watchedExtras = form.watch('extras');
+  const pricing = useMemo(() => {
+    if (!watchedServiceType || !watchedCarType) return undefined;
+    try {
+      return calculatePrice(watchedServiceType, watchedCarType, watchedExtras);
+    } catch {
+      return undefined;
+    }
+  }, [watchedServiceType, watchedCarType, watchedExtras]);
+  const selectedPrice = pricing?.total;
+  const hasVariable = watchedExtras.some((s) => s.id === 'pet-hair-removal' || s.id === 'headliner-cleaning');
 
   const wizard = t.quote.wizard;
-  const carTypeLabel = watchedCarType
-    ? t.quote.carTypes[watchedCarType as keyof typeof t.quote.carTypes]
+  const carTypeLabel = isVehicleCategory(watchedCarType)
+    ? vehicleCategories[cl][watchedCarType]
     : undefined;
-
-  const LAUNCH_DISABLED = true;
 
   if (submitQuote.isSuccess) {
     return (
@@ -308,7 +343,13 @@ export function QuoteForm() {
           </div>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit, onInvalid)}>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                if (LAUNCH_DISABLED || step < 3) return;
+                void form.handleSubmit(onSubmit, onInvalid)(event);
+              }}
+            >
               <div className="grid lg:grid-cols-[1fr_330px]">
                 {/* Wizard column */}
                 <div className="p-5 sm:p-7 lg:p-9 lg:border-r lg:border-white/10">
@@ -378,7 +419,7 @@ export function QuoteForm() {
                                     <CarTypePicker
                                       value={field.value}
                                       onChange={field.onChange}
-                                      options={t.quote.carTypes}
+                                      options={vehicleCategories[cl]}
                                     />
                                   </div>
                                 </FormControl>
@@ -440,7 +481,7 @@ export function QuoteForm() {
                                       </span>
                                       <span className={`mt-3 block text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-primary/80' : 'text-foreground/40'}`}>
                                         {watchedCarType
-                                          ? `CHF ${service.prices[watchedCarType as keyof typeof service.prices]}`
+                                          ? `CHF ${isVehicleCategory(watchedCarType) ? service.prices[watchedCarType] : service.prices.small}`
                                           : `${t.services.priceFrom} CHF ${service.prices.small}`}
                                       </span>
                                     </button>
@@ -448,6 +489,15 @@ export function QuoteForm() {
                                 })}
                               </div>
                               <LocalizedFormMessage />
+                              <div className="pt-6">
+                                <p className={`${labelClass} mb-4 block`}>{PL.extrasTitle}</p>
+                                <ExtraSelector
+                                  lang={cl}
+                                  compact
+                                  value={watchedExtras}
+                                  onChange={(next) => form.setValue('extras', next, { shouldDirty: true })}
+                                />
+                              </div>
                             </FormItem>
                           )}
                         />
@@ -542,6 +592,7 @@ export function QuoteForm() {
                               { label: wizard.canton, value: watchedCanton },
                               { label: wizard.car, value: carTypeLabel },
                               { label: wizard.package, value: selectedService ? getLocalizedServiceName(selectedService) : undefined },
+                              { label: PL.extras, value: watchedExtras.length ? String(watchedExtras.length) : PL.noExtras },
                               { label: wizard.estimate, value: selectedPrice ? `CHF ${selectedPrice}` : undefined },
                               { label: wizard.contact, value: watchedName },
                             ].map((row) => (
@@ -583,7 +634,6 @@ export function QuoteForm() {
                         type="button"
                         data-testid="button-wizard-next"
                         onClick={goNext}
-                        disabled={LAUNCH_DISABLED}
                         className="btn-gold-luxury flex items-center gap-2.5 min-h-11 px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-background disabled:opacity-30 disabled:cursor-not-allowed"
                       >
                         {wizard.next}
@@ -598,43 +648,21 @@ export function QuoteForm() {
                   <p className="mb-5 flex items-center gap-2 text-[9px] uppercase tracking-[0.24em] text-primary">
                     {wizard.summaryTitle}
                   </p>
-                  <dl className="space-y-4">
-                    <div>
-                      <dt className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.canton}</dt>
-                      <dd className={`text-sm font-light ${watchedCanton ? 'text-foreground' : 'text-foreground/30'}`}>
-                        {watchedCanton || wizard.notSelected}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.car}</dt>
-                      <dd className={`text-sm font-light ${carTypeLabel ? 'text-foreground' : 'text-foreground/30'}`}>
-                        {carTypeLabel || wizard.notSelected}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.package}</dt>
-                      <dd className={`text-sm font-light ${selectedService ? 'text-foreground' : 'text-foreground/30'}`}>
-                        {selectedService ? getLocalizedServiceName(selectedService) : wizard.notSelected}
-                      </dd>
-                    </div>
-                  </dl>
-
-                  <div className="mt-6 border-t border-primary/20 pt-5">
-                    <p className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1.5">{wizard.estimate}</p>
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={selectedPrice ? String(selectedPrice) : 'empty'}
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.25 }}
-                        className={`font-serif text-3xl ${selectedPrice ? 'text-primary' : 'text-foreground/25'}`}
-                      >
-                        {selectedPrice ? `CHF ${selectedPrice}` : 'CHF -'}
-                      </motion.p>
-                    </AnimatePresence>
-                    <p className="mt-2 text-[10px] leading-relaxed text-foreground/35">{wizard.estimateNote}</p>
+                  <div className="mb-4">
+                    <p className="text-[9px] uppercase tracking-[0.2em] text-foreground/40 mb-1">{wizard.canton}</p>
+                    <p className={`text-sm font-light ${watchedCanton ? 'text-foreground' : 'text-foreground/30'}`}>
+                      {watchedCanton || wizard.notSelected}
+                    </p>
                   </div>
+                  <PriceBreakdown
+                    lang={cl}
+                    vehicleLabel={carTypeLabel}
+                    serviceName={selectedService ? getLocalizedServiceName(selectedService) : undefined}
+                    packagePrice={pricing?.packagePrice}
+                    selections={watchedExtras}
+                    total={selectedPrice}
+                    hasVariable={hasVariable}
+                  />
                 </aside>
               </div>
             </form>

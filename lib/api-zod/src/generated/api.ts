@@ -25,6 +25,7 @@ export const HealthCheckResponse = zod.object({
 
 
 
+export const submitQuoteBodyExtrasMax = 14;
 
 export const submitQuoteBodyLanguageDefault = `de`;
 
@@ -34,7 +35,11 @@ export const SubmitQuoteBody = zod.object({
   "phone": zod.string().min(1),
   "canton": zod.string().min(1),
   "serviceType": zod.string().min(1),
-  "carType": zod.string().min(1),
+  "carType": zod.enum(['small', 'medium', 'xl']),
+  "extras": zod.array(zod.object({
+  "id": zod.string(),
+  "variantId": zod.string()
+})).max(submitQuoteBodyExtrasMax).optional(),
   "language": zod.enum(['de', 'fr', 'en']).default(submitQuoteBodyLanguageDefault),
   "message": zod.string().optional()
 })
@@ -48,6 +53,27 @@ export const SubmitQuoteResponse = zod.object({
   "serviceType": zod.string(),
   "carType": zod.string(),
   "message": zod.string().nullish(),
+  "pricing": zod.union([zod.object({
+  "packagePrice": zod.number(),
+  "extrasPrice": zod.number(),
+  "total": zod.number(),
+  "variablePrice": zod.boolean(),
+  "extras": zod.array(zod.object({
+  "id": zod.string(),
+  "variantId": zod.string(),
+  "name": zod.object({
+  "de": zod.string(),
+  "en": zod.string(),
+  "fr": zod.string()
+}),
+  "variantLabel": zod.object({
+  "de": zod.string(),
+  "en": zod.string(),
+  "fr": zod.string()
+}),
+  "price": zod.number()
+}))
+}),zod.null()]).optional(),
   "createdAt": zod.coerce.date()
 })
 
@@ -68,7 +94,6 @@ export const ListServicesResponseItem = zod.object({
   "prices": zod.object({
   "small": zod.number(),
   "medium": zod.number(),
-  "large": zod.number(),
   "xl": zod.number()
 }),
   "exteriorFeaturesDE": zod.array(zod.string()),

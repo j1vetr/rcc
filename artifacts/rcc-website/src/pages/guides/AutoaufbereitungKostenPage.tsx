@@ -25,10 +25,10 @@ const CONFIG: GuidePageConfig = {
       ],
     },
     {
-      heading: 'Faktor 1: Fahrzeuggrösse',
+      heading: "Faktor 1: Fahrzeugkategorie",
       level: 'h2',
       paragraphs: [
-        'Die Fahrzeuggrösse ist der wichtigste Preisfaktor bei RCC. Die Kategorien sind: S (Kleinwagen wie Smart, Mini, Fiat 500), M (Kompakt- und Mittelklasse wie VW Golf oder Passat), L (SUV) und XL (Van, 7-Sitzer, Nutzfahrzeuge).',
+        "Die Fahrzeugkategorie ist der wichtigste Preisfaktor bei RCC. Es gibt drei Kategorien: Kleinwagen (Kompaktwagen & Coupés), Mittelklasse (Limousinen & SUVs) sowie Extra grosse Autos (7-Sitzer, Vans, Lieferwagen).",
         'Grössere Fahrzeuge haben mehr zu reinigende Fläche ,  mehr Sitzflächen, grössere Teppichflächen, mehr Karosserie. Das schlägt sich direkt im Preis nieder.',
       ],
     },
@@ -36,8 +36,8 @@ const CONFIG: GuidePageConfig = {
       heading: 'Faktor 2: Umfang der Reinigung',
       level: 'h2',
       paragraphs: [
-        'Ob Innenreinigung, Aussenreinigung oder Komplettreinigung bestimmt den Preis erheblich. Eine reine Innenreinigung Basic beginnt bei CHF 85 für Kleinwagen. Eine Komplettreinigung (Innen & Aussen Premium) liegt für grosse Fahrzeuge höher.',
-        'Basic-Pakete umfassen die wesentlichen Reinigungsschritte. Premium-Pakete ergänzen intensivere Massnahmen: Fussmatten shampoonieren, Cockpit ausbürsten, Reifenpflege.',
+        "Ob Innenreinigung, Aussenreinigung oder Komplettreinigung bestimmt den Preis erheblich. Die Aussenreinigung Standard beginnt bei CHF 95, die Innenreinigung Standard bei CHF 100 für Kleinwagen. Das Premium Aufbereitung Paket (Innen & Aussen) kostet je nach Kategorie CHF 279, 329 oder 400.",
+        "Standard-Pakete umfassen die wesentlichen Reinigungsschritte. Premium-Pakete ergänzen intensivere Massnahmen wie Hochdruck-Vorreinigung, Flugrost- und Insektenentfernung, Reifenpflege, Tiefenreinigung von Cockpit und Türen mit Pinseln, schonende Lederreinigung und shampoonierte Fussmatten.",
       ],
     },
     {
@@ -59,7 +59,7 @@ const CONFIG: GuidePageConfig = {
       heading: 'RCC Preisbeispiele',
       level: 'h2',
       paragraphs: [
-        'Zur Orientierung: Innenreinigung Basic für einen Kleinwagen ab CHF 85. Komplettreinigung (Innen & Aussen) Basic für einen Kleinwagen ab CHF 170. Premium-Pakete liegen entsprechend höher. Die vollständige Tabelle mit allen Preisen nach Fahrzeuggrösse finden Sie auf der Paketseite.',
+        "Zur Orientierung für Kleinwagen, Mittelklasse und Extra grosse Autos: Aussenreinigung Standard CHF 95, 129 oder 169, Premium CHF 109, 149 oder 159. Innenreinigung Standard CHF 100, 120 oder 140, Premium CHF 199, 239 oder 289. Standard Paket (Innen & Aussen) CHF 150, 219 oder 279, Premium Aufbereitung Paket CHF 279, 329 oder 400. Extras werden separat berechnet.",
         'Anfragen über das Kontaktformular oder direkt per Telefon und WhatsApp. Wir erstellen Ihnen eine unverbindliche Offerte.',
       ],
     },
@@ -67,7 +67,7 @@ const CONFIG: GuidePageConfig = {
   faqs: [
     {
       question: 'Was kostet eine Autoaufbereitung bei RCC?',
-      answer: 'Die Preise richten sich nach Fahrzeuggrösse und gewähltem Paket. Innenreinigung Basic beginnt ab CHF 85, Komplettreinigung (Innen & Aussen) Basic ab CHF 170. Vollständige Preisübersicht auf der Paketseite.',
+      answer: "Die Preise richten sich nach Fahrzeugkategorie und Paket. Die Aussenreinigung Standard beginnt ab CHF 95, die Innenreinigung Standard ab CHF 100 und das Standard Paket (Innen & Aussen) ab CHF 150. Vollständige Preisübersicht auf der Paketseite.",
     },
     {
       question: 'Welche Leistungen sind nicht im Angebot?',

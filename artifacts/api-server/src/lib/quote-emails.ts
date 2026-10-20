@@ -1,6 +1,7 @@
 import type { Quote } from "@workspace/db";
 import { getServiceById } from "../routes/services";
 import { getMailConfig, getMailTransport } from "./mail";
+import { vehicleCategories } from "@workspace/service-catalog";
 
 export type MailLanguage = "de" | "fr" | "en";
 
@@ -169,6 +170,7 @@ function getDetails(quote: Quote, requestedLanguage?: string): QuoteEmailDetails
     service?.[`name${language.toUpperCase()}` as "nameDE" | "nameFR" | "nameEN"] ??
     quote.serviceType;
   const carTypeLabel =
+    vehicleCategories[language][quote.carType as keyof typeof vehicleCategories.de] ??
     carTypeLabels[language][quote.carType] ?? quote.carType;
   const price = service?.prices[quote.carType as keyof typeof service.prices];
 
@@ -177,8 +179,31 @@ function getDetails(quote: Quote, requestedLanguage?: string): QuoteEmailDetails
     language,
     serviceName,
     carTypeLabel,
-    estimatedPrice: price,
+    estimatedPrice: quote.pricing?.total ?? price,
   };
+}
+
+const pricingCopy = {
+  de: { package: "Paketpreis", extras: "Zusatzleistungen", note: "Der Preis kann je nach Zustand des Fahrzeugs abweichen." },
+  en: { package: "Package price", extras: "Additional services", note: "The price may vary depending on the condition of the vehicle." },
+  fr: { package: "Prix du forfait", extras: "Prestations supplémentaires", note: "Le prix peut varier selon l’état du véhicule." },
+};
+
+function pricingLines(quote: Quote, language: MailLanguage): string[] {
+  if (!quote.pricing) return [];
+  const labels = pricingCopy[language];
+  return [
+    `${labels.package}: ${quote.pricing.packagePrice} CHF`,
+    ...quote.pricing.extras.map((extra) =>
+      `${labels.extras}: ${extra.name[language]} (${extra.variantLabel[language]}) ${extra.price} CHF`,
+    ),
+    ...(quote.pricing.variablePrice ? [labels.note] : []),
+  ];
+}
+
+function pricingRows(quote: Quote, language: MailLanguage): string {
+  return pricingLines(quote, language)
+    .map((line) => row(pricingCopy[language].extras, escapeHtml(line))).join("");
 }
 
 function row(label: string, value: string): string {
@@ -210,6 +235,7 @@ function adminEmail(details: QuoteEmailDetails): { html: string; text: string; s
     row(labels.canton, escapeHtml(quote.canton)),
     row(labels.carType, escapeHtml(carTypeLabel)),
     row(labels.service, escapeHtml(serviceName)),
+    pricingRows(quote, language),
     row(labels.estimate, escapeHtml(formatMoney(estimatedPrice, labels))),
     row(labels.message, escapeHtml(message).replaceAll("\n", "<br>")),
   ].join("");
@@ -234,6 +260,7 @@ function adminEmail(details: QuoteEmailDetails): { html: string; text: string; s
     `${labels.canton}: ${quote.canton}`,
     `${labels.carType}: ${carTypeLabel}`,
     `${labels.service}: ${serviceName}`,
+    ...pricingLines(quote, language),
     `${labels.estimate}: ${formatMoney(estimatedPrice, labels)}`,
     `${labels.message}: ${message}`,
     "",
@@ -254,6 +281,7 @@ function customerEmail(details: QuoteEmailDetails): { html: string; text: string
     row(labels.canton, escapeHtml(quote.canton)),
     row(labels.carType, escapeHtml(carTypeLabel)),
     row(labels.service, escapeHtml(serviceName)),
+    pricingRows(quote, language),
     row(labels.estimate, escapeHtml(formatMoney(estimatedPrice, labels))),
   ].join("");
   const html = layout(
@@ -273,6 +301,7 @@ function customerEmail(details: QuoteEmailDetails): { html: string; text: string
     `${labels.canton}: ${quote.canton}`,
     `${labels.carType}: ${carTypeLabel}`,
     `${labels.service}: ${serviceName}`,
+    ...pricingLines(quote, language),
     `${labels.estimate}: ${formatMoney(estimatedPrice, labels)}`,
     "",
     labels.customerNext,

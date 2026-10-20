@@ -5,6 +5,7 @@
  * RCC Mobile Autopflege API
  * OpenAPI spec version: 0.1.0
  */
+import type { QuotePricing } from './quotePricing';
 
 export interface Quote {
   id: number;
@@ -16,5 +17,6 @@ export interface Quote {
   carType: string;
   /** @nullable */
   message?: string | null;
+  pricing?: QuotePricing | null;
   createdAt: Date;
 }

@@ -3,6 +3,7 @@ import { db, quotesTable } from "@workspace/db";
 import { SubmitQuoteBody } from "@workspace/api-zod";
 import { sendQuoteEmails } from "../lib/quote-emails";
 import { logger } from "../lib/logger";
+import { buildQuotePricing } from "../lib/quote-pricing";
 
 const router: IRouter = Router();
 
@@ -22,7 +23,16 @@ router.post("/quotes", async (req, res): Promise<void> => {
     carType,
     message,
     language,
+    extras,
   } = parsed.data;
+
+  let pricing;
+  try {
+    pricing = buildQuotePricing(serviceType, carType, extras);
+  } catch {
+    res.status(400).json({ error: "Invalid package, vehicle category or extras selection" });
+    return;
+  }
 
   const [quote] = await db
     .insert(quotesTable)
@@ -34,6 +44,7 @@ router.post("/quotes", async (req, res): Promise<void> => {
       serviceType,
       carType,
       message: message ?? null,
+      pricing,
     })
     .returning();
 
@@ -46,6 +57,7 @@ router.post("/quotes", async (req, res): Promise<void> => {
     serviceType: quote.serviceType,
     carType: quote.carType,
     message: quote.message,
+    pricing: quote.pricing,
     createdAt: quote.createdAt.toISOString(),
   };
 

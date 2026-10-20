@@ -9,6 +9,5 @@
 export interface ServicePrices {
   small: number;
   medium: number;
-  large: number;
   xl: number;
 }

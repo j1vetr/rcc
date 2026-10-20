@@ -52,7 +52,7 @@ const CONFIG: GuidePageConfig = {
       heading: 'RCC Innenreinigung: Was wir tun',
       level: 'h2',
       paragraphs: [
-        'RCC reinigt Innenräume mit geeigneten Mitteln für die jeweils vorhandenen Materialien. Basic umfasst Saugen, Scheiben, Cockpit und Türen abwischen sowie Fussmatten säubern. Premium ergänzt Fussmatten shampoonieren und detaillierteres Ausbürsten.',
+        "RCC reinigt Innenräume mit geeigneten Mitteln für die jeweils vorhandenen Materialien. Die Innenreinigung Standard umfasst Druckluft, Absaugen, Armaturenbrett, Türverkleidungen, Türfalze und Seitenfenster innen. Premium ergänzt die schonende Reinigung der Lederausstattung, Pinsel-Tiefenreinigung und shampoonierte Fussmatten. Lederpflege (CHF 100) und Stoffsitz-Tiefenreinigung (CHF 89 pro Sitz oder CHF 159 für 5 Sitze) sind als Extras buchbar.",
         'Das Angebot ist ein mobiler Service. RCC kommt direkt zu Ihrem Fahrzeugstandort in der Schweiz.',
       ],
     },
@@ -68,7 +68,7 @@ const CONFIG: GuidePageConfig = {
     },
     {
       question: 'Reinigt RCC Leder- und Stoffsitze?',
-      answer: 'Ja. RCC reinigt Innenräume mit Leder- und Stoffpolstern und verwendet je nach Material geeignete Mittel. Anfrage über das Formular auf der Website oder per Telefon/WhatsApp.',
+      answer: "Ja. Die Innenreinigung Premium umfasst die schonende Reinigung der Lederausstattung. Stoffsitze werden mit dem Extra Stoffsitz-Tiefenreinigung nass gereinigt, Ledersitze mit dem Extra Lederpflege gepflegt. Anfrage über das Formular auf der Website oder per Telefon oder WhatsApp.",
     },
   ],
   internalLinks: [

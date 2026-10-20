@@ -15,6 +15,7 @@ import { LanguageProvider } from '@/i18n/LanguageContext';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { STATIC_SERVICES } from '@/data/services-static';
+import { extras as CATALOG_EXTRAS, vehicleCategories, vehicleCategoryOrder, variablePriceNotice } from '@workspace/service-catalog';
 import { getMetadataForPath } from '@/seo/metadata';
 import { getLangPath, detectLangFromPath, type Lang } from '@/seo/routes';
 import { translations } from '@/i18n/translations';
@@ -298,7 +299,7 @@ function SSRServicesContent({ lang }: { lang: Lang }) {
                 <h2 className="text-xl font-semibold uppercase text-white mb-2">{name}</h2>
                 <p className="text-sm font-light text-white/55 leading-relaxed mb-4">{desc}</p>
                 <ul className="mb-4 space-y-1">
-                  {allFeatures.slice(0, 6).map((f: string) => (
+                  {allFeatures.map((f: string) => (
                     <li key={f} className="flex items-start gap-2 text-xs font-light text-white/60">
                       <Check className="h-3 w-3 text-[#c9a553] shrink-0 mt-0.5" />
                       {f}
@@ -308,10 +309,36 @@ function SSRServicesContent({ lang }: { lang: Lang }) {
                 <p className="text-sm text-[#c9a553]">
                   {t.servicesPage.from} CHF {Math.min(...Object.values(service.prices))}
                 </p>
+                <dl className="mt-4 space-y-2 text-sm text-white/70">
+                  {vehicleCategoryOrder.map((car) => (
+                    <div key={car}>
+                      <dt>{vehicleCategories[lang][car]}</dt>
+                      <dd className="text-[#c9a553]">{service.prices[car]} CHF</dd>
+                    </div>
+                  ))}
+                </dl>
               </article>
             );
           })}
         </div>
+        <section className="mt-12 text-white/70">
+          <h2 className="mb-6 text-xl text-white">
+            {lang === 'de' ? 'Zusatzleistungen' : lang === 'fr' ? 'Prestations supplémentaires' : 'Additional services'}
+          </h2>
+          {(['interior', 'exterior'] as const).map((category) => (
+            <div key={category} className="mb-8">
+              <h3 className="mb-4 text-[#c9a553]">{t.servicesPage.features[category]}</h3>
+              {CATALOG_EXTRAS.filter((extra) => extra.category === category).map((extra) => (
+                <article key={extra.id} className="mb-4 border border-white/10 p-4">
+                  <h4>{extra.name[lang]}</h4>
+                  <p>{extra.description[lang]}</p>
+                  {extra.variants.map((variant) => <p key={variant.id}>{variant.label[lang]}: {variant.price} CHF</p>)}
+                  {extra.variablePrice && <p>{variablePriceNotice[lang]}</p>}
+                </article>
+              ))}
+            </div>
+          ))}
+        </section>
       </div>
     </section>
   );
@@ -319,9 +346,9 @@ function SSRServicesContent({ lang }: { lang: Lang }) {
 
 /** Language-indexed factual summaries for the packages page. */
 const PACKAGES_AI_CITE: Record<Lang, string> = {
-  de: 'RCC bietet mobile Fahrzeugreinigung in der Schweiz in mehreren Paketen an: Innenreinigung, Aussenreinigung und Komplettreinigung (Innen + Aussen). Die Pakete sind nach Fahrzeuggrösse gestaffelt ,  Kleinwagen, Kompakt-/Mittelklasse, SUV und Vans. Preise ab CHF 85.',
-  en: 'RCC offers mobile vehicle cleaning in Switzerland across several packages: interior cleaning, exterior cleaning, and full combined packages (interior + exterior). Packages are tiered by vehicle size ,  compact, mid-size, SUV, and van. Prices from CHF 85.',
-  fr: "RCC propose des formules de nettoyage automobile mobile en Suisse : nettoyage intérieur, nettoyage extérieur et nettoyage complet (intérieur + extérieur). Les formules sont échelonnées selon la taille du véhicule ,  compacte, moyenne, SUV et van. À partir de CHF 85.",
+  de: 'RCC bietet sechs Pakete in Standard und Premium für Innenreinigung, Aussenreinigung und Komplettreinigung. Drei Fahrzeugkategorien: Kleinwagen (Kompaktwagen & Coupés), Mittelklasse (Limousinen & SUVs) und extra grosse Autos (7-Sitzer, Vans, Lieferwagen). Aussenreinigung ab CHF 95, Innenreinigung ab CHF 100, Komplettreinigung ab CHF 150. 14 Zusatzleistungen sind separat wählbar.',
+  en: 'RCC offers six Standard and Premium packages for interior, exterior and combined cleaning. Three vehicle categories: small cars (compact cars and coupés), mid-size cars (saloons and SUVs), and extra-large vehicles (7-seaters, vans and delivery vans). Exterior cleaning from CHF 95, interior from CHF 100, combined from CHF 150. 14 optional extras are available.',
+  fr: "RCC propose six forfaits Standard et Premium pour le nettoyage intérieur, extérieur et complet. Trois catégories : petites voitures (compactes et coupés), classe moyenne (berlines et SUV) et très grands véhicules (7 places, vans et utilitaires). Extérieur dès CHF 95, intérieur dès CHF 100, complet dès CHF 150. 14 prestations supplémentaires sont disponibles.",
 };
 
 function SSRPackagesPage({ lang }: { lang: Lang }) {
@@ -540,7 +567,7 @@ function SSRServiceDetailPage({
                   <h3 className="text-base font-semibold uppercase text-white mb-2">{service.nameDE}</h3>
                   <p className="text-sm font-light text-white/55 mb-4">{service.descriptionDE}</p>
                   <ul className="space-y-1 mb-4">
-                    {allFeatures.slice(0, 6).map((f) => (
+                    {allFeatures.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-xs font-light text-white/60">
                         <Check className="h-3 w-3 text-[#c9a553] shrink-0 mt-0.5" />
                         {f}
@@ -614,12 +641,12 @@ function SSRInnenreinigungPage() {
       ]}
       h1={'Innenreinigung\nfür Ihr Fahrzeug'}
       eyebrow="Autoinnenreinigung Schweiz"
-      lead="Professionelle Innenreinigung für Ihren Fahrzeuginnenraum. RCC reinigt Fahrgastraum, Sitze, Armaturenbrett, Türverkleidungen und Fussmatten ,  mobil in der Schweiz."
-      coverage={['Fahrgastraum und Kofferraum saugen', 'Fussmatten saugen', 'Armaturenbrett feucht abwischen', 'Türen und Türinnenkanten reinigen', 'Lederausstattung feucht abwischen', 'Scheiben innen reinigen', 'Fussmatten shampoonieren (Premium)']}
+      lead="Professionelle Innenreinigung mit Druckluft, Saugen, Armaturenbrett, Türverkleidungen, Türfalzen und Seitenscheiben. Premium umfasst zusätzlich Lederreinigung und Fussmatten-Tiefenreinigung."
+      coverage={['Fahrgastraum und Kofferraum saugen', 'Zwischenräume mit Druckluft reinigen', 'Armaturenbrett reinigen', 'Türverkleidungen und Türfalze reinigen', 'Seitenscheiben innen reinigen', 'Lüftungsdüsen und Detailreinigung (Premium)', 'Lederreinigung und Fussmatten-Tiefenreinigung (Premium)']}
       category="interior"
       faqs={[
-        { q: 'Was umfasst die Innenreinigung?', a: 'Saugen des Fahrgastraums, Reinigen der Scheiben innen, Abwischen von Armaturenbrett, Türverkleidungen und Lederausstattung sowie Reinigung der Fussmatten.' },
-        { q: 'Was bietet das Premium-Paket zusätzlich?', a: 'Intensive Fussmattenreinigung mit Shampoo sowie detaillierte Reinigung von Cockpit und Türen mit Bürste.' },
+        { q: 'Was umfasst die Innenreinigung?', a: 'Druckluftreinigung von Zwischenräumen, Saugen von Fahrgastraum und Kofferraum, Reinigung von Armaturenbrett, Türverkleidungen, Türfalzen und Seitenscheiben innen.' },
+        { q: 'Was bietet das Premium-Paket zusätzlich?', a: 'Lüftungsdüsenreinigung, Detailreinigung von Cockpit und Türen mit Pinseln, Lederreinigung, Pflege der Türverkleidungen und Fussmatten shampoonieren mit Sprühextraktion.' },
       ]}
     />
   );
@@ -635,11 +662,11 @@ function SSRAussenreinigungPage() {
       ]}
       h1={'Professionelle\nAussenreinigung'}
       eyebrow="Autoaussenreinigung Schweiz"
-      lead="Sorgfältige Aussenpflege für Ihr Fahrzeug: detaillierte Handwäsche, Glanzpolitur, Felgenreinigung und Scheibenreinigung von Hand ,  mobil in der Schweiz."
-      coverage={['Detaillierte Handwäsche', 'Glanzpolitur von Hand', 'Seitenscheiben aussen reinigen', 'Felgen reinigen', 'Tankdeckel reinigen', 'Reifen reinigen (Premium)', 'Insektenreste entfernen (Premium)']}
+      lead="Sorgfältige Aussenpflege für Ihr Fahrzeug: lackschonende Handwäsche, Felgen-, Reifen- und Seitenscheibenreinigung, mobil in der Schweiz."
+      coverage={['Lackschonende Handwäsche', 'Felgen und Reifen reinigen', 'Tankdeckel reinigen', 'Seitenscheiben aussen reinigen', 'Lackschonend trocknen', 'Flugrost und Insektenreste entfernen (Premium)', 'Front- und Heckscheibe aussen reinigen (Premium)', 'Reifenpflege (Premium)']}
       category="exterior"
       faqs={[
-        { q: 'Was umfasst die Aussenreinigung?', a: 'Detaillierte Handwäsche, Glanzpolitur von Hand, Reinigung der Seitenscheiben aussen, Felgenreinigung, Reinigung des Tankdeckels und sorgfältiges Trocknen.' },
+        { q: 'Was umfasst die Aussenreinigung?', a: 'Lackschonende Handwäsche, Felgen- und Reifenreinigung, Tankdeckel und innerer Bereich, Seitenscheiben aussen und sorgfältiges Trocknen. Premium ergänzt unter anderem Hochdruck-Vorreinigung, Flugrost- und Insektenentfernung sowie Reifenpflege.' },
         { q: 'Was bietet das Premium-Paket zusätzlich?', a: 'Reifenreinigung, Reifenglanzpflege und Entfernen von anhaftenden Insektenresten vom Lack.' },
       ]}
     />
@@ -657,11 +684,11 @@ function SSRFahrzeugaufbereitungPage() {
       h1={'Professionelle\nFahrzeugaufbereitung'}
       eyebrow="Komplettreinigung Schweiz"
       lead="Vollständige Fahrzeugaufbereitung von RCC: Innen- und Aussenreinigung in einem kombinierten Paket ,  professionelle Rundum-Pflege mobil in der Schweiz."
-      coverage={['Komplette Innenreinigung', 'Komplette Aussenreinigung', 'Handwäsche und Glanzpolitur', 'Fahrgastraum und Kofferraum', 'Felgen und Scheiben', 'Intensive Fussmattenreinigung (Premium)']}
+      coverage={['Innenreinigung Standard oder Premium', 'Aussenreinigung Standard oder Premium', 'Lackschonende Handwäsche', 'Fahrgastraum und Kofferraum saugen', 'Felgen und Seitenscheiben', 'Lederreinigung und Fussmatten-Tiefenreinigung (Premium)']}
       category="inside-outside"
       faqs={[
         { q: 'Was ist Fahrzeugaufbereitung?', a: 'Die Fahrzeugaufbereitung umfasst die vollständige Innen- und Aussenreinigung in einem kombinierten Paket.' },
-        { q: 'Was kostet eine Komplettaufbereitung?', a: 'Innen & Aussen Basic: CHF 170 bis 320. Innen & Aussen Premium: CHF 200 bis 400. Je nach Fahrzeuggrösse.' },
+        { q: 'Was kostet eine Komplettaufbereitung?', a: 'Standard Paket: CHF 150, 219 oder 279. Premium Aufbereitung Paket: CHF 279, 329 oder 400. Je nach Fahrzeugkategorie. Zusatzleistungen werden separat berechnet.' },
       ]}
     />
   );
@@ -724,7 +751,7 @@ function SSRZuerichPage() {
   const services = STATIC_SERVICES.filter((s) => s.category === 'inside-outside');
   const faqs = [
     { q: 'Bietet RCC mobile Autoreinigung in Zürich an?', a: 'Ja, RCC bietet professionelle mobile Autoreinigung im Raum Zürich an.' },
-    { q: 'Welche Pakete sind in Zürich verfügbar?', a: 'Alle RCC-Pakete: Innenreinigung, Aussenreinigung und Komplettreinigung, jeweils Basic und Premium.' },
+    { q: 'Welche Pakete sind in Zürich verfügbar?', a: 'Alle sechs RCC-Pakete: Innenreinigung, Aussenreinigung und Komplettreinigung, jeweils Standard und Premium.' },
     { q: 'Wie buche ich eine Autoreinigung in Zürich?', a: 'Nutzen Sie das Offertformular oder kontaktieren Sie uns per Telefon oder WhatsApp.' },
     { q: 'Welche Stadtteile in Zürich werden bedient?', a: 'Wir sind im gesamten Stadtgebiet Zürich sowie in der Agglomeration tätig.' },
   ];

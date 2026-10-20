@@ -5,6 +5,8 @@
  * RCC Mobile Autopflege API
  * OpenAPI spec version: 0.1.0
  */
+import type { ExtraSelection } from './extraSelection';
+import type { QuoteInputCarType } from './quoteInputCarType';
 import type { QuoteInputLanguage } from './quoteInputLanguage';
 
 export interface QuoteInput {
@@ -18,8 +20,9 @@ export interface QuoteInput {
   canton: string;
   /** @minLength 1 */
   serviceType: string;
-  /** @minLength 1 */
-  carType: string;
+  carType: QuoteInputCarType;
+  /** @maxItems 14 */
+  extras?: ExtraSelection[];
   language?: QuoteInputLanguage;
   message?: string;
 }

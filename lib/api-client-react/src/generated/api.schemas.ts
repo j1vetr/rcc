@@ -9,6 +9,28 @@ export interface HealthStatus {
   status: string;
 }
 
+export interface LocalizedLabel {
+  de: string;
+  en: string;
+  fr: string;
+}
+
+export interface PricedExtra {
+  id: string;
+  variantId: string;
+  name: LocalizedLabel;
+  variantLabel: LocalizedLabel;
+  price: number;
+}
+
+export interface QuotePricing {
+  packagePrice: number;
+  extrasPrice: number;
+  total: number;
+  variablePrice: boolean;
+  extras: PricedExtra[];
+}
+
 export interface Quote {
   id: number;
   name: string;
@@ -19,8 +41,18 @@ export interface Quote {
   carType: string;
   /** @nullable */
   message?: string | null;
+  pricing?: QuotePricing | null;
   createdAt: string;
 }
+
+export type QuoteInputCarType = typeof QuoteInputCarType[keyof typeof QuoteInputCarType];
+
+
+export const QuoteInputCarType = {
+  small: 'small',
+  medium: 'medium',
+  xl: 'xl',
+} as const;
 
 export type QuoteInputLanguage = typeof QuoteInputLanguage[keyof typeof QuoteInputLanguage];
 
@@ -30,6 +62,11 @@ export const QuoteInputLanguage = {
   fr: 'fr',
   en: 'en',
 } as const;
+
+export interface ExtraSelection {
+  id: string;
+  variantId: string;
+}
 
 export interface QuoteInput {
   /** @minLength 1 */
@@ -42,8 +79,9 @@ export interface QuoteInput {
   canton: string;
   /** @minLength 1 */
   serviceType: string;
-  /** @minLength 1 */
-  carType: string;
+  carType: QuoteInputCarType;
+  /** @maxItems 14 */
+  extras?: ExtraSelection[];
   language?: QuoteInputLanguage;
   message?: string;
 }
@@ -68,7 +106,6 @@ export const ServiceLevel = {
 export interface ServicePrices {
   small: number;
   medium: number;
-  large: number;
   xl: number;
 }
 

@@ -34,7 +34,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           'Nach Fahrten auf gestreuten Strassen sollte das Fahrzeug möglichst zeitnah gereinigt werden, um Salz vom Lack und Unterboden zu entfernen. Bei der Aussenreinigung im Winter legt RCC besonderes Augenmerk auf Radkästen, Schweller und Türunterkanten ,  Bereiche, in denen sich Salz und Schmutz besonders absetzen.',
-          'Die Aussenreinigung umfasst bei RCC Handwäsche der Karosserie, Felgenreinigung und sorgfältiges Trocknen. Das Premium-Paket ergänzt Reifenpflege und Insektenentfernung.',
+          "Die Aussenreinigung Standard umfasst bei RCC die lackschonende Handwäsche der Karosserie, Felgen, Reifen, Tankdeckel, Seitenfenster aussen und sorgfältiges Trocknen. Premium ergänzt unter anderem Hochdruck-Vorreinigung, Insekten- und Flugrostentfernung sowie Reifenpflege.",
         ],
       },
       {
@@ -112,7 +112,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           'After driving on salted roads, cleaning the vehicle as soon as possible helps remove salt from the paintwork and undercarriage. RCC pays particular attention to wheel arches, sills and door bottom edges in winter ,  areas where salt and dirt accumulate most heavily.',
-          'RCC exterior cleaning includes a hand wash of the bodywork, wheel cleaning and careful drying. The Premium package adds tyre care and insect removal.',
+          "RCC Exterior Cleaning Standard includes a paint-safe hand wash of the bodywork, wheel rims, tyres, fuel flap, exterior side windows and careful drying. Premium adds, among other steps, a high-pressure pre-wash, insect and flash rust removal and tyre care.",
         ],
       },
       {
@@ -182,7 +182,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         level: 'h2',
         paragraphs: [
           "Après des trajets sur des routes salées, nettoyer le véhicule le plus tôt possible aide à éliminer le sel de la peinture et du dessous de caisse. RCC porte une attention particulière aux passages de roues, bas de caisse et bords inférieurs des portes en hiver.",
-          "Le nettoyage extérieur RCC comprend un lavage à la main de la carrosserie, le nettoyage des jantes et un séchage soigné. Le forfait Premium ajoute l'entretien des pneus et l'élimination des insectes.",
+          "Le nettoyage extérieur Standard RCC comprend un lavage à la main de la carrosserie respectueux de la peinture, les jantes, les pneus, la trappe à carburant, les vitres latérales extérieures et un séchage soigné. Premium ajoute notamment un prélavage haute pression, l'élimination des insectes et de la rouille volante et le soin des pneus.",
         ],
       },
       {

@@ -46,7 +46,7 @@ export const BUSINESS = {
     },
   },
   domain: 'https://royalcarcleaning.ch',
-  priceRange: 'CHF 85 to 400',
+  priceRange: 'CHF 95 to 400',
   currenciesAccepted: 'CHF',
   areaServed: 'Switzerland',
   geo: {

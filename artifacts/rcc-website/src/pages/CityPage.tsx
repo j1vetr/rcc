@@ -35,22 +35,22 @@ const SERVICE_PATHS: Record<string, Record<Lang, string>> = {
 
 const SERVICE_LABELS: Record<Lang, Array<{ key: string; title: string; description: string; from: number }>> = {
   de: [
-    { key: 'mobile', title: 'Mobile Autoreinigung', description: 'Professionelle Reinigung direkt am vereinbarten Standort.', from: 85 },
-    { key: 'interior', title: 'Innenreinigung', description: 'Fahrgastraum, Sitze, Armaturenbrett und Fussmatten.', from: 85 },
-    { key: 'exterior', title: 'Aussenreinigung', description: 'Handwäsche, Felgen, Scheiben und Karosseriepflege.', from: 85 },
-    { key: 'detailing', title: 'Fahrzeugaufbereitung', description: 'Komplette Pflege von Innenraum und Aussenflächen.', from: 170 },
+    { key: 'mobile', title: 'Mobile Autoreinigung', description: 'Professionelle Reinigung direkt am vereinbarten Standort.', from: 95 },
+    { key: 'interior', title: 'Innenreinigung', description: 'Fahrgastraum, Kofferraum, Armaturenbrett und Türverkleidungen.', from: 100 },
+    { key: 'exterior', title: 'Aussenreinigung', description: 'Handwäsche, Felgen, Reifen und Seitenscheiben.', from: 95 },
+    { key: 'detailing', title: 'Fahrzeugaufbereitung', description: 'Komplette Pflege von Innenraum und Aussenflächen.', from: 150 },
   ],
   en: [
-    { key: 'mobile', title: 'Mobile Car Cleaning', description: 'Professional cleaning at your agreed location.', from: 85 },
-    { key: 'interior', title: 'Interior Cleaning', description: 'Cabin, seats, dashboard and floor mats.', from: 85 },
-    { key: 'exterior', title: 'Exterior Cleaning', description: 'Hand wash, wheels, windows and bodywork care.', from: 85 },
-    { key: 'detailing', title: 'Car Detailing', description: 'Complete care for the interior and exterior.', from: 170 },
+    { key: 'mobile', title: 'Mobile Car Cleaning', description: 'Professional cleaning at your agreed location.', from: 95 },
+    { key: 'interior', title: 'Interior Cleaning', description: 'Cabin, boot, dashboard and door panels.', from: 100 },
+    { key: 'exterior', title: 'Exterior Cleaning', description: 'Hand wash, wheels, tyres and side windows.', from: 95 },
+    { key: 'detailing', title: 'Car Detailing', description: 'Complete care for the interior and exterior.', from: 150 },
   ],
   fr: [
-    { key: 'mobile', title: 'Nettoyage voiture mobile', description: 'Nettoyage professionnel au lieu convenu.', from: 85 },
-    { key: 'interior', title: 'Nettoyage intérieur', description: 'Habitacle, sièges, tableau de bord et tapis.', from: 85 },
-    { key: 'exterior', title: 'Nettoyage extérieur', description: 'Lavage à la main, jantes, vitres et carrosserie.', from: 85 },
-    { key: 'detailing', title: 'Préparation du véhicule', description: 'Entretien complet de l’intérieur et de l’extérieur.', from: 170 },
+    { key: 'mobile', title: 'Nettoyage voiture mobile', description: 'Nettoyage professionnel au lieu convenu.', from: 95 },
+    { key: 'interior', title: 'Nettoyage intérieur', description: 'Habitacle, coffre, tableau de bord et garnitures de portes.', from: 100 },
+    { key: 'exterior', title: 'Nettoyage extérieur', description: 'Lavage à la main, jantes, pneus et vitres latérales.', from: 95 },
+    { key: 'detailing', title: 'Préparation du véhicule', description: 'Entretien complet de l’intérieur et de l’extérieur.', from: 150 },
   ],
 };
 

@@ -179,6 +179,9 @@ importers:
       '@workspace/db':
         specifier: workspace:*
         version: link:../../lib/db
+      '@workspace/service-catalog':
+        specifier: workspace:*
+        version: link:../../lib/service-catalog
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -417,6 +420,9 @@ importers:
 
   artifacts/rcc-website:
     dependencies:
+      '@workspace/service-catalog':
+        specifier: workspace:*
+        version: link:../../lib/service-catalog
       d3-geo:
         specifier: ^3.1.1
         version: 3.1.1
@@ -671,6 +677,8 @@ importers:
       drizzle-kit:
         specifier: ^0.31.10
         version: 0.31.10
+
+  lib/service-catalog: {}
 
   scripts:
     devDependencies:

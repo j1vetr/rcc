@@ -4,6 +4,9 @@
   "files": [],
   "references": [
     {
+      "path": "./lib/service-catalog"
+    },
+    {
       "path": "./lib/db"
     },
     {

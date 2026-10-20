@@ -6,6 +6,7 @@
  */
 
 import ServiceDetailPage, { type ServiceConfig } from './ServiceDetailPage';
+import { vehicleCategories } from '@workspace/service-catalog';
 import { useTranslation } from '@/i18n/LanguageContext';
 import type { Lang } from '@/seo/routes';
 
@@ -15,15 +16,15 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
     h1: 'Fahrzeugaufbereitung\nSchweiz',
     lead: 'Komplette Rundum-Pflege Ihres Fahrzeugs in einem Paket: Innen- und Aussenreinigung, gleichzeitig und professionell ,  direkt bei Ihnen vor Ort in der Schweiz.',
     coverage: [
-      'Innenreinigung: Saugen, Scheiben, Armaturenbrett',
-      'Innenreinigung: Türen, Leder, Fussmatten',
-      'Aussenreinigung: Detaillierte Handwäsche',
-      'Aussenreinigung: Glanzpolitur von Hand',
-      'Aussenreinigung: Felgenreinigung',
+      'Innen: Druckluft, Absaugen von Fahrgastraum und Kofferraum',
+      'Innen: Armaturenbrett, Türverkleidungen, Türfalze, Seitenfenster',
+      'Aussen: Lackschonende Handwäsche der gesamten Karosserie',
+      'Aussen: Felgen, Reifen, Tankdeckel und Seitenfenster',
+      'Premium: Lederreinigung, Pinsel-Tiefenreinigung, shampoonierte Fussmatten',
       'Komplettreinigung in einem Paket',
     ],
     packageCategories: ['inside-outside'],
-    vehicles: ['Klein (Smart, Mini, Fiat 500)', 'Mittel (VW Golf, Passat)', 'Gross (SUV)', 'Extra (Van, 7-Sitzer)'],
+    vehicles: Object.values(vehicleCategories.de),
     breadcrumbs: [
       { label: 'RCC Royal Car Cleaning', href: '/de/' },
       { label: 'Leistungen', href: '/de/leistungen/' },
@@ -31,8 +32,8 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
     ],
     faqs: [
       { question: 'Was ist Fahrzeugaufbereitung?', answer: 'Die Fahrzeugaufbereitung umfasst die vollständige Innen- und Aussenreinigung Ihres Fahrzeugs in einem kombinierten Paket. RCC pflegt Innenraum und Karosserie gleichzeitig.' },
-      { question: 'Welche Pakete gibt es für die Komplettaufbereitung?', answer: 'RCC bietet Innen & Aussen Basic (CHF 170–320) und Innen & Aussen Premium (CHF 200–400) an. Der genaue Preis richtet sich nach Ihrer Fahrzeuggrösse.' },
-      { question: 'Wie lange dauert eine Fahrzeugaufbereitung?', answer: 'Die Dauer variiert je nach gewähltem Paket und Fahrzeuggrösse. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer.' },
+      { question: 'Welche Pakete gibt es für die Komplettaufbereitung?', answer: 'RCC bietet das Standard Paket (CHF 150, 219 oder 279) und das Premium Aufbereitung Paket (CHF 279, 329 oder 400) an. Der genaue Preis richtet sich nach einer von drei Fahrzeugkategorien. Extras werden separat berechnet.' },
+      { question: 'Wie lange dauert eine Fahrzeugaufbereitung?', answer: 'Die Dauer variiert je nach gewähltem Paket und Fahrzeugkategorie. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer.' },
     ],
   },
   en: {
@@ -40,15 +41,15 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
     h1: 'Complete Car Detailing\nin Switzerland',
     lead: 'Complete all-round care for your vehicle in one package: interior and exterior cleaning, simultaneously and professionally ,  directly at your location.',
     coverage: [
-      'Interior: vacuuming, windows, dashboard',
-      'Interior: doors, leather, floor mats',
-      'Exterior: detailed hand wash',
-      'Exterior: hand-applied gloss polish',
-      'Exterior: wheel cleaning',
-      'Full cleaning in a single package',
+      'Interior: compressed air, vacuuming of passenger compartment and boot',
+      'Interior: dashboard, door panels, door jambs, side windows',
+      'Exterior: paint-safe hand wash of the entire body',
+      'Exterior: wheel rims, tyres, fuel flap and side windows',
+      'Premium: leather cleaning, deep brush cleaning, shampooed floor mats',
+      'Complete cleaning in one package',
     ],
     packageCategories: ['inside-outside'],
-    vehicles: ['Small (Smart, Mini, Fiat 500)', 'Medium (VW Golf, Passat)', 'Large (SUV)', 'XL (Van, 7-seater)'],
+    vehicles: Object.values(vehicleCategories.en),
     breadcrumbs: [
       { label: 'RCC Royal Car Cleaning', href: '/en/' },
       { label: 'Services', href: '/en/services/' },
@@ -56,8 +57,8 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
     ],
     faqs: [
       { question: 'What is car detailing?', answer: 'Car detailing means a complete interior and exterior cleaning of your vehicle in one combined package. RCC cares for the interior and bodywork at the same time.' },
-      { question: 'Which packages are available for complete detailing?', answer: 'RCC offers Interior & Exterior Basic (CHF 170–320) and Interior & Exterior Premium (CHF 200–400). The exact price depends on your vehicle size.' },
-      { question: 'How long does a full detailing take?', answer: 'Duration varies by chosen package and vehicle size. Please ask when requesting your quote for the exact time estimate.' },
+      { question: 'Which packages are available for complete detailing?', answer: 'RCC offers the Standard Package (CHF 150, 219 or 279) and the Premium Detailing Package (CHF 279, 329 or 400). The exact price depends on one of three vehicle categories. Extras are charged separately.' },
+      { question: 'How long does a full detailing take?', answer: 'Duration varies by chosen package and vehicle category. Please ask when requesting your quote for the exact time estimate.' },
     ],
   },
   fr: {
@@ -65,15 +66,15 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
     h1: 'Préparation complète\nvéhicule Suisse',
     lead: "Entretien complet de votre véhicule en un seul forfait : nettoyage intérieur et extérieur, simultanément et professionnellement ,  directement chez vous en Suisse.",
     coverage: [
-      "Intérieur : aspiration, vitres, tableau de bord",
-      "Intérieur : portes, cuir, tapis",
-      'Extérieur : lavage à la main détaillé',
-      'Extérieur : polissage brillant à la main',
-      'Extérieur : nettoyage des jantes',
-      'Nettoyage complet en un seul forfait',
+      "Intérieur : air comprimé, aspiration de l'habitacle et du coffre",
+      'Intérieur : tableau de bord, panneaux et feuillures de porte, vitres latérales',
+      'Extérieur : lavage à la main de toute la carrosserie',
+      'Extérieur : jantes, pneus, trappe à carburant et vitres latérales',
+      'Premium : nettoyage du cuir, nettoyage au pinceau, tapis shampouinés',
+      'Nettoyage complet en un forfait',
     ],
     packageCategories: ['inside-outside'],
-    vehicles: ['Petite (Smart, Mini, Fiat 500)', 'Moyenne (VW Golf, Passat)', 'Grande (SUV)', 'XL (Van, 7 places)'],
+    vehicles: Object.values(vehicleCategories.fr),
     breadcrumbs: [
       { label: 'RCC Royal Car Cleaning', href: '/fr/' },
       { label: 'Services', href: '/fr/prestations/' },
@@ -81,8 +82,8 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
     ],
     faqs: [
       { question: 'Qu\'est-ce que la préparation du véhicule ?', answer: "La préparation du véhicule comprend le nettoyage complet de l'intérieur et de l'extérieur en un seul forfait combiné. RCC s'occupe de l'habitacle et de la carrosserie en même temps." },
-      { question: 'Quels forfaits existent pour la préparation complète ?', answer: 'RCC propose Intérieur & Extérieur Basic (CHF 170–320) et Intérieur & Extérieur Premium (CHF 200–400). Le prix exact dépend de la taille de votre véhicule.' },
-      { question: 'Combien de temps dure une préparation complète ?', answer: 'La durée varie selon le forfait choisi et la taille du véhicule. Veuillez nous demander lors de votre demande de devis pour une estimation précise.' },
+      { question: 'Quels forfaits existent pour la préparation complète ?', answer: 'RCC propose le forfait Standard (CHF 150, 219 ou 279) et le forfait Préparation Premium (CHF 279, 329 ou 400). Le prix exact dépend de l’une des trois catégories de véhicules. Les options sont facturées séparément.' },
+      { question: 'Combien de temps dure une préparation complète ?', answer: 'La durée varie selon le forfait choisi et la catégorie du véhicule. Veuillez nous demander lors de votre demande de devis pour une estimation précise.' },
     ],
   },
 };

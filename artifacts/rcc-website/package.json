@@ -85,6 +85,7 @@
     "zod": "catalog:"
   },
   "dependencies": {
+    "@workspace/service-catalog": "workspace:*",
     "d3-geo": "^3.1.1"
   }
 }

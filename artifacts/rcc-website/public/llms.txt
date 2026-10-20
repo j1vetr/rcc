@@ -8,7 +8,7 @@
 **Phone:** +41 78 880 38 84  
 **Email:** Info@royalcarcleaning.ch  
 **Address:** Wechselächerstrasse 25, 8103 Zürich, Switzerland  
-**Price range:** CHF 85 – 400  
+**Package price range:** CHF 95 to 400, extras priced separately
 **Social:** Instagram @royalcarcleaning.ch · TikTok @royalcarcleaning.ch
 
 ---
@@ -40,7 +40,19 @@
 
 ## Packages
 
-RCC offers tiered service packages for different vehicle sizes and cleaning levels. Pricing starts from CHF 85.
+RCC offers six packages in Standard and Premium variants for three vehicle categories: small cars (compact cars and coupés), mid-size cars (saloons and SUVs), and extra-large vehicles (7-seaters, vans and delivery vans).
+
+Prices in CHF, ordered small / mid-size / extra-large:
+- Standard Paket, interior and exterior: 150 / 219 / 279
+- Premium Aufbereitung Paket, interior and exterior: 279 / 329 / 400
+- Interior Standard: 100 / 120 / 140
+- Interior Premium: 199 / 239 / 289
+- Exterior Standard: 95 / 129 / 169
+- Exterior Premium: 109 / 149 / 159
+
+Interior extras: carpet deep cleaning CHF 45, fabric seat deep cleaning CHF 89 for a driver or passenger seat or CHF 159 for 5 seats, leather care CHF 100, pet hair removal CHF 80, plastic and rubber care CHF 25, headliner cleaning CHF 89.
+Exterior extras: wax coating CHF 25, plastic and rubber care CHF 25, wheel arch cleaning CHF 35, iron fallout removal CHF 50, windscreen sealant CHF 40, stubborn insect residue removal CHF 25, tyre care and blackening CHF 15, wheel deep cleaning CHF 25.
+Pet hair removal and headliner cleaning prices may vary depending on vehicle condition. Travel charges remain separate as described on the packages page.
 
 - Pakete & Preise (DE): https://royalcarcleaning.ch/de/pakete/
 - Packages & Pricing (EN): https://royalcarcleaning.ch/en/packages/

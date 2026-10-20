@@ -70,17 +70,17 @@ const META: MetaMap = {
     de: {
       title: 'Autoreinigung Pakete & Preise | RCC Schweiz',
       description:
-        'Alle Reinigungspakete von RCC mit genauen Preisen nach Fahrzeuggrösse. Innen-, Aussen- und Komplettreinigung ,  wählen Sie Ihr Programm.',
+        'Alle Reinigungspakete von RCC mit genauen Preisen nach Fahrzeugkategorie. Innen-, Aussen- und Komplettreinigung ,  wählen Sie Ihr Programm.',
     },
     en: {
       title: 'Car Cleaning Packages & Prices | RCC Switzerland',
       description:
-        'All RCC cleaning packages with exact prices by vehicle size. Interior, exterior and complete cleaning ,  choose your programme.',
+        'All RCC cleaning packages with exact prices by vehicle category. Interior, exterior and complete cleaning ,  choose your programme.',
     },
     fr: {
       title: 'Forfaits Nettoyage Auto & Prix | RCC Suisse',
       description:
-        "Tous les forfaits RCC avec prix exacts selon la taille du véhicule. Nettoyage intérieur, extérieur et complet ,  choisissez votre programme.",
+        "Tous les forfaits RCC avec prix exacts selon la catégorie du véhicule. Nettoyage intérieur, extérieur et complet ,  choisissez votre programme.",
     },
   },
   leistungen: {
@@ -303,17 +303,17 @@ const META: MetaMap = {
     de: {
       title: 'Auto Innenreinigung: Was wirklich zählt | RCC Ratgeber',
       description:
-        'Schritt für Schritt durch die Autoinnenreinigung ,  Sitze, Teppiche, Cockpit, Scheiben. Wann ist Basic ausreichend, wann lohnt Premium? RCC Ratgeber Autopflege.',
+        'Schritt für Schritt durch die Autoinnenreinigung, Sitze, Teppiche, Cockpit, Scheiben. Wann ist Standard ausreichend, wann lohnt Premium? RCC Ratgeber Autopflege.',
     },
     en: {
       title: 'Car Interior Cleaning: What Really Matters | RCC Guide',
       description:
-        'Step by step through car interior cleaning ,  seats, carpets, dashboard, windows. When is Basic enough, when is Premium worth it? RCC Car Care Guide.',
+        'Step by step through car interior cleaning, seats, carpets, dashboard, windows. When is Standard enough, when is Premium worth it? RCC Car Care Guide.',
     },
     fr: {
       title: "Nettoyage Intérieur Voiture : l'essentiel | Guide RCC",
       description:
-        "Étape par étape : nettoyage intérieur voiture ,  sièges, tapis, tableau de bord, vitres. Quand le Basic suffit-il, quand le Premium vaut-il la peine ? Guide RCC.",
+        "Étape par étape : nettoyage intérieur voiture, sièges, tapis, tableau de bord, vitres. Quand le Standard suffit-il, quand le Premium vaut-il la peine ? Guide RCC.",
     },
   },
 
@@ -322,7 +322,7 @@ const META: MetaMap = {
     de: {
       title: 'Autoaufbereitung Schweiz: Was beeinflusst den Preis? | RCC',
       description:
-        'Welche Faktoren bestimmen den Preis einer professionellen Autoaufbereitung in der Schweiz? Fahrzeuggrösse, Reinigungsumfang, mobiler Service. RCC Ratgeber.',
+        'Welche Faktoren bestimmen den Preis einer professionellen Autoaufbereitung in der Schweiz? Fahrzeugkategorie, Reinigungsumfang, mobiler Service. RCC Ratgeber.',
     },
   },
 
@@ -620,11 +620,11 @@ function buildZuerichJsonLd(canonical: string): object {
     },
     {
       question: 'Welche Reinigungspakete sind in Zürich verfügbar?',
-      answer: 'In Zürich sind alle RCC-Pakete verfügbar: Innenreinigung, Aussenreinigung und Komplettreinigung (Innen & Aussen) ,  jeweils in Basic und Premium.',
+      answer: 'In Zürich sind alle sechs RCC-Pakete verfügbar: Innenreinigung, Aussenreinigung und Komplettreinigung (Innen & Aussen), jeweils in Standard und Premium.',
     },
     {
       question: 'Wie lange dauert eine mobile Autoreinigung in Zürich?',
-      answer: 'Die Dauer variiert je nach gewähltem Paket und Fahrzeuggrösse. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer für Ihr Fahrzeug.',
+      answer: 'Die Dauer variiert je nach gewähltem Paket und Fahrzeugkategorie. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer für Ihr Fahrzeug.',
     },
     {
       question: 'Wie kann ich eine Autoreinigung in Zürich buchen?',
@@ -678,7 +678,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       faqs: [
         { question: 'Was ist mobile Autoreinigung?', answer: 'Bei der mobilen Autoreinigung kommt das RCC-Team mit dem professionellen Equipment direkt zu Ihrem Fahrzeug ,  ob zu Hause, am Arbeitsplatz oder an einem anderen Ort.' },
         { question: 'Wo bietet RCC mobile Autoreinigung an?', answer: 'RCC ist in Zürich zuhause und als mobiler Service in der ganzen Schweiz für Sie im Einsatz. Kontaktieren Sie uns für Ihren gewünschten Termin und Standort.' },
-        { question: 'Welche Fahrzeugtypen werden gereinigt?', answer: 'RCC reinigt Klein- und Kompaktwagen, Mittelklasse, SUV und grössere Fahrzeuge wie Vans und 7-Sitzer. Die Grösse bestimmt den Paketpreis.' },
+        { question: 'Welche Fahrzeugtypen werden gereinigt?', answer: 'RCC reinigt drei Fahrzeugkategorien: Kleinwagen (Kompaktwagen & Coupés), Mittelklasse (Limousinen & SUVs) sowie Extra grosse Autos (7-Sitzer, Vans, Lieferwagen). Die Kategorie bestimmt den Paketpreis.' },
       ],
     },
     en: {
@@ -688,7 +688,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       faqs: [
         { question: 'What is mobile car cleaning?', answer: 'Mobile car cleaning means the RCC team brings the full professional equipment directly to your vehicle ,  at home, at work, or at your location.' },
         { question: 'Where does RCC offer mobile car cleaning?', answer: 'Based in Zurich, RCC provides mobile car cleaning throughout Switzerland. Contact us to arrange your preferred appointment and location.' },
-        { question: 'Which vehicle types are cleaned?', answer: 'RCC cleans small cars, compact and mid-size vehicles, SUVs and larger vehicles such as vans and 7-seaters. Vehicle size determines the exact package price.' },
+        { question: 'Which vehicle types are cleaned?', answer: 'RCC cleans three vehicle categories: small cars (compact cars & coupés), mid-size (saloons & SUVs) and extra large vehicles (7-seaters, vans, delivery vans). The category determines the package price.' },
       ],
     },
     fr: {
@@ -698,7 +698,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       faqs: [
         { question: "Qu'est-ce que le nettoyage voiture mobile ?", answer: "Le nettoyage voiture mobile signifie que l'équipe RCC vient directement chez vous avec tout le matériel professionnel ,  à domicile, au bureau ou ailleurs." },
         { question: 'Où RCC propose-t-il le nettoyage voiture mobile ?', answer: 'Basé à Zurich, RCC propose un nettoyage automobile mobile dans toute la Suisse. Contactez-nous pour convenir du lieu et du rendez-vous souhaités.' },
-        { question: 'Quels types de véhicules sont nettoyés ?', answer: 'RCC nettoie les petites voitures, les compactes et berlines, les SUV ainsi que les grands véhicules comme les vans et 7 places. La taille du véhicule détermine le prix exact.' },
+        { question: "Quels types de véhicules sont nettoyés ?", answer: "RCC nettoie trois catégories de véhicules : petites voitures (compactes & coupés), catégorie moyenne (berlines & SUV) et très grands véhicules (7 places, monospaces, utilitaires). La catégorie détermine le prix du forfait." },
       ],
     },
   },
@@ -708,8 +708,8 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       desc: 'Professionelle Autoinnenreinigung durch RCC: Fahrgastraum, Sitze, Armaturenbrett und Türen ,  mobiler Service in der Schweiz.',
       breadcrumb: 'Innenreinigung',
       faqs: [
-        { question: 'Was umfasst die Innenreinigung bei RCC?', answer: 'Die Innenreinigung umfasst das Saugen des Fahrgastraums, Reinigen der Scheiben innen, Abwischen des Armaturenbretts, der Türverkleidungen und der Lederausstattung sowie das Reinigen der Fussmatten.' },
-        { question: 'Was bietet das Premium-Paket zusätzlich?', answer: 'Das Premium-Paket beinhaltet zusätzlich intensive Fussmattenreinigung mit Shampoo, detaillierte Reinigung von Cockpit und Türen mit Bürste sowie die Reinigung der Auspuffenden.' },
+        { question: 'Was umfasst die Innenreinigung bei RCC?', answer: 'Die Innenreinigung Standard umfasst Ausblasen mit Druckluft, Absaugen von Fahrgastraum und Kofferraum, Reinigung von Armaturenbrett, Türverkleidungen und Türfalzen sowie Seitenfenster innen.' },
+        { question: 'Was bietet das Premium-Paket zusätzlich?', answer: 'Die Innenreinigung Premium ergänzt die Reinigung der Lüftungsdüsen, Tiefenreinigung von Cockpit und Türen mit Pinseln, Pflege der Türverkleidungen, schonende Reinigung der Lederausstattung sowie shampoonierte und mit dem Sprühextraktor tiefengereinigte Fussmatten.' },
       ],
     },
     en: {
@@ -717,8 +717,8 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       desc: 'Professional car interior cleaning by RCC: passenger compartment, seats, dashboard and door panels ,  mobile service in Switzerland.',
       breadcrumb: 'Interior Cleaning',
       faqs: [
-        { question: 'What does interior cleaning include at RCC?', answer: 'Interior cleaning includes vacuuming the passenger compartment, cleaning interior windows, wiping the dashboard, door panels and leather trim, and cleaning floor mats.' },
-        { question: 'What does the Premium package add?', answer: 'The Premium package adds intensive shampoo cleaning of floor mats, detailed brush cleaning of the cockpit and doors, and cleaning of exhaust tips.' },
+        { question: 'What does interior cleaning include at RCC?', answer: 'Interior Cleaning Standard includes compressed-air cleaning, vacuuming the passenger compartment and boot, cleaning the dashboard, door panels and door jambs, and interior side windows.' },
+        { question: 'What does the Premium package add?', answer: 'Interior Cleaning Premium adds air vent cleaning, deep brush cleaning of the cockpit and doors, door panel care, gentle cleaning of the leather upholstery, and floor mats shampooed and deep cleaned with a spray extractor.' },
       ],
     },
     fr: {
@@ -726,8 +726,8 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       desc: "Nettoyage professionnel de l'habitacle par RCC : siège, tableau de bord, vitres et garnitures ,  service mobile en Suisse.",
       breadcrumb: "Nettoyage intérieur",
       faqs: [
-        { question: "Que comprend le nettoyage intérieur chez RCC ?", answer: "Le nettoyage intérieur comprend l'aspiration de l'habitacle, le nettoyage des vitres intérieures, l'essuyage du tableau de bord, des portes et des garnitures en cuir, ainsi que le nettoyage des tapis." },
-        { question: "Qu'apporte le forfait Premium en plus ?", answer: "Le forfait Premium ajoute le nettoyage intensif des tapis au shampooing, le nettoyage détaillé du cockpit et des portes à la brosse, et le nettoyage des embouts d'échappement." },
+        { question: "Que comprend le nettoyage intérieur chez RCC ?", answer: "Le nettoyage intérieur Standard comprend le soufflage à l'air comprimé, l'aspiration de l'habitacle et du coffre, le nettoyage du tableau de bord, des panneaux et des feuillures de porte, ainsi que des vitres latérales à l'intérieur." },
+        { question: "Qu'apporte le forfait Premium en plus ?", answer: "Le nettoyage intérieur Premium ajoute le nettoyage des bouches d'aération, le nettoyage en profondeur du cockpit et des portes au pinceau, l'entretien des panneaux de porte, le nettoyage en douceur du cuir, ainsi que les tapis de sol shampouinés et nettoyés à l'injecteur-extracteur." },
       ],
     },
   },
@@ -737,8 +737,8 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       desc: 'Professionelle Aussenreinigung durch RCC: Handwäsche, Felgen, Scheiben und Karosseriepflege ,  mobiler Service in der Schweiz.',
       breadcrumb: 'Aussenreinigung',
       faqs: [
-        { question: 'Was umfasst die Aussenreinigung bei RCC?', answer: 'Detaillierte Handwäsche, Glanzpolitur von Hand, Reinigung der Seitenscheiben aussen, Felgenreinigung, Reinigung des Tankdeckels und sorgfältiges Trocknen.' },
-        { question: 'Was bietet das Premium Aussen-Paket zusätzlich?', answer: 'Das Premium-Paket umfasst zusätzlich Reifenreinigung, Reifenglanzpflege sowie das Entfernen von anhaftenden Insektenresten vom Lack.' },
+        { question: 'Was umfasst die Aussenreinigung bei RCC?', answer: 'Lackschonende Handwäsche, Reinigung von Felgen und Reifen, Tankdeckel und innerem Bereich, Seitenscheiben aussen und sorgfältiges Trocknen. Premium ergänzt unter anderem Hochdruck-Vorreinigung, Flugrost- und Insektenentfernung sowie Reifenpflege.' },
+        { question: 'Was bietet das Premium Aussen-Paket zusätzlich?', answer: 'Die Aussenreinigung Premium ergänzt Hochdruck-Vorreinigung, die Entfernung hartnäckiger Insektenrückstände und von Flugrost, detaillierte Felgenreinigung, die Reinigung von Front- und Heckscheibe aussen sowie Reifenpflege und Reifenschwärzung.' },
       ],
     },
     en: {
@@ -746,8 +746,8 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       desc: 'Professional exterior car cleaning by RCC: hand wash, wheels, windows and bodywork care ,  mobile service in Switzerland.',
       breadcrumb: 'Exterior Cleaning',
       faqs: [
-        { question: 'What does exterior cleaning include at RCC?', answer: 'Detailed hand wash, hand-applied gloss polish, exterior window cleaning, wheel cleaning, fuel flap cleaning and careful drying.' },
-        { question: 'What does the Premium exterior package add?', answer: 'The Premium package additionally includes tyre cleaning, tyre shine and removal of bonded insect residue from the paintwork.' },
+        { question: 'What does exterior cleaning include at RCC?', answer: 'Paint-safe hand wash, wheels and tyres, fuel flap and inner area, exterior side windows and careful drying. Premium also includes pressure pre-washing, flash rust and insect residue removal, and tyre care.' },
+        { question: 'What does the Premium exterior package add?', answer: 'Exterior Cleaning Premium adds a high-pressure pre-wash, removal of stubborn insect residue and flash rust, detailed rim cleaning, exterior cleaning of the windscreen and rear window, and tyre care and blackening.' },
       ],
     },
     fr: {
@@ -755,8 +755,8 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       desc: 'Nettoyage extérieur professionnel par RCC : lavage à la main, jantes, vitres et carrosserie ,  service mobile en Suisse.',
       breadcrumb: 'Nettoyage extérieur',
       faqs: [
-        { question: 'Que comprend le nettoyage extérieur chez RCC ?', answer: 'Lavage à la main détaillé, polissage brillant à la main, nettoyage extérieur des vitres latérales, nettoyage des jantes, nettoyage de la trappe à carburant et séchage soigné.' },
-        { question: "Qu'apporte le forfait Premium Extérieur en plus ?", answer: 'Le forfait Premium ajoute le nettoyage des pneus, la finition brillante des pneus et l\'élimination des résidus d\'insectes sur la peinture.' },
+        { question: 'Que comprend le nettoyage extérieur chez RCC ?', answer: 'Lavage à la main respectueux de la peinture, nettoyage des jantes, pneus, trappe à carburant et zone intérieure, vitres latérales extérieures et séchage soigné. Premium ajoute notamment prélavage haute pression, élimination de la rouille volante et des insectes, et soin des pneus.' },
+        { question: "Qu'apporte le forfait Premium Extérieur en plus ?", answer: "Le nettoyage extérieur Premium ajoute un prélavage haute pression, l'élimination des résidus d'insectes tenaces et de la rouille volante, le nettoyage détaillé des jantes, le nettoyage extérieur du pare-brise et de la lunette arrière, ainsi que le soin et le noircissement des pneus." },
       ],
     },
   },
@@ -767,7 +767,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       breadcrumb: 'Fahrzeugaufbereitung',
       faqs: [
         { question: 'Was ist Fahrzeugaufbereitung?', answer: 'Die Fahrzeugaufbereitung umfasst die vollständige Innen- und Aussenreinigung Ihres Fahrzeugs in einem kombinierten Paket. RCC pflegt Innenraum und Karosserie gleichzeitig.' },
-        { question: 'Welche Pakete gibt es für die Komplettaufbereitung?', answer: 'RCC bietet Innen & Aussen Basic (CHF 170–320) und Innen & Aussen Premium (CHF 200–400) an. Der genaue Preis richtet sich nach Ihrer Fahrzeuggrösse.' },
+        { question: 'Welche Pakete gibt es für die Komplettaufbereitung?', answer: 'RCC bietet das Standard Paket (CHF 150, 219 oder 279) und das Premium Aufbereitung Paket (CHF 279, 329 oder 400) an. Der genaue Preis richtet sich nach einer von drei Fahrzeugkategorien. Zusatzleistungen werden separat berechnet.' },
       ],
     },
     en: {
@@ -776,7 +776,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       breadcrumb: 'Car Detailing',
       faqs: [
         { question: 'What is car detailing?', answer: 'Car detailing means a complete interior and exterior cleaning of your vehicle in one combined package. RCC cares for the interior and bodywork at the same time.' },
-        { question: 'What packages are available for complete detailing?', answer: 'RCC offers Interior & Exterior Basic (CHF 170–320) and Interior & Exterior Premium (CHF 200–400). The exact price depends on your vehicle size.' },
+        { question: 'What packages are available for complete detailing?', answer: 'RCC offers the Standard Package (CHF 150, 219 or 279) and Premium Detailing Package (CHF 279, 329 or 400). The price depends on one of three vehicle categories. Extras are charged separately.' },
       ],
     },
     fr: {
@@ -785,7 +785,7 @@ const SERVICE_JSONLD: Record<'leistungen/mobile-autoreinigung' | 'leistungen/inn
       breadcrumb: 'Préparation véhicule',
       faqs: [
         { question: 'Qu\'est-ce que la préparation du véhicule ?', answer: "La préparation du véhicule comprend le nettoyage complet de l'intérieur et de l'extérieur en un seul forfait combiné. RCC s'occupe de l'habitacle et de la carrosserie en même temps." },
-        { question: 'Quels forfaits existent pour la préparation complète ?', answer: 'RCC propose Intérieur & Extérieur Basic (CHF 170–320) et Intérieur & Extérieur Premium (CHF 200–400). Le prix exact dépend de la taille de votre véhicule.' },
+        { question: 'Quels forfaits existent pour la préparation complète ?', answer: 'RCC propose le forfait Standard (CHF 150, 219 ou 279) et le forfait de préparation Premium (CHF 279, 329 ou 400). Le prix dépend de l’une des trois catégories de véhicules. Les suppléments sont facturés séparément.' },
       ],
     },
   },
@@ -800,8 +800,8 @@ const ZURICH_JSONLD: Record<Lang, { name: string; desc: string; cityName: string
     mobileName: 'Mobile Autoreinigung',
     faqs: [
       { question: 'Bietet RCC mobile Autoreinigung in Zürich an?', answer: 'Ja, RCC bietet professionelle mobile Autoreinigung im Raum Zürich an. Wir kommen mit dem vollständigen Equipment direkt zu Ihrem Fahrzeug.' },
-      { question: 'Welche Reinigungspakete sind in Zürich verfügbar?', answer: 'In Zürich sind alle RCC-Pakete verfügbar: Innenreinigung, Aussenreinigung und Komplettreinigung ,  jeweils in Basic und Premium.' },
-      { question: 'Wie lange dauert eine mobile Autoreinigung in Zürich?', answer: 'Die Dauer variiert je nach gewähltem Paket und Fahrzeuggrösse. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer.' },
+      { question: 'Welche Reinigungspakete sind in Zürich verfügbar?', answer: 'In Zürich sind alle sechs RCC-Pakete verfügbar: Innenreinigung, Aussenreinigung und Komplettreinigung, jeweils in Standard und Premium.' },
+      { question: 'Wie lange dauert eine mobile Autoreinigung in Zürich?', answer: 'Die Dauer variiert je nach gewähltem Paket und Fahrzeugkategorie. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer.' },
       { question: 'Wie buche ich eine Autoreinigung in Zürich?', answer: 'Nutzen Sie das Offertformular auf unserer Website oder kontaktieren Sie uns direkt per Telefon oder WhatsApp. Wir melden uns umgehend.' },
     ],
   },
@@ -812,8 +812,8 @@ const ZURICH_JSONLD: Record<Lang, { name: string; desc: string; cityName: string
     mobileName: 'Mobile Car Cleaning',
     faqs: [
       { question: 'Does RCC offer mobile car cleaning in Zurich?', answer: 'Yes, RCC offers professional mobile car cleaning in the Zurich area. We come with the full professional setup directly to your vehicle.' },
-      { question: 'Which cleaning packages are available in Zurich?', answer: 'All RCC packages are available in Zurich: interior cleaning, exterior cleaning and complete cleaning ,  in Basic and Premium.' },
-      { question: 'How long does mobile car cleaning take in Zurich?', answer: 'Duration varies by package and vehicle size. Please ask when requesting your quote for the exact time estimate for your vehicle.' },
+      { question: 'Which cleaning packages are available in Zurich?', answer: 'All six RCC packages are available in Zurich: interior cleaning, exterior cleaning and complete cleaning, in Standard and Premium.' },
+      { question: 'How long does mobile car cleaning take in Zurich?', answer: 'Duration varies by package and vehicle category. Please ask when requesting your quote for the exact time estimate for your vehicle.' },
       { question: 'How do I book car cleaning in Zurich?', answer: 'Use the quote form on our website or contact us directly by phone or WhatsApp. We respond promptly with an appointment proposal.' },
     ],
   },
@@ -824,8 +824,8 @@ const ZURICH_JSONLD: Record<Lang, { name: string; desc: string; cityName: string
     mobileName: 'Nettoyage voiture mobile',
     faqs: [
       { question: 'RCC propose-t-il le nettoyage voiture mobile à Zurich ?', answer: 'Oui, RCC propose un nettoyage automobile mobile professionnel dans la région de Zurich. Nous venons directement chez vous avec tout le matériel.' },
-      { question: 'Quels forfaits sont disponibles à Zurich ?', answer: 'Tous les forfaits RCC sont disponibles à Zurich : nettoyage intérieur, extérieur et complet ,  en Basic et Premium.' },
-      { question: 'Combien de temps dure un nettoyage automobile mobile à Zurich ?', answer: 'La durée varie selon le forfait et la taille du véhicule. Veuillez nous demander lors de votre devis pour une estimation précise.' },
+      { question: 'Quels forfaits sont disponibles à Zurich ?', answer: 'Les six forfaits RCC sont disponibles à Zurich : nettoyage intérieur, extérieur et complet, en Standard et Premium.' },
+      { question: 'Combien de temps dure un nettoyage automobile mobile à Zurich ?', answer: 'La durée varie selon le forfait et la catégorie du véhicule. Veuillez nous demander lors de votre devis pour une estimation précise.' },
       { question: 'Comment réserver un nettoyage à Zurich ?', answer: 'Utilisez le formulaire de devis sur notre site ou contactez-nous directement par téléphone ou WhatsApp. Nous répondons rapidement avec une proposition de rendez-vous.' },
     ],
   },

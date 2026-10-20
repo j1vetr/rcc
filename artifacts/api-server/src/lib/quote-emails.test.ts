@@ -22,6 +22,7 @@ const quote: Quote = {
   serviceType: "inside-outside-premium",
   carType: "medium",
   message: "Please contact me in the afternoon.",
+  pricing: null,
   createdAt: new Date("2026-08-25T10:00:00.000Z"),
 };
 
@@ -48,5 +49,7 @@ for (const language of ["de", "fr", "en"] as const) {
 
     assert.match(previews.admin.text, /Test Customer/);
     assert.match(previews.customer.text, localizedRequestWord[language]);
+    assert.match(previews.admin.text, /329 CHF/);
+    assert.match(previews.customer.text, /329 CHF/);
   });
 }

@@ -7,11 +7,16 @@
  */
 
 export * from './errorResponse';
+export * from './extraSelection';
 export * from './featureList';
 export * from './healthStatus';
+export * from './localizedLabel';
+export * from './pricedExtra';
 export * from './quote';
 export * from './quoteInput';
+export * from './quoteInputCarType';
 export * from './quoteInputLanguage';
+export * from './quotePricing';
 export * from './service';
 export * from './serviceCategory';
 export * from './serviceLevel';

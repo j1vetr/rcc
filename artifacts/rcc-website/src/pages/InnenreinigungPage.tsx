@@ -6,6 +6,7 @@
  */
 
 import ServiceDetailPage, { type ServiceConfig } from './ServiceDetailPage';
+import { getServiceById, vehicleCategories } from '@workspace/service-catalog';
 import { useTranslation } from '@/i18n/LanguageContext';
 import type { Lang } from '@/seo/routes';
 
@@ -13,82 +14,55 @@ const CONFIGS: Record<Lang, Omit<ServiceConfig, 'packagesRouteKey' | 'featuresLa
   de: {
     eyebrow: 'RCC Innenreinigung Schweiz',
     h1: 'Innenreinigung\nAuto Schweiz',
-    lead: 'Gründliche professionelle Reinigung des Fahrzeuginnenraums direkt bei Ihnen vor Ort. RCC kümmert sich um Fahrgastraum, Sitze, Armaturenbrett, Türverkleidungen und Fussmatten.',
-    coverage: [
-      'Fahrgastraum und Kofferraum saugen',
-      'Seitenscheiben innen reinigen',
-      'Armaturenbrett feucht abwischen',
-      'Türen feucht abwischen',
-      'Lederinnenausstattung feucht abwischen',
-      'Fussmatten saugen',
-      'Türinnenkanten reinigen',
-      'Zwischenräume mit Druckluft reinigen',
-    ],
+    lead: 'Gründliche professionelle Reinigung des Fahrzeuginnenraums direkt bei Ihnen vor Ort. RCC kümmert sich um Fahrgastraum, Kofferraum, Armaturenbrett, Türverkleidungen und Scheiben.',
+    coverage: getServiceById('interior-basic')!.interiorFeaturesDE,
     packageCategories: ['interior'],
-    vehicles: ['Klein (Smart, Mini, Fiat 500)', 'Mittel (VW Golf, Passat)', 'Gross (SUV)', 'Extra (Van, 7-Sitzer)'],
+    vehicles: Object.values(vehicleCategories.de),
     breadcrumbs: [
       { label: 'RCC Royal Car Cleaning', href: '/de/' },
       { label: 'Leistungen', href: '/de/leistungen/' },
       { label: 'Innenreinigung' },
     ],
     faqs: [
-      { question: 'Was umfasst die Innenreinigung bei RCC?', answer: 'Die Innenreinigung umfasst das Saugen des Fahrgastraums, Reinigen der Scheiben innen, Abwischen des Armaturenbretts, der Türverkleidungen und der Lederausstattung sowie das Reinigen der Fussmatten.' },
-      { question: 'Was ist der Unterschied zwischen Basic und Premium Innenreinigung?', answer: 'Das Premium-Paket beinhaltet zusätzlich intensive Fussmattenreinigung mit Shampoo, detaillierte Reinigung von Cockpit und Türen mit Bürste sowie die Reinigung der Auspuffenden.' },
-      { question: 'Wie lange dauert eine Innenreinigung?', answer: 'Die Dauer variiert je nach Fahrzeuggrösse und gewähltem Paket. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer.' },
+      { question: 'Was umfasst die Innenreinigung bei RCC?', answer: 'Die Innenreinigung Standard umfasst Ausblasen mit Druckluft, Absaugen von Fahrgastraum und Kofferraum, Reinigung von Armaturenbrett, Türverkleidungen und Türfalzen sowie Seitenfenster innen.' },
+      { question: 'Was ist der Unterschied zwischen Standard und Premium Innenreinigung?', answer: 'Die Innenreinigung Premium ergänzt die Reinigung der Lüftungsdüsen, Tiefenreinigung von Cockpit und Türen mit Pinseln, Pflege der Türverkleidungen, schonende Reinigung der Lederausstattung sowie shampoonierte und mit dem Sprühextraktor tiefengereinigte Fussmatten.' },
+      { question: 'Wie lange dauert eine Innenreinigung?', answer: 'Die Dauer variiert je nach Fahrzeugkategorie und gewähltem Paket. Bitte fragen Sie bei der Offertanfrage nach der genauen Zeitdauer.' },
     ],
   },
   en: {
     eyebrow: 'RCC Interior Cleaning Switzerland',
     h1: 'Interior Car Cleaning\nin Switzerland',
-    lead: 'Thorough professional cleaning of the vehicle interior directly at your location. RCC takes care of the passenger compartment, seats, dashboard, door panels and floor mats.',
-    coverage: [
-      'Vacuuming passenger compartment and boot',
-      'Interior side window cleaning',
-      'Damp wipe of dashboard',
-      'Damp wipe of doors',
-      'Damp wipe of leather interior trim',
-      'Vacuuming floor mats',
-      'Cleaning inner door edges',
-      'Compressed-air cleaning of gaps',
-    ],
+    lead: 'Thorough professional cleaning of the vehicle interior directly at your location. RCC takes care of the passenger compartment, boot, dashboard, door panels and windows.',
+    coverage: getServiceById('interior-basic')!.interiorFeaturesEN,
     packageCategories: ['interior'],
-    vehicles: ['Small (Smart, Mini, Fiat 500)', 'Medium (VW Golf, Passat)', 'Large (SUV)', 'XL (Van, 7-seater)'],
+    vehicles: Object.values(vehicleCategories.en),
     breadcrumbs: [
       { label: 'RCC Royal Car Cleaning', href: '/en/' },
       { label: 'Services', href: '/en/services/' },
       { label: 'Interior Cleaning' },
     ],
     faqs: [
-      { question: 'What does interior cleaning include at RCC?', answer: 'Interior cleaning includes vacuuming the passenger compartment, cleaning interior windows, wiping the dashboard, door panels and leather trim, and cleaning floor mats.' },
-      { question: 'What does the Premium package add?', answer: 'The Premium package adds intensive shampoo cleaning of floor mats, detailed brush cleaning of the cockpit and doors, and cleaning of exhaust tips.' },
-      { question: 'How long does interior cleaning take?', answer: 'Duration varies by vehicle size and chosen package. Please ask when requesting your quote for the exact time estimate.' },
+      { question: 'What does interior cleaning include at RCC?', answer: 'Interior Cleaning Standard includes compressed-air cleaning, vacuuming the passenger compartment and boot, cleaning the dashboard, door panels and door jambs, and interior side windows.' },
+      { question: 'What does the Premium package add?', answer: 'Interior Cleaning Premium adds air vent cleaning, deep brush cleaning of the cockpit and doors, door panel care, gentle cleaning of the leather upholstery, and floor mats shampooed and deep cleaned with a spray extractor.' },
+      { question: 'How long does interior cleaning take?', answer: 'Duration varies by vehicle category and chosen package. Please ask when requesting your quote for the exact time estimate.' },
     ],
   },
   fr: {
     eyebrow: "RCC Nettoyage Intérieur Suisse",
     h1: "Nettoyage intérieur\nvoiture Suisse",
-    lead: "Nettoyage professionnel complet de l'habitacle directement chez vous. RCC s'occupe de l'habitacle, des sièges, du tableau de bord, des garnitures de portes et des tapis.",
-    coverage: [
-      "Aspiration de l'habitacle et du coffre",
-      'Nettoyage intérieur des vitres latérales',
-      'Essuyage humide du tableau de bord',
-      'Essuyage humide des portes',
-      'Essuyage humide des garnitures en cuir',
-      'Aspiration des tapis',
-      'Nettoyage des rebords intérieurs des portes',
-      "Nettoyage des interstices à l'air comprimé",
-    ],
+    lead: "Nettoyage professionnel complet de l'habitacle directement chez vous. RCC s'occupe de l'habitacle, du coffre, du tableau de bord, des panneaux de porte et des vitres.",
+    coverage: getServiceById('interior-basic')!.interiorFeaturesFR,
     packageCategories: ['interior'],
-    vehicles: ['Petite (Smart, Mini, Fiat 500)', 'Moyenne (VW Golf, Passat)', 'Grande (SUV)', 'XL (Van, 7 places)'],
+    vehicles: Object.values(vehicleCategories.fr),
     breadcrumbs: [
       { label: 'RCC Royal Car Cleaning', href: '/fr/' },
       { label: 'Services', href: '/fr/prestations/' },
       { label: 'Nettoyage intérieur' },
     ],
     faqs: [
-      { question: "Que comprend le nettoyage intérieur chez RCC ?", answer: "Le nettoyage intérieur comprend l'aspiration de l'habitacle, le nettoyage des vitres intérieures, l'essuyage du tableau de bord, des portes et des garnitures en cuir, ainsi que le nettoyage des tapis." },
-      { question: "Qu'apporte le forfait Premium ?", answer: "Le forfait Premium ajoute le nettoyage intensif des tapis au shampooing, le nettoyage détaillé du cockpit et des portes à la brosse, et le nettoyage des embouts d'échappement." },
-      { question: 'Combien de temps dure le nettoyage intérieur ?', answer: 'La durée varie selon la taille du véhicule et le forfait choisi. Veuillez nous demander lors de votre demande de devis pour une estimation précise.' },
+      { question: "Que comprend le nettoyage intérieur chez RCC ?", answer: "Le nettoyage intérieur Standard comprend le soufflage à l'air comprimé, l'aspiration de l'habitacle et du coffre, le nettoyage du tableau de bord, des panneaux et des feuillures de porte, ainsi que des vitres latérales à l'intérieur." },
+      { question: "Qu'apporte le forfait Premium ?", answer: "Le nettoyage intérieur Premium ajoute le nettoyage des bouches d'aération, le nettoyage en profondeur du cockpit et des portes au pinceau, l'entretien des panneaux de porte, le nettoyage en douceur du cuir, ainsi que les tapis de sol shampouinés et nettoyés à l'injecteur-extracteur." },
+      { question: 'Combien de temps dure le nettoyage intérieur ?', answer: 'La durée varie selon la catégorie du véhicule et le forfait choisi. Veuillez nous demander lors de votre demande de devis pour une estimation précise.' },
     ],
   },
 };

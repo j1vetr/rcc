@@ -1,3 +1,4 @@
 - [Swiss map rendering](swiss-map-rendering.md) -- react-simple-maps reads only the first TopoJSON object; convert cantons with topojson-client feature() first.
 - [RCC VPS deployment](rcc-vps-deployment.md) -- prod runs on VPS via GitHub + rccup + root PM2 (26+ other apps); Node 20 so pnpm stays v10, API port 3883.
 - [RCC website SSG prerender](rcc-ssg-prerender.md) -- two Vite builds (client + SSR) then scripts/prerender.mjs; PORT optional during build; lazy components not safe in SSR entry.
+- [RCC catalog rules](rcc-catalog-rules.md) — preserve supplied prices literally, use three vehicle groups, and keep the manual quote-submission hold until authorized.

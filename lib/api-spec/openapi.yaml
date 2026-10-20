@@ -99,6 +99,10 @@ components:
           type: string
         message:
           type: ["string", "null"]
+        pricing:
+          anyOf:
+            - $ref: "#/components/schemas/QuotePricing"
+            - type: "null"
         createdAt:
           type: string
           format: date-time
@@ -124,7 +128,12 @@ components:
           minLength: 1
         carType:
           type: string
-          minLength: 1
+          enum: [small, medium, xl]
+        extras:
+          type: array
+          maxItems: 14
+          items:
+            $ref: "#/components/schemas/ExtraSelection"
         language:
           type: string
           enum: [de, fr, en]
@@ -189,16 +198,66 @@ components:
 
     ServicePrices:
       type: object
-      required: [small, medium, large, xl]
+      required: [small, medium, xl]
       properties:
         small:
           type: number
         medium:
           type: number
-        large:
-          type: number
         xl:
           type: number
+
+    ExtraSelection:
+      type: object
+      required: [id, variantId]
+      properties:
+        id:
+          type: string
+        variantId:
+          type: string
+
+    LocalizedLabel:
+      type: object
+      required: [de, en, fr]
+      properties:
+        de:
+          type: string
+        en:
+          type: string
+        fr:
+          type: string
+
+    PricedExtra:
+      type: object
+      required: [id, variantId, name, variantLabel, price]
+      properties:
+        id:
+          type: string
+        variantId:
+          type: string
+        name:
+          $ref: "#/components/schemas/LocalizedLabel"
+        variantLabel:
+          $ref: "#/components/schemas/LocalizedLabel"
+        price:
+          type: number
+
+    QuotePricing:
+      type: object
+      required: [packagePrice, extrasPrice, total, variablePrice, extras]
+      properties:
+        packagePrice:
+          type: number
+        extrasPrice:
+          type: number
+        total:
+          type: number
+        variablePrice:
+          type: boolean
+        extras:
+          type: array
+          items:
+            $ref: "#/components/schemas/PricedExtra"
 
     FeatureList:
       type: array

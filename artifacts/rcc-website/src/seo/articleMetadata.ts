@@ -23,19 +23,19 @@ const ARTICLES: Record<GuideArticleKey, Partial<Record<Lang, Omit<GuideArticleMe
   'auto-innenreinigung': {
     de: {
       title: 'Auto Innenreinigung: Was wirklich zählt',
-      description: 'Schritt für Schritt durch eine gründliche Autoinnenreinigung. Von Sitzen und Teppichen bis zu Cockpit und Scheiben. Wann reicht Basic, wann lohnt Premium?',
+      description: 'Schritt für Schritt durch eine gründliche Autoinnenreinigung. Von Sitzen und Teppichen bis zu Cockpit und Scheiben. Wann reicht Standard, wann lohnt Premium?',
       datePublished: PUBLISHED_DATE,
       dateModified: PUBLISHED_DATE,
     },
     en: {
       title: 'Car Interior Cleaning: What Really Matters',
-      description: 'Step by step through a thorough car interior clean. From seats and carpets to dashboard and windows. When is Basic enough, when is Premium worth it?',
+      description: 'Step by step through a thorough car interior clean. From seats and carpets to dashboard and windows. When is Standard enough, when is Premium worth it?',
       datePublished: PUBLISHED_DATE,
       dateModified: PUBLISHED_DATE,
     },
     fr: {
       title: "Nettoyage intérieur voiture : l'essentiel à savoir",
-      description: "Étape par étape pour un nettoyage intérieur complet. Des sièges aux tapis, du tableau de bord aux vitres. Quand le Basic suffit-il, quand le Premium vaut-il la peine ?",
+      description: "Étape par étape pour un nettoyage intérieur complet. Des sièges aux tapis, du tableau de bord aux vitres. Quand le Standard suffit-il, quand le Premium vaut-il la peine ?",
       datePublished: PUBLISHED_DATE,
       dateModified: PUBLISHED_DATE,
     },
@@ -83,7 +83,7 @@ const ARTICLES: Record<GuideArticleKey, Partial<Record<Lang, Omit<GuideArticleMe
   'autoaufbereitung-kosten-schweiz': {
     de: {
       title: 'Autoaufbereitung Schweiz: Was kostet die Reinigung?',
-      description: 'Welche Faktoren beeinflussen den Preis einer professionellen Autoaufbereitung in der Schweiz? Fahrzeuggrösse, Reinigungsumfang und mobiler Service im Vergleich.',
+      description: 'Welche Faktoren beeinflussen den Preis einer professionellen Autoaufbereitung in der Schweiz? Fahrzeugkategorie, Reinigungsumfang und mobiler Service im Vergleich.',
       datePublished: PUBLISHED_DATE,
       dateModified: PUBLISHED_DATE,
     },

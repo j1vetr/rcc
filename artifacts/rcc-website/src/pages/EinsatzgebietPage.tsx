@@ -158,10 +158,10 @@ export default function EinsatzgebietPage() {
             </p>
             <p className="mt-2 text-sm font-light leading-relaxed text-foreground/55">
               {lang === 'de'
-                ? 'Wählen Sie Ihr Reinigungspaket und sehen Sie die Basispreise nach Fahrzeuggrösse.'
+                ? 'Wählen Sie Ihr Reinigungspaket und sehen Sie die Basispreise nach Fahrzeugkategorie.'
                 : lang === 'fr'
-                  ? 'Choisissez votre forfait de nettoyage et consultez les prix de base selon la taille du véhicule.'
-                  : 'Choose your cleaning package and view base prices by vehicle size.'}
+                  ? 'Choisissez votre forfait de nettoyage et consultez les prix de base selon la catégorie du véhicule.'
+                  : 'Choose your cleaning package and view base prices by vehicle category.'}
             </p>
           </a>
           <a

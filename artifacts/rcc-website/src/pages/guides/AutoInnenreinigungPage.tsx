@@ -38,12 +38,12 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         ],
       },
       {
-        heading: 'Basic oder Premium: Wann lohnt was?',
+        heading: "Standard oder Premium: Wann lohnt was?",
         level: 'h2',
         paragraphs: [
-          'Das RCC Basic-Paket für die Innenreinigung umfasst Saugen, Scheiben innen, Cockpit und Türen abwischen sowie Fussmatten saugen. Das ist für regelmässige Pflege in den meisten Fällen ausreichend.',
-          'Das Premium-Paket ergänzt Shampoo-Reinigung der Fussmatten, detailliertes Ausbürsten von Cockpit und Türen sowie die Reinigung der Auspuffenden. Sinnvoll bei stärker verschmutzten Fahrzeugen oder wenn seit längerer Zeit keine intensive Reinigung stattgefunden hat.',
-          'Den genauen Preisunterschied nach Fahrzeuggrösse finden Sie auf der Paketseite.',
+          "Die RCC Innenreinigung Standard umfasst Ausblasen mit Druckluft, Absaugen von Fahrgastraum und Kofferraum, Reinigung von Armaturenbrett, Türverkleidungen und Türfalzen sowie Seitenfenster innen. Das ist für regelmässige Pflege in den meisten Fällen ausreichend.",
+          "Die Innenreinigung Premium ergänzt die Reinigung der Lüftungsdüsen, Tiefenreinigung von Cockpit und Türen mit Pinseln, die schonende Reinigung der Lederausstattung sowie shampoonierte und mit dem Sprühextraktor tiefengereinigte Fussmatten. Sinnvoll bei stärker verschmutzten Fahrzeugen oder wenn seit längerer Zeit keine intensive Reinigung stattgefunden hat.",
+          "Den genauen Preisunterschied nach Fahrzeugkategorie finden Sie auf der Paketseite.",
         ],
       },
       {
@@ -67,7 +67,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     faqs: [
       {
         question: 'Was umfasst die Innenreinigung bei RCC?',
-        answer: 'Die Innenreinigung umfasst das Saugen des Fahrgastraums inklusive Fussmatten, Reinigen der Scheiben von innen, Abwischen von Armaturenbrett, Türverkleidungen und Cockpit. Das Premium-Paket ergänzt Shampoo-Reinigung der Fussmatten und detailliertes Ausbürsten des Innenraums.',
+        answer: "Die Innenreinigung Standard umfasst Ausblasen mit Druckluft, Absaugen von Fahrgastraum und Kofferraum, Reinigung von Armaturenbrett, Türverkleidungen und Türfalzen sowie Seitenfenster innen. Premium ergänzt Lüftungsdüsen, Pinsel-Tiefenreinigung, Lederreinigung und shampoonierte Fussmatten.",
       },
       {
         question: 'Kommt RCC für die Innenreinigung zu mir?',
@@ -75,11 +75,11 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'Wie lange dauert eine Innenreinigung?',
-        answer: 'Die Dauer hängt von Fahrzeuggrösse und gewähltem Paket ab. Genaue Zeitangaben erhalten Sie bei der Offertanfrage.',
+        answer: "Die Dauer hängt von Fahrzeugkategorie und gewähltem Paket ab. Genaue Zeitangaben erhalten Sie bei der Offertanfrage.",
       },
       {
         question: 'Was kostet die Innenreinigung?',
-        answer: 'Die Preise richten sich nach Fahrzeuggrösse: Innenreinigung Basic beginnt ab CHF 85, Premium ab CHF 100. Den vollständigen Preisüberblick finden Sie auf der Paketseite.',
+        answer: "Die Preise richten sich nach Fahrzeugkategorie: Innenreinigung Standard CHF 100, 120 oder 140, Premium CHF 199, 239 oder 289. Den vollständigen Preisüberblick finden Sie auf der Paketseite.",
       },
     ],
     internalLinks: [
@@ -123,12 +123,12 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         ],
       },
       {
-        heading: 'Basic or Premium: When Does Each Make Sense?',
+        heading: "Standard or Premium: When Does Each Make Sense?",
         level: 'h2',
         paragraphs: [
-          'The RCC Basic interior package includes vacuuming, interior windows, wiping the cockpit and door panels, and vacuuming floor mats. For regular maintenance this is sufficient in most cases.',
-          'The Premium package adds shampoo cleaning of floor mats, detailed brush cleaning of the cockpit and doors, and cleaning of exhaust tips. Appropriate for more heavily soiled vehicles or when no intensive clean has taken place for some time.',
-          'Exact prices by vehicle size are on the packages page.',
+          "RCC Interior Cleaning Standard includes compressed-air cleaning, vacuuming the passenger compartment and boot, cleaning the dashboard, door panels and door jambs, and interior side windows. For regular maintenance this is sufficient in most cases.",
+          "Interior Cleaning Premium adds air vent cleaning, deep brush cleaning of the cockpit and doors, gentle cleaning of the leather upholstery, and floor mats shampooed and deep cleaned with a spray extractor. Appropriate for more heavily soiled vehicles or when no intensive clean has taken place for some time.",
+          "Exact prices by vehicle category are on the packages page.",
         ],
       },
       {
@@ -151,7 +151,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     faqs: [
       {
         question: 'What does interior cleaning include at RCC?',
-        answer: 'Interior cleaning includes vacuuming the passenger compartment including floor mats, cleaning windows from the inside, wiping the dashboard, door panels and cockpit. The Premium package adds shampoo cleaning of floor mats and detailed brush cleaning of the interior.',
+        answer: "Interior Cleaning Standard includes compressed-air cleaning, vacuuming the passenger compartment and boot, cleaning the dashboard, door panels and door jambs, and interior side windows. Premium adds air vents, deep brush cleaning, leather cleaning and shampooed floor mats.",
       },
       {
         question: 'Does RCC come to me for interior cleaning?',
@@ -159,7 +159,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: 'What does interior cleaning cost?',
-        answer: 'Prices depend on vehicle size: Interior Cleaning Basic starts from CHF 85, Premium from CHF 100. The full price overview is on the packages page.',
+        answer: "Prices depend on vehicle category: Interior Cleaning Standard CHF 100, 120 or 140, Premium CHF 199, 239 or 289. The full price overview is on the packages page.",
       },
     ],
     internalLinks: [
@@ -202,12 +202,12 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
         ],
       },
       {
-        heading: "Basic ou Premium : lequel choisir ?",
+        heading: "Standard ou Premium : lequel choisir ?",
         level: 'h2',
         paragraphs: [
-          "Le forfait Basic RCC comprend l'aspiration, le nettoyage des vitres intérieures, l'essuyage du cockpit et des portes, et l'aspiration des tapis. Pour un entretien régulier, c'est suffisant dans la plupart des cas.",
-          "Le forfait Premium ajoute le nettoyage des tapis au shampooing, le nettoyage détaillé du cockpit et des portes à la brosse. Recommandé pour les véhicules plus sales ou lorsqu'aucun nettoyage intensif n'a eu lieu depuis un certain temps.",
-          "Les prix exacts selon la taille du véhicule sont sur la page des forfaits.",
+          "Le nettoyage intérieur Standard RCC comprend le soufflage à l'air comprimé, l'aspiration de l'habitacle et du coffre, le nettoyage du tableau de bord, des panneaux et des feuillures de porte, ainsi que des vitres latérales à l'intérieur. Pour un entretien régulier, c'est suffisant dans la plupart des cas.",
+          "Le nettoyage intérieur Premium ajoute le nettoyage des bouches d'aération, le nettoyage en profondeur du cockpit et des portes au pinceau, le nettoyage en douceur du cuir, ainsi que les tapis de sol shampouinés et nettoyés à l'injecteur-extracteur. Recommandé pour les véhicules plus sales ou lorsqu'aucun nettoyage intensif n'a eu lieu depuis un certain temps.",
+          "Les prix exacts selon la catégorie du véhicule sont sur la page des forfaits.",
         ],
       },
       {
@@ -222,7 +222,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
     faqs: [
       {
         question: "Que comprend le nettoyage intérieur chez RCC ?",
-        answer: "Le nettoyage intérieur comprend l'aspiration de l'habitacle y compris les tapis, le nettoyage des vitres de l'intérieur, l'essuyage du tableau de bord, des portes et du cockpit. Le forfait Premium ajoute le nettoyage des tapis au shampooing et le nettoyage détaillé à la brosse.",
+        answer: "Le nettoyage intérieur Standard comprend le soufflage à l'air comprimé, l'aspiration de l'habitacle et du coffre, le nettoyage du tableau de bord, des panneaux et des feuillures de porte, ainsi que des vitres latérales à l'intérieur. Premium ajoute les bouches d'aération, le nettoyage au pinceau, le nettoyage du cuir et le shampouinage des tapis.",
       },
       {
         question: "RCC vient-il chez moi pour le nettoyage intérieur ?",
@@ -230,7 +230,7 @@ const CONFIGS: Record<Lang, GuidePageConfig> = {
       },
       {
         question: "Quel est le prix du nettoyage intérieur ?",
-        answer: "Les prix varient selon la taille du véhicule : Nettoyage intérieur Basic à partir de CHF 85, Premium à partir de CHF 100. La vue d'ensemble complète des prix est sur la page des forfaits.",
+        answer: "Les prix varient selon la catégorie du véhicule : nettoyage intérieur Standard CHF 100, 120 ou 140, Premium CHF 199, 239 ou 289. La vue d'ensemble complète des prix est sur la page des forfaits.",
       },
     ],
     internalLinks: [
