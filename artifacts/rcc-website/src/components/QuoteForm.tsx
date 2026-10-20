@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { ArrowLeft, ArrowRight, Check, CheckCircle2, Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CheckCircle2, Mail, MapPin, Phone } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CarTypePicker } from './CarTypePicker';
 
@@ -36,8 +36,6 @@ const formSchema = z.object({
   message: z.string().optional(),
   extras: z.array(z.object({ id: z.string(), variantId: z.string() })),
 });
-
-const LAUNCH_DISABLED = true;
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -132,7 +130,6 @@ export function QuoteForm() {
   }, [form]);
 
   const onSubmit = (data: FormValues) => {
-    if (LAUNCH_DISABLED) return;
     const carType = data.carType;
     if (!isVehicleCategory(carType)) return;
     submitQuote.mutate({ data: { ...data, carType, language: lang } });
@@ -263,40 +260,6 @@ export function QuoteForm() {
 
       <div className="container mx-auto max-w-6xl px-5 sm:px-6 lg:px-10 relative z-10">
 
-        {/* Launch notice banner */}
-        {LAUNCH_DISABLED && (
-          <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 border border-primary/30 bg-primary/[0.06] px-6 py-5 sm:px-8 sm:py-6"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
-              <div className="shrink-0 w-10 h-10 border border-primary/40 flex items-center justify-center text-primary">
-                <Clock className="w-4 h-4" strokeWidth={1.5} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[9px] uppercase tracking-[0.25em] text-primary mb-2 font-medium">
-                  {t.quote.launchNotice.badge}
-                </p>
-                <p className="text-foreground text-base sm:text-lg font-light leading-snug mb-3">
-                  {t.quote.launchNotice.heading}
-                </p>
-                <p className="text-foreground/55 text-sm font-light leading-relaxed mb-4 max-w-2xl">
-                  {t.quote.launchNotice.body}
-                </p>
-                <a
-                  href={BUSINESS.phone.href}
-                  className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] font-semibold text-primary hover:text-[#ebcc7b] transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
-                  {t.quote.launchNotice.cta}
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         <div className="border border-white/10 bg-[#090909]/85">
           {/* Header */}
           <div className="grid gap-7 border-b border-white/10 p-5 sm:p-7 lg:grid-cols-[1fr_1.15fr] lg:items-end lg:gap-12 lg:p-9">
@@ -346,7 +309,7 @@ export function QuoteForm() {
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                if (LAUNCH_DISABLED || step < 3) return;
+                if (step < 3) return;
                 void form.handleSubmit(onSubmit, onInvalid)(event);
               }}
             >
@@ -607,8 +570,7 @@ export function QuoteForm() {
                           <button
                             type="submit"
                             data-testid="button-submit-quote"
-                            disabled={submitQuote.isPending || LAUNCH_DISABLED}
-                            title={LAUNCH_DISABLED ? t.quote.launchNotice.heading : undefined}
+                            disabled={submitQuote.isPending}
                             className="w-full btn-gold-luxury h-14 uppercase tracking-[0.17em] text-xs font-semibold text-background disabled:opacity-30 disabled:cursor-not-allowed px-8"
                           >
                             {submitQuote.isPending ? t.quote.form.submitting : t.quote.form.submit}

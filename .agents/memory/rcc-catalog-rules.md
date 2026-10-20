@@ -1,6 +1,6 @@
 ---
 name: RCC catalog business rules
-description: Literal catalog pricing, three vehicle groups, and the manual prelaunch submission hold.
+description: Literal catalog pricing, three vehicle groups, and authorized form reopening.
 ---
 
 Use the supplied prices and included services literally. Do not raise Premium prices to exceed Standard or add customary detailing treatments to a package.
@@ -15,8 +15,8 @@ Vehicle pricing has three groups: compact cars and coupés, saloons and SUVs, an
 
 **How to apply:** Keep forms, price displays, explanatory copy and messages consistent with these groups.
 
-Keep the launch notice and the manual quote-submission hold until the user asks to reopen requests. Configuration and price calculations may remain available.
+Quote requests are open. Do not restore the prelaunch notice or submission hold.
 
-**Why:** The user requested that the form remain visible but submission be closed with a trilingual 15 September launch notice. This pricing revision did not authorize reopening it.
+**Why:** On 2026-10-20 the user explicitly requested removing the not-yet-operating messaging across the site and making the forms work, superseding the earlier prelaunch hold.
 
-**How to apply:** Do not infer permission to enable submission from the calendar date or a pricing update.
+**How to apply:** Preserve validation, request delivery and success states when changing forms. Only close requests again if the user explicitly asks.
